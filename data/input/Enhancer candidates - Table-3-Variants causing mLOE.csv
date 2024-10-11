@@ -1,0 +1,40 @@
+Gene,Disease,OMIM phenotype MIM number,Phenotype associated with gene LOF variants ,OMIM phenotype MIM number for LOF,Regulatory element(s) impacted,Distance to promoter,Variant ID,ClinVar ID,ClinVar classifcation,PMID(s),Publication date,Coordinates (paper),Original hg build,Coordinates (hg38),Notes
+APC,Gastric adenocarcinoma and proximal polyposis of the stomach,619182,Familial Adenomatous Polyposis,175100,YY1-binding element,APC exon 1B promoter,NM_001127511.3(APC):c.-195A>C,264670,Pathogenic,27087319 (Li et al. 2016),2016 May,,,,
+APC,Gastric adenocarcinoma and proximal polyposis of the stomach,619182,Familial Adenomatous Polyposis,175100,YY1-binding element,APC exon 1B promoter,NM_001127511.2(APC):c.[-125delA;-195A>C],243004,Pathogenic,27087319 (Li et al. 2016),2016 May,,,,
+APC,Gastric adenocarcinoma and proximal polyposis of the stomach,619182,Familial Adenomatous Polyposis,175100,YY1-binding element,APC exon 1B promoter,NM_001127511.3(APC):c.192A>T,243007,Pathogenic,27087319 (Li et al. 2016),2016 May,,,,
+APC,Gastric adenocarcinoma and proximal polyposis of the stomach,619182,Familial Adenomatous Polyposis,175100,YY1-binding element,APC exon 1B promoter,NM_001127511.3(APC):c.-192A>G,243006,Likely pathogenic,27087319 (Li et al. 2016),2016 May,,,,
+APC,Gastric adenocarcinoma and proximal polyposis of the stomach,619182,Familial Adenomatous Polyposis,175100,YY1-binding element,APC exon 1B promoter,NM_001127511.3(APC):c.-191T>C,243005,Pathogenic,27087319 (Li et al. 2016),2016 May,,,,
+APC,Gastric adenocarcinoma and proximal polyposis of the stomach,619182,Familial Adenomatous Polyposis,175100,YY1-binding element,APC exon 1B promoter,NM_001127511.3(APC):c.-190G>A,243008,Pathogenic,27087319 (Li et al. 2016),2016 May,,,,
+F9,"Hemophilia
+B Leyden
+(mild form)",306900,Hemophilia B,306900,C/EBP-binding element,F9 promoter,NM_000133.4(F9):c.-17del,10561,Pathogenic,2342576 (Crossley & Brownlee 1990),1990 May,,,,
+F9,"Hemophilia
+B Leyden
+(mild form)",306900,Hemophilia B,306900,C/EBP-binding element,F9 promoter,NM_000133.4(F9):c.-22T>C,10644,Pathogenic,2004020 (Royle et al. 1991),1991 Feb,,,,
+F9,"Hemophilia
+B Leyden
+(mild form)",306900,Hemophilia B,306900,C/EBP-binding element,F9 promoter,NM_000133.4(F9):c.-17A>G,10646,Pathogenic,2342576 (Crossley & Brownlee 1990),1990 May,,,,
+F9,"Hemophilia
+B Leyden
+(mild form)",306900,Hemophilia B,306900,Not specified,F9 promoter,NM_000133.3(F9):c.-35G>A,641767,Pathogenic,2388855 (Crossley et al. 1990),1990 Aug,,,,
+GATAI,"Low platelet
+count and
+normal RBC
+parameters",N/A,Severe platelet and RBC abnormalities,300367,Enhancer,6 kb downstream,4 kb deletion,N/A,N/A,32581362 (Turro et al. 2020),2020 Jul,"chrX:48,659,245-48,663,353",hg19,chrX:48800838-48804946,
+PIGM,Glycosylphosphatidylinositol deficiency,610293,No gene LOF phenotype reported,N/A,SP1-binding element,PIGM promoter,NM_145167.2(PIGM):c.-270C>G,1288,Pathogenic,16767100 (Almeida et al. 2006),2006 Jul,,,,
+PTF1A,Isolated pancreatic agenesis,615935,Pancreatic and cerebellar agenesis,609069,Developmental pancreatic enhancer,19 kb downstream,7.6 kb deletion,N/A,N/A,24212882 (Weedon et al. 2014),2014 Jan,chr10:23502416-23510031,hg19,,1
+PTF1A,Isolated pancreatic agenesis,615935,Pancreatic and cerebellar agenesis,609069,Developmental pancreatic enhancer,25 kb downstream,GRCh37:chr10:23508437A>G,N/A,N/A,24212882 (Weedon et al. 2014),2014 Jan,chr10:23508437,hg19,,
+PTF1A,Isolated pancreatic agenesis,615935,Pancreatic and cerebellar agenesis,609069,Developmental pancreatic enhancer,25 kb downstream,GRCh37:chr10:23508363A>G,N/A,N/A,24212882 (Weedon et al. 2014),2014 Jan,chr10:23508363,hg19,,
+PTF1A,Isolated pancreatic agenesis,615935,Pancreatic and cerebellar agenesis,609069,Developmental pancreatic enhancer,25 kb downstream,GRCh37:chr10:23508305A>G,N/A,N/A,24212882 (Weedon et al. 2014),2014 Jan,chr10:23508305,hg19,,
+PTFIA,Isolated pancreatic agenesis,615935,Pancreatic and cerebellar agenesis,609069,Developmental pancreatic enhancer,25 kb downstream,GRCh37:chr10:23508365A>G,N/A,N/A,24212882 (Weedon et al. 2014),2014 Jan,chr10:23508365,hg19,,
+PTF1A,Isolated pancreatic agenesis,615935,Pancreatic and cerebellar agenesis,609069,Developmental pancreatic enhancer,25 kb downstream,GRCh37:chr10:23508446A>C,N/A,N/A,24212882 (Weedon et al. 2014),2014 Jan,chr10:23508446,hg19,,
+SHOX,Idiopathic short stature (ISS),300582,Leri-Weill dyschondrosteosis,127300,Enhancer,95 kb upstream,286 kb deletion,N/A,N/A,"22071895 (Benito-Sanz et al. 2012a, b)",2012 Jan,chrY:∼124349-409949; chrY:∼134349–439949,hg18; hg19,Failed liftover - partially deleted in new,"""Despite numerous attempts we were unable to cross the deletion breakpoints, probably because of the high incidence of repetitive elements."""
+SOX9,Pierre Robin sequence (PRS),261800,Campomelic dysplasia,114290,Not specified,1.38 Mb upstream,75 kb deletion,N/A,N/A,19234473 (Benko et al. 2009),2009 Mar,"Chr17:66,175,000–66,250,000",hg18,,
+SOX9,Pierre Robin sequence (PRS),261800,Campomelic dysplasia,114290,Craniofacial region enhancer,1.44 Mb upstream,T>C variant,N/A,N/A,19234473 (Benko et al. 2009),2009 Mar,"Chr17:66,187,898",hg18,,
+SOX9,Pierre Robin sequence (PRS),261800,Campomelic dysplasia,114290,Not specified,1.58 Mb upstream,> 319 kb deletion,N/A,N/A,19234473 (Benko et al. 2009),2009 Mar,"Chr17:65,730,750–66,049,600",hg18,,
+SOX9,Pierre Robin sequence (PRS),261800,Campomelic dysplasia,114290,Not specified,1.16 Mb upstream,t(2;17)(q32;q24),N/A,N/A,19234473 (Benko et al. 2009),2009 Mar,"Chr17:66,431,112–66,467,874",hg18,,
+SOX9,Pierre Robin sequence (PRS),261800,Campomelic dysplasia,114290,Not specified,1.03 Mb upstream,t(5;17)(q15;q24),N/A,N/A,19234473 (Benko et al. 2009),2009 Mar,"Chr17:66,518,875–66,602,885",hg18,,
+SOX9,Pierre Robin sequence (PRS),261800,Campomelic dysplasia,114290,Proximal mandibular mesenchyme enhancer,1.23 Mb upstream,t(2;17)(q24.1;q24.3),N/A,N/A,19234473 (Benko et al. 2009),2009 Mar,"Chr17:66,400,448",hg18,,
+SOX9,Pierre Robin sequence (PRS),261800,Campomelic dysplasia,114290,Not specified,1.56 Mb downstream,36 kb deletion,N/A,N/A,19234473 (Benko et al. 2009),2009 Mar,"Chr17:69,153,000–69,189,000",hg18,,
+TBX5,Isolated congenital heart disease,N/A,Holt-Oram Syndrome,142900,TAL1 binding element,90 kb downstream,GRCh37:chr12:114704515G>T,N/A,N/A,22543974 (Smemo et al. 2012),2012 Jul,"Chr12:114,701,207–114,704,691",hg19,,
+UNC13D,Recurrent Macrophage Activation Syndrome and Systemic Juvenile Idiopathic Arthritis,N/A,Familial hemophagocytic lymphohistiocytosis 3,608898,NF-kB binding element,UNC13D promoter,NM_199242.3(UNC13D):c.117+143A>G,1299418,Not provided,29409136 (Schulert et al. 2018),2018 Jun,,,,

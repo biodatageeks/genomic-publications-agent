@@ -1,0 +1,7 @@
+pronto
+elasticsearch
+langchain
+lancedb
+pyyaml
+tantivy==0.20.1
+langchain-together
