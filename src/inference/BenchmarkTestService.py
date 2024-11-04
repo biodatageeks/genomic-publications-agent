@@ -3,9 +3,9 @@ from typing import Dict, List, Union, Tuple, Optional
 
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
-from src.CoordinatesSearchService import CoordinatesSearchService
+from src.test.CoordinatesInference import CoordinatesInference
 from src.LlmManager import LlmManager
-from src.PubmedEndpoint import PubmedEndpoint
+from src.flow.PubmedEndpoint import PubmedEndpoint
 
 
 class BenchmarkTestService:
@@ -18,7 +18,7 @@ class BenchmarkTestService:
                             format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
     def perform_benchmark_inference(self, benchmark_tests: List[Dict[str, Union[str, Dict[str, str], List[str]]]]):
-        coordinates_search_service = CoordinatesSearchService(self.llm_manager.llm)
+        coordinates_search_service = CoordinatesInference(self.llm_manager.llm)
 
         full_results = []
         for test in benchmark_tests:
@@ -34,14 +34,14 @@ class BenchmarkTestService:
 
     def manual_test_coordinate_search(self, pmids: List[str]):
         coordinates_list = []
-        coordinates_search_service = CoordinatesSearchService(self.llm_manager.llm)
+        coordinates_search_service = CoordinatesInference(self.llm_manager.llm)
         for text in self.prepare_texts_from_pmids(pmids):
             coordinates_list.extend(coordinates_search_service.extract_coordinates_from_text(text))
         return coordinates_list
 
 
     def perform_simple_benchmark_test(self, benchmark_test: Dict[str, Union[str, Dict[str, str], List[str]]]) -> Tuple[bool, Optional[bool]]:
-        coordinates_search_service = CoordinatesSearchService(self.llm_manager.llm)
+        coordinates_search_service = CoordinatesInference(self.llm_manager.llm)
 
         pmids: List[str] = benchmark_test['pmids']
         user_query_dict: Dict[str, str] = benchmark_test['user_query_dict']

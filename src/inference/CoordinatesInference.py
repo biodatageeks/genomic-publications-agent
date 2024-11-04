@@ -1,19 +1,19 @@
 import logging
 
-from src.PubmedEndpoint import PubmedEndpoint
-from src.CoordinatesExtractionService import CoordinatesExtractionService
-from src.ContextExtractionService import ContextExtractionService
-from src.SequenceOntologyMappingService import SequenceOntologyMappingService
-from src.LinksFromQueryExtractionService import LinksFromQueryExtractionService
+from src.flow.PubmedEndpoint import PubmedEndpoint
+from src.flow.CoordinatesRetriever import CoordinatesRetriever
+from src.flow.ContextRetriever import ContextRetriever
+from src.flow.SequenceOntologyMapper import SequenceOntologyMapper
+from src.flow.KeyValueMapper import KeyValueMapper
 
 
-class CoordinatesSearchService:
+class CoordinatesInference:
     def __init__(self, llm):
         self.logger = logging.getLogger(__name__)
-        self.coordinates_extraction_service = CoordinatesExtractionService(llm)
-        self.context_extraction_service = ContextExtractionService(llm)
-        self.sequence_ontology_mapping_service = SequenceOntologyMappingService(llm)
-        self.links_from_query_extraction_service = LinksFromQueryExtractionService(llm)
+        self.coordinates_extraction_service = CoordinatesRetriever(llm)
+        self.context_extraction_service = ContextRetriever(llm)
+        self.sequence_ontology_mapping_service = SequenceOntologyMapper(llm)
+        self.links_from_query_extraction_service = KeyValueMapper(llm)
 
     def search_coordinates(self, pmid: str, user_query_dict: dict):
         self.logger.info(f"Searching coordinates for pmid {pmid} with user query {user_query_dict}")

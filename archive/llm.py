@@ -9,7 +9,7 @@ import numpy as np
 import getpass
 import os
 
-from src.PubmedEndpoint import PubmedEndpoint
+from src.flow.PubmedEndpoint import PubmedEndpoint
 
 print("Step 1: Load the FAISS index and the terms")
 index = faiss.read_index("ontology_faiss_index.index")

@@ -21,7 +21,7 @@ with open(os.path.join(config['base_dir'], config['paths']['coordinates_extracti
     genomic_coordinates_examples = file.read()
 
 
-class SequenceOntologyMappingService:
+class SequenceOntologyService:
     prompt = f"""
     SYSTEM:
 

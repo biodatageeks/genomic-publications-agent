@@ -3,7 +3,6 @@ import os
 from getpass import getpass
 from typing import Dict, Union, Tuple
 
-from langchain_community.chat_models import ChatOpenAI
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.prompts import ChatPromptTemplate
 
