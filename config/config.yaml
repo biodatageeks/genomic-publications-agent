@@ -1,5 +1,5 @@
 llm_model_name: "gpt4o-mini"
-base_dir: "/home/wojtek/Documents/Badawcze/cooordinates-lit/"
+base_dir: "/Users/wojtek/Documents/bioinf/coordinates-lit/"
 paths:
   coordinates_extraction_examples: "data/coordinates-extraction/example-coordinates.txt"
   so_obo: 'data/sequence-ontology/so-edit.obo'

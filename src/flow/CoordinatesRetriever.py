@@ -1,13 +1,12 @@
 from enum import Enum
 from typing import List
 
-from langchain.prompts import ChatPromptTemplate, MessagesPlaceholder
+from langchain.prompts import ChatPromptTemplate
 from langchain.chains import LLMChain
-from langchain.chat_models import ChatOpenAI
-from getpass import getpass
 import re
 import yaml
 import os
+from utils import load_config
 
 
 class NomenclatureType(Enum):
@@ -16,15 +15,13 @@ class NomenclatureType(Enum):
     GFF_GTF = 3
 
 
-# Load the YAML file
-with open("/home/wojtek/Documents/Badawcze/cooordinates-lit/config/config.yaml", "r") as file:
-    config = yaml.safe_load(file)
+config = load_config()
 
 with open(os.path.join(config['base_dir'], config['paths']['coordinates_extraction_examples']), 'r') as file:
     genomic_coordinates_examples = file.read()
 
 
-class CoordinatesExtractionService:
+class CoordinatesRetriever:
     hgvs_regex: str = (r'^(g\.|c\.|m\.|r\.|p\.)?(\d+|[+-]\d+|[A-Z]+\d+)?(?:_(\d+|[+-]\d+|[A-Z]+\d+))?(delins['
                        r'ATCG]+|del|ins[ATCG]*|dup|inv|fs|[A-Z][a-z]{2}|\*)?(>?[A-Z][a-z]{2}|>?[ATCG]|\*|\([A-Z]{'
                        r'3}\d{1,3}[A-Z]{3}\))?(?:\*?\d+)?(?:[+*/-]\d+)?$')

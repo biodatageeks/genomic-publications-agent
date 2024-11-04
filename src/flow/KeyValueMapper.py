@@ -1,13 +1,13 @@
 import logging
-import os
-from getpass import getpass
-from typing import Dict, Union, Tuple
+from typing import Dict, Tuple
 
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.prompts import ChatPromptTemplate
+from utils import load_config
 
+config = load_config()
 
-class LinksFromQueryExtractionService:
+class KeyValueMapper:
     prompt = """
         SYSTEM:
 
@@ -38,7 +38,7 @@ class LinksFromQueryExtractionService:
     def extract_link(self, coordinates: str, context: str, sequence_ontology_term: str, key: str, value: str) -> bool:
         self.logger.info(f"Extracting link between {key} and {value} for coordinates {coordinates} and context {context}")
         response: str = self.ask_model(key, value, coordinates, context, sequence_ontology_term)
-        has_link, relation_type, reasoning = LinksFromQueryExtractionService.preprocess_model_response(response)
+        has_link, relation_type, reasoning = KeyValueMapper.preprocess_model_response(response)
         self.logger.info(
             f"Link between ({key}: {value}) and the context: {has_link}. Type of relation is {relation_type}. Reasoning: {reasoning}")
         return has_link

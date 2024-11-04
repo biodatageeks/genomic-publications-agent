@@ -11,17 +11,15 @@ from langchain_together import ChatTogether
 
 from src.RAG.RAGService import RAGService
 import logging
+from utils import load_config
 
-
-# Load the YAML file
-with open("/home/wojtek/Documents/Badawcze/cooordinates-lit/config/config.yaml", "r") as file:
-    config = yaml.safe_load(file)
+config = load_config()
 
 with open(os.path.join(config['base_dir'], config['paths']['coordinates_extraction_examples']), 'r') as file:
     genomic_coordinates_examples = file.read()
 
 
-class SequenceOntologyService:
+class SequenceOntologyMapper:
     prompt = f"""
     SYSTEM:
 

@@ -2,3 +2,4 @@ langchain
 lancedb
 pyyaml
 langchain-together
+pandas

@@ -4,16 +4,12 @@ from langchain.chat_models import ChatOpenAI
 from getpass import getpass
 import yaml
 import os
+from utils import load_config
 
 
+config = load_config()
 
-
-# Load the YAML file
-with open("/home/wojtek/Documents/Badawcze/cooordinates-lit/config/config.yaml", "r") as file:
-    config = yaml.safe_load(file)
-
-
-class ContextExtractionService:
+class ContextRetriever:
     # TODO EXPAND WITH GIVING THE LOCATION IN THE TEXT
     prompt = f"""
     SYSTEM:

@@ -3,7 +3,7 @@ from typing import Dict, List, Union, Tuple, Optional
 
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
-from src.test.CoordinatesInference import CoordinatesInference
+from src.inference.CoordinatesInference import CoordinatesInference
 from src.LlmManager import LlmManager
 from src.flow.PubmedEndpoint import PubmedEndpoint
 

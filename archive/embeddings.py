@@ -5,7 +5,7 @@ import numpy as np
 import obonet
 
 # Step 1: Load the OBO file and parse it
-file_path = '../../data/sequence-ontology/so-edit.obo'
+file_path = '../data/sequence-ontology/so-edit.obo'
 graph = obonet.read_obo(file_path)
 
 # Step 2: Extract relevant text data from the ontology

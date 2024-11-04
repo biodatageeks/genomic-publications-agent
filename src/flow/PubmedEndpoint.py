@@ -6,10 +6,11 @@ import pandas as pd
 
 
 class PubmedEndpoint:
+    PUBMED_BASE_URL = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils"
 
     @staticmethod
     def pubmed_search(query, retmax=10):
-        base_url = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi"
+        base_url = f"{PubmedEndpoint.PUBMED_BASE_URL}/esearch.fcgi"
         params = {
             "db": "pubmed",
             "term": query,
@@ -27,7 +28,7 @@ class PubmedEndpoint:
 
     @staticmethod
     def fetch_details(id_list):
-        base_url = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi"
+        base_url = f"{PubmedEndpoint.PUBMED_BASE_URL}/esearch.fcgi"
         ids = ",".join(id_list)
         params = {
             "db": "pubmed",
@@ -147,7 +148,7 @@ class PubmedEndpoint:
 
     @staticmethod
     def fetch_articles_from_query(query):
-        ids = PubmedEndpoint.pubmed_search(query, retmax=10)  # You can adjust retmax to get more results
+        ids = PubmedEndpoint.pubmed_search(query, retmax=10)
 
         if ids:
             details = PubmedEndpoint.fetch_details(ids)

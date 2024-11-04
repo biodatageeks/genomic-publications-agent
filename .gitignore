@@ -1,3 +1,10 @@
 .idea
 index
 .vscode
+data/.DS_Store
+src/__pycache__/__init__.cpython-312.pyc
+src/__pycache__/LlmManager.cpython-312.pyc
+src/__pycache__/utils.cpython-312.pyc
+src/flow/__pycache__/__init__.cpython-312.pyc
+src/flow/__pycache__/CoordinatesRetriever.cpython-312.pyc
+src/flow/__pycache__/PubmedEndpoint.cpython-312.pyc
