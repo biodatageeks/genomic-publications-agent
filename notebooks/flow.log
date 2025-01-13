@@ -1,0 +1,42 @@
+INFO:src.flow.coordinates_extraction.CoordinatesRegexExtractor:Loaded 3 coordinates regexes
+INFO:src.flow.coordinates_extraction.CoordinatesRegexExtractor:Loaded 3 coordinates regexes
+INFO:src.flow.PubmedEndpoint:Fetching full text for article with PubMed ID: 21441262
+INFO:src.flow.coordinates_extraction.CoordinatesRegexExtractor:Loaded 3 coordinates regexes
+INFO:src.flow.coordinates_extraction.CoordinatesRegexExtractor:Loaded 3 coordinates regexes
+INFO:src.flow.coordinates_extraction.CoordinatesRegexExtractor:Loaded 3 coordinates regexes
+INFO:src.flow.coordinates_extraction.CoordinatesRegexExtractor:Loaded 3 coordinates regexes
+INFO:src.flow.coordinates_extraction.CoordinatesRegexExtractor:Loaded 3 coordinates regexes
+INFO:src.LlmManager:Loaded OpenAI model
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesRegexExtractor:Loaded 3 coordinates regexes
+INFO:src.LlmManager:Loaded OpenAI model
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: NONE
+INFO:src.flow.coordinates_extraction.CoordinatesRegexExtractor:Loaded 3 coordinates regexes
+INFO:src.LlmManager:Loaded OpenAI model
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: NC_000014.8:g.101179660_101179695
+NC_000014.8:g.[101179660_101179695TG[14]];[101179660_101179695TG[18]]
+NM_023035.2:c.6955_6993CAG[26]
+NC_000003.12:g.63912687_63912716AGC[13] / c.89_118AGC[13]
+NM_002024.5:c.-128_-69GGC[10]GGA[1]GGC[9]GGA[1]GGC[10]
+INFO:src.flow.coordinates_extraction.CoordinatesRegexExtractor:Loaded 3 coordinates regexes
+INFO:src.LlmManager:Loaded OpenAI model
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: NC_000023.10:g.32361330_32361333
+NC_000023.10:g.32867908=
+NC_000023.10:g.32867908_32867923=
+INFO:src.flow.coordinates_extraction.CoordinatesRegexExtractor:Loaded 3 coordinates regexes
+INFO:src.LlmManager:Loaded OpenAI model
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: NC_000014.8:g.101179660_101179695
+NC_000014.8:g.101179660_101179695
+NC_000014.8:g.101179660_101179695
+NC_000014.8:g.101179660_101179695
+NC_000014.8:g.101179660_101179695
+
+NC_000014.8:g.101179660_101179695
+NC_000014.8:g.101179660_101179695
+NC_000014.8:g.101179660_101179695
+NC_000014.8:g.101179660_101179695
+NC_000014.8:g.101179660_101179695

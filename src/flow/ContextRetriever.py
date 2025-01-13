@@ -4,7 +4,7 @@ from langchain.chat_models import ChatOpenAI
 from getpass import getpass
 import yaml
 import os
-from utils import load_config
+from src.Config import load_config
 
 
 config = load_config()

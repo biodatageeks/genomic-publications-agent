@@ -1,0 +1,77 @@
+[
+    {
+        "pubmed_id": "21441262",
+        "coordinates": [
+            {
+                "coordinate": "46,XX,t(2;14)(q13;q13)",
+                "context": "Patient 1, a 12 year-old girl, was referred at 7 years because of severe mental retardation and postnatal microcephaly. She is the fourth child of healthy parents and her three older sisters are healthy. She was born at 40 weeks gestation by natural delivery with birth weight 3350 g (0 SD), length 51 cm (0 SD), and OFC 32.5 cm (−1 SD). At 6 months, she was able to turn, but she has never been able to sit or stand. She did not react to visual and acoustic stimuli in infancy, but this improved at later ages. Ophthalmologic examination revealed convergent strabismus. At 7 months she developed seizures. EEG revealed spikes and sharp waves over the left centroparietal and both centrotemporal regions. She could speak single words at 1 year, but lost this ability by 2 years. She had gastroesophageal reflux and constipation. Her brain MRI demonstrated striking reduced volume of white matter in the anterior frontal lobes with mildly thick cortex, striking hypoplasia and dysplasia of the anterior corpus callosum resembling a sharp hook, and probably dysplastic hippocampus (figure 1E–H). Prenatal chromosome analysis revealed an apparently balanced chromosome translocation: 46,XX,t(2;14)(q13;q13). Chromosome analysis was normal in both parents, indicating that it occurred de novo (paternity confirmed). FISH analysis with fosmid F-1425A7 from chromosome 2 identified signals on 2q11.2 as well as the der(2) and der(14), indicating that this clone spanned the breakpoint (figure 3A and data not shown). No gene was directly disrupted by the breakpoint, although INPP4A is located 5–10 kb telomeric to the breakpoint (data not shown). A 1-bp deletion in Inpp4a encoding inositol polyphosphate 4-phosphatase type I occurred in the spontaneous weeble mouse mutant, which has severe locomotor instability and significant neuronal loss in the cerebellum and hippocampal CA1 sector.24 In addition, patient 1 is heterozygous for the breakpoint close to INPP4A, and further the weeble phenotype is a recessive condition that differs significantly from the phenotype in this girl."
+            },
+            {
+                "coordinate": "14q12-q13.1",
+                "context": "Physical map of the 14q12-q13.1 region. Genes in this region are represented by arrows indicating the 5’ 3’ orientation. Fosmid clones (F- [G248P8]; WIBR-2 Human Fosmid Library) used for mapping the 14q12 breakpoint of the 2;14 translocation in patient 1 (1) are indicated by colored bars and names are given. Color code of fosmids; black: mapped distal to the translocation breakpoint; blue: spanned the breakpoint; green: mapped proximal to breakpoint. The breakpoint region is indicated by a wavy vertical arrow in red."
+            },
+            {
+                "coordinate": "14q12",
+                "context": "Deletions in 14q12. Horizontal black lines depict the deletions identified in patients 2 – 4 (2, 3, 4). Arrowheads at the left and right side of the deletion in patient 2 show that this deletion extends to either side. Dotted lines indicate that the respective deletion breakpoints have not been fine-mapped. BAC clones (RP11 Human BAC Library) used for FISH analysis to confirm the presence of the deletions in the patients are indicated by red bars and names are given."
+            },
+            {
+                "coordinate": "chr14:28,754,647-28,756,495 bp",
+                "context": "A detailed view of the region containing putative long-range cis-regulatory elements of FOXG1. In the upper part, the two black vertical bars represent potential regulatory elements (genomic positions chr14:28,754,647-28,756,495 bp and 28,930,280-28,932,099 bp) that have been identified with the ESPERR (evolutionary and sequence pattern extraction through reduced representations) computational method. In the lower part, a more detailed view of the region of high Regulatory Potential (RP) values, with the UCSC genome browser map of seven-way (human, chimpanzee, macaque, mouse, rat, dog, and cow; March 2006 assembly) RP analysis of the candidate cis-regulatory elements distal to FOXG1."
+            },
+            {
+                "coordinate": "28,930,280-28,932,099 bp",
+                "context": "A detailed view of the region containing putative long-range cis-regulatory elements of FOXG1. In the upper part, the two black vertical bars represent potential regulatory elements (genomic positions chr14:28,754,647-28,756,495 bp and 28,930,280-28,932,099 bp) that have been identified with the ESPERR (evolutionary and sequence pattern extraction through reduced representations) computational method. In the lower part, a more detailed view of the region of high Regulatory Potential (RP) values, with the UCSC genome browser map of seven-way (human, chimpanzee, macaque, mouse, rat, dog, and cow; March 2006 assembly) RP analysis of the candidate cis-regulatory elements distal to FOXG1."
+            },
+            {
+                "coordinate": "~10 kb gene-poor region in 14q12 located ~265 kb downstream of FOXG1",
+                "context": "We narrowed the breakpoint to a ~10 kb gene-poor region in 14q12 located ~265 kb downstream of FOXG1 (figure 3A), suggesting that a position effect could cause transcriptional misregulation of this gene. In silico analysis using the Regulatory Potential score identified several candidate cis-regulatory elements that are evolutionary conserved throughout a 1-Mb region downstream of FOXG1 (figure 3C)."
+            },
+            {
+                "coordinate": "1-Mb region downstream of FOXG1",
+                "context": "In silico analysis using the Regulatory Potential score identified several candidate cis-regulatory elements that are evolutionary conserved throughout a 1-Mb region downstream of FOXG1 (figure 3C)."
+            },
+            {
+                "coordinate": "chr14:28,930,280-28,932,099",
+                "context": "In silico analysis using the Regulatory Potential score identified several candidate cis-regulatory elements that are evolutionary conserved throughout a 1-Mb region downstream of FOXG1 (figure 3C). Two of these noncoding elements located at genomic positions chr14:28,930,280-28,932,099 and chr14:28,754,647-28,756,495 (NCBI Build 36.1; figure 3C) have been analysed for gene enhancer activity as assessed in transgenic mice. Both DNA sequence elements are evolutionary highly conserved and were found to drive expression of a reporter gene (lacZ) in mouse forebrain (http://enhancer.lbl.gov/frnt_page.shtml). These data suggest that translocation of either or both of these putative cis-regulatory elements to chromosome 2 may have caused dysregulated expression of FOXG1 in the translocation patient."
+            },
+            {
+                "coordinate": "46,XX,del(14)(q13.1q13.2)",
+                "context": "Patient 2 presented with developmental delay, slow head growth and severe feeding problems. Brain MRI showed a short corpus callosum (figure 2M–P). Routine chromosome analysis revealed a de novo deletion in chromosome 14 (46,XX,del(14)(q13.1q13.2)). We confirmed the deletion by FISH with two BAC clones, RP11-412H8 and RP11-148E7, flanking FOXG1 as well as BAC RP11-330O19 hybridizing proximal and RP11-908D14 and RP11-116N8 hybridizing distal to the deletion, respectively (data not shown and figure 3B). We estimate the maximum size of the deletion as ~8.4 Mb in 14q12-q13.1 including FOXG1."
+            },
+            {
+                "coordinate": "~5.4-Mb heterozygous deletion in 14q12-q13.1",
+                "context": "Genome-wide array CGH was performed on a clinical basis on two patients with postnatal microcephaly and severe mental retardation. We detected a ~5.4-Mb heterozygous deletion in 14q12-q13.1 in patient 3 that encompasses at least 13 genes including FOXG1, and confirmed the deletion by FISH with BAC clone RP11-329K12 (figure 3B and data not shown)"
+            },
+            {
+                "coordinate": "~1.09-Mb microdeletion downstream of FOXG1",
+                "context": "We identified a ~1.09-Mb microdeletion downstream of FOXG1 in patient 4 that removes a large part of the next gene, PRKD1. PRKD1 encodes protein kinase D1 (also known as PKD or PKD1), a serine/threonine kinase that regulates a variety of cellular functions, including membrane receptor signalling, transport processes, protection from oxidative stress, transcriptional regulation, and F-actin reorganization.25,26 FISH with BAC clones RP11-30H9 and RP11-419C10 yielded only one signal on metaphase spreads, whereas two signals were obtained on metaphase spreads of his parents (figure 3B and data not shown; paternity confirmed)."
+            },
+            {
+                "coordinate": "transitions c.757A>G (p.N253D)",
+                "context": "We next selected 125 patients with phenotypes overlapping patients 1–4, including mental retardation, postnatal microcephaly, mild frontal pachygyria, and callosal abnormalities. We sequenced FOXG1 in this cohort, and detected four intragenic mutations in the heterozygous state, including the transitions c.757A>G (p.N253D) in patient 5 and c.700T>C (p.S234P) in patient 11, the frameshift mutation c.460dupG (p.E154GfsX301) in patient 6, and the nonsense mutation c.256C>T (p.R86X) in patient 9."
+            },
+            {
+                "coordinate": "c.700T>C (p.S234P)",
+                "context": "We next selected 125 patients with phenotypes overlapping patients 1–4, including mental retardation, postnatal microcephaly, mild frontal pachygyria, and callosal abnormalities. We sequenced FOXG1 in this cohort, and detected four intragenic mutations in the heterozygous state, including the transitions c.757A>G (p.N253D) in patient 5 and c.700T>C (p.S234P) in patient 11, the frameshift mutation c.460dupG (p.E154GfsX301) in patient 6, and the nonsense mutation c.256C>T (p.R86X) in patient 9."
+            },
+            {
+                "coordinate": "c.460dupG (p.E154GfsX301)",
+                "context": "We next selected 125 patients with phenotypes overlapping patients 1–4, including mental retardation, postnatal microcephaly, mild frontal pachygyria, and callosal abnormalities. We sequenced FOXG1 in this cohort, and detected four intragenic mutations in the heterozygous state, including the transitions c.757A>G (p.N253D) in patient 5 and c.700T>C (p.S234P) in patient 11, the frameshift mutation c.460dupG (p.E154GfsX301) in patient 6, and the nonsense mutation c.256C>T (p.R86X) in patient 9."
+            },
+            {
+                "coordinate": "c.256C>T (p.R86X)",
+                "context": "We next selected 125 patients with phenotypes overlapping patients 1–4, including mental retardation, postnatal microcephaly, mild frontal pachygyria, and callosal abnormalities. We sequenced FOXG1 in this cohort, and detected four intragenic mutations in the heterozygous state, including the transitions c.757A>G (p.N253D) in patient 5 and c.700T>C (p.S234P) in patient 11, the frameshift mutation c.460dupG (p.E154GfsX301) in patient 6, and the nonsense mutation c.256C>T (p.R86X) in patient 9."
+            },
+            {
+                "coordinate": "c.263_278del16 (p.R88PfsX99)",
+                "context": "We also sequenced FOXG1 in a cohort of 81 patients (55 females and 26 males) tested for MECP2 mutations in a diagnostic lab with negative results. We detected the intragenic insertion-deletion mutation c.505_506delGGinsT (p.G168SfsX23) in patient 7 and the frameshift mutation c.263_278del16 (p.R88PfsX99) in patient 10, both in the heterozygous state. The parents of patients 7 and 10 did not carry the respective mutation (paternity confirmed), which was not detected in 200 control chromosomes."
+            },
+            {
+                "coordinate": "c.460dupG mutation",
+                "context": "We also identified the same c.460dupG mutation in patient 8 as detected in patient 6. "
+            }
+
+
+        ]
+    }
+]

@@ -11,7 +11,7 @@ from langchain_together import ChatTogether
 
 from src.RAG.RAGService import RAGService
 import logging
-from utils import load_config
+from src.Config import load_config
 
 config = load_config()
 

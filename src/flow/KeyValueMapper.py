@@ -3,7 +3,7 @@ from typing import Dict, Tuple
 
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.prompts import ChatPromptTemplate
-from utils import load_config
+from src.Config import load_config
 
 config = load_config()
 

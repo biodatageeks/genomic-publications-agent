@@ -1,7 +1,7 @@
 import logging
 
 from src.flow.PubmedEndpoint import PubmedEndpoint
-from src.flow.CoordinatesRetriever import CoordinatesRetriever
+from src.flow.coordinates_extraction.CoordinatesLLMExtractor import CoordinatesLlmExtractor
 from src.flow.ContextRetriever import ContextRetriever
 from src.flow.SequenceOntologyMapper import SequenceOntologyMapper
 from src.flow.KeyValueMapper import KeyValueMapper
@@ -10,7 +10,7 @@ from src.flow.KeyValueMapper import KeyValueMapper
 class CoordinatesInference:
     def __init__(self, llm):
         self.logger = logging.getLogger(__name__)
-        self.coordinates_extraction_service = CoordinatesRetriever(llm)
+        self.coordinates_extraction_service = CoordinatesLlmExtractor(llm)
         self.context_extraction_service = ContextRetriever(llm)
         self.sequence_ontology_mapping_service = SequenceOntologyMapper(llm)
         self.links_from_query_extraction_service = KeyValueMapper(llm)
@@ -22,7 +22,7 @@ class CoordinatesInference:
 
     def search_coordinates_in_text(self, text: str, user_query_dict: dict):
         self.logger.info(f"Searching coordinates in text with user query {user_query_dict}")
-        coordinates_list = self.coordinates_extraction_service.extract_coordinates_from_text(text)
+        coordinates_list = self.coordinates_extraction_service.extract(text)
         self.logger.info(f"Extracted coordinates: {coordinates_list}")
         results = []
         for coordinate in coordinates_list:
@@ -32,7 +32,7 @@ class CoordinatesInference:
         return results
 
     def extract_coordinates_from_text(self, text: str):
-        return self.coordinates_extraction_service.extract_coordinates_from_text(text)
+        return self.coordinates_extraction_service.extract(text)
 
     def process_coordinate(self, coordinate: str, text: str, user_query_dict: dict):
         self.logger.info(f"Processing coordinate {coordinate} in text with user query {user_query_dict}")
