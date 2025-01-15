@@ -14,17 +14,14 @@ logger = logging.getLogger(__name__)
 class CoordinatesLlmExtractor:
     
 
-    prompt = f"""
+    prompt = """
     SYSTEM:
 
-    You are a coordinates extractor. Your task is to extract genomic coordinates from a text.
-    Given a text in section PUBLICATION, please extract all genomic coordinates from it
-    and format them in a newline separated list.
-    Do not return any other coordinates than the ones in the text.
-    Return only the list of coordinates, separated by newlines.
-    If no coordinates are found, return a word "NONE".
-    Examples of genomic coordinates are:
-    {genomic_coordinates_examples}
+    Your task is to extract genomic coordinates from the provided text. 
+    Focus on the section labeled PUBLICATION and identify all genomic coordinates present. 
+    Format the extracted coordinates as a list, with each coordinate on a new line. 
+    Ensure that you only return the coordinates found in the text, and nothing else. 
+    If no coordinates are detected, respond with "NONE". 
     """
 
     def __init__(self, llm):
@@ -33,20 +30,27 @@ class CoordinatesLlmExtractor:
     def extract(self, text):
         model_response = self.query_llm(self.prompt, text)
         logger.info(f'Model response: {model_response}')
-        return self.parse_response(model_response)
+        return self.parse_response(model_response, text)
 
     def query_llm(self, system_prompt: str, publication_text: str):
-            prompt = ChatPromptTemplate.from_template("{system} PUBLICATION: {publication}")
+            prompt = ChatPromptTemplate.from_template("""
+                                                      {system}
+                                                      PUBLICATION:
+                                                      {publication}
+                                                      """)
             llm_chain = LLMChain(llm=self.llm, prompt=prompt)
             return llm_chain.run({
                 "system": system_prompt,
                 "publication": publication_text
             })
     
-    def parse_response(self, response):
+    def parse_response(self, response, text):
         coordinates_list: List[str] = response.split("\n")
         if len(coordinates_list) > 0 and coordinates_list[0] == "NONE":
             return []
-        return coordinates_list
+        unique_coordinates = set(a[2:] if a.startswith('- ') else a[3:] if a.startswith(tuple(f"{i}. " for i in range(1, 101))) else a for a in list(filter(lambda x: 'coordinate' not in x.lower() and 'publication' not in x.lower(), coordinates_list)))
+        coordinates_without_empty_strings = [a for a in list(unique_coordinates) if a != '']
+        only_coordinates_existing_in_text = [a for a in coordinates_without_empty_strings if a in text]
+        return only_coordinates_existing_in_text
 
     

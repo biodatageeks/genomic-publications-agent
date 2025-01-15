@@ -1,0 +1,196 @@
+<?xml version="1.0" ?>
+<!DOCTYPE pmc-articleset PUBLIC "-//NLM//DTD ARTICLE SET 2.0//EN" "https://dtd.nlm.nih.gov/ncbi/pmc/articleset/nlm-articleset-2.0.dtd">
+<pmc-articleset><article xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mml="http://www.w3.org/1998/Math/MathML" article-type="research-article">
+  <!--The publisher of this article does not allow downloading of the full text in XML form.-->
+  <front>
+    <journal-meta>
+      <journal-id journal-id-type="nlm-ta">Blood</journal-id>
+      <journal-id journal-id-type="iso-abbrev">Blood</journal-id>
+      <journal-id journal-id-type="hwp">bloodjournal</journal-id>
+      <journal-id journal-id-type="pmc">blood</journal-id>
+      <journal-id journal-id-type="publisher-id">Blood</journal-id>
+      <journal-title-group>
+        <journal-title>Blood</journal-title>
+      </journal-title-group>
+      <issn pub-type="ppub">0006-4971</issn>
+      <issn pub-type="epub">1528-0020</issn>
+      <publisher>
+        <publisher-name>American Society of Hematology</publisher-name>
+        <publisher-loc>Washington, DC</publisher-loc>
+      </publisher>
+    </journal-meta>
+    <article-meta>
+      <article-id pub-id-type="pmid">23502222</article-id>
+      <article-id pub-id-type="pmc">3650705</article-id>
+      <article-id pub-id-type="publisher-id">2012/452763</article-id>
+      <article-id pub-id-type="doi">10.1182/blood-2012-08-452763</article-id>
+      <article-categories>
+        <subj-group subj-group-type="heading">
+          <subject>Hematopoiesis and Stem Cells</subject>
+        </subj-group>
+      </article-categories>
+      <title-group>
+        <article-title>GATA2 haploinsufficiency caused by mutations in a conserved intronic element leads to MonoMAC syndrome</article-title>
+      </title-group>
+      <contrib-group>
+        <contrib contrib-type="author">
+          <name>
+            <surname>Hsu</surname>
+            <given-names>Amy P.</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff1">1</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <name>
+            <surname>Johnson</surname>
+            <given-names>Kirby D.</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff2">2</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <name>
+            <surname>Falcone</surname>
+            <given-names>E. Liana</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff1">1</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <name>
+            <surname>Sanalkumar</surname>
+            <given-names>Rajendran</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff2">2</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <name>
+            <surname>Sanchez</surname>
+            <given-names>Lauren</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff3">3</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <name>
+            <surname>Hickstein</surname>
+            <given-names>Dennis D.</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff4">4</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <name>
+            <surname>Cuellar-Rodriguez</surname>
+            <given-names>Jennifer</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff1">1</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <name>
+            <surname>Lemieux</surname>
+            <given-names>Jacob E.</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff5">5</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <name>
+            <surname>Zerbe</surname>
+            <given-names>Christa S.</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff1">1</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <name>
+            <surname>Bresnick</surname>
+            <given-names>Emery H.</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff2">2</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <name>
+            <surname>Holland</surname>
+            <given-names>Steven M.</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff1">1</xref>
+        </contrib>
+        <aff id="aff1"><label>1</label>Laboratory of Clinical Infectious Diseases, National Institute of Allergy and Infectious Diseases, National Institutes of Health, Bethesda, MD; </aff>
+        <aff id="aff2"><label>2</label>Department of Cell and Regenerative Biology, University of Wisconsin&#x2013;Madison Blood Research Program, Wisconsin Institutes for Medical Research, Carbone Cancer Center, University of Wisconsin School of Medicine and Public Health, Madison, WI; </aff>
+        <aff id="aff3"><label>3</label>University of California&#x2013;Los Angeles School of Medicine, Los Angeles, CA; </aff>
+        <aff id="aff4"><label>4</label>Experimental Transplantation and Immunology Branch, National Cancer Institute, Bethesda, MD; and </aff>
+        <aff id="aff5"><label>5</label>Harvard&#x2013;Massachusetts Institute of Technology, Division of Health Sciences and Technology, Harvard Medical School, Boston, MA</aff>
+      </contrib-group>
+      <author-notes>
+        <fn fn-type="equal">
+          <p>A.P.H. and K.D.J. contributed equally to this study.</p>
+        </fn>
+      </author-notes>
+      <pub-date pub-type="ppub">
+        <day>09</day>
+        <month>5</month>
+        <year>2013</year>
+      </pub-date>
+      <pub-date pub-type="epreprint">
+        <day>15</day>
+        <month>3</month>
+        <year>2013</year>
+      </pub-date>
+      <pub-date pub-type="pmc-release">
+        <day>09</day>
+        <month>5</month>
+        <year>2014</year>
+      </pub-date>
+      <!-- PMC Release delay is 12 months and 0 days and was based on the
+					<pub-date pub-type="ppub"/>. -->
+      <volume>121</volume>
+      <issue>19</issue>
+      <fpage>3830</fpage>
+      <lpage>3837</lpage>
+      <history>
+        <date date-type="received">
+          <day>27</day>
+          <month>8</month>
+          <year>2012</year>
+        </date>
+        <date date-type="accepted">
+          <day>09</day>
+          <month>3</month>
+          <year>2013</year>
+        </date>
+      </history>
+      <permissions>
+        <copyright-statement>&#xA9; 2013 by The American Society of Hematology</copyright-statement>
+        <copyright-year>2013</copyright-year>
+      </permissions>
+      <self-uri xlink:title="pdf" xlink:type="simple" xlink:href="3830.pdf"/>
+      <abstract abstract-type="executive-summary">
+        <title>Key Points</title>
+        <p>
+          <list list-type="bullet">
+            <list-item>
+              <p>Mutations in a conserved intronic enhancer element lead to <italic>GATA2</italic> haploinsufficiency.</p>
+            </list-item>
+            <list-item>
+              <p>Mutations in <italic>GATA2</italic>, regardless of mutation type, lead to decreased <italic>GATA2</italic> transcript levels and a common global transcriptional profile.</p>
+            </list-item>
+          </list>
+        </p>
+      </abstract>
+      <abstract>
+        <p>Previous reports of <italic>GATA2</italic> mutations have focused on the coding region of the gene or full gene deletions. We recently identified 2 patients with novel insertion/deletion mutations predicted to result in mRNA nonsense-mediated decay, suggesting haploinsufficiency as the mechanism of GATA2 deficient disease. We therefore screened patients without identified exonic lesions for mutations within conserved noncoding and intronic regions. We discovered 1 patient with an intronic deletion mutation, 4 patients with point mutations within a conserved intronic element, and 3 patients with reduced or absent transcription from 1 allele. All mutations affected <italic>GATA2</italic> transcription. Full-length cDNA analysis provided evidence for decreased expression of the mutant alleles. The intronic deletion and point mutations considerably reduced the enhancer activity of the intron 5 enhancer. Analysis of 512 immune system genes revealed similar expression profiles in all clinically affected patients and reduced <italic>GATA2</italic> transcript levels. These mutations strongly support the haploinsufficient nature of GATA2 deficiency and identify transcriptional mechanisms and targets that lead to MonoMAC syndrome.</p>
+      </abstract>
+      <funding-group>
+        <award-group>
+          <funding-source id="CS100">National Institutes of Health</funding-source>
+          <award-id rid="CS100">DK68634</award-id>
+        </award-group>
+      </funding-group>
+      <counts>
+        <page-count count="8"/>
+      </counts>
+      <custom-meta-group>
+        <custom-meta>
+          <meta-name>access</meta-name>
+          <meta-value>free</meta-value>
+        </custom-meta>
+      </custom-meta-group>
+    </article-meta>
+  </front>
+</article>
+</pmc-articleset>

@@ -15,7 +15,7 @@
                 "context": "Deletions in 14q12. Horizontal black lines depict the deletions identified in patients 2 – 4 (2, 3, 4). Arrowheads at the left and right side of the deletion in patient 2 show that this deletion extends to either side. Dotted lines indicate that the respective deletion breakpoints have not been fine-mapped. BAC clones (RP11 Human BAC Library) used for FISH analysis to confirm the presence of the deletions in the patients are indicated by red bars and names are given."
             },
             {
-                "coordinate": "chr14:28,754,647-28,756,495 bp",
+                "coordinate": "chr14:28,754,647-28,756,495",
                 "context": "A detailed view of the region containing putative long-range cis-regulatory elements of FOXG1. In the upper part, the two black vertical bars represent potential regulatory elements (genomic positions chr14:28,754,647-28,756,495 bp and 28,930,280-28,932,099 bp) that have been identified with the ESPERR (evolutionary and sequence pattern extraction through reduced representations) computational method. In the lower part, a more detailed view of the region of high Regulatory Potential (RP) values, with the UCSC genome browser map of seven-way (human, chimpanzee, macaque, mouse, rat, dog, and cow; March 2006 assembly) RP analysis of the candidate cis-regulatory elements distal to FOXG1."
             },
             {
