@@ -1,0 +1,9 @@
+{
+  "predictions": [
+    "How to cure influenza?"
+  ],
+  "deployedModelId": "3735011312741122048",
+  "model": "projects/919598915406/locations/us-central1/models/biogpt-1740606960251",
+  "modelDisplayName": "biogpt-1740606960251",
+  "modelVersionId": "1"
+}
