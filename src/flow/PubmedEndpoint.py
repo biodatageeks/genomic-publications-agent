@@ -103,20 +103,27 @@ class PubmedEndpoint:
 
     @staticmethod
     def preprocess_full_text_to_plain_text(xml_data):
-        tree = ElementTree.fromstring(xml_data)
-        text_content = []
+        try:
+            tree = ElementTree.fromstring(xml_data)
+            if tree is not None and tree.find(".//body") is not None:
+                text_content = []
 
-        # Extract text from <body> element of the article
-        body_elem = tree.find(".//body")
-        if body_elem is not None:
-            for elem in body_elem.iter():
-                if elem.text:
-                    text_content.append(elem.text.strip())
-                if elem.tail:
-                    text_content.append(elem.tail.strip())
+                # Extract text from <body> element of the article
+                body_elem = tree.find(".//body")
+                if body_elem is not None:
+                    for elem in body_elem.iter():
+                        if elem.text:
+                            text_content.append(elem.text.strip())
+                        if elem.tail:
+                            text_content.append(elem.tail.strip())
 
-        plain_text = "\n".join(text_content)
-        return plain_text
+                plain_text = "\n".join(text_content)
+                return plain_text
+            else:
+                return ''
+        except ElementTree.ParseError:
+            return ''
+        
 
     @staticmethod
     def fetch_full_text_from_pubmed_id(id):
