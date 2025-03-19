@@ -13,11 +13,14 @@ import requests
 import logging
 from typing import List, Dict, Any, Optional, Union, Set
 from urllib.parse import urljoin
+from io import StringIO
+import json
 
 import bioc
-from bioc import pubtator
-from exceptions import FormatNotSupportedException
+from bioc import pubtator, biocjson
+from src.pubtator_client.exceptions import FormatNotSupportedException, PubTatorError
 
+DEFAULT_BASE_URL = "https://www.ncbi.nlm.nih.gov/research/pubtator3-api"
 
 class PubTatorClient:
     """
@@ -36,8 +39,6 @@ class PubTatorClient:
                 for annotation in passage.annotations:
                     print(f"  Annotation: {annotation.text} [{annotation.infons.get('type')}]")
     """
-    
-    BASE_URL = "https://www.ncbi.nlm.nih.gov/research/pubtator3/api/"
     
     # Mapowanie między parametrami API (małe litery) a typami w danych (wielkie litery)
     # na podstawie dokumentacji: https://www.ncbi.nlm.nih.gov/CBBresearch/Lu/Demo/PubTatorCentral/api.html
@@ -58,73 +59,81 @@ class PubTatorClient:
         Initialize the PubTator client.
         
         Args:
-            base_url: Optional custom API URL (defaults to the standard PubTator3 address)
+            base_url: Custom base URL for the API (optional)
             timeout: API response timeout limit in seconds
         """
-        self.base_url = base_url if base_url is not None else self.BASE_URL
+        self.base_url = base_url if base_url else DEFAULT_BASE_URL
         self.timeout = timeout
         self.logger = logging.getLogger(__name__)
     
-    def _make_request(self, endpoint: str, method: str = "GET", 
-                     params: Optional[Dict[str, Any]] = None, 
-                     data: Optional[Any] = None) -> requests.Response:
+    def _make_request(self, endpoint: str, method: str = "GET", params: Optional[Dict] = None) -> requests.Response:
         """
         Make a request to the PubTator API.
         
         Args:
             endpoint: API endpoint
-            method: HTTP method (GET, POST)
-            params: URL query parameters
-            data: Data to send in the request body (for POST)
+            method: HTTP method (GET or POST)
+            params: Query parameters
             
         Returns:
-            Response object from requests
-            
-        Raises:
-            requests.RequestException: For errors in API communication
+            Response from the API
         """
-        url = urljoin(self.base_url, endpoint)
-        self.logger.debug(f"Making {method} request to {url}")
+        url = f"{self.base_url}/{endpoint}"
+        headers = {
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+        }
         
         try:
-            if method.upper() == "GET":
-                response = requests.get(url, params=params or {}, timeout=self.timeout)
-            elif method.upper() == "POST":
-                headers = {"Content-Type": "application/json"}
-                response = requests.post(url, params=params or {}, json=data, headers=headers, timeout=self.timeout)
+            if method == "GET":
+                response = requests.get(url, params=params, headers=headers, timeout=self.timeout)
+            elif method == "POST":
+                response = requests.post(url, json=params, headers=headers, timeout=self.timeout)
             else:
                 raise ValueError(f"Unsupported HTTP method: {method}")
-            
-            response.raise_for_status()
+                
             return response
-        
-        except requests.RequestException as e:
-            self.logger.error(f"Error in communication with PubTator API: {e}")
+        except requests.exceptions.RequestException as e:
+            self.logger.error(f"Error making request to {url}: {str(e)}")
             raise
     
     def _process_response(self, response: requests.Response, format_type: str) -> List[Any]:
         """
-        Process the API response based on the requested format.
+        Process response from PubTator API based on format type.
         
         Args:
-            response: Response object from the API request
-            format_type: Format of the data (biocjson, pubtator, biocxml)
+            response: Response from PubTator API
+            format_type: Format of the response data
             
         Returns:
             List of BioCDocument objects or a list containing the raw response
             
         Raises:
             FormatNotSupportedException: If the requested format is not fully supported
+            PubTatorError: If there is an error processing the response
         """
+        if response.status_code == 404:
+            raise PubTatorError(f"Resource not found: {response.text}")
+            
+        if not response.ok:
+            raise PubTatorError(f"API request failed: {response.text}")
+            
         if format_type == "biocjson":
-            data = response.json()
-            collection = bioc.BioCCollection()
-            collection.from_dict(data)
-            return collection.documents
+            try:
+                data = response.json()
+                collection = biocjson.load(StringIO(json.dumps(data)))
+                return collection.documents
+            except (json.JSONDecodeError, KeyError) as e:
+                self.logger.error(f"Error processing response: {str(e)}")
+                raise PubTatorError(f"Error processing response: {str(e)}")
         elif format_type == "pubtator":
             # Process PubTator format using the bioc.pubtator module
-            docs = pubtator.load(response.text.splitlines())
-            return docs
+            try:
+                docs = pubtator.load(StringIO(response.text))
+                return docs
+            except Exception as e:
+                self.logger.error(f"Error processing PubTator response: {str(e)}")
+                raise PubTatorError(f"Error processing PubTator response: {str(e)}")
         else:
             self.logger.warning(f"Format {format_type} is not fully supported at this time")
             raise FormatNotSupportedException(f"Format {format_type} is not fully supported at this time")
@@ -139,22 +148,100 @@ class PubTatorClient:
             pmids: List of PubMed identifiers
             concepts: List of concept types to include (e.g., "gene", "disease", "mutation")
                      If not provided, returns all available annotation types
-            format_type: Format of returned data (biocjson, pubtator, biocxml)
+            format_type: Format of returned data (currently only 'biocjson' jest w pełni obsługiwany)
             
         Returns:
             List of BioCDocument objects containing publication texts with annotations
+            
+        Raises:
+            PubTatorError: If the publications cannot be found or an error occurs
         """
-        endpoint = "v1/publications"
-        payload = {
-            "pmids": pmids,
-            "format": format_type
+        # Tylko format biocjson działa poprawnie z API
+        if format_type.lower() != "biocjson":
+            self.logger.warning(f"Format {format_type} może nie być obsługiwany przez API. Używam 'biocjson'.")
+            format_type = "biocjson"
+        
+        params = {
+            "pmids": ",".join(pmids)
         }
         
         if concepts:
-            payload["concepts"] = concepts
+            params["concepts"] = ",".join(concepts)
+        
+        headers = {"Accept": "application/json"}
+        try:
+            response = requests.get(
+                f"{self.base_url}/publications/export/biocjson",
+                params=params,
+                headers=headers,
+                timeout=self.timeout
+            )
             
-        response = self._make_request(endpoint, method="POST", data=payload)
-        return self._process_response(response, format_type)
+            # Obsługa błędu 404 - zasób nie znaleziony
+            if response.status_code == 404:
+                raise PubTatorError(f"Resource not found: {','.join(pmids)}")
+                
+            if not response.ok:
+                raise PubTatorError(f"API request failed: {response.text}")
+            
+            try:
+                data = response.json()
+                if "PubTator3" in data:
+                    documents = []
+                    for doc_data in data["PubTator3"]:
+                        doc = bioc.BioCDocument()
+                        doc.id = doc_data.get("id", "")
+                        
+                        # Przetwarzanie fragmentów
+                        if "passages" in doc_data:
+                            for passage_data in doc_data["passages"]:
+                                passage = bioc.BioCPassage()
+                                passage.text = passage_data.get("text", "")
+                                passage.offset = passage_data.get("offset", 0)
+                                
+                                # Kopiowanie informacji
+                                for key, value in passage_data.get("infons", {}).items():
+                                    passage.infons[key] = value
+                                
+                                # Przetwarzanie adnotacji
+                                if "annotations" in passage_data:
+                                    for anno_data in passage_data["annotations"]:
+                                        annotation = bioc.BioCAnnotation()
+                                        annotation.id = anno_data.get("id", "")
+                                        annotation.text = anno_data.get("text", "")
+                                        
+                                        # Kopiowanie informacji
+                                        for key, value in anno_data.get("infons", {}).items():
+                                            annotation.infons[key] = value
+                                        
+                                        # Przetwarzanie lokalizacji
+                                        if "locations" in anno_data:
+                                            for loc_data in anno_data["locations"]:
+                                                offset = loc_data.get("offset", 0)
+                                                length = loc_data.get("length", 0)
+                                                location = bioc.BioCLocation(offset=offset, length=length)
+                                                annotation.add_location(location)
+                                        
+                                        passage.add_annotation(annotation)
+                                
+                                doc.add_passage(passage)
+                        
+                        documents.append(doc)
+                    return documents
+                else:
+                    # Próbujemy przetworzyć odpowiedź jako standardowy BioC
+                    collection = biocjson.load(StringIO(json.dumps(data)))
+                    return collection.documents
+                    
+            except (json.JSONDecodeError, KeyError, AttributeError) as e:
+                self.logger.error(f"Error processing response: {str(e)}")
+                raise PubTatorError(f"Error processing response: {str(e)}")
+        except requests.HTTPError as e:
+            if "404" in str(e) or "not found" in str(e).lower():
+                raise PubTatorError(f"Resource not found: {','.join(pmids)}")
+            raise PubTatorError(f"API request failed: {str(e)}")
+        except Exception as e:
+            raise PubTatorError(f"Error retrieving publications: {str(e)}")
     
     def get_publication_by_pmid(self, pmid: str, 
                                concepts: Optional[List[str]] = None, 
@@ -169,9 +256,17 @@ class PubTatorClient:
             
         Returns:
             A BioCDocument object containing the publication text with annotations
+            
+        Raises:
+            PubTatorError: If the publication cannot be found or an error occurs
         """
-        docs = self.get_publications_by_pmids([pmid], concepts, format_type)
-        return docs[0] if docs else None
+        try:
+            docs = self.get_publications_by_pmids([pmid], concepts, format_type)
+            return docs[0] if docs else None
+        except Exception as e:
+            if "404" in str(e) or "Not Found" in str(e):
+                raise PubTatorError(f"Resource not found: {pmid}")
+            raise
     
     def search_publications(self, query: str, 
                            concepts: Optional[List[str]] = None,
@@ -200,15 +295,14 @@ class PubTatorClient:
         return self._process_response(response, format_type)
     
     def extract_annotations_by_type(self, document: bioc.BioCDocument, 
-                                  annotation_type: Union[str, List[str], Set[str]],
+                                  annotation_type: Union[str, List[str]], 
                                   include_type_in_result: bool = False) -> List[Dict[str, Any]]:
         """
         Extract annotations of specified type(s) from a BioC document.
         
         Args:
             document: BioC document with annotations
-            annotation_type: Type or types of annotations to extract (e.g., "Gene", "Disease")
-                           Can be a single string or a list/set of strings
+            annotation_type: Type or list of types of annotations to extract
             include_type_in_result: Whether to include the annotation type in the result
             
         Returns:
@@ -238,7 +332,8 @@ class PubTatorClient:
                         "id": annotation.id,
                         "text": annotation.text,
                         "normalized_id": annotation.infons.get("identifier"),
-                        "locations": [(loc.offset, loc.offset + loc.length) for loc in annotation.locations]
+                        "locations": [(loc.offset, loc.offset + loc.length) for loc in annotation.locations],
+                        "infons": annotation.infons
                     }
                     
                     if include_type_in_result:
@@ -248,7 +343,6 @@ class PubTatorClient:
         
         return annotations
     
-    # Kompatybilne metody dla zachowania wstecznej zgodności
     def extract_gene_annotations(self, document: bioc.BioCDocument) -> List[Dict[str, Any]]:
         """
         Extract gene annotations from a BioC document.
@@ -275,7 +369,7 @@ class PubTatorClient:
     
     def extract_variant_annotations(self, document: bioc.BioCDocument) -> List[Dict[str, Any]]:
         """
-        Extract genetic variant annotations from a BioC document.
+        Extract variant annotations from a BioC document.
         
         Args:
             document: BioC document with annotations
@@ -283,7 +377,7 @@ class PubTatorClient:
         Returns:
             List of dictionaries containing information about variant annotations
         """
-        return self.extract_annotations_by_type(document, ["Mutation", "DNAMutation"])
+        return self.extract_annotations_by_type(document, "Variant")
     
     def extract_tissue_specificity(self, document: bioc.BioCDocument) -> List[Dict[str, Any]]:
         """
@@ -295,8 +389,7 @@ class PubTatorClient:
         Returns:
             List of dictionaries containing information about tissue annotations
         """
-        tissues = self.extract_annotations_by_type(document, ["CellLine", "Tissue"], include_type_in_result=True)
-        return tissues
+        return self.extract_annotations_by_type(document, "TissueSpecificity")
     
     def extract_all_annotations(self, document: bioc.BioCDocument) -> Dict[str, List[Dict[str, Any]]]:
         """
@@ -348,35 +441,53 @@ class PubTatorClient:
         
         return type_counts
 
+    def get_relations(self, entity1, relation_type, entity2):
+        """Pobiera relacje między encjami z API PubTator.
 
-if __name__ == "__main__":
-    # Example usage of the PubTator client
-    logging.basicConfig(level=logging.INFO)
-    
-    client = PubTatorClient()
-    
-    # Example of searching for publications
-    try:
-        results = client.search_publications("BRCA1 cancer")
-        print(f"Found {len(results)} publications")
+        Args:
+            entity1 (str): Pierwsza encja (np. '@GENE_JAK1')
+            relation_type (str): Typ relacji (np. 'negative_correlate')
+            entity2 (str): Druga encja (np. 'Chemical')
+
+        Returns:
+            list: Lista relacji w formacie JSON
+        """
+        response = requests.get(
+            f"{self.base_url}/relations",
+            params={
+                "e1": entity1,
+                "type": relation_type,
+                "e2": entity2
+            },
+            headers={"Accept": "application/json"},
+            timeout=self.timeout
+        )
+        response.raise_for_status()
+        return response.json()
+
+    def get_publications(self, pmids, format="biocjson"):
+        """Pobiera publikacje z API PubTator.
+
+        Args:
+            pmids (str): Identyfikator PMID lub lista identyfikatorów rozdzielonych przecinkami
+            format (str, optional): Format odpowiedzi ('biocjson', 'biocxml'). Domyślnie 'biocjson'.
+
+        Returns:
+            str lub dict: Odpowiedź w wybranym formacie
+        """
+        # Tylko format biocjson działa poprawnie z API
+        if format.lower() != "biocjson":
+            self.logger.warning(f"Format {format} może nie być obsługiwany przez API. Używam 'biocjson'.")
+            format = "biocjson"
         
-        if results:
-            # Get details of the first publication
-            doc = results[0]
-            print(f"Title: {doc.passages[0].text if doc.passages else 'No data'}")
-            
-            # Sprawdź, jakie typy adnotacji są dostępne
-            types = client.get_annotation_types(doc)
-            print("Dostępne typy adnotacji:")
-            for anno_type, count in types.items():
-                print(f"  {anno_type}: {count} adnotacji")
-            
-            # Użyj generycznej metody
-            genes = client.extract_annotations_by_type(doc, "Gene")
-            diseases = client.extract_annotations_by_type(doc, "Disease")
-            chemicals = client.extract_annotations_by_type(doc, "Chemical")
-            
-            print(f"Znaleziono: {len(genes)} genów, {len(diseases)} chorób, {len(chemicals)} związków chemicznych")
-    
-    except Exception as e:
-        print(f"An error occurred: {e}") 
+        headers = {"Accept": "application/json"}
+        response = requests.get(
+            f"{self.base_url}/publications/export/biocjson",
+            params={"pmids": pmids},
+            headers=headers,
+            timeout=self.timeout
+        )
+        response.raise_for_status()
+        
+        # Zwracamy dane JSON
+        return response.json() 
