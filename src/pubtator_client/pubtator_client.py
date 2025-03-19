@@ -1,5 +1,5 @@
 """
-PubTator3 API client for retrieving scientific publications data with annotations.
+PubTator client for retrieving and analyzing biomedical publications.
 
 PubTator3 API provides access to a database of biomedical publications with predefined
 annotations for genes, diseases, chemical compounds, mutations, species, variants,
@@ -9,16 +9,18 @@ This module offers an interface for communicating with the PubTator3 API and pro
 the returned data using the bioc library.
 """
 
-import requests
+import json
 import logging
+import re
+import time
+from io import StringIO
 from typing import List, Dict, Any, Optional, Union, Set
 from urllib.parse import urljoin
-from io import StringIO
-import json
 
+import requests
 import bioc
 from bioc import pubtator, biocjson
-from src.pubtator_client.exceptions import FormatNotSupportedException, PubTatorError
+from exceptions import FormatNotSupportedException, PubTatorError
 
 DEFAULT_BASE_URL = "https://www.ncbi.nlm.nih.gov/research/pubtator3-api"
 
@@ -77,6 +79,9 @@ class PubTatorClient:
             
         Returns:
             Response from the API
+            
+        Raises:
+            PubTatorError: If the request fails
         """
         url = f"{self.base_url}/{endpoint}"
         headers = {
@@ -95,7 +100,7 @@ class PubTatorClient:
             return response
         except requests.exceptions.RequestException as e:
             self.logger.error(f"Error making request to {url}: {str(e)}")
-            raise
+            raise PubTatorError(f"API request failed: {str(e)}")
     
     def _process_response(self, response: requests.Response, format_type: str) -> List[Any]:
         """
@@ -289,18 +294,36 @@ class PubTatorClient:
             
         Returns:
             List of BioCDocument objects matching the query
-        """
-        endpoint = "v1/search"
-        params: Dict[str, Any] = {
-            "q": query,
-            "format": format_type
-        }
-        
-        if concepts:
-            params["concepts"] = ",".join(concepts)
             
-        response = self._make_request(endpoint, method="GET", params=params)
-        return self._process_response(response, format_type)
+        Raises:
+            PubTatorError: If the search fails or no results are found
+        """
+        try:
+            endpoint = "v1/search"
+            params: Dict[str, Any] = {
+                "q": query,
+                "format": format_type
+            }
+            
+            if concepts:
+                params["concepts"] = ",".join(concepts)
+                
+            response = self._make_request(endpoint, method="GET", params=params)
+            
+            # Handle 404 error - resource not found
+            if response.status_code == 404:
+                raise PubTatorError(f"Resource not found: {query}")
+                
+            if not response.ok:
+                raise PubTatorError(f"API request failed: {response.text}")
+                
+            return self._process_response(response, format_type)
+        except PubTatorError:
+            # Re-raise PubTatorError without modification
+            raise
+        except Exception as e:
+            self.logger.error(f"Error searching for publications: {str(e)}")
+            raise PubTatorError(f"Error searching for publications: {str(e)}")
     
     def extract_annotations_by_type(self, document: bioc.BioCDocument, 
                                   annotation_type: Union[str, List[str]], 

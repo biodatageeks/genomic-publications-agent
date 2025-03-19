@@ -9,7 +9,7 @@ searching, and extracting annotations.
 
 import logging
 import json
-from src.pubtator_client.pubtator_client import PubTatorClient
+from pubtator_client import PubTatorClient
 
 def main():
     """Main demonstration function."""

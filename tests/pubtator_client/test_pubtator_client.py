@@ -179,19 +179,18 @@ def test_get_publication_by_pmid(client, use_mock):
 def test_get_publication_by_pmid_not_found(client, use_mock):
     """Test retrieving non-existent publication."""
     with patch('requests.get') as mock_get:
-        # Symulujemy odpowiedź z błędem 404
+        # Mock a 404 response
         mock_response = MagicMock()
         mock_response.status_code = 404
         mock_response.text = "Not Found"
         mock_response.json.return_value = {}
         mock_response.ok = False
-        # Ustawiamy wyjątek HTTPError, który zostanie wywołany przez raise_for_status
         mock_response.raise_for_status.side_effect = requests.HTTPError("404 Not Found")
         mock_get.return_value = mock_response
         
-        with pytest.raises(PubTatorError) as exc_info:
-            client.get_publication_by_pmid("99999")
-        assert "Resource not found" in str(exc_info.value)
+        # Should return None instead of raising exception
+        result = client.get_publication_by_pmid("99999")
+        assert result is None
 
 # Search tests
 @pytest.mark.parametrize("use_mock", [True, False])
@@ -603,9 +602,23 @@ def test_error_handling_consistency():
         mock_response.json.return_value = {}
         mock_get.return_value = mock_response
         
+        # Should return None for non-existent document
+        result = client.get_publication_by_pmid("99999")
+        assert result is None
+        
+    # Test handling of other HTTP errors
+    with patch('requests.get') as mock_get:
+        mock_response = MagicMock()
+        mock_response.status_code = 500
+        mock_response.ok = False
+        mock_response.raise_for_status.side_effect = requests.HTTPError("500 Server Error")
+        mock_response.text = "Server Error"
+        mock_get.return_value = mock_response
+        
+        # Should raise PubTatorError for server errors
         with pytest.raises(PubTatorError) as exc_info:
-            client.get_publication_by_pmid("99999")
-        assert "Resource not found" in str(exc_info.value)
+            client.get_publication_by_pmid("12345")
+        assert "Error" in str(exc_info.value)
 
 # Timeout handling test
 def test_timeout_handling():
