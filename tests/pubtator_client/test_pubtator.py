@@ -4,7 +4,7 @@ import pytest
 from unittest.mock import patch, Mock
 import json
 
-# Konfiguracja logowania
+# Configure logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
@@ -55,57 +55,57 @@ def client():
         mock_response = Mock()
         mock_response.text = json.dumps(SAMPLE_BIOC_JSON)
         mock_response.json.return_value = SAMPLE_BIOC_JSON
-        mock_response.raise_for_status = Mock()  # Dodajemy mock metody raise_for_status
+        mock_response.raise_for_status = Mock()  # Add mock for raise_for_status method
         mock_post.return_value = mock_response
         mock_get.return_value = mock_response
         yield PubTatorClient()
 
 def test_relations(client):
-    """Test metody get_relations"""
-    print("\n=== Test metody get_relations ===")
+    """Test get_relations method"""
+    print("\n=== Test get_relations method ===")
     try:
         relations = client.get_relations(
             entity1="@GENE_JAK1",
             relation_type="negative_correlate",
             entity2="Chemical"
         )
-        print(f"Liczba znalezionych relacji: {len(relations)}")
-        print("Przykładowe relacje:")
-        for relation in relations[:3]:  # Pokazujemy tylko pierwsze 3 relacje
-            print(f"- {relation['source']} -> {relation['target']} ({relation['publications']} publikacji)")
+        print(f"Number of relations found: {len(relations)}")
+        print("Sample relations:")
+        for relation in relations[:3]:  # Show only first 3 relations
+            print(f"- {relation['source']} -> {relation['target']} ({relation['publications']} publications)")
     except Exception as e:
-        print(f"Błąd: {e}")
+        print(f"Error: {e}")
 
 def test_publications(client):
-    """Test metody get_publications"""
+    """Test get_publications method"""
     pmid = "30429607"
     
-    # Test formatu biocjson
-    print("\n=== Test metody get_publications (format biocjson) ===")
+    # Test biocjson format
+    print("\n=== Test get_publications method (biocjson format) ===")
     try:
         biocjson_result = client.get_publications(pmid, format="biocjson")
-        print("Odpowiedź w formacie biocjson:")
-        print(str(biocjson_result)[:300] + "...")  # Pokazujemy tylko początek odpowiedzi
+        print("Response in biocjson format:")
+        print(str(biocjson_result)[:300] + "...")  # Show only beginning of the response
     except Exception as e:
-        print(f"Błąd: {e}")
+        print(f"Error: {e}")
 
 def test_get_publications_by_pmids(client):
-    """Test metody get_publications_by_pmids"""
+    """Test get_publications_by_pmids method"""
     pmids = ["30429607"]
     
-    print("\n=== Test metody get_publications_by_pmids (format biocjson) ===")
+    print("\n=== Test get_publications_by_pmids method (biocjson format) ===")
     try:
         publications = client.get_publications_by_pmids(pmids, format_type="biocjson")
-        print(f"Liczba publikacji: {len(publications)}")
+        print(f"Number of publications: {len(publications)}")
         if publications:
             publication = publications[0]
-            print(f"ID publikacji: {publication.id}")
+            print(f"Publication ID: {publication.id}")
             if hasattr(publication, 'passages') and publication.passages:
-                print(f"Liczba fragmentów: {len(publication.passages)}")
+                print(f"Number of passages: {len(publication.passages)}")
                 if publication.passages[0].annotations:
-                    print(f"Liczba adnotacji w pierwszym fragmencie: {len(publication.passages[0].annotations)}")
+                    print(f"Number of annotations in first passage: {len(publication.passages[0].annotations)}")
     except Exception as e:
-        print(f"Błąd: {e}")
+        print(f"Error: {e}")
 
 def main():
     client = PubTatorClient()

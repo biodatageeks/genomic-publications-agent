@@ -142,7 +142,7 @@ def test_process_pubtator_response(mock_pubtator_response):
     client = PubTatorClient()
     docs = client._process_response(mock_pubtator_response, "pubtator")
     assert len(docs) == 1
-    assert docs[0].pmid == "12345"  # PubTator używa pmid zamiast id
+    assert docs[0].pmid == "12345"  # PubTator uses pmid instead of id
     assert len(docs[0].annotations) == 2  # title + abstract
 
 def test_process_unsupported_format():
@@ -310,7 +310,7 @@ def test_pubtator_format():
     client = PubTatorClient()
     docs = pubtator.load(StringIO(SAMPLE_PUBTATOR))
     assert len(docs) == 1
-    assert docs[0].pmid == "12345"  # PubTator używa pmid zamiast id
+    assert docs[0].pmid == "12345"  # PubTator uses pmid instead of id
 
 # Parameter tests
 def test_concept_type_normalization():
@@ -416,20 +416,20 @@ def test_document_without_passages():
 # Integration tests
 @pytest.mark.integration
 def test_full_workflow(request):
-    """Test pełnego przepływu pracy klienta z rzeczywistym API."""
+    """Test full client workflow with real API."""
     if not is_integration_test(request):
-        pytest.skip("To jest test integracyjny")
+        pytest.skip("This is an integration test")
     
     client = PubTatorClient()
     
-    # Używamy rzeczywistego API (bez mocków)
-    pmid = "30429607"  # Rzeczywisty PMID, który istnieje w bazie PubTator
+    # Use the real API (no mocks)
+    pmid = "30429607"  # Real PMID that exists in the PubTator database
     
-    # Pobierz publikację w formacie PubTator
+    # Get publication in PubTator format
     doc = client.get_publication_by_pmid(pmid, format_type="pubtator")
     assert doc is not None
     
-    # Sprawdź czy możemy wyodrębnić adnotacje
+    # Check if we can extract annotations
     all_annotations = client.extract_all_annotations(doc)
     assert isinstance(all_annotations, dict)
 
@@ -541,11 +541,11 @@ def test_load_pubtator():
     client = PubTatorClient()
     docs = pubtator.load(StringIO(SAMPLE_PUBTATOR))
     assert len(docs) == 1
-    assert docs[0].pmid == "12345"  # PubTator używa pmid zamiast id
+    assert docs[0].pmid == "12345"  # PubTator uses pmid instead of id
 
 # Dodany test dla bardziej złożonych struktur danych
 def test_complex_data_structure():
-    """Test obsługi bardziej złożonych struktur danych."""
+    """Test handling more complex data structures."""
     complex_doc = {
         "source": "PubTator",
         "date": "2024-03-20",
@@ -573,7 +573,7 @@ def test_complex_data_structure():
                         },
                         "locations": [
                             {"offset": 0, "length": 5},
-                            {"offset": 20, "length": 5}  # wielokrotne lokalizacje
+                            {"offset": 20, "length": 5}  # multiple locations
                         ]
                     }
                 ]
@@ -586,14 +586,14 @@ def test_complex_data_structure():
     gene_annotations = client.extract_gene_annotations(doc)
     assert len(gene_annotations) == 1
     assert "extra_data" in gene_annotations[0]["infons"]
-    assert len(gene_annotations[0]["locations"]) == 2  # sprawdzamy obsługę wielu lokalizacji
+    assert len(gene_annotations[0]["locations"]) == 2  # check handling of multiple locations
 
-# Dodany test dla spójnej obsługi błędów
+# Error handling consistency test
 def test_error_handling_consistency():
-    """Test spójności obsługi błędów."""
+    """Test error handling consistency."""
     client = PubTatorClient()
     
-    # Test obsługi nieistniejącego dokumentu
+    # Test handling of non-existent document
     with patch('requests.get') as mock_get:
         mock_response = MagicMock()
         mock_response.status_code = 404
@@ -607,10 +607,10 @@ def test_error_handling_consistency():
             client.get_publication_by_pmid("99999")
         assert "Resource not found" in str(exc_info.value)
 
-# Dodany test dla timeoutów
+# Timeout handling test
 def test_timeout_handling():
-    """Test obsługi przekroczenia czasu odpowiedzi."""
-    client = PubTatorClient(timeout=1)  # używamy wartości całkowitej
+    """Test handling of response timeouts."""
+    client = PubTatorClient(timeout=1)  # use integer value
     
     with patch('requests.get') as mock_get:
         mock_get.side_effect = requests.Timeout("Connection timed out")
@@ -619,7 +619,7 @@ def test_timeout_handling():
             client.get_publication_by_pmid("12345")
         assert "Connection timed out" in str(exc_info.value)
     
-    # Test z niestandardowym timeoutem
+    # Test with custom timeout
     client = PubTatorClient(timeout=60)
     assert client.timeout == 60
     
