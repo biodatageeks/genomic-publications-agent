@@ -3,3 +3,6 @@ lancedb
 pyyaml
 langchain-together
 pandas
+requests>=2.25.0
+bioc>=2.0
+typing>=3.7.4
