@@ -75,9 +75,9 @@ class CooccurrenceContextAnalyzer:
                 relationships.extend(publication_relationships)
                 
             return relationships
-        except PubTatorError as e:
+        except Exception as e:
             self.logger.error(f"Error analyzing publications: {str(e)}")
-            raise
+            raise PubTatorError(f"Error analyzing publications: {str(e)}") from e
     
     def analyze_publication(self, pmid: str) -> List[Dict[str, Any]]:
         """
@@ -183,7 +183,13 @@ class CooccurrenceContextAnalyzer:
                             })
                 
                 if entity_data:
-                    relationship[entity_type + "s"] = entity_data
+                    # Obsługa specjalnych przypadków, żeby uniknąć "speciess" i "chemicalss"
+                    if entity_type == "species":
+                        relationship["species"] = entity_data
+                    elif entity_type == "chemical":
+                        relationship["chemicals"] = entity_data
+                    else:
+                        relationship[entity_type + "s"] = entity_data
             
             relationships.append(relationship)
         
