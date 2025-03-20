@@ -16,8 +16,9 @@ from collections import defaultdict
 import bioc
 from src.pubtator_client.pubtator_client import PubTatorClient
 from src.pubtator_client.exceptions import PubTatorError
+from src.context_analyzer.context_analyzer import ContextAnalyzer
 
-class CooccurrenceContextAnalyzer:
+class CooccurrenceContextAnalyzer(ContextAnalyzer):
     """
     Analyzer for context relationships between variants and other biomedical entities.
     
@@ -48,7 +49,7 @@ class CooccurrenceContextAnalyzer:
         Args:
             pubtator_client: Custom PubTator client instance (optional)
         """
-        self.pubtator_client = pubtator_client if pubtator_client else PubTatorClient()
+        super().__init__(pubtator_client)
         self.logger = logging.getLogger(__name__)
     
     def analyze_publications(self, pmids: List[str]) -> List[Dict[str, Any]]:
