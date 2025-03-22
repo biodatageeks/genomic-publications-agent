@@ -7,7 +7,7 @@ import json
 import xml.etree.ElementTree as ET
 from unittest.mock import patch, MagicMock, mock_open
 
-from src.clinvar_client.clinvar_client import ClinvarClient
+from src.clinvar_client.clinvar_client import ClinVarClient
 
 
 class TestClinvarClient:
@@ -17,7 +17,7 @@ class TestClinvarClient:
     
     def test_init_default(self):
         """Test initialization with default parameters."""
-        client = ClinvarClient()
+        client = ClinVarClient()
         assert client.base_url == "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/"
         assert client.email is None
         assert client.api_key is None
@@ -25,7 +25,7 @@ class TestClinvarClient:
     
     def test_init_with_params(self):
         """Test initialization with custom parameters."""
-        client = ClinvarClient(
+        client = ClinVarClient(
             email="test@example.com",
             api_key="test_api_key",
             tool="custom_tool"
@@ -39,7 +39,7 @@ class TestClinvarClient:
     def test_build_request_url(self, mock_get):
         """Test building a request URL."""
         mock_get.return_value = MagicMock(status_code=200)
-        client = ClinvarClient(email="test@example.com", api_key="test_key")
+        client = ClinVarClient(email="test@example.com", api_key="test_key")
         
         url = client._build_request_url("esearch", {"db": "clinvar", "term": "BRCA1"})
         
@@ -58,7 +58,7 @@ class TestClinvarClient:
         mock_response.text = "<Response>OK</Response>"
         mock_get.return_value = mock_response
         
-        client = ClinvarClient()
+        client = ClinVarClient()
         response = client._make_request("esearch", {"db": "clinvar", "term": "BRCA1"})
         
         mock_get.assert_called_once()
@@ -70,7 +70,7 @@ class TestClinvarClient:
         """Test handling error in request to the ClinVar API."""
         mock_get.side_effect = Exception("Connection error")
         
-        client = ClinvarClient()
+        client = ClinVarClient()
         with pytest.raises(Exception) as excinfo:
             client._make_request("esearch", {"db": "clinvar", "term": "BRCA1"})
         
@@ -92,7 +92,7 @@ class TestClinvarClient:
         """
         mock_get.return_value = mock_response
         
-        client = ClinvarClient()
+        client = ClinVarClient()
         result = client.search_clinvar("BRCA1 c.123A>G")
         
         assert result is not None
@@ -119,7 +119,7 @@ class TestClinvarClient:
         """
         mock_get.return_value = mock_response
         
-        client = ClinvarClient()
+        client = ClinVarClient()
         result = client.search_clinvar("nonexistent variant")
         
         assert result is not None
@@ -139,7 +139,7 @@ class TestClinvarClient:
         mock_response.text = "Error"
         mock_get.return_value = mock_response
         
-        client = ClinvarClient()
+        client = ClinVarClient()
         with pytest.raises(Exception) as excinfo:
             client.search_clinvar("BRCA1 c.123A>G")
         
@@ -161,7 +161,7 @@ class TestClinvarClient:
         """
         mock_get.return_value = mock_response
         
-        client = ClinvarClient()
+        client = ClinVarClient()
         ids = client.get_clinvar_ids_by_gene("BRCA1")
         
         assert ids is not None
@@ -185,7 +185,7 @@ class TestClinvarClient:
         """
         mock_get.return_value = mock_response
         
-        client = ClinvarClient()
+        client = ClinVarClient()
         ids = client.get_clinvar_ids_by_rsid("rs123456")
         
         assert ids is not None
@@ -208,7 +208,7 @@ class TestClinvarClient:
         """
         mock_get.return_value = mock_response
         
-        client = ClinvarClient()
+        client = ClinVarClient()
         ids = client.get_clinvar_ids_by_variant("c.123A>G")
         
         assert ids is not None
@@ -237,7 +237,7 @@ class TestClinvarClient:
         """
         mock_get.return_value = mock_response
         
-        client = ClinvarClient()
+        client = ClinVarClient()
         record = client.fetch_clinvar_record("1234")
         
         assert record is not None
@@ -267,7 +267,7 @@ class TestClinvarClient:
         """
         mock_get.return_value = mock_response
         
-        client = ClinvarClient()
+        client = ClinVarClient()
         record = client.fetch_clinvar_record("9999")
         
         assert record is not None
@@ -303,7 +303,7 @@ class TestClinvarClient:
         """
         mock_get.return_value = mock_response
         
-        client = ClinvarClient()
+        client = ClinVarClient()
         records = client.fetch_clinvar_records(["1234", "5678"])
         
         assert records is not None
@@ -333,7 +333,7 @@ class TestClinvarClient:
         """
         record = ET.fromstring(mock_xml)
         
-        client = ClinvarClient()
+        client = ClinVarClient()
         significance = client.parse_clinical_significance(record)
         
         assert significance is not None
@@ -356,7 +356,7 @@ class TestClinvarClient:
         """
         record = ET.fromstring(mock_xml)
         
-        client = ClinvarClient()
+        client = ClinVarClient()
         significance = client.parse_clinical_significance(record)
         
         assert significance is not None
@@ -388,7 +388,7 @@ class TestClinvarClient:
         """
         record = ET.fromstring(mock_xml)
         
-        client = ClinvarClient()
+        client = ClinVarClient()
         details = client.parse_variant_details(record)
         
         assert details is not None
@@ -414,7 +414,7 @@ class TestClinvarClient:
         """
         record = ET.fromstring(mock_xml)
         
-        client = ClinvarClient()
+        client = ClinVarClient()
         details = client.parse_variant_details(record)
         
         assert details is not None
@@ -461,7 +461,7 @@ class TestClinvarClient:
         
         mock_get.side_effect = [first_response, second_response]
         
-        client = ClinvarClient()
+        client = ClinVarClient()
         significance = client.get_variant_clinical_significance("c.123A>G")
         
         assert significance is not None
@@ -483,7 +483,7 @@ class TestClinvarClient:
         """
         mock_get.return_value = mock_response
         
-        client = ClinvarClient()
+        client = ClinVarClient()
         significance = client.get_variant_clinical_significance("nonexistent")
         
         assert significance is not None
@@ -540,7 +540,7 @@ class TestClinvarClient:
         
         mock_get.side_effect = [first_response, second_response]
         
-        client = ClinvarClient()
+        client = ClinVarClient()
         variants = client.get_gene_variants("BRCA1")
         
         assert variants is not None
@@ -569,7 +569,7 @@ class TestClinvarClient:
         """
         mock_get.return_value = mock_response
         
-        client = ClinvarClient()
+        client = ClinVarClient()
         variants = client.get_gene_variants("NONEXISTENT")
         
         assert variants is not None
@@ -614,7 +614,7 @@ class TestClinvarClient:
         
         mock_get.side_effect = [first_response, second_response]
         
-        client = ClinvarClient()
+        client = ClinVarClient()
         variant = client.get_variant_by_rsid("rs123456")
         
         assert variant is not None
@@ -636,7 +636,7 @@ class TestClinvarClient:
             }
         }
         
-        client = ClinvarClient()
+        client = ClinVarClient()
         client.save_variant_data(variant_data, "variant.json")
         
         mock_file.assert_called_once_with("variant.json", "w", encoding="utf-8")
@@ -654,7 +654,7 @@ class TestClinvarClient:
         """Test handling file error when saving variant data."""
         variant_data = {"name": "c.123A>G"}
         
-        client = ClinvarClient()
+        client = ClinVarClient()
         with pytest.raises(IOError):
             client.save_variant_data(variant_data, "invalid/path.json")
     
@@ -700,7 +700,7 @@ class TestClinvarClient:
         
         mock_get.side_effect = [first_response, second_response]
         
-        client = ClinvarClient()
+        client = ClinVarClient()
         
         # Find the clinvar IDs
         ids = client.get_clinvar_ids_by_variant("c.123A>G")
@@ -761,7 +761,7 @@ class TestClinvarClient:
         
         mock_get.side_effect = [search_response, fetch_response]
         
-        client = ClinvarClient()
+        client = ClinVarClient()
         output_file = os.path.join(temp_dir, "variant_data.json")
         
         # Get variant information
