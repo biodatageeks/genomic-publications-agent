@@ -26,7 +26,7 @@ from .exceptions import (
     ParseError,
     RateLimitError
 )
-from .cache import APICache, DiskCache, MemoryCache
+from src.cache.cache import MemoryCache, DiskCache
 
 # Domyślny URL bazowy dla NCBI E-utilities API
 DEFAULT_BASE_URL = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils"
@@ -74,49 +74,43 @@ class ClinVarClient:
     
     def __init__(
             self,
-            email: str,
             api_key: Optional[str] = None,
             base_url: Optional[str] = None,
+            email: Optional[str] = None,
+            tool: str = "coordinates-lit",
             timeout: int = 30,
-            max_retries: int = 3,
-            retry_delay: int = 1,
             use_cache: bool = True,
             cache_ttl: int = 86400,  # 24 godziny
-            cache_storage_type: str = "memory"):
+            cache_storage_type: str = "memory",
+            allow_large_queries: bool = False):
         """
-        Inicjalizacja klienta ClinVar.
-
+        Inicjalizuje klienta ClinVar API.
+        
         Args:
-            email: Adres email użytkownika (wymagany przez NCBI)
-            api_key: Opcjonalny klucz API dla zwiększenia limitu zapytań
-            base_url: Opcjonalny niestandardowy URL bazowy API
-            timeout: Limit czasu odpowiedzi API w sekundach
-            max_retries: Maksymalna liczba ponownych prób przy błędach
-            retry_delay: Opóźnienie między ponownymi próbami w sekundach
-            use_cache: Czy używać cache'a dla zapytań (domyślnie True)
-            cache_ttl: Czas życia wpisów w cache'u w sekundach (domyślnie 24h)
-            cache_storage_type: Typ cache'a: "memory" lub "disk"
+            api_key: Klucz API dla NCBI E-utilities (opcjonalnie)
+            base_url: Niestandardowy URL bazowy dla API (opcjonalnie)
+            email: Adres e-mail użytkownika (opcjonalnie, ale zalecane przez NCBI)
+            tool: Nazwa narzędzia używającego API
+            timeout: Limit czasu oczekiwania na odpowiedź API w sekundach
+            use_cache: Czy używać cache'owania dla zapytań API
+            cache_ttl: Czas życia wpisów w cache'u w sekundach (domyślnie 24 godziny)
+            cache_storage_type: Typ przechowywania cache'a: "memory" lub "disk"
+            allow_large_queries: Czy zezwalać na duże zapytania, które mogą obciążać API
         """
-        self.email = email
         self.api_key = api_key
         self.base_url = base_url if base_url else DEFAULT_BASE_URL
+        self.email = email
+        self.tool = tool
         self.timeout = timeout
-        self.max_retries = max_retries
-        self.retry_delay = retry_delay
+        self.allow_large_queries = allow_large_queries
         self.logger = logging.getLogger(__name__)
         
         # Zmienne do śledzenia ostatniego czasu zapytania
         self._last_request_time = 0
         self._request_lock = threading.Lock()
-
-        # Parametry domyślne dla wszystkich zapytań
-        self.default_params = {
-            "tool": "coordinates_lit_integration",
-            "email": self.email
-        }
         
+        # Częstotliwość zapytań API zależy od obecności klucza API
         if api_key:
-            self.default_params["api_key"] = api_key
             # Z kluczem API można wykonać do 10 zapytań na sekundę
             self.API_REQUEST_INTERVAL = 0.11
             
@@ -175,7 +169,12 @@ class ClinVarClient:
             RateLimitError: Jeśli przekroczono limit zapytań
         """
         # Połączenie parametrów domyślnych z dostarczonymi
-        request_params = {**self.default_params}
+        request_params = {
+            "tool": self.tool,
+            "email": self.email
+        }
+        if self.api_key:
+            request_params["api_key"] = self.api_key
         if params:
             request_params.update(params)
             
@@ -222,8 +221,8 @@ class ClinVarClient:
 
             # Obsługa kodów odpowiedzi
             if response.status_code == 429:
-                if retry_count < self.max_retries:
-                    time.sleep(self.retry_delay * (2 ** retry_count))  # Wykładnicze wycofywanie
+                if retry_count < 3:
+                    time.sleep(self.API_REQUEST_INTERVAL * (2 ** retry_count))  # Wykładnicze wycofywanie
                     return self._make_request(endpoint, method, params, retry_count + 1, use_cache)
                 else:
                     raise RateLimitError("Przekroczono limit zapytań do API")
@@ -232,8 +231,8 @@ class ClinVarClient:
                 raise InvalidParameterError(f"Nieprawidłowe parametry zapytania: {response.text}")
                 
             if response.status_code >= 500:
-                if retry_count < self.max_retries:
-                    time.sleep(self.retry_delay)
+                if retry_count < 3:
+                    time.sleep(self.API_REQUEST_INTERVAL)
                     return self._make_request(endpoint, method, params, retry_count + 1, use_cache)
                     
             # Wymuszenie sprawdzenia statusu dla pozostałych błędów
@@ -353,13 +352,14 @@ class ClinVarClient:
             self.logger.error(f"Błąd parsowania JSON - brak klucza: {str(e)}")
             raise ParseError(f"Błąd parsowania odpowiedzi JSON - brak klucza: {str(e)}")
 
-    def get_variant_by_id(self, variant_id: str, format_type: str = "json") -> Dict[str, Any]:
+    def get_variant_by_id(self, variant_id: str, format_type: str = "json", use_cache: Optional[bool] = None) -> Dict[str, Any]:
         """
         Pobiera informacje o wariancie na podstawie jego identyfikatora ClinVar.
 
         Args:
             variant_id: Identyfikator wariantu ClinVar (VCV lub RCV)
             format_type: Format odpowiedzi ("json" lub "xml")
+            use_cache: Czy użyć cache'a dla tego zapytania (nadpisuje globalne ustawienie)
 
         Returns:
             Informacje o wariancie w formacie słownikowym
@@ -388,7 +388,7 @@ class ClinVarClient:
         }
 
         try:
-            response = self._make_request("efetch.fcgi", params=params)
+            response = self._make_request("efetch.fcgi", params=params, use_cache=use_cache)
             self.logger.debug(f"Otrzymano odpowiedź dla wariantu {variant_id}")
 
             # W testach, jeśli mamy zamockowaną odpowiedź, zwracamy ją bezpośrednio

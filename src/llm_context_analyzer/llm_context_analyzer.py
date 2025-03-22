@@ -22,6 +22,7 @@ from src.pubtator_client.pubtator_client import PubTatorClient
 from src.pubtator_client.exceptions import PubTatorError
 from src.context_analyzer.context_analyzer import ContextAnalyzer
 from src.LlmManager import LlmManager
+from src.cache.cache import APICache
 
 
 class LlmContextAnalyzer(ContextAnalyzer):
@@ -84,19 +85,33 @@ Format odpowiedzi:
 """
     
     def __init__(self, pubtator_client: Optional[PubTatorClient] = None, 
-                 llm_model_name: str = "meta-llama/Meta-Llama-3.1-8B-Instruct"):
+                 llm_model_name: str = "meta-llama/Meta-Llama-3.1-8B-Instruct",
+                 use_cache: bool = True, cache_ttl: int = 86400,
+                 cache_storage_type: str = "memory"):
         """
         Inicjalizuje LLM Context Analyzer.
         
         Args:
             pubtator_client: Opcjonalny klient PubTator
             llm_model_name: Nazwa modelu LLM do wykorzystania
+            use_cache: Czy używać cache'a dla zapytań do LLM (domyślnie True)
+            cache_ttl: Czas życia wpisów w cache'u w sekundach (domyślnie 24h)
+            cache_storage_type: Typ cache'a: "memory" lub "disk"
         """
         super().__init__(pubtator_client)
         self.logger = logging.getLogger(__name__)
         self.llm_manager = LlmManager('together', llm_model_name)
         self.llm = self.llm_manager.get_llm()
         self.logger.info(f'Załadowano model LLM: {llm_model_name}')
+        
+        # Inicjalizacja cache'a
+        self.use_cache = use_cache
+        if use_cache:
+            self.cache = APICache(ttl=cache_ttl, storage_type=cache_storage_type)
+            self.logger.info(f"Cache włączony ({cache_storage_type}), TTL: {cache_ttl}s")
+        else:
+            self.cache = None
+            self.logger.info("Cache wyłączony")
     
     def analyze_publications(self, pmids: List[str]) -> List[Dict[str, Any]]:
         """
@@ -249,205 +264,193 @@ Format odpowiedzi:
             
             # Przetwórz wyniki z LLM
             if llm_relationships:
-                self._process_llm_results(relationship, llm_relationships)
+                for rel in llm_relationships:
+                    entity_type = rel.get("entity_type", "").lower()
+                    if entity_type and entity_type in relationship and rel.get("has_relationship", False):
+                        entity_data = {
+                            "text": rel.get("entity_text", ""),
+                            "id": rel.get("entity_id", ""),
+                            "explanation": rel.get("explanation", "")
+                        }
+                        relationship[entity_type + "s"].append(entity_data)
             
             relationships.append(relationship)
         
         return relationships
     
     def _analyze_relationships_with_llm(self, variant_text: str, entities: List[Dict[str, Any]], 
-                                        passage_text: str) -> Dict[str, Any]:
+                                      passage_text: str) -> List[Dict[str, Any]]:
         """
-        Analizuje relacje między wariantem a innymi bytami przy użyciu LLM.
+        Analizuje relacje między wariantem a bytami w pasażu za pomocą LLM.
         
         Args:
             variant_text: Tekst wariantu
-            entities: Lista bytów do analizy relacji
+            entities: Lista bytów w pasażu (słowniki z polami entity_type, text, id, offset)
             passage_text: Tekst pasażu
             
         Returns:
-            Słownik zawierający odpowiedź LLM z analizą relacji
+            Lista słowników zawierających dane relacji określone przez LLM
         """
+        if not entities:
+            return []
+            
+        # Przygotuj listę bytów w formacie dla promptu
+        entities_list = "\n".join([f"- {e['entity_type']}: {e['text']} (ID: {e['id']})" for e in entities])
+        
+        # Sprawdź cache
+        if self.use_cache and self.cache:
+            cache_key = f"llm_analysis:{variant_text}:{json.dumps(entities, sort_keys=True)}:{passage_text}"
+            if self.cache.has(cache_key):
+                self.logger.debug(f"Cache hit dla analizy LLM: {variant_text}")
+                return self.cache.get(cache_key)
+        
+        # Przygotuj wiadomości dla LLM
+        system_message = SystemMessage(content=self.SYSTEM_PROMPT)
+        
+        prompt_template = PromptTemplate.from_template(self.USER_PROMPT_TEMPLATE)
+        user_message_content = prompt_template.format(
+            variant_text=variant_text,
+            entities_list=entities_list,
+            passage_text=passage_text
+        )
+        user_message = HumanMessage(content=user_message_content)
+        
+        # Wyślij zapytanie do LLM
         try:
-            # Przygotuj listę bytów dla promptu
-            entities_list = "\n".join([
-                f"- {entity['entity_type'].capitalize()}: {entity['text']} (ID: {entity['id']})"
-                for entity in entities
-            ])
-            
-            # Przygotuj prompt dla LLM
-            prompt = PromptTemplate(
-                template=self.USER_PROMPT_TEMPLATE,
-                input_variables=["variant_text", "entities_list", "passage_text"]
-            ).format(
-                variant_text=variant_text,
-                entities_list=entities_list,
-                passage_text=passage_text
-            )
-            
-            # Przygotuj wiadomości dla modelu
-            messages = [
-                SystemMessage(content=self.SYSTEM_PROMPT),
-                HumanMessage(content=prompt)
-            ]
-            
-            # Wywołaj model LLM
-            response = self.llm.invoke(messages)
-            
-            # Przetwórz odpowiedź do formatu JSON
+            response = self.llm.invoke([system_message, user_message])
             response_content = response.content
             
-            if isinstance(response_content, str):
-                try:
-                    # Próbuj przetworzyć odpowiedź jako JSON
-                    response_json = json.loads(response_content)
-                    return response_json
-                except json.JSONDecodeError as e:
-                    self.logger.warning(
-                        f"Nie udało się przetworzyć odpowiedzi LLM jako JSON: {str(e)}. " 
-                        f"Odpowiedź: {response_content[:100]}..."
-                    )
-            else:
-                self.logger.warning(f"Nieoczekiwany typ odpowiedzi LLM: {type(response_content)}")
-            
-            return {"relationships": []}
+            # Parsuj odpowiedź JSON
+            try:
+                # Upewnij się, że response_content jest typu string
+                response_str = str(response_content) if response_content is not None else "{}"
                 
+                # Usuń ewentualne znaki specjalne i kod markdown z JSON
+                clean_json = self._clean_json_response(response_str)
+                result_data = json.loads(clean_json)
+                
+                if "relationships" in result_data:
+                    # Zapisz do cache'a
+                    if self.use_cache and self.cache:
+                        self.cache.set(f"llm_analysis:{variant_text}:{json.dumps(entities, sort_keys=True)}:{passage_text}", 
+                                      result_data["relationships"])
+                    
+                    return result_data["relationships"]
+                else:
+                    self.logger.warning(f"Nieprawidłowa struktura odpowiedzi LLM: brak pola 'relationships'")
+                    return []
+            except json.JSONDecodeError as e:
+                self.logger.error(f"Błąd parsowania odpowiedzi LLM: {str(e)}")
+                self.logger.debug(f"Odpowiedź LLM: {response_content}")
+                return []
         except Exception as e:
-            self.logger.error(f"Błąd podczas analizy LLM: {str(e)}")
-            return {"relationships": []}
+            self.logger.error(f"Błąd wywołania LLM: {str(e)}")
+            return []
     
-    def _process_llm_results(self, relationship: Dict[str, Any], llm_results: Dict[str, Any]) -> None:
+    def _clean_json_response(self, response: str) -> str:
         """
-        Przetwarza wyniki analizy LLM i aktualizuje dane relacji.
+        Czyści odpowiedź LLM, aby uzyskać poprawny format JSON.
         
         Args:
-            relationship: Słownik z danymi relacji do aktualizacji
-            llm_results: Wyniki analizy z LLM
+            response: Odpowiedź od LLM
+            
+        Returns:
+            Oczyszczony string JSON
         """
-        if "relationships" not in llm_results:
-            return
+        # Znajdź pierwszy znak '{' i ostatni znak '}'
+        start_idx = response.find('{')
+        end_idx = response.rfind('}')
         
-        for entity_rel in llm_results["relationships"]:
-            if not entity_rel.get("has_relationship", False):
-                continue
-                
-            entity_type = entity_rel.get("entity_type", "")
-            if not entity_type:
-                continue
-                
-            # Normalizuj typ bytu
-            if entity_type.lower() in ["gen", "gene"]:
-                entity_type = "gene"
-            elif entity_type.lower() in ["choroba", "disease"]:
-                entity_type = "disease"
-            elif entity_type.lower() in ["tkanka", "tissue"]:
-                entity_type = "tissue"
-            elif entity_type.lower() in ["gatunek", "species"]:
-                entity_type = "species"
-            elif entity_type.lower() in ["związek chemiczny", "chemical"]:
-                entity_type = "chemical"
-            
-            # Obsługa specjalnych przypadków, żeby uniknąć "speciess" i "chemicalss"
-            if entity_type == "species":
-                entity_list = "species"
-            elif entity_type == "chemical":
-                entity_list = "chemicals"
-            else:
-                entity_list = entity_type + "s"
-            
-            if entity_list in relationship:
-                relationship[entity_list].append({
-                    "text": entity_rel.get("entity_text", ""),
-                    "id": entity_rel.get("entity_id", ""),
-                    "explanation": entity_rel.get("explanation", "")
-                })
+        if start_idx == -1 or end_idx == -1 or start_idx > end_idx:
+            # Jeśli nie znaleziono poprawnego JSON, zwróć pusty obiekt
+            return "{}"
+        
+        # Wytnij JSON z odpowiedzi
+        json_str = response[start_idx:end_idx+1]
+        return json_str
     
     def _group_annotations_by_type(self, passage: bioc.BioCPassage) -> Dict[str, List[bioc.BioCAnnotation]]:
         """
-        Grupuje adnotacje w pasażu według ich typu.
+        Grupuje adnotacje w pasażu według typu.
         
         Args:
-            passage: Obiekt BioCPassage zawierający adnotacje
+            passage: Obiekt BioCPassage zawierający pasaż z adnotacjami
             
         Returns:
-            Słownik z typami adnotacji jako kluczami i listami adnotacji jako wartościami
+            Słownik mapujący typy adnotacji na listy obiektów BioCAnnotation
         """
-        annotations_by_type = defaultdict(list)
+        grouped = defaultdict(list)
         
         for annotation in passage.annotations:
-            anno_type = annotation.infons.get("type")
-            if anno_type:
-                annotations_by_type[anno_type].append(annotation)
+            annotation_type = annotation.infons.get("type", "")
+            if annotation_type:
+                grouped[annotation_type].append(annotation)
         
-        return annotations_by_type
+        return grouped
     
-    def save_relationships_to_csv(self, relationships: List[Dict[str, Any]], output_file: str) -> None:
+    def save_relationships_to_csv(self, relationships: List[Dict[str, Any]], output_file: str):
         """
-        Zapisuje dane relacji do pliku CSV.
+        Zapisuje wyniki analizy relacji do pliku CSV.
         
         Args:
             relationships: Lista słowników zawierających dane relacji
-            output_file: Ścieżka do pliku wyjściowego CSV
+            output_file: Ścieżka do pliku wyjściowego
         """
         if not relationships:
             self.logger.warning("Brak relacji do zapisania")
             return
-        
-        # Zdefiniuj kolumny CSV
-        columns = ["pmid", "variant_text", "variant_offset", "variant_id", 
-                   "gene_text", "gene_id", "disease_text", "disease_id", 
-                   "tissue_text", "tissue_id", "explanation", "passage_text"]
-        
-        # Spłaszcz relacje do formatu CSV
-        flattened_data = []
-        for rel in relationships:
-            # Podstawowy wpis z informacjami o wariancie
-            base_entry = {
-                "pmid": rel["pmid"],
-                "variant_text": rel["variant_text"],
-                "variant_offset": rel["variant_offset"],
-                "variant_id": rel["variant_id"],
-                "passage_text": rel["passage_text"]
-            }
             
-            # Utwórz wpisy dla każdej kombinacji bytów
-            genes = rel["genes"] if rel["genes"] else [{"text": "", "id": "", "explanation": ""}]
-            diseases = rel["diseases"] if rel["diseases"] else [{"text": "", "id": "", "explanation": ""}]
-            tissues = rel["tissues"] if rel["tissues"] else [{"text": "", "id": "", "explanation": ""}]
-            
-            for gene in genes:
-                for disease in diseases:
-                    for tissue in tissues:
-                        entry = base_entry.copy()
-                        entry["gene_text"] = gene.get("text", "")
-                        entry["gene_id"] = gene.get("id", "")
-                        entry["disease_text"] = disease.get("text", "")
-                        entry["disease_id"] = disease.get("id", "")
-                        entry["tissue_text"] = tissue.get("text", "")
-                        entry["tissue_id"] = tissue.get("id", "")
-                        
-                        # Dodaj objaśnienia z LLM
-                        explanations = []
-                        if gene.get("explanation"):
-                            explanations.append(f"Gen: {gene.get('explanation')}")
-                        if disease.get("explanation"):
-                            explanations.append(f"Choroba: {disease.get('explanation')}")
-                        if tissue.get("explanation"):
-                            explanations.append(f"Tkanka: {tissue.get('explanation')}")
-                        
-                        entry["explanation"] = " | ".join(explanations)
-                        flattened_data.append(entry)
+        # Określ nagłówki dla pliku CSV
+        headers = [
+            "pmid", "variant_text", "variant_id", "variant_offset",
+            "gene", "gene_id", "gene_explanation",
+            "disease", "disease_id", "disease_explanation",
+            "tissue", "tissue_id", "tissue_explanation",
+            "species", "species_id", "species_explanation",
+            "chemical", "chemical_id", "chemical_explanation",
+            "passage_text"
+        ]
         
-        # Zapisz do CSV
         try:
             with open(output_file, 'w', newline='', encoding='utf-8') as csvfile:
-                writer = csv.DictWriter(csvfile, fieldnames=columns)
+                writer = csv.DictWriter(csvfile, fieldnames=headers)
                 writer.writeheader()
-                writer.writerows(flattened_data)
-            
-            self.logger.info(f"Zapisano {len(flattened_data)} wpisów relacji do {output_file}")
+                
+                for rel in relationships:
+                    # Przygotuj bazowy wiersz z informacjami o wariancie i pasażu
+                    base_row = {
+                        "pmid": rel["pmid"],
+                        "variant_text": rel["variant_text"],
+                        "variant_id": rel["variant_id"],
+                        "variant_offset": rel["variant_offset"],
+                        "passage_text": rel["passage_text"]
+                    }
+                    
+                    # Sprawdź, czy istnieją jakiekolwiek relacje
+                    has_relationships = any(len(rel[entity_type + "s"]) > 0 
+                                           for entity_type in ["gene", "disease", "tissue", "species", "chemical"])
+                    
+                    if not has_relationships:
+                        # Jeśli nie ma relacji, zapisz tylko wiersz bazowy
+                        writer.writerow(base_row)
+                    else:
+                        # Dla każdego typu encji, dodaj informacje o relacjach
+                        for entity_type in ["gene", "disease", "tissue", "species", "chemical"]:
+                            entities = rel[entity_type + "s"]
+                            
+                            if not entities:
+                                continue
+                                
+                            for entity in entities:
+                                row = base_row.copy()
+                                row[entity_type] = entity["text"]
+                                row[entity_type + "_id"] = entity["id"]
+                                row[entity_type + "_explanation"] = entity["explanation"]
+                                writer.writerow(row)
+                
+            self.logger.info(f"Zapisano relacje do pliku: {output_file}")
         except Exception as e:
-            self.logger.error(f"Błąd zapisywania relacji do CSV: {str(e)}")
+            self.logger.error(f"Błąd zapisywania do pliku CSV: {str(e)}")
             raise
     
     def save_relationships_to_json(self, relationships: List[Dict[str, Any]], output_file: str) -> None:
@@ -502,3 +505,5 @@ Format odpowiedzi:
                     if entity.get("text") == entity_value or entity.get("id") == entity_value:
                         filtered.append(rel)
                         break 
+                        
+        return filtered 

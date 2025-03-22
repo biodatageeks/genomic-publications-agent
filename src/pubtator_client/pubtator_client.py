@@ -11,6 +11,8 @@ the returned data using the bioc library.
 
 import json
 import logging
+import time
+import threading
 from io import StringIO
 from typing import List, Dict, Any, Optional, Union
 
@@ -18,6 +20,7 @@ import requests
 import bioc
 from bioc import pubtator, biocjson
 from .exceptions import FormatNotSupportedException, PubTatorError
+from src.cache.cache import MemoryCache, DiskCache
 
 DEFAULT_BASE_URL = "https://www.ncbi.nlm.nih.gov/research/pubtator3-api"
 
@@ -40,6 +43,9 @@ class PubTatorClient:
                     print(f"  Annotation: {annotation.text} [{annotation.infons.get('type')}]")
     """
 
+    # Ograniczenie API wynosi 20 żądań na sekundę zgodnie z NCBI
+    API_REQUEST_INTERVAL = 0.05  # 50 ms = 20 req/s
+
     # Mapping between API parameters (lowercase) and data types (uppercase)
     # based on documentation:
     # https://www.ncbi.nlm.nih.gov/CBBresearch/Lu/Demo/PubTatorCentral/api.html
@@ -54,58 +60,154 @@ class PubTatorClient:
         "dnamutation": "DNAMutation",
         "tissue": "Tissue"
     }
-
-    def __init__(self, base_url: Optional[str] = None, timeout: int = 30):
+    
+    def __init__(
+            self,
+            base_url: Optional[str] = None,
+            timeout: int = 30,
+            use_cache: bool = True,
+            cache_ttl: int = 86400,  # 24 godziny
+            cache_storage_type: str = "memory",
+            email: Optional[str] = None,
+            tool: str = "coordinates-lit"):
         """
-        Initialize the PubTator client.
-
+        Inicjalizacja klienta PubTator.
+        
         Args:
-            base_url: Custom base URL for the API (optional)
-            timeout: API response timeout limit in seconds
+            base_url: Niestandardowy URL bazowy dla API (opcjonalnie)
+            timeout: Limit czasu oczekiwania na odpowiedź API w sekundach
+            use_cache: Czy używać cache'owania dla zapytań API
+            cache_ttl: Czas życia wpisów w cache'u w sekundach (domyślnie 24 godziny)
+            cache_storage_type: Typ przechowywania cache'a: "memory" lub "disk"
+            email: Adres e-mail użytkownika (opcjonalnie, ale zalecane przez NCBI)
+            tool: Nazwa narzędzia używającego API
         """
         self.base_url = base_url if base_url else DEFAULT_BASE_URL
         self.timeout = timeout
+        self.email = email
+        self.tool = tool
         self.logger = logging.getLogger(__name__)
+
+        # Zmienne do śledzenia ostatniego czasu zapytania
+        self._last_request_time = 0
+        self._request_lock = threading.Lock()
+
+        # Inicjalizacja cache'a
+        self.use_cache = use_cache
+        if use_cache:
+            if cache_storage_type == "disk":
+                self.cache = DiskCache(ttl=cache_ttl)
+            else:
+                self.cache = MemoryCache(ttl=cache_ttl, max_size=1000)
+            self.logger.info(f"Cache włączony ({cache_storage_type}), TTL: {cache_ttl}s")
+        else:
+            self.cache = None
+            self.logger.info("Cache wyłączony")
+            
+    def _wait_for_rate_limit(self):
+        """
+        Czeka, jeśli to konieczne, aby spełnić wymagania częstotliwości zapytań API.
+        Zapewnia, że między zapytaniami jest co najmniej self.API_REQUEST_INTERVAL sekundy.
+        """
+        with self._request_lock:
+            current_time = time.time()
+            time_since_last_request = current_time - self._last_request_time
+            
+            # Jeśli minęło mniej czasu od ostatniego zapytania niż wymagany interwał
+            if time_since_last_request < self.API_REQUEST_INTERVAL:
+                sleep_time = self.API_REQUEST_INTERVAL - time_since_last_request
+                self.logger.debug(f"Czekam {sleep_time:.2f}s aby spełnić limit API (max 20 req/s)")
+                time.sleep(sleep_time)
+            
+            # Aktualizacja czasu ostatniego zapytania
+            self._last_request_time = time.time()
 
     def _make_request(
             self,
             endpoint: str,
             method: str = "GET",
-            params: Optional[Dict] = None) -> requests.Response:
+            params: Optional[Dict] = None,
+            use_cache: Optional[bool] = None) -> requests.Response:
         """
-        Make a request to the PubTator API.
-
+        Wykonuje zapytanie do API PubTator.
+        
         Args:
-            endpoint: API endpoint
-            method: HTTP method (GET or POST)
-            params: Query parameters
-
+            endpoint: Punkt końcowy API
+            method: Metoda HTTP (GET lub POST)
+            params: Parametry zapytania
+            use_cache: Czy używać cache'a (jeśli None, używa ustawienia z konstruktora)
+            
         Returns:
-            Response from the API
-
+            Obiekt odpowiedzi HTTP
+            
         Raises:
-            PubTatorError: If the request fails
+            PubTatorError: Gdy wystąpi błąd podczas zapytania
         """
+        # Czekaj na rate limit
+        self._wait_for_rate_limit()
+        
+        # Określenie, czy używać cache'a
+        should_use_cache = self.use_cache if use_cache is None else use_cache
+        
+        # Przygotowanie URL
         url = f"{self.base_url}/{endpoint}"
-        headers = {
-            "Accept": "application/json",
-            "Content-Type": "application/json"
-        }
-
+        
+        # Przygotowanie parametrów
+        request_params = {}
+        if params:
+            request_params.update(params)
+            
+        # Dodanie parametrów dla NCBI, jeśli podano email
+        if self.email:
+            request_params["email"] = self.email
+            request_params["tool"] = self.tool
+        
         try:
+            # Sprawdzenie cache'a
+            if should_use_cache and method == "GET" and self.cache:
+                cache_key = f"{method}:{url}:{json.dumps(request_params, sort_keys=True)}"
+                
+                if self.cache.has(cache_key):
+                    cached_response = self.cache.get(cache_key)
+                    # Tworzenie obiektu odpowiedzi z danych w cache'u
+                    response = requests.Response()
+                    response.status_code = cached_response["status_code"]
+                    response._content = cached_response["content"].encode("utf-8") if isinstance(cached_response["content"], str) else cached_response["content"]
+                    response.headers = cached_response["headers"]
+                    response.url = url
+                    
+                    self.logger.debug(f"Pobrano z cache'a: {url}")
+                    return response
+            
+            # Wykonanie zapytania do API
             if method == "GET":
-                response = requests.get(
-                    url, params=params, headers=headers, timeout=self.timeout)
+                response = requests.get(url, params=request_params, timeout=self.timeout)
             elif method == "POST":
-                response = requests.post(
-                    url, json=params, headers=headers, timeout=self.timeout)
+                response = requests.post(url, json=request_params, timeout=self.timeout)
             else:
-                raise ValueError(f"Unsupported HTTP method: {method}")
-
+                raise PubTatorError(f"Nieobsługiwana metoda HTTP: {method}")
+                
+            # Sprawdzenie kodu odpowiedzi
+            if response.status_code != 200:
+                raise PubTatorError(f"Błąd API PubTator: {response.status_code} - {response.text}")
+                
+            # Zapisanie odpowiedzi do cache'a
+            if should_use_cache and method == "GET" and self.cache:
+                cache_key = f"{method}:{url}:{json.dumps(request_params, sort_keys=True)}"
+                
+                # Przygotowanie danych do cache'a
+                cache_data = {
+                    "status_code": response.status_code,
+                    "content": response.text,
+                    "headers": dict(response.headers)
+                }
+                
+                self.cache.set(cache_key, cache_data)
+                self.logger.debug(f"Zapisano do cache'a: {url}")
+                
             return response
-        except requests.exceptions.RequestException as e:
-            self.logger.error(f"Error making request to {url}: {str(e)}")
-            raise PubTatorError(f"API request failed: {str(e)}")
+        except requests.RequestException as e:
+            raise PubTatorError(f"Błąd podczas wykonywania zapytania: {str(e)}")
 
     def _process_response(
             self,
@@ -188,14 +290,15 @@ class PubTatorClient:
         if concepts:
             params["concepts"] = ",".join(concepts)
 
+        # Sprawdzenie cache'a
+        cache_key = f"pubtator:publications:{','.join(pmids)}:{','.join(concepts) if concepts else 'all'}"
+        if self.use_cache and self.cache and self.cache.has(cache_key):
+            self.logger.debug(f"Cache hit dla get_publications_by_pmids: {cache_key}")
+            return self.cache.get(cache_key)
+            
         headers = {"Accept": "application/json"}
         try:
-            response = requests.get(
-                f"{self.base_url}/publications/export/biocjson",
-                params=params,
-                headers=headers,
-                timeout=self.timeout
-            )
+            response = self._make_request("publications/export/biocjson", params=params)
 
             # Handle 404 error - resource not found
             if response.status_code == 404:
@@ -250,25 +353,29 @@ class PubTatorClient:
                                                     location)
 
                                         passage.add_annotation(annotation)
-
                                 doc.add_passage(passage)
-
                         documents.append(doc)
+                        
+                    # Zapisz wyniki do cache'a
+                    if self.use_cache and self.cache:
+                        self.cache.set(cache_key, documents)
+                        
                     return documents
                 else:
-                    # Try to process the response as standard BioC
-                    collection = biocjson.load(StringIO(json.dumps(data)))
-                    return collection.documents
-
-            except (json.JSONDecodeError, KeyError, AttributeError) as e:
-                self.logger.error(f"Error processing response: {str(e)}")
-                raise PubTatorError(f"Error processing response: {str(e)}")
-        except requests.HTTPError as e:
-            if "404" in str(e) or "not found" in str(e).lower():
-                raise PubTatorError(f"Resource not found: {','.join(pmids)}")
-            raise PubTatorError(f"API request failed: {str(e)}")
-        except Exception as e:
-            raise PubTatorError(f"Error retrieving publications: {str(e)}")
+                    self.logger.warning(
+                        "Unexpected response format from PubTator API")
+                    raise PubTatorError(
+                        "Unexpected response format from PubTator API")
+            except (json.JSONDecodeError, KeyError) as e:
+                self.logger.error(
+                    f"Error processing PubTator response: {str(e)}")
+                raise PubTatorError(
+                    f"Error processing PubTator response: {str(e)}")
+        except requests.exceptions.RequestException as e:
+            self.logger.error(
+                f"Error retrieving publications: {str(e)}")
+            raise PubTatorError(
+                f"Error retrieving publications: {str(e)}")
 
     def get_publication_by_pmid(self, pmid: str,
                                 concepts: Optional[List[str]] = None,
