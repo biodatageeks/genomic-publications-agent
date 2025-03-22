@@ -17,6 +17,7 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')
 from src.pubtator_client.pubtator_client import PubTatorClient
 from src.cooccurrence_context_analyzer.cooccurrence_context_analyzer import CooccurrenceContextAnalyzer
 from src.pubtator_client.exceptions import PubTatorError
+from src.Config import Config
 
 # Konfiguracja logowania
 logging.basicConfig(
@@ -57,7 +58,7 @@ def get_publications_with_variants(pubtator_client: PubTatorClient,
 def analyze_publications_and_create_table(pmids: List[str], 
                                          output_csv: str, 
                                          output_excel: Optional[str] = None,
-                                         email: str = "sitekwb@gmail.com") -> Optional[pd.DataFrame]:
+                                         email: Optional[str] = None) -> Optional[pd.DataFrame]:
     """
     Analizuje publikacje i tworzy tabelę z relacjami.
     
@@ -70,10 +71,20 @@ def analyze_publications_and_create_table(pmids: List[str],
     Returns:
         DataFrame z danymi relacji lub None, jeśli wystąpił błąd
     """
+    # Load config
+    config = Config()
+    
+    # Use email from config if not provided
+    if email is None:
+        email = config.get_contact_email()
+    
+    # Ensure email is not None
+    assert email is not None, "Email must be specified either directly or in config"
+    
     logger.info(f"Rozpoczęcie analizy dla {len(pmids)} publikacji")
     
     # Inicjalizacja klientów
-    pubtator_client = PubTatorClient()  # Usunięto parametr email
+    pubtator_client = PubTatorClient(email=email)
     analyzer = CooccurrenceContextAnalyzer(pubtator_client=pubtator_client)
     
     # Dodanie informacji o emailu do logu
@@ -131,13 +142,17 @@ def analyze_publications_and_create_table(pmids: List[str],
 
 def main():
     """Główna funkcja skryptu."""
+    # Load configuration
+    config = Config()
+    default_email = config.get_contact_email()
+    
     parser = argparse.ArgumentParser(description="Analiza współwystępowania wariantów genetycznych w publikacjach.")
     parser.add_argument("--output", "-o", type=str, default="variant_relationships.csv",
                         help="Ścieżka do pliku wyjściowego CSV (domyślnie: variant_relationships.csv)")
     parser.add_argument("--excel", "-e", type=str, default="variant_relationships.xlsx",
                         help="Ścieżka do pliku wyjściowego Excel (domyślnie: variant_relationships.xlsx)")
-    parser.add_argument("--email", type=str, default="sitekwb@gmail.com",
-                        help="Adres email kontaktowy (dla metadanych API)")
+    parser.add_argument("--email", type=str, default=default_email,
+                        help=f"Adres email kontaktowy (dla metadanych API) (domyślnie: {default_email})")
     parser.add_argument("--pmids", type=str, nargs="+",
                         help="Lista identyfikatorów PMID do analizy (opcjonalne, domyślnie używa predefiniowanej listy)")
     
@@ -176,10 +191,10 @@ def main():
         print(f" - Liczba unikalnych genów: {df['gene_text'].nunique()}")
         print(f" - Liczba unikalnych chorób: {df['disease_text'].nunique()}")
         
-        top_variants = df["variant_text"].value_counts().head(3)
+        top_variants = df["variant_text"].value_counts().head(5)
         print("\nNajczęstsze warianty:")
         for variant, count in top_variants.items():
-            if variant:
+            if variant and str(variant).strip():
                 print(f" - {variant}: {count} wystąpień")
         
         print("\nZakończono pomyślnie!")

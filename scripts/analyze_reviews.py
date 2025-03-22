@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Skrypt analizujący publikacje biomedyczne zawierające warianty genetyczne, geny i choroby.
-Wyszukuje relacje między tymi encjami i generuje tabelę oraz wizualizację wyników.
+Script for analyzing biomedical publications containing genetic variants, genes, and diseases.
+Searches for relationships between these entities and generates a table and visualization of results.
 """
 
 import argparse
@@ -11,26 +11,27 @@ import sys
 import pandas as pd
 from typing import List, Dict, Any, Optional
 
-# Dodanie ścieżki do katalogu głównego projektu
+# Add path to the main project directory
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from src.pubtator_client.pubtator_client import PubTatorClient
 from src.cooccurrence_context_analyzer.cooccurrence_context_analyzer import CooccurrenceContextAnalyzer
 from src.pubtator_client.exceptions import PubTatorError
+from src.Config import Config
 
-# Konfiguracja logowania
+# Logging configuration
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 )
 logger = logging.getLogger(__name__)
 
-# Lista PMIDów do analizy, zebranych z plików w projekcie
+# List of PMIDs to analyze, collected from project files
 PMIDS = [
-    # Z plików w data/pubmed-articles
+    # From files in data/pubmed-articles
     "18836447", "21441262", "22996659", "23502222", "34799090",
     
-    # Z plików literatury w plikach CSV
+    # From literature files in CSV files
     "11175783", "11254675", "11254676", "11254677", "11254678", 
     "11286503", "11355022", "12021216", "12192640", "12459590", 
     "14684687", "14760718", "15146197", "15454494", "15489334", 
@@ -41,95 +42,105 @@ PMIDS = [
     "18220430", "18423520", "18684880", "19019335", "19060906", 
     "19525978", "19644445", "20012913", "20031530", "20072694",
     
-    # PMIDy z innych źródeł (używane wcześniej w testach)
+    # PMIDs from other sources (previously used in tests)
     "34261372", "33208827", "33417880", "33705364", "31324762"
 ]
 
 def analyze_publications(pmids: List[str], 
                         output_csv: str, 
                         output_excel: Optional[str] = None,
-                        email: str = "sitekwb@gmail.com") -> Optional[pd.DataFrame]:
+                        email: Optional[str] = None) -> Optional[pd.DataFrame]:
     """
-    Analizuje publikacje i tworzy tabelę z relacjami.
+    Analyzes publications and creates a table of relationships.
     
     Args:
-        pmids: Lista PMIDs do analizy
-        output_csv: Ścieżka do pliku wyjściowego CSV
-        output_excel: Opcjonalna ścieżka do pliku wyjściowego Excel
-        email: Adres email dla API PubTator (używany w metadanych)
+        pmids: List of PMIDs to analyze
+        output_csv: Path to output CSV file
+        output_excel: Optional path to output Excel file
+        email: Email address for PubTator API (uses config if None)
         
     Returns:
-        DataFrame z danymi relacji lub None, jeśli wystąpił błąd
+        DataFrame with relationship data or None if an error occurred
     """
-    logger.info(f"Rozpoczęcie analizy dla {len(pmids)} publikacji")
+    # Load config
+    config = Config()
     
-    # Inicjalizacja klientów
-    pubtator_client = PubTatorClient()
+    # Use email from config if not provided
+    if email is None:
+        email = config.get_contact_email()
+    
+    # Ensure email is not None
+    assert email is not None, "Email must be specified either directly or in config"
+    
+    logger.info(f"Starting analysis for {len(pmids)} publications")
+    
+    # Initialize clients
+    pubtator_client = PubTatorClient(email=email)
     analyzer = CooccurrenceContextAnalyzer(pubtator_client=pubtator_client)
     
-    # Dodanie informacji o emailu do logu
-    logger.info(f"Używany adres email kontaktowy: {email}")
+    # Add email information to log
+    logger.info(f"Using contact email: {email}")
     
-    # Analiza publikacji
+    # Analyze publications
     try:
         relationships = analyzer.analyze_publications(pmids)
-        logger.info(f"Znaleziono {len(relationships)} relacji w publikacjach")
+        logger.info(f"Found {len(relationships)} relationships in publications")
         
         if not relationships:
-            logger.warning("Nie znaleziono żadnych relacji wariantów!")
+            logger.warning("No variant relationships found!")
             return None
         
-        # Zapisanie relacji do CSV
+        # Save relationships to CSV
         analyzer.save_relationships_to_csv(relationships, output_csv)
-        logger.info(f"Zapisano relacje do pliku CSV: {output_csv}")
+        logger.info(f"Saved relationships to CSV file: {output_csv}")
         
-        # Tworzenie DataFrame do dalszej analizy
+        # Create DataFrame for further analysis
         df = pd.read_csv(output_csv)
         
-        # Obliczanie statystyk
+        # Calculate statistics
         stats = {
-            "Liczba unikalnych wariantów": df["variant_text"].nunique(),
-            "Liczba unikalnych genów": df["gene_text"].nunique(),
-            "Liczba unikalnych chorób": df["disease_text"].nunique(),
-            "Liczba unikalnych publikacji": df["pmid"].nunique(),
-            "Najczęstsze warianty": df["variant_text"].value_counts().head(10).to_dict(),
-            "Najczęstsze geny": df["gene_text"].value_counts().head(10).to_dict(),
-            "Najczęstsze choroby": df["disease_text"].value_counts().head(10).to_dict(),
+            "Number of unique variants": df["variant_text"].nunique(),
+            "Number of unique genes": df["gene_text"].nunique(),
+            "Number of unique diseases": df["disease_text"].nunique(),
+            "Number of unique publications": df["pmid"].nunique(),
+            "Most common variants": df["variant_text"].value_counts().head(10).to_dict(),
+            "Most common genes": df["gene_text"].value_counts().head(10).to_dict(),
+            "Most common diseases": df["disease_text"].value_counts().head(10).to_dict(),
         }
         
-        logger.info(f"Statystyki analizy: {stats}")
+        logger.info(f"Analysis statistics: {stats}")
         
-        # Opcjonalny zapis do Excela
+        # Optional save to Excel
         if output_excel:
             try:
                 with pd.ExcelWriter(output_excel) as writer:
-                    df.to_excel(writer, sheet_name="Relacje", index=False)
-                    # Dodanie arkusza ze statystykami
+                    df.to_excel(writer, sheet_name="Relationships", index=False)
+                    # Add statistics sheet
                     stats_df = pd.DataFrame([stats])
-                    stats_df.to_excel(writer, sheet_name="Statystyki", index=False)
-                logger.info(f"Zapisano dane do pliku Excel: {output_excel}")
+                    stats_df.to_excel(writer, sheet_name="Statistics", index=False)
+                logger.info(f"Saved data to Excel file: {output_excel}")
             except ImportError:
-                logger.warning("Nie można zapisać do pliku Excel: brakuje modułu 'openpyxl'. "
-                             "Zainstaluj go używając 'pip install openpyxl'.")
-                logger.info("Dane zostały zapisane tylko w formacie CSV.")
+                logger.warning("Cannot save to Excel file: missing 'openpyxl' module. "
+                             "Install it using 'pip install openpyxl'.")
+                logger.info("Data has been saved only in CSV format.")
             except Exception as e:
-                logger.warning(f"Nie można zapisać do pliku Excel: {str(e)}")
+                logger.warning(f"Cannot save to Excel file: {str(e)}")
         
         return df
     
     except PubTatorError as e:
-        logger.error(f"Błąd podczas analizy publikacji: {str(e)}")
+        logger.error(f"Error during publication analysis: {str(e)}")
         return None
 
 def visualize_results(csv_file: str, output_prefix: str):
     """
-    Wizualizuje wyniki analizy.
+    Visualizes analysis results.
     
     Args:
-        csv_file: Ścieżka do pliku CSV z relacjami
-        output_prefix: Prefiks dla plików wyjściowych
+        csv_file: Path to CSV file with relationships
+        output_prefix: Prefix for output files
     """
-    # Wywołanie skryptu wizualizacyjnego
+    # Call visualization script
     import subprocess
     
     try:
@@ -140,34 +151,38 @@ def visualize_results(csv_file: str, output_prefix: str):
              "--output", graph_output],
             check=True, capture_output=True, text=True
         )
-        logger.info(f"Wizualizacja zakończona sukcesem: {result.stdout}")
+        logger.info(f"Visualization completed successfully: {result.stdout}")
     except subprocess.CalledProcessError as e:
-        logger.error(f"Błąd podczas wizualizacji: {e.stderr}")
+        logger.error(f"Error during visualization: {e.stderr}")
 
 def main():
-    """Główna funkcja skryptu."""
-    parser = argparse.ArgumentParser(description="Analiza współwystępowania wariantów genetycznych w publikacjach.")
+    """Main script function."""
+    # Load configuration
+    config = Config()
+    default_email = config.get_contact_email()
+    
+    parser = argparse.ArgumentParser(description="Analysis of genetic variant co-occurrence in publications.")
     parser.add_argument("--output", "-o", type=str, default="variant_relationships.csv",
-                        help="Ścieżka do pliku wyjściowego CSV (domyślnie: variant_relationships.csv)")
+                        help="Path to output CSV file (default: variant_relationships.csv)")
     parser.add_argument("--excel", "-e", type=str, default="variant_relationships.xlsx",
-                        help="Ścieżka do pliku wyjściowego Excel (domyślnie: variant_relationships.xlsx)")
-    parser.add_argument("--email", type=str, default="sitekwb@gmail.com",
-                        help="Adres email kontaktowy (dla metadanych API)")
+                        help="Path to output Excel file (default: variant_relationships.xlsx)")
+    parser.add_argument("--email", type=str, default=default_email,
+                        help=f"Contact email for PubTator API (default: {default_email})")
     parser.add_argument("--pmids", type=str, nargs="+",
-                        help="Lista identyfikatorów PMID do analizy (opcjonalne, domyślnie używa predefiniowanych PMIDów)")
+                        help="List of PMID identifiers to analyze (optional, uses predefined PMIDs by default)")
     
     args = parser.parse_args()
     
-    # Upewnij się, że katalogi wyjściowe istnieją
+    # Ensure output directories exist
     os.makedirs(os.path.dirname(os.path.abspath(args.output)), exist_ok=True)
     if args.excel:
         os.makedirs(os.path.dirname(os.path.abspath(args.excel)), exist_ok=True)
     
-    # Użyj PMIDów z argumentów lub z listy predefiniowanych
+    # Use PMIDs from arguments or from predefined list
     pmids = args.pmids if args.pmids else PMIDS
-    logger.info(f"Użycie {len(pmids)} PMIDów do analizy")
+    logger.info(f"Using {len(pmids)} PMIDs for analysis")
     
-    # Uruchomienie analizy
+    # Run analysis
     df = analyze_publications(
         pmids=pmids,
         output_csv=args.output,
@@ -176,37 +191,37 @@ def main():
     )
     
     if df is not None:
-        print(f"\nAnaliza zakończona sukcesem! Zapisano dane do plików:")
+        print(f"\nAnalysis completed successfully! Data saved to files:")
         print(f" - CSV: {args.output}")
         try:
             import openpyxl
             if args.excel:
                 print(f" - Excel: {args.excel}")
         except ImportError:
-            print("Uwaga: Nie można zapisać do pliku Excel - brakuje modułu 'openpyxl'.")
-            print("Zainstaluj go używając: pip install openpyxl")
+            print("Note: Cannot save to Excel file - missing 'openpyxl' module.")
+            print("Install it using: pip install openpyxl")
         
-        # Generowanie statystyk i wizualizacji
+        # Generate statistics and visualizations
         output_prefix = os.path.splitext(args.output)[0]
         visualize_results(args.output, output_prefix)
         
-        # Wyświetlenie podsumowania
-        print("\nPodsumowanie analizy:")
-        print(f" - Liczba analizowanych publikacji: {df['pmid'].nunique()}")
-        print(f" - Liczba znalezionych relacji: {len(df)}")
-        print(f" - Liczba unikalnych wariantów: {df['variant_text'].nunique()}")
-        print(f" - Liczba unikalnych genów: {df['gene_text'].nunique()}")
-        print(f" - Liczba unikalnych chorób: {df['disease_text'].nunique()}")
+        # Display summary
+        print("\nAnalysis summary:")
+        print(f" - Number of analyzed publications: {df['pmid'].nunique()}")
+        print(f" - Number of found relationships: {len(df)}")
+        print(f" - Number of unique variants: {df['variant_text'].nunique()}")
+        print(f" - Number of unique genes: {df['gene_text'].nunique()}")
+        print(f" - Number of unique diseases: {df['disease_text'].nunique()}")
         
         top_variants = df["variant_text"].value_counts().head(5)
-        print("\nNajczęstsze warianty:")
+        print("\nMost common variants:")
         for variant, count in top_variants.items():
             if variant and str(variant).strip():
-                print(f" - {variant}: {count} wystąpień")
+                print(f" - {variant}: {count} occurrences")
         
-        print("\nZakończono pomyślnie!")
+        print("\nCompleted successfully!")
     else:
-        print("\nAnaliza nie powiodła się. Sprawdź logi.")
+        print("\nAnalysis failed. Check logs.")
 
 if __name__ == "__main__":
     main() 

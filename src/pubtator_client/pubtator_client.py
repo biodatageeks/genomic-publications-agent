@@ -48,15 +48,20 @@ class PubTatorClient:
 
     # Mapping between API parameters (lowercase) and data types (uppercase)
     # based on documentation:
-    # https://www.ncbi.nlm.nih.gov/CBBresearch/Lu/Demo/PubTatorCentral/api.html
+    # https://www.ncbi.nlm.nih.gov/research/bionlp/APIs/usage/
+    # Official bioconcepts from PubTator API documentation:
+    # - Gene, Disease, Chemical, Species, Mutation
+    # Additional types observed in the API responses but not documented:
+    # - CellLine, DNAMutation, Tissue
     CONCEPT_TYPE_MAPPING = {
+        # Official bioconcepts from PubTator API documentation
         "gene": "Gene",
         "disease": "Disease",
         "chemical": "Chemical",
         "species": "Species",
         "mutation": "Mutation",
+        # Additional types observed in API responses but not documented
         "cellline": "CellLine",
-        # Additional types observed in the data
         "dnamutation": "DNAMutation",
         "tissue": "Tissue"
     }
@@ -67,7 +72,7 @@ class PubTatorClient:
             timeout: int = 30,
             use_cache: bool = True,
             cache_ttl: int = 86400,  # 24 godziny
-            cache_storage_type: str = "memory",
+            cache_storage_type: str = "disk",
             email: Optional[str] = None,
             tool: str = "coordinates-lit"):
         """

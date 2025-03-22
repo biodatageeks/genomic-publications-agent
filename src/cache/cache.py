@@ -14,7 +14,7 @@ import functools
 import hashlib
 import threading
 from pathlib import Path
-from typing import Any, Callable, Dict, Optional, Tuple, Union
+from typing import Any, Callable, Optional, Tuple
 
 
 class APICache:

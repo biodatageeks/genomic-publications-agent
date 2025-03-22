@@ -1,20 +1,23 @@
 #!/usr/bin/env python3
 """
-Skrypt do analizy publikacji biomedycznych przy użyciu CooccurrenceContextAnalyzer.
-Wykrywa relacje między bytami biomedycznymi na podstawie ich współwystępowania.
+Script for analyzing biomedical publications with co-occurrence analysis.
 """
 
 import argparse
 import logging
-import sys
 import os
+import sys
 import pandas as pd
 from typing import List, Optional
 
+# Add path to the main project directory
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
 from src.cooccurrence_context_analyzer.cooccurrence_context_analyzer import CooccurrenceContextAnalyzer
 from src.pubtator_client.pubtator_client import PubTatorClient
+from src.Config import Config
 
-# Konfiguracja logowania
+# Logging configuration
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -29,67 +32,81 @@ logger = logging.getLogger(__name__)
 def analyze_publications(pmids: List[str], 
                         output_csv: str, 
                         output_json: Optional[str] = None,
-                        email: str = "przyklad@example.com") -> Optional[pd.DataFrame]:
+                        email: Optional[str] = None) -> Optional[pd.DataFrame]:
     """
-    Analizuje publikacje i tworzy tabelę z relacjami na podstawie współwystępowania.
+    Analyzes publications and creates a table of relationships using co-occurrence.
     
     Args:
-        pmids: Lista PMIDs do analizy
-        output_csv: Ścieżka do pliku wyjściowego CSV
-        output_json: Opcjonalna ścieżka do pliku wyjściowego JSON
-        email: Adres email dla API PubTator (używany w metadanych)
+        pmids: List of PMIDs to analyze
+        output_csv: Path to output CSV file
+        output_json: Optional path to output JSON file
+        email: Email address for PubTator API (uses config if None)
         
     Returns:
-        DataFrame z danymi relacji lub None, jeśli wystąpił błąd
+        DataFrame with relationship data or None if an error occurred
     """
-    logger.info(f"Rozpoczęcie analizy dla {len(pmids)} publikacji przy użyciu współwystępowania")
+    # Load config
+    config = Config()
     
-    # Inicjalizacja klientów
-    pubtator_client = PubTatorClient()
+    # Use email from config if not provided
+    if email is None:
+        email = config.get_contact_email()
+    
+    # Ensure email is not None
+    assert email is not None, "Email must be specified either directly or in config"
+    
+    logger.info(f"Starting analysis for {len(pmids)} publications")
+    
+    # Initialize clients
+    pubtator_client = PubTatorClient(email=email)
     analyzer = CooccurrenceContextAnalyzer(pubtator_client=pubtator_client)
     
-    # Dodanie informacji o emailu do logu
-    logger.info(f"Używany adres email kontaktowy: {email}")
+    # Add email information to log
+    logger.info(f"Using contact email: {email}")
     
     try:
-        # Analiza publikacji
-        logger.info("Rozpoczęcie analizy publikacji...")
+        # Analyze publications
+        logger.info("Starting publication analysis...")
         relationships = analyzer.analyze_publications(pmids)
-        logger.info(f"Znaleziono {len(relationships)} relacji w publikacjach")
+        logger.info(f"Found {len(relationships)} relationships in publications")
         
-        # Zapis do plików
+        # Save to files
         analyzer.save_relationships_to_csv(relationships, output_csv)
-        logger.info(f"Zapisano dane do pliku CSV: {output_csv}")
+        logger.info(f"Saved data to CSV file: {output_csv}")
         
         if output_json:
             analyzer.save_relationships_to_json(relationships, output_json)
-            logger.info(f"Zapisano dane do pliku JSON: {output_json}")
+            logger.info(f"Saved data to JSON file: {output_json}")
         
-        # Konwersja do DataFrame
+        # Convert to DataFrame
         df = pd.read_csv(output_csv)
         return df
         
     except Exception as e:
-        logger.error(f"Wystąpił błąd podczas analizy: {str(e)}")
+        logger.error(f"An error occurred during analysis: {str(e)}")
         return None
 
 
 def main():
-    """Funkcja główna skryptu."""
-    parser = argparse.ArgumentParser(description="Analiza publikacji biomedycznych na podstawie współwystępowania")
+    """Main script function."""
+    # Load configuration
+    config = Config()
+    default_email = config.get_contact_email()
+    
+    parser = argparse.ArgumentParser(description="Analysis of biomedical entity co-occurrence in publications")
     
     parser.add_argument("-p", "--pmids", nargs="+", required=True,
-                        help="Lista PMIDs do analizy")
+                        help="List of PMIDs to analyze")
     parser.add_argument("-o", "--output", required=True, 
-                        help="Ścieżka do pliku wyjściowego CSV")
+                        help="Path to output CSV file")
     parser.add_argument("-j", "--json", 
-                        help="Opcjonalna ścieżka do pliku wyjściowego JSON")
-    parser.add_argument("-e", "--email", default="przyklad@example.com",
-                        help="Adres email dla API PubTator")
+                        help="Optional path to output JSON file")
+    parser.add_argument("-e", "--email", default=default_email,
+                        help=f"Email address for PubTator API (default: {default_email})")
     
     args = parser.parse_args()
     
-    # Analiza publikacji
+    # Analyze publications
     df = analyze_publications(
         pmids=args.pmids,
         output_csv=args.output,
@@ -98,9 +115,9 @@ def main():
     )
     
     if df is not None:
-        logger.info(f"Analiza zakończona pomyślnie. Znaleziono {len(df)} wpisów relacji.")
+        logger.info(f"Analysis completed successfully. Found {len(df)} relationship entries.")
     else:
-        logger.error("Analiza zakończona niepowodzeniem.")
+        logger.error("Analysis failed.")
         sys.exit(1)
 
 

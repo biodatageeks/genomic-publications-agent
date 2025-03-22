@@ -5,3 +5,12 @@ paths:
   coordinates_regexes: "data/coordinates-extraction/coordinates_regexes.json"
   so_obo: 'data/sequence-ontology/so-edit.obo'
   lancedb_path: 'index/lancedb'
+
+# API keys and credentials
+api:
+  together_api_key: "tgp_v1_NiaNUCO_6CtdqHO4OR--3BT2F63pimAzY5qx4LgURlA"
+  openai_api_key: ""  # Add your OpenAI API key here
+
+# Contact information for API services
+contact:
+  email: "sitekwb@gmail.com"  # Email for PubTator API

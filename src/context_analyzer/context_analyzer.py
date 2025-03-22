@@ -1,81 +1,87 @@
 """
-Abstrakcyjna klasa dla analizatorów kontekstu biomedycznego.
+Abstract class for biomedical context analyzers.
 
-Ten moduł definiuje wspólny interfejs dla wszystkich analizatorów kontekstu
-używanych do analizy relacji między bytami biomedycznymi w literaturze naukowej.
+This module defines a common interface for all context analyzers
+used to analyze relationships between biomedical entities in scientific literature.
 """
 
 from abc import ABC, abstractmethod
 from typing import List, Dict, Any, Optional
 
 from src.pubtator_client.pubtator_client import PubTatorClient
+from src.Config import Config
 
 
 class ContextAnalyzer(ABC):
     """
-    Abstrakcyjny interfejs dla analizatorów kontekstu biomedycznego.
+    Abstract interface for biomedical context analyzers.
     
-    Ta klasa definiuje wspólny interfejs dla wszystkich analizatorów,
-    które wydobywają relacje między bytami biomedycznymi z publikacji naukowych.
+    This class defines a common interface for all analyzers
+    that extract relationships between biomedical entities from scientific publications.
     
-    Implementacje tego interfejsu powinny dostarczać konkretne metody analizy
-    do wykrywania relacji między różnymi typami bytów (geny, warianty, choroby, itd.)
-    w kontekście publikacji i pasaży biomedycznych.
+    Implementations of this interface should provide specific analysis methods
+    for detecting relationships between different types of entities (genes, variants, diseases, etc.)
+    in the context of publications and biomedical passages.
     """
     
     def __init__(self, pubtator_client: Optional[PubTatorClient] = None):
         """
-        Inicjalizuje analizator kontekstu.
+        Initializes the context analyzer.
         
         Args:
-            pubtator_client: Opcjonalny klient PubTator do pobierania danych
+            pubtator_client: Optional PubTator client for data retrieval
         """
-        self.pubtator_client = pubtator_client if pubtator_client else PubTatorClient()
+        if pubtator_client is None:
+            config = Config()
+            email = config.get_contact_email()
+            self.pubtator_client = PubTatorClient(email=email)
+        else:
+            self.pubtator_client = pubtator_client
     
     @abstractmethod
     def analyze_publications(self, pmids: List[str]) -> List[Dict[str, Any]]:
         """
-        Analizuje listę publikacji, aby wydobyć relacje kontekstowe.
+        Analyzes a list of publications to extract contextual relationships.
         
         Args:
-            pmids: Lista identyfikatorów PubMed do analizy
+            pmids: List of PubMed identifiers to analyze
             
         Returns:
-            Lista słowników zawierających dane relacji
+            List of dictionaries containing relationship data
         """
         pass
     
     @abstractmethod
     def analyze_publication(self, pmid: str) -> List[Dict[str, Any]]:
         """
-        Analizuje pojedynczą publikację, aby wydobyć relacje kontekstowe.
+        Analyzes a single publication to extract contextual relationships.
         
         Args:
-            pmid: Identyfikator PubMed do analizy
+            pmid: PubMed identifier to analyze
             
         Returns:
-            Lista słowników zawierających dane relacji
+            List of dictionaries containing relationship data
         """
         pass
     
     @abstractmethod
     def save_relationships_to_csv(self, relationships: List[Dict[str, Any]], output_file: str) -> None:
         """
-        Zapisuje dane relacji do pliku CSV.
+        Saves relationship data to a CSV file.
         
         Args:
-            relationships: Lista słowników zawierających dane relacji
-            output_file: Ścieżka do pliku wyjściowego CSV
+            relationships: List of dictionaries containing relationship data
+            output_file: Path to the output CSV file
         """
         pass
     
     @abstractmethod
     def save_relationships_to_json(self, relationships: List[Dict[str, Any]], output_file: str) -> None:
         """
-        Zapisuje dane relacji do pliku JSON.
+        Saves relationship data to a JSON file.
         
         Args:
-            relationships: Lista słowników zawierających dane relacji
-            output_file: Ścieżka do pliku wyjściowego JSON
+            relationships: List of dictionaries containing relationship data
+            output_file: Path to the output JSON file
         """
         pass 
