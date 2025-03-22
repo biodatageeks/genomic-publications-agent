@@ -264,6 +264,7 @@ class PubTatorClient:
             raise FormatNotSupportedException(
                 f"Format {format_type} is not fully supported at this time")
 
+    # todo this method is totally too long. please refactor it and split it into smaller methods that will be easier to test. then write tests for them in appropriate test file.
     def get_publications_by_pmids(self, pmids: List[str],
                                   concepts: Optional[List[str]] = None,
                                   format_type: str = "biocjson") -> List[Any]:
@@ -288,6 +289,13 @@ class PubTatorClient:
                 f"Format {format_type} may not be supported by the API. Using 'biocjson'.")
             format_type = "biocjson"
 
+        # todo add test about that 5 lines
+        if not all(pmid.isdigit() for pmid in pmids):
+            raise ValueError("Wszystkie PMIDs muszą być liczbami naturalnymi.")
+        
+        if len(pmids) == 0:
+            raise ValueError("Lista PMIDs nie może być pusta.")
+        
         params = {
             "pmids": ",".join(pmids)
         }
@@ -301,10 +309,12 @@ class PubTatorClient:
             self.logger.debug(f"Cache hit dla get_publications_by_pmids: {cache_key}")
             return self.cache.get(cache_key)
             
+        # todo why headers is not used?
         headers = {"Accept": "application/json"}
         try:
             response = self._make_request("publications/export/biocjson", params=params)
 
+            # todo: are there tests for that?
             # Handle 404 error - resource not found
             if response.status_code == 404:
                 raise PubTatorError(f"Resource not found: {','.join(pmids)}")
