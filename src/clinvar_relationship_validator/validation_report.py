@@ -1,8 +1,8 @@
 """
-Klasa raportu walidacji dla ClinvarRelationshipValidator.
+Validation report class for ClinvarRelationshipValidator.
 
-Ten moduł zapewnia klasę ValidationReport, która przechowuje wyniki walidacji relacji
-między wariantami genetycznymi, genami i chorobami w odniesieniu do danych klinicznych.
+This module provides the ValidationReport class that stores the results of validating
+relationships between genetic variants, genes, and diseases against clinical data.
 """
 
 import csv
@@ -13,15 +13,15 @@ from typing import Dict, List, Any, Optional
 
 class ValidationReport:
     """
-    Raport walidacji dla wyników weryfikacji relacji genetycznych.
+    Validation report for genetic relationship verification results.
     
-    Przechowuje informacje o relacjach zweryfikowanych jako poprawne, niepoprawne
-    oraz tych, dla których wystąpił błąd podczas weryfikacji.
+    Stores information about relationships verified as correct, incorrect,
+    and those for which an error occurred during verification.
     """
     
     def __init__(self):
         """
-        Inicjalizacja nowego raportu walidacji.
+        Initialize a new validation report.
         """
         self.valid_relationships = []
         self.invalid_relationships = []
@@ -31,11 +31,11 @@ class ValidationReport:
     
     def add_valid_relationship(self, relationship: Dict[str, Any], reason: str) -> None:
         """
-        Dodaje relację zweryfikowaną jako poprawną.
+        Adds a relationship verified as correct.
         
         Args:
-            relationship: Słownik z danymi relacji
-            reason: Powód uznania relacji za poprawną
+            relationship: Dictionary with relationship data
+            reason: Reason for considering the relationship as correct
         """
         relationship_with_reason = relationship.copy()
         relationship_with_reason["validation_result"] = "valid"
@@ -46,11 +46,11 @@ class ValidationReport:
     
     def add_invalid_relationship(self, relationship: Dict[str, Any], reason: str) -> None:
         """
-        Dodaje relację zweryfikowaną jako niepoprawną.
+        Adds a relationship verified as incorrect.
         
         Args:
-            relationship: Słownik z danymi relacji
-            reason: Powód uznania relacji za niepoprawną
+            relationship: Dictionary with relationship data
+            reason: Reason for considering the relationship as incorrect
         """
         relationship_with_reason = relationship.copy()
         relationship_with_reason["validation_result"] = "invalid"
@@ -61,11 +61,11 @@ class ValidationReport:
     
     def add_error_relationship(self, relationship: Dict[str, Any], error_message: str) -> None:
         """
-        Dodaje relację, dla której wystąpił błąd podczas weryfikacji.
+        Adds a relationship for which an error occurred during verification.
         
         Args:
-            relationship: Słownik z danymi relacji
-            error_message: Komunikat błędu
+            relationship: Dictionary with relationship data
+            error_message: Error message
         """
         relationship_with_error = relationship.copy()
         relationship_with_error["validation_result"] = "error"
@@ -76,46 +76,46 @@ class ValidationReport:
     
     def get_all_relationships(self) -> List[Dict[str, Any]]:
         """
-        Zwraca wszystkie zweryfikowane relacje.
+        Returns all verified relationships.
         
         Returns:
-            Lista wszystkich relacji z wynikami walidacji
+            List of all relationships with validation results
         """
         return self.valid_relationships + self.invalid_relationships + self.error_relationships
     
     def get_valid_count(self) -> int:
         """
-        Zwraca liczbę poprawnych relacji.
+        Returns the number of correct relationships.
         
         Returns:
-            Liczba poprawnych relacji
+            Number of correct relationships
         """
         return len(self.valid_relationships)
     
     def get_invalid_count(self) -> int:
         """
-        Zwraca liczbę niepoprawnych relacji.
+        Returns the number of incorrect relationships.
         
         Returns:
-            Liczba niepoprawnych relacji
+            Number of incorrect relationships
         """
         return len(self.invalid_relationships)
     
     def get_error_count(self) -> int:
         """
-        Zwraca liczbę relacji z błędami.
+        Returns the number of relationships with errors.
         
         Returns:
-            Liczba relacji z błędami
+            Number of relationships with errors
         """
         return len(self.error_relationships)
     
     def get_percentage_valid(self) -> float:
         """
-        Zwraca procent poprawnych relacji.
+        Returns the percentage of correct relationships.
         
         Returns:
-            Procent poprawnych relacji (0-100)
+            Percentage of correct relationships (0-100)
         """
         if self.total_relationships == 0:
             return 0.0
@@ -124,10 +124,10 @@ class ValidationReport:
     
     def get_statistics(self) -> Dict[str, Any]:
         """
-        Zwraca statystyki walidacji.
+        Returns validation statistics.
         
         Returns:
-            Słownik ze statystykami walidacji
+            Dictionary with validation statistics
         """
         return {
             "total": self.total_relationships,
@@ -139,10 +139,10 @@ class ValidationReport:
     
     def save_to_json(self, output_file: str) -> None:
         """
-        Zapisuje raport walidacji do pliku JSON.
+        Saves the validation report to a JSON file.
         
         Args:
-            output_file: Ścieżka do pliku wyjściowego
+            output_file: Path to the output file
         """
         data = {
             "statistics": self.get_statistics(),
@@ -153,27 +153,27 @@ class ValidationReport:
             with open(output_file, 'w', encoding='utf-8') as f:
                 json.dump(data, f, indent=2, ensure_ascii=False)
                 
-            self.logger.info(f"Zapisano raport walidacji do pliku JSON: {output_file}")
+            self.logger.info(f"Saved validation report to JSON file: {output_file}")
             
         except Exception as e:
-            self.logger.error(f"Błąd podczas zapisywania do pliku JSON: {str(e)}")
+            self.logger.error(f"Error while saving to JSON file: {str(e)}")
             raise
     
     def save_to_csv(self, output_file: str) -> None:
         """
-        Zapisuje raport walidacji do pliku CSV.
+        Saves the validation report to a CSV file.
         
         Args:
-            output_file: Ścieżka do pliku wyjściowego
+            output_file: Path to the output file
         """
         relationships = self.get_all_relationships()
         
         if not relationships:
-            self.logger.warning("Brak relacji do zapisania")
+            self.logger.warning("No relationships to save")
             return
         
         try:
-            # Określenie kolumn na podstawie pierwszej relacji
+            # Determine columns based on the first relationship
             first_rel = relationships[0]
             columns = list(first_rel.keys())
             
@@ -182,8 +182,8 @@ class ValidationReport:
                 writer.writeheader()
                 writer.writerows(relationships)
                 
-            self.logger.info(f"Zapisano raport walidacji do pliku CSV: {output_file}")
+            self.logger.info(f"Saved validation report to CSV file: {output_file}")
             
         except Exception as e:
-            self.logger.error(f"Błąd podczas zapisywania do pliku CSV: {str(e)}")
+            self.logger.error(f"Error while saving to CSV file: {str(e)}")
             raise 

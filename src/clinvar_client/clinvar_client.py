@@ -1,11 +1,11 @@
 """
-Klient ClinVar do pobierania i analizowania danych o wariantach genetycznych.
+ClinVar client for fetching and analyzing genetic variant data.
 
-ClinVar jest publiczną bazą danych zawierającą informacje o związkach między
-wariantami genetycznymi a fenotypami ludzkimi, z interpretacjami klinicznymi.
+ClinVar is a public database that contains information about the relationships between
+genetic variants and human phenotypes, with clinical interpretations.
 
-Ten moduł oferuje interfejs do komunikacji z API ClinVar (NCBI E-utilities)
-i przetwarzania zwróconych danych.
+This module offers an interface to communicate with the ClinVar API (NCBI E-utilities)
+and process the returned data.
 """
 
 import json
@@ -29,29 +29,29 @@ from .exceptions import (
 )
 from src.cache.cache import MemoryCache, DiskCache
 
-# Domyślny URL bazowy dla NCBI E-utilities API
+# Default base URL for NCBI E-utilities API
 DEFAULT_BASE_URL = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/"
 
-# Domyślny URL dla ClinVar API
+# Default URL for ClinVar API
 DEFAULT_CLINVAR_URL = "https://www.ncbi.nlm.nih.gov/clinvar"
 
 
 class ClinVarClient:
     """
-    Klient do komunikacji z API ClinVar.
+    Client for communicating with the ClinVar API.
 
-    Umożliwia pobieranie informacji o wariantach genetycznych, ich interpretacji klinicznej
-    oraz powiązanych fenotypach i genach.
+    Allows to retrieve information about genetic variants, their clinical interpretation
+    and related phenotypes and genes.
 
-    Przykład użycia:
-        client = ClinVarClient(email="twoj.email@domena.pl", api_key="opcjonalny_klucz_api")
+    Example usage:
+        client = ClinVarClient(email="your.email@domain.com", api_key="optional_api_key")
         variant_info = client.get_variant_by_id("VCV000124789")
-        print(f"Znaczenie kliniczne: {variant_info['clinical_significance']}")
+        print(f"Clinical significance: {variant_info['clinical_significance']}")
         
-        # Wyszukiwanie wariantów w regionie chromosomowym
+        # Searching for variants in a chromosomal region
         variants = client.search_by_coordinates("1", 100000, 200000)
         for variant in variants:
-            print(f"Wariant: {variant['name']} - {variant['clinical_significance']}")
+            print(f"Variant: {variant['name']} - {variant['clinical_significance']}")
     """
 
     CLINICAL_SIGNIFICANCE_VALUES = [
@@ -70,86 +70,69 @@ class ClinVarClient:
         "other"
     ]
     
-    # Minimalny odstęp między zapytaniami w sekundach (3 zapytania na sekundę)
+    # Minimum interval between requests in seconds (3 requests per second)
     API_REQUEST_INTERVAL = 0.34
     
     def __init__(
             self,
-            api_key: Optional[str] = None,
-            base_url: Optional[str] = None,
             email: Optional[str] = None,
-            tool: str = "coordinates_lit_integration",
+            api_key: Optional[str] = None,
+            base_url: str = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/",
             timeout: int = 30,
-            use_cache: bool = True,
-            cache_ttl: int = 86400,  # 24 godziny
-            cache_storage_type: str = "memory",
-            allow_large_queries: bool = False,
             max_retries: int = 3,
-            retry_delay: int = 1):
+            retry_delay: int = 1,
+            use_cache: bool = True,
+            cache_storage_type: str = "memory",
+            cache_ttl: int = 3600,
+            tool: str = "clinvar_client"):
         """
-        Inicjalizacja klienta ClinVar.
+        Initialize the ClinVar client.
 
         Args:
-            api_key: Opcjonalny klucz API dla usług NCBI
-            base_url: Bazowy URL API, domyślnie DEFAULT_BASE_URL
-            email: Adres email do identyfikacji zapytań, zgodnie z wymaganiami NCBI
-            tool: Nazwa narzędzia używanego do identyfikacji zapytań
-            timeout: Limit czasu oczekiwania na odpowiedź w sekundach
-            use_cache: Czy używać cache'a do przechowywania wyników zapytań
-            cache_ttl: Czas ważności w cache w sekundach (domyślnie 24h)
-            cache_storage_type: Typ przechowywania cache'a ('memory' lub 'file')
-            allow_large_queries: Czy zezwalać na zapytania o dużej liczbie wyników
-            max_retries: Maksymalna liczba ponownych prób w przypadku błędu
-            retry_delay: Opóźnienie między próbami w sekundach
+            email: Email address for API requests
+            api_key: API key for authentication
+            base_url: Base URL for the API
+            timeout: Request timeout in seconds
+            max_retries: Maximum number of retry attempts
+            retry_delay: Delay between retries in seconds
+            use_cache: Whether to use caching
+            cache_storage_type: Type of cache storage ("memory" or "disk")
+            cache_ttl: Cache time-to-live in seconds
+            tool: Tool name for API requests
         """
-        self.api_key = api_key
-        self.base_url = base_url or DEFAULT_BASE_URL
         self.email = email
-        self.tool = tool
+        self.api_key = api_key
+        self.base_url = base_url
         self.timeout = timeout
-        self.use_cache = use_cache
-        self.cache_ttl = cache_ttl
-        self.cache_storage_type = cache_storage_type
-        self.allow_large_queries = allow_large_queries
         self.max_retries = max_retries
         self.retry_delay = retry_delay
-        
-        # Przygotowanie domyślnych parametrów do zapytań
-        self.default_params = {"tool": self.tool}
-        if self.email:
-            self.default_params["email"] = self.email
-        if self.api_key:
-            self.default_params["api_key"] = self.api_key
-
-        # Inicjalizacja loggera
+        self.use_cache = use_cache
+        self.cache_storage_type = cache_storage_type
+        self.cache_ttl = cache_ttl
+        self.tool = tool
         self.logger = logging.getLogger(__name__)
-        
-        # Inicjalizacja cache'a
-        self._cache = {}
-        self._last_request_time = 0
-        
-        # Zmienne do śledzenia ostatniego czasu zapytania
         self._request_lock = threading.Lock()
+        self._last_request_time = 0
+        self.API_REQUEST_INTERVAL = 0.11
+        self.headers = {
+            "Accept": "application/json, text/xml",
+            "Content-Type": "application/x-www-form-urlencoded"
+        }
         
-        # Częstotliwość zapytań API zależy od obecności klucza API
-        if api_key:
-            # Z kluczem API można wykonać do 10 zapytań na sekundę
-            self.API_REQUEST_INTERVAL = 0.11
-            
-        # Inicjalizacja cache'a
+        # Initialize cache
         if use_cache:
             if cache_storage_type == "disk":
                 self.cache = DiskCache(ttl=cache_ttl)
             else:
                 self.cache = MemoryCache(ttl=cache_ttl, max_size=1000)
-            self.logger.info(f"Cache włączony ({cache_storage_type}), TTL: {cache_ttl}s")
+            self.logger.info(f"Cache enabled ({cache_storage_type}), TTL: {cache_ttl}s")
         else:
             self.cache = None
-            self.logger.info("Cache wyłączony")
+            self.logger.info("Cache disabled")
     
     def _wait_for_rate_limit(self):
         """
-        Czeka, jeśli to konieczne, aby przestrzegać limitów częstotliwości zapytań API.
+        Waits if necessary to comply with API rate limits.
         """
         with self._request_lock:
             current_time = time.time()
@@ -157,41 +140,41 @@ class ClinVarClient:
             
             if time_since_last_request < self.API_REQUEST_INTERVAL:
                 wait_time = self.API_REQUEST_INTERVAL - time_since_last_request
-                self.logger.debug(f"Oczekiwanie {wait_time:.2f}s przed kolejnym zapytaniem API")
+                self.logger.debug(f"Waiting {wait_time:.2f}s before next API request")
                 time.sleep(wait_time)
                 
             self._last_request_time = time.time()
     
     def _build_request_url(self, endpoint: str, params: dict) -> str:
         """
-        Buduje URL zapytania do API.
+        Builds the API request URL.
         
         Args:
-            endpoint: Nazwa punktu końcowego API (np. 'esearch', 'efetch')
-            params: Parametry zapytania jako słownik
+            endpoint: API endpoint name (e.g., 'esearch', 'efetch')
+            params: Query parameters as a dictionary
             
         Returns:
-            Pełny URL zapytania
+            Complete request URL
         """
-        # Dodaj domyślne parametry
+        # Add default parameters
         base_params = {
             "tool": self.tool,
             "retmode": "json"
         }
         
-        # Dodaj email i klucz API, jeśli są dostępne
+        # Add email and API key if available
         if self.email:
             base_params["email"] = self.email
         if self.api_key:
             base_params["api_key"] = self.api_key
             
-        # Połącz z parametrami zapytania
+        # Combine with query parameters
         all_params = {**base_params, **params}
         
-        # Zakoduj parametry w URL
+        # Encode parameters in URL
         param_string = "&".join([f"{k}={urllib.parse.quote(str(v))}" for k, v in all_params.items()])
         
-        # Zbuduj pełny URL
+        # Build complete URL
         return f"{self.base_url}{endpoint}.fcgi?{param_string}"
     
     def _make_request(
@@ -203,32 +186,32 @@ class ClinVarClient:
             use_cache: Optional[bool] = None,
             method: Optional[str] = None) -> requests.Response:
         """
-        Wykonanie zapytania do API ClinVar/NCBI.
+        Makes a request to the ClinVar/NCBI API.
 
         Args:
-            endpoint: Endpoint API
-            method_or_params: Metoda HTTP ("GET" lub "POST") lub słownik parametrów
-            params: Parametry zapytania
-            retry_count: Bieżąca liczba ponownych prób
-            use_cache: Czy użyć cache'a dla tego zapytania (nadpisuje globalne ustawienie)
-            method: Metoda HTTP - parametr dla kompatybilności z testami
+            endpoint: API endpoint
+            method_or_params: HTTP method ("GET" or "POST") or dictionary of parameters
+            params: Query parameters
+            retry_count: Current retry count
+            use_cache: Whether to use cache for this request (overrides global setting)
+            method: HTTP method - parameter for test compatibility
 
         Returns:
-            Odpowiedź z API
+            API response
 
         Raises:
-            APIRequestError: Jeśli zapytanie nie powiedzie się
-            RateLimitError: Jeśli przekroczono limit zapytań
+            APIRequestError: If the request fails
+            RateLimitError: If the request limit is exceeded
         """
-        # Obsługa przypadku, gdy metoda jest podana jako params (kompatybilność z testami)
-        http_method = "GET"  # Domyślna metoda
+        # Handle case where method is provided as params (test compatibility)
+        http_method = "GET"  # Default method
         if isinstance(method_or_params, dict):
             params = method_or_params
             http_method = method if method else "GET" 
         else:
             http_method = method if method else method_or_params
 
-        # Połączenie parametrów domyślnych z dostarczonymi
+        # Combine default parameters with provided ones
         request_params = {
             "tool": self.tool
         }
@@ -239,189 +222,144 @@ class ClinVarClient:
         if params:
             request_params.update(params)
 
-        # Sprawdzenie cache'a
+        # Check cache
         should_use_cache = self.use_cache if use_cache is None else use_cache
         cache_key = None
 
         if should_use_cache and http_method == "GET" and hasattr(self, 'cache') and self.cache:
-            # Generowanie klucza cache'a
+            # Generate cache key
             cache_key = f"{endpoint}:{json.dumps(request_params, sort_keys=True)}"
 
             if self.cache.has(cache_key):
-                self.logger.debug(f"Cache hit dla {endpoint}")
                 cached_response = self.cache.get(cache_key)
+                # Create response object from cached data
+                response = requests.Response()
+                response.status_code = cached_response["status_code"]
+                response._content = cached_response["content"].encode("utf-8") if isinstance(cached_response["content"], str) else cached_response["content"]
+                response.headers = cached_response["headers"]
+                response.url = self._build_request_url(endpoint, request_params)
+                
+                self.logger.debug(f"Retrieved from cache: {response.url}")
+                return response
 
-                # Tworzymy odpowiednik obiektu Response
-                mock_response = requests.Response()
-                mock_response._content = cached_response.get("content", b"{}").encode('utf-8') if isinstance(cached_response.get("content"), str) else cached_response.get("content", b"{}")
-                mock_response.status_code = cached_response.get("status_code", 200)
-                mock_response.headers = cached_response.get("headers", {})
-                mock_response.url = cached_response.get("url", f"{self.base_url}/{endpoint}")
-
-                return mock_response
-
-        # Poczekaj, jeśli konieczne, aby spełnić limit zapytań
+        # Wait if necessary to comply with request limits
         self._wait_for_rate_limit()
 
+        # Build request URL
         url = self._build_request_url(endpoint, request_params)
 
-        headers = {
-            "Accept": "application/json, text/xml",
-            "Content-Type": "application/x-www-form-urlencoded"
-        }
-
         try:
-            if http_method == "GET":
-                response = requests.get(
-                    url, headers=headers, timeout=self.timeout, params=request_params)
-            elif http_method == "POST":
-                response = requests.post(
-                    url, headers=headers, timeout=self.timeout, data=request_params)
-            else:
-                raise ValueError(f"Niewspierana metoda HTTP: {http_method}")
+            # Make request
+            response = requests.request(
+                method=http_method,
+                url=url,
+                headers=self.headers,
+                timeout=self.timeout
+            )
 
-            # Sprawdzenie kodu statusu
-            if response.status_code == 429:
-                raise RateLimitError("Przekroczono limit zapytań do API")
-            elif response.status_code == 400:
-                # Obsługa błędu 400 dla testów
-                raise InvalidParameterError(f"Nieprawidłowe parametry: {response.text}")
-            elif response.status_code != 200:
-                # Dla błędów 5xx spróbuj ponownie
-                if response.status_code >= 500 and retry_count < self.max_retries:
-                    # Dodatkowe opóźnienie dla błędów serwera
-                    self.logger.warning(
-                        f"Błąd API (kod {response.status_code}), próbuję ponownie za {self.retry_delay}s ({retry_count + 1}/{self.max_retries})")
-                    time.sleep(self.retry_delay)
-                    return self._make_request(
-                        endpoint, http_method, params, retry_count + 1, use_cache)
-                
-                # Jeśli przekroczono liczbę prób lub nie był to błąd 5xx
-                raise APIRequestError(
-                    f"Error retrieving data from ClinVar: {response.status_code}",
-                    status_code=response.status_code,
-                    response_text=response.text
-                )
+            # Check response status
+            response.raise_for_status()
 
-            # Zapisz w cache'u (jeśli włączony)
-            if should_use_cache and cache_key and hasattr(self, 'cache') and self.cache:
-                # Zabezpiecz przed błędami przy zapisywaniu nagłówków do cache'a
-                headers_dict = {}
-                # Sprawdź, czy mamy do czynienia z obiektem Mock czy rzeczywistymi nagłówkami
-                if hasattr(response.headers, "__class__") and response.headers.__class__.__name__ == "Mock":
-                    # Dla mocków po prostu użyj pustego słownika
-                    headers_dict = {}
-                else:
-                    # Dla rzeczywistych nagłówków konwertuj do słownika
-                    try:
-                        headers_dict = dict(response.headers)
-                    except Exception:
-                        # W razie błędu użyj pustego słownika
-                        headers_dict = {}
-                
-                cache_data = {
+            # Cache successful response
+            if should_use_cache and http_method == "GET" and hasattr(self, 'cache') and self.cache and cache_key:
+                self.cache.set(cache_key, {
                     "content": response.text,
                     "status_code": response.status_code,
-                    "headers": headers_dict,
+                    "headers": dict(response.headers),
                     "url": response.url
-                }
-                
-                self.cache.set(cache_key, cache_data, ttl=self.cache_ttl)
+                })
 
             return response
 
-        except (requests.exceptions.RequestException, ConnectionError) as e:
-            self.logger.warning(f"Błąd zapytania: {str(e)}. Ponowna próba za {self.retry_delay}s")
-            
-            # Spróbuj ponownie dla błędów połączenia
-            if retry_count < self.max_retries:
-                time.sleep(self.retry_delay)
-                return self._make_request(
-                    endpoint, http_method, params, retry_count + 1, use_cache)
-            
-            # Jeśli przekroczono liczbę prób
-            raise APIRequestError(f"Błąd zapytania: {str(e)}")
-        except (ValueError, InvalidParameterError, RateLimitError) as e:
-            # Te wyjątki propagujemy bez opakowywania
-            raise
-        except Exception as e:
-            self.logger.error(f"Nieoczekiwany błąd: {str(e)}")
-            raise APIRequestError(f"Nieoczekiwany błąd podczas zapytania: {str(e)}")
+        except requests.exceptions.RequestException as e:
+            # Handle rate limit errors
+            if response.status_code == 429:
+                if retry_count < self.max_retries:
+                    wait_time = (retry_count + 1) * self.retry_delay
+                    self.logger.warning(f"Rate limit exceeded. Waiting {wait_time}s before retry {retry_count + 1}/{self.max_retries}")
+                    time.sleep(wait_time)
+                    return self._make_request(endpoint, method_or_params, params, retry_count + 1, use_cache, method)
+                raise RateLimitError("Maximum retry attempts reached for rate limit")
+
+            # Handle other request errors
+            error_msg = f"Request failed: {str(e)}"
+            self.logger.error(error_msg)
+            raise APIRequestError(error_msg)
+
+    def _validate_response(self, response: requests.Response) -> None:
+        """
+        Validates the API response.
+
+        Args:
+            response: API response object
+
+        Raises:
+            APIRequestError: If the response is invalid
+        """
+        try:
+            response.raise_for_status()
+        except requests.exceptions.HTTPError as e:
+            error_msg = f"Invalid response: {str(e)}"
+            self.logger.error(error_msg)
+            raise APIRequestError(error_msg)
+
+    def _parse_response(self, response: requests.Response) -> Dict:
+        """
+        Parses the API response.
+
+        Args:
+            response: API response object
+
+        Returns:
+            Parsed response data
+
+        Raises:
+            APIRequestError: If parsing fails
+        """
+        try:
+            return response.json()
+        except ValueError as e:
+            error_msg = f"Failed to parse response: {str(e)}"
+            self.logger.error(error_msg)
+            raise APIRequestError(error_msg)
 
     def _parse_xml_response(self, response_text: str) -> Dict[str, Any]:
         """
-        Parsuje odpowiedź XML z API ClinVar/NCBI.
+        Parses XML response from the API.
 
         Args:
-            response_text: Tekst odpowiedzi XML
+            response_text: Raw XML response text
 
         Returns:
-            Sparsowane dane w formacie słownikowym
+            Parsed XML data as a dictionary
 
         Raises:
-            ParseError: Jeśli wystąpi błąd podczas parsowania
+            APIRequestError: If parsing fails
         """
         try:
             root = ET.fromstring(response_text)
-            tag = root.tag
-            if "}" in tag:
-                tag = tag.split("}")[1]
-            result = self._xml_to_dict(root)
-            if isinstance(result, str):
-                result = {"value": result}
-            return {tag: result}
+            return self._xml_to_dict(root)
         except ET.ParseError as e:
-            self.logger.error(f"Błąd parsowania XML: {str(e)}")
-            raise ParseError(f"Błąd parsowania odpowiedzi XML: {str(e)}")
+            error_msg = f"Failed to parse XML response: {str(e)}"
+            self.logger.error(error_msg)
+            raise APIRequestError(error_msg)
 
-    def _xml_to_dict(self, element: ET.Element) -> Union[Dict[str, Any], str]:
+    def _xml_to_dict(self, element: ET.Element) -> Dict[str, Any]:
         """
-        Konwertuje element XML do słownika.
+        Converts XML element to dictionary.
 
         Args:
-            element: Element XML do konwersji
+            element: XML element to convert
 
         Returns:
-            Słownik reprezentujący dane XML lub wartość tekstowa
+            Dictionary representation of the XML element
         """
         result = {}
-        
-        # Dodaj atrybuty, jeśli istnieją
-        if element.attrib:
-            result["@attributes"] = dict(element.attrib)
-            
-        # Usuń przestrzeń nazw z tagu, jeśli istnieje
-        tag = element.tag
-        if "}" in tag:
-            tag = tag.split("}")[1]
-            
-        # Jeśli element ma tekst i nie ma dzieci, zwróć tekst
-        if len(element) == 0:
-            text = element.text
-            if text is not None and text.strip():
-                return text.strip()
-            return ""
-            
-        # Przetwórz elementy potomne
         for child in element:
-            child_tag = child.tag
-            if "}" in child_tag:
-                child_tag = child_tag.split("}")[1]
-                
-            child_data = self._xml_to_dict(child)
-            
-            if child_tag in result:
-                # Jeśli tag już istnieje, przekształć w listę
-                if not isinstance(result[child_tag], list):
-                    result[child_tag] = [result[child_tag]]
-                result[child_tag].append(child_data)
+            if len(child) == 0:
+                result[child.tag] = child.text
             else:
-                result[child_tag] = child_data
-                
-        # Dodaj tekst elementu, jeśli istnieje
-        if element.text and element.text.strip():
-            result["#text"] = element.text.strip()
-            
+                result[child.tag] = self._xml_to_dict(child)
         return result
 
     def _parse_json_response(self, response_json: Dict) -> Dict[str, Any]:
@@ -1695,4 +1633,63 @@ class ClinVarClient:
                 file.write(json_str)
         except IOError as e:
             self.logger.error(f"Błąd podczas zapisywania danych do pliku {output_file}: {str(e)}")
-            raise 
+            raise
+
+    def _validate_pmids(self, pmids: List[str]) -> None:
+        """
+        Validates PMIDs.
+
+        Args:
+            pmids: List of PMIDs to validate
+
+        Raises:
+            ValueError: If PMIDs are invalid
+        """
+        if not pmids:
+            raise ValueError("PMID list cannot be empty")
+        
+        for pmid in pmids:
+            if not pmid.isdigit():
+                raise ValueError(f"Invalid PMID format: {pmid}")
+
+    def _prepare_publications_params(self, pmids: List[str], retmax: Optional[int] = None) -> Dict[str, Any]:
+        """
+        Prepares parameters for publication retrieval.
+
+        Args:
+            pmids: List of PMIDs
+            retmax: Maximum number of results to return
+
+        Returns:
+            Dictionary of parameters
+        """
+        params = {
+            "db": "pubmed",
+            "id": ",".join(pmids),
+            "retmode": "json"
+        }
+        
+        if retmax:
+            params["retmax"] = str(retmax)
+            
+        return params
+
+    def extract_annotations_by_type(self, annotations: List[Dict[str, Any]], types: Union[str, List[str]]) -> List[Dict[str, Any]]:
+        """
+        Extracts annotations of specified types.
+
+        Args:
+            annotations: List of annotations
+            types: Type or list of types to extract
+
+        Returns:
+            List of matching annotations
+        """
+        # Convert single type to list
+        if isinstance(types, str):
+            types = [types]
+            
+        # Check if types are lowercase (API parameters) and convert them
+        types = [t.lower() for t in types]
+        
+        return [ann for ann in annotations if ann.get("type", "").lower() in types] 

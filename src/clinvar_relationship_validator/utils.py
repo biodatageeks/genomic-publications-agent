@@ -1,8 +1,7 @@
 """
-Funkcje narzędziowe dla modułu ClinVar Relationship Validator.
-
-Ten moduł zawiera pomocnicze funkcje używane przez walidator relacji,
-takie jak porównywanie tekstów, normalizacja identyfikatorów i inne.
+Utility functions for the ClinVar Relationship Validator module.
+This module contains helper functions used by the relationship validator,
+such as text comparison, identifier normalization, and others.
 """
 
 import re
@@ -12,22 +11,22 @@ from difflib import SequenceMatcher
 
 def normalize_gene_symbol(symbol: str) -> str:
     """
-    Normalizuje symbol genu.
+    Normalizes a gene symbol.
     
     Args:
-        symbol: Symbol genu do normalizacji
+        symbol: Gene symbol to normalize
         
     Returns:
-        Znormalizowany symbol genu
+        Normalized gene symbol
     """
     if not symbol:
         return ""
         
-    # Usuń spacje i zamień na wielkie litery
+    # Remove spaces and convert to uppercase
     normalized = symbol.strip().upper()
     
-    # Usuń prefiksy/sufiksy typu "gen", "białko", itp.
-    prefixes = ["GEN ", "GENE ", "BIAŁKO ", "PROTEIN "]
+    # Remove prefixes/suffixes like "gen", "protein", etc.
+    prefixes = ["GEN ", "GENE ", "PROTEIN "]
     for prefix in prefixes:
         if normalized.startswith(prefix):
             normalized = normalized[len(prefix):]
@@ -37,25 +36,25 @@ def normalize_gene_symbol(symbol: str) -> str:
 
 def normalize_disease_name(name: str) -> str:
     """
-    Normalizuje nazwę choroby.
+    Normalizes a disease name.
     
     Args:
-        name: Nazwa choroby do normalizacji
+        name: Disease name to normalize
         
     Returns:
-        Znormalizowana nazwa choroby
+        Normalized disease name
     """
     if not name:
         return ""
         
-    # Zamień na małe litery i usuń zbędne spacje
+    # Convert to lowercase and remove extra spaces
     normalized = " ".join(name.lower().split())
     
-    # Usuń niepotrzebne przyrostki i przedrostki
+    # Remove unnecessary suffixes and prefixes
     normalized = re.sub(r'\bdisease\b', '', normalized)
     normalized = re.sub(r'\bsyndrome\b', '', normalized)
     
-    # Usuń podwójne spacje
+    # Remove double spaces
     normalized = re.sub(r'\s+', ' ', normalized).strip()
     
     return normalized
@@ -63,35 +62,35 @@ def normalize_disease_name(name: str) -> str:
 
 def normalize_variant_notation(variant: str) -> str:
     """
-    Normalizuje notację wariantu genetycznego.
+    Normalizes genetic variant notation.
     
     Args:
-        variant: Notacja wariantu do normalizacji
+        variant: Variant notation to normalize
         
     Returns:
-        Znormalizowana notacja wariantu
+        Normalized variant notation
     """
     if not variant:
         return ""
         
-    # Usuń zbędne spacje
+    # Remove extra spaces
     normalized = variant.strip()
     
-    # Normalizuj notację HGVS
-    normalized = re.sub(r'([cgp])\.\s+', r'\1.', normalized)  # Usuń spacje po c./g./p.
+    # Normalize HGVS notation
+    normalized = re.sub(r'([cgp])\.\s+', r'\1.', normalized)  # Remove spaces after c./g./p.
     
-    # Zamień małe/wielkie litery w zależności od standardu
-    if re.search(r'[cgp]\.\d+', normalized) or re.search(r'[cgp]\.[a-zA-Z]', normalized):  # Jeśli to notacja HGVS
-        # Standardowo dla HGVS: litery nukleotydów małe, aminokwasów wielkie
+    # Convert case based on standard
+    if re.search(r'[cgp]\.\d+', normalized) or re.search(r'[cgp]\.[a-zA-Z]', normalized):  # If it's HGVS notation
+        # Standard for HGVS: lowercase for nucleotides, uppercase for amino acids
         if 'p.' in normalized:
-            # Dla notacji białkowej (p.)
+            # For protein notation (p.)
             normalized = re.sub(r'p\.([a-z])([a-z]{2})', lambda m: f'p.{m.group(1).upper()}{m.group(2).lower()}', normalized)
-            # Dopasuj trzy-literowe kody aminokwasów, np. arg -> Arg
+            # Match three-letter amino acid codes, e.g., arg -> Arg
             normalized = re.sub(r'p\.([a-z]{3})(\d+)([a-z]{3})', 
                              lambda m: f'p.{m.group(1).capitalize()}{m.group(2)}{m.group(3).capitalize()}', 
                              normalized)
         else:
-            # Dla notacji nukleotydowej (c. lub g.)
+            # For nucleotide notation (c. or g.)
             normalized = re.sub(r'([ACGT])>([ACGT])', lambda m: f'{m.group(1).lower()}>{m.group(2).lower()}', normalized)
     
     return normalized
@@ -99,80 +98,80 @@ def normalize_variant_notation(variant: str) -> str:
 
 def calculate_text_similarity(text1: str, text2: str) -> float:
     """
-    Oblicza podobieństwo między dwoma tekstami.
+    Calculates similarity between two texts.
     
     Args:
-        text1: Pierwszy tekst
-        text2: Drugi tekst
+        text1: First text
+        text2: Second text
         
     Returns:
-        Współczynnik podobieństwa (0.0-1.0)
+        Similarity coefficient (0.0-1.0)
     """
     if not text1 or not text2:
         return 0.0
         
-    # Użyj algorytmu SequenceMatcher do obliczenia podobieństwa
+    # Use SequenceMatcher algorithm to calculate similarity
     return SequenceMatcher(None, text1.lower(), text2.lower()).ratio()
 
 
 def is_text_similar(text1: str, text2: str, threshold: float = 0.7) -> bool:
     """
-    Sprawdza, czy dwa teksty są podobne.
+    Checks if two texts are similar.
     
     Args:
-        text1: Pierwszy tekst
-        text2: Drugi tekst
-        threshold: Próg podobieństwa (0.0-1.0)
+        text1: First text
+        text2: Second text
+        threshold: Similarity threshold (0.0-1.0)
         
     Returns:
-        Prawda, jeśli teksty są podobne
+        True if texts are similar
     """
-    # Obsługa wartości None
+    # Handle None values
     if text1 is None or text2 is None:
         return False
         
-    # Obsługa pustych ciągów
+    # Handle empty strings
     if not text1 or not text2:
         return False
         
-    # Obsługa konkretnych przypadków testowych
+    # Handle specific test cases
     if (text1 == "Breast Cancer" and text2 == "Cancer of the Breast"):
         return True
     
     if (text1 == "TP53" and text2 == "TP63"):
         return False
         
-    # Sprawdź dokładne dopasowanie
+    # Check exact match
     text1_lower = text1.lower()
     text2_lower = text2.lower()
     
     if text1_lower == text2_lower:
         return True
         
-    # Sprawdź zawieranie się jednego tekstu w drugim
+    # Check if one text contains the other
     if text1_lower in text2_lower or text2_lower in text1_lower:
         return True
     
-    # Oblicz podobieństwo
+    # Calculate similarity
     similarity = calculate_text_similarity(text1, text2)
     
-    # Dla literówek i podobnych tekstów
+    # For typos and similar texts
     if similarity >= threshold:
         return True
     
-    # Dla pozostałych przypadków
+    # For other cases
     return False
 
 
 def extract_variant_type(variant_notation: str) -> str:
     """
-    Wykrywa typ wariantu na podstawie jego notacji.
+    Detects variant type based on its notation.
     
     Args:
-        variant_notation: Notacja wariantu
+        variant_notation: Variant notation
         
     Returns:
-        Typ wariantu (SNV, Insertion, Deletion, Duplication, etc.)
+        Variant type (SNV, Insertion, Deletion, Duplication, etc.)
     """
     if not variant_notation:
         return "Unknown"
@@ -192,8 +191,8 @@ def extract_variant_type(variant_notation: str) -> str:
     elif "inv" in lower_notation:
         return "Inversion"
     elif re.search(r'p\.([A-Za-z]{3})\d+([A-Za-z]{3})', lower_notation):
-        return "Substitution"  # Substytucja aminokwasowa
+        return "Substitution"  # Amino acid substitution
     elif re.search(r'rs\d+', lower_notation):
-        return "SNP"  # Identyfikator rs sugeruje SNP
+        return "SNP"  # rs identifier suggests SNP
     
     return "Unknown" 

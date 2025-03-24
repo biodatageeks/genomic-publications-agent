@@ -1,25 +1,25 @@
 """
-Wyjątki specyficzne dla klienta ClinVar.
+Exceptions specific to the ClinVar client.
 """
 
 
 class ClinVarError(Exception):
-    """Podstawowa klasa wyjątku dla wszystkich błędów związanych z ClinVar API."""
+    """Base exception class for all errors related to ClinVar API."""
     pass
 
 
 class APIRequestError(ClinVarError):
-    """Wyjątek rzucany, gdy zapytanie API nie powiedzie się."""
+    """Exception thrown when an API request fails."""
     
     def __init__(self, message, status_code=None, response_text=None, **kwargs):
         """
-        Inicjalizacja wyjątku APIRequestError.
+        Initialization of APIRequestError exception.
         
         Args:
-            message: Komunikat błędu
-            status_code: Kod statusu odpowiedzi HTTP
-            response_text: Treść odpowiedzi HTTP
-            **kwargs: Dodatkowe parametry
+            message: Error message
+            status_code: HTTP response status code
+            response_text: HTTP response text
+            **kwargs: Additional parameters
         """
         super().__init__(message)
         self.status_code = status_code
@@ -30,20 +30,20 @@ class APIRequestError(ClinVarError):
 
 
 class InvalidFormatError(ClinVarError):
-    """Wyjątek rzucany, gdy żądany format odpowiedzi nie jest obsługiwany."""
+    """Exception thrown when the requested response format is not supported."""
     pass
 
 
 class ParseError(ClinVarError):
-    """Wyjątek rzucany przy błędach parsowania odpowiedzi."""
+    """Exception thrown during response parsing errors."""
     pass
 
 
 class InvalidParameterError(ClinVarError):
-    """Wyjątek rzucany, gdy podane parametry są nieprawidłowe."""
+    """Exception thrown when the provided parameters are invalid."""
     pass
 
 
 class RateLimitError(ClinVarError):
-    """Wyjątek rzucany przy przekroczeniu limitu zapytań do API."""
+    """Exception thrown when the API request limit is exceeded."""
     pass 

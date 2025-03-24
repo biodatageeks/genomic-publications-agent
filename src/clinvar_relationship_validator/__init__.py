@@ -1,8 +1,8 @@
 """
-ClinVar Relationship Validator - moduł do weryfikacji relacji genów, wariantów i chorób.
+ClinVar Relationship Validator - module for verifying relationships between genes, variants, and diseases.
 
-Ten moduł umożliwia weryfikację relacji wykrytych przez analizator współwystępowania
-(CooccurrenceContextAnalyzer) przy użyciu danych klinicznych z bazy ClinVar.
+This module allows verification of relationships detected by the CooccurrenceContextAnalyzer
+using clinical data from the ClinVar database.
 """
 
 from .clinvar_relationship_validator import ClinvarRelationshipValidator

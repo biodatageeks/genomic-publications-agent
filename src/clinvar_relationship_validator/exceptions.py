@@ -1,16 +1,16 @@
 """
-Wyjątki dla modułu ClinVar Relationship Validator.
+Exceptions for the ClinVar Relationship Validator module.
 
-Ten moduł definiuje niestandardowe wyjątki używane w module
-clinvar_relationship_validator do obsługi różnych sytuacji błędów.
+This module defines custom exceptions used in the clinvar_relationship_validator
+module to handle various error situations.
 """
 
 
 class ValidationError(Exception):
     """
-    Podstawowy wyjątek dla błędów walidacji relacji.
+    Base exception for relationship validation errors.
     
-    Zgłaszany, gdy wystąpi błąd podczas procesu walidacji relacji
-    genetycznych przy użyciu API ClinVar.
+    Raised when an error occurs during the process of validating genetic
+    relationships using the ClinVar API.
     """
     pass 

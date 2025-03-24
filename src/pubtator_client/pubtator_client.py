@@ -43,7 +43,7 @@ class PubTatorClient:
                     print(f"  Annotation: {annotation.text} [{annotation.infons.get('type')}]")
     """
 
-    # Ograniczenie API wynosi 20 żądań na sekundę zgodnie z NCBI
+    # API rate limit is 20 requests per second according to NCBI
     API_REQUEST_INTERVAL = 0.05  # 50 ms = 20 req/s
 
     # Mapping between API parameters (lowercase) and data types (uppercase)
@@ -71,21 +71,21 @@ class PubTatorClient:
             base_url: Optional[str] = None,
             timeout: int = 30,
             use_cache: bool = True,
-            cache_ttl: int = 86400,  # 24 godziny
+            cache_ttl: int = 86400,  # 24 hours
             cache_storage_type: str = "disk",
             email: Optional[str] = None,
             tool: str = "coordinates-lit"):
         """
-        Inicjalizacja klienta PubTator.
+        Initialize the PubTator client.
         
         Args:
-            base_url: Niestandardowy URL bazowy dla API (opcjonalnie)
-            timeout: Limit czasu oczekiwania na odpowiedź API w sekundach
-            use_cache: Czy używać cache'owania dla zapytań API
-            cache_ttl: Czas życia wpisów w cache'u w sekundach (domyślnie 24 godziny)
-            cache_storage_type: Typ przechowywania cache'a: "memory" lub "disk"
-            email: Adres e-mail użytkownika (opcjonalnie, ale zalecane przez NCBI)
-            tool: Nazwa narzędzia używającego API
+            base_url: Custom base URL for the API (optional)
+            timeout: API response timeout in seconds
+            use_cache: Whether to use caching for API requests
+            cache_ttl: Cache entry lifetime in seconds (default 24 hours)
+            cache_storage_type: Cache storage type: "memory" or "disk"
+            email: User's email address (optional, but recommended by NCBI)
+            tool: Name of the tool using the API
         """
         self.base_url = base_url if base_url else DEFAULT_BASE_URL
         self.timeout = timeout
@@ -93,38 +93,38 @@ class PubTatorClient:
         self.tool = tool
         self.logger = logging.getLogger(__name__)
 
-        # Zmienne do śledzenia ostatniego czasu zapytania
+        # Variables for tracking last request time
         self._last_request_time = 0
         self._request_lock = threading.Lock()
 
-        # Inicjalizacja cache'a
+        # Initialize cache
         self.use_cache = use_cache
         if use_cache:
             if cache_storage_type == "disk":
                 self.cache = DiskCache(ttl=cache_ttl)
             else:
                 self.cache = MemoryCache(ttl=cache_ttl, max_size=1000)
-            self.logger.info(f"Cache włączony ({cache_storage_type}), TTL: {cache_ttl}s")
+            self.logger.info(f"Cache enabled ({cache_storage_type}), TTL: {cache_ttl}s")
         else:
             self.cache = None
-            self.logger.info("Cache wyłączony")
+            self.logger.info("Cache disabled")
             
     def _wait_for_rate_limit(self):
         """
-        Czeka, jeśli to konieczne, aby spełnić wymagania częstotliwości zapytań API.
-        Zapewnia, że między zapytaniami jest co najmniej self.API_REQUEST_INTERVAL sekundy.
+        Waits if necessary to meet API rate limit requirements.
+        Ensures at least self.API_REQUEST_INTERVAL seconds between requests.
         """
         with self._request_lock:
             current_time = time.time()
             time_since_last_request = current_time - self._last_request_time
             
-            # Jeśli minęło mniej czasu od ostatniego zapytania niż wymagany interwał
+            # If less time has passed since last request than required interval
             if time_since_last_request < self.API_REQUEST_INTERVAL:
                 sleep_time = self.API_REQUEST_INTERVAL - time_since_last_request
-                self.logger.debug(f"Czekam {sleep_time:.2f}s aby spełnić limit API (max 20 req/s)")
+                self.logger.debug(f"Waiting {sleep_time:.2f}s to meet API limit (max 20 req/s)")
                 time.sleep(sleep_time)
             
-            # Aktualizacja czasu ostatniego zapytania
+            # Update last request time
             self._last_request_time = time.time()
 
     def _make_request(
@@ -134,76 +134,76 @@ class PubTatorClient:
             params: Optional[Dict] = None,
             use_cache: Optional[bool] = None) -> requests.Response:
         """
-        Wykonuje zapytanie do API PubTator.
+        Makes a request to the PubTator API.
         
         Args:
-            endpoint: Punkt końcowy API
-            method: Metoda HTTP (GET lub POST)
-            params: Parametry zapytania
-            use_cache: Czy używać cache'a (jeśli None, używa ustawienia z konstruktora)
+            endpoint: API endpoint
+            method: HTTP method (GET or POST)
+            params: Request parameters
+            use_cache: Whether to use cache (if None, uses constructor setting)
             
         Returns:
-            Obiekt odpowiedzi HTTP
+            HTTP response object
             
         Raises:
-            PubTatorError: Gdy wystąpi błąd podczas zapytania
+            PubTatorError: When an error occurs during the request
         """
-        # Czekaj na rate limit
+        # Wait for rate limit
         self._wait_for_rate_limit()
         
-        # Określenie, czy używać cache'a
+        # Determine whether to use cache
         should_use_cache = self.use_cache if use_cache is None else use_cache
         
-        # Przygotowanie URL
+        # Prepare URL
         url = f"{self.base_url}/{endpoint}"
         
-        # Przygotowanie parametrów
+        # Prepare parameters
         request_params = {}
         if params:
             request_params.update(params)
             
-        # Dodanie parametrów dla NCBI, jeśli podano email
+        # Add NCBI parameters if email is provided
         if self.email:
             request_params["email"] = self.email
             request_params["tool"] = self.tool
         
         try:
-            # Sprawdzenie cache'a
+            # Check cache
             if should_use_cache and method == "GET" and self.cache:
                 cache_key = f"{method}:{url}:{json.dumps(request_params, sort_keys=True)}"
                 
                 if self.cache.has(cache_key):
                     cached_response = self.cache.get(cache_key)
-                    # Tworzenie obiektu odpowiedzi z danych w cache'u
+                    # Create response object from cached data
                     response = requests.Response()
                     response.status_code = cached_response["status_code"]
                     response._content = cached_response["content"].encode("utf-8") if isinstance(cached_response["content"], str) else cached_response["content"]
                     response.headers = cached_response["headers"]
                     response.url = url
                     
-                    self.logger.debug(f"Pobrano z cache'a: {url}")
+                    self.logger.debug(f"Retrieved from cache: {url}")
                     return response
             
-            # Wykonanie zapytania do API
+            # Make API request
             if method == "GET":
                 response = requests.get(url, params=request_params, timeout=self.timeout)
             elif method == "POST":
                 response = requests.post(url, json=request_params, timeout=self.timeout)
             else:
-                raise PubTatorError(f"Nieobsługiwana metoda HTTP: {method}")
+                raise PubTatorError(f"Unsupported HTTP method: {method}")
                 
-            # Obsługa mocków w testach - sprawdzenie czy odpowiedź ma właściwości obiektu Mock
+            # Handle mocks in tests - check if response has Mock object properties
             is_mock = hasattr(response, '__class__') and 'Mock' in response.__class__.__name__
             
-            # Sprawdzenie kodu odpowiedzi
+            # Check response code
             if not is_mock and response.status_code != 200:
-                raise PubTatorError(f"Błąd API PubTator: {response.status_code} - {response.text}")
+                raise PubTatorError(f"PubTator API error: {response.status_code} - {response.text}")
                 
-            # Zapisanie odpowiedzi do cache'a
+            # Save response to cache
             if should_use_cache and method == "GET" and self.cache and not is_mock:
                 cache_key = f"{method}:{url}:{json.dumps(request_params, sort_keys=True)}"
                 
-                # Przygotowanie danych do cache'a
+                # Prepare cache data
                 cache_data = {
                     "status_code": response.status_code,
                     "content": response.text,
@@ -211,11 +211,11 @@ class PubTatorClient:
                 }
                 
                 self.cache.set(cache_key, cache_data)
-                self.logger.debug(f"Zapisano do cache'a: {url}")
+                self.logger.debug(f"Saved to cache: {url}")
                 
             return response
         except requests.RequestException as e:
-            raise PubTatorError(f"Błąd podczas wykonywania zapytania: {str(e)}")
+            raise PubTatorError(f"Error making request: {str(e)}")
 
     def _process_response(
             self,
@@ -333,10 +333,10 @@ class PubTatorClient:
             ValueError: If the PMIDs list is empty or contains non-digit IDs
         """
         if not all(pmid.isdigit() for pmid in pmids):
-            raise ValueError("Wszystkie PMIDs muszą być liczbami naturalnymi.")
+            raise ValueError("All PMIDs must be natural numbers.")
         
         if len(pmids) == 0:
-            raise ValueError("Lista PMIDs nie może być pusta.")
+            raise ValueError("PMID list cannot be empty.")
     
     def _prepare_publications_params(self, pmids: List[str], concepts: Optional[List[str]] = None) -> Dict[str, str]:
         """
@@ -574,14 +574,13 @@ class PubTatorClient:
         Returns:
             List of dictionaries containing information about annotations
         """
-        # Konwertuj pojedynczy typ do listy
+        # Convert single type to list
         if isinstance(annotation_type, str):
             types_to_check = {annotation_type}
         else:
             types_to_check = set(annotation_type)
 
-        # Sprawdź, czy typy są małymi literami (parametry API) i przekonwertuj
-        # je
+        # Check if types are lowercase (API parameters) and convert them
         normalized_types = set()
         for atype in types_to_check:
             if atype in self.CONCEPT_TYPE_MAPPING:

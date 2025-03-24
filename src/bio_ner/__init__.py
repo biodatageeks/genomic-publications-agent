@@ -1,4 +1,4 @@
 """
-Moduł bio_ner służy do rozpoznawania jednostek nazwanych (NER) w tekstach biomedycznych,
-ze szczególnym uwzględnieniem wariantów genomowych.
+The bio_ner module is used for named entity recognition (NER) in biomedical texts,
+with a particular focus on genomic variants.
 """ 

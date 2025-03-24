@@ -1,8 +1,8 @@
 """
-Reeksport klas cache z głównego modułu cache.
+Reexport cache classes from the main cache module.
 
-Ten moduł istnieje dla zachowania kompatybilności z testami, które oczekują,
-że klasy cache będą dostępne w src.clinvar_client.cache.
+This module exists to maintain compatibility with tests that expect
+cache classes to be available in src.clinvar_client.cache.
 """
 
 from src.cache.cache import APICache, DiskCache, MemoryCache

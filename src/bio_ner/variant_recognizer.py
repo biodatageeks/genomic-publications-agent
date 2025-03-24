@@ -1,6 +1,6 @@
 """
-Klasa VariantRecognizer służy do rozpoznawania wariantów genomowych w tekstach biomedycznych
-przy użyciu modelu NER.
+The VariantRecognizer class is used for recognizing genomic variants in biomedical texts
+using the NER model.
 """
 
 import torch
@@ -12,18 +12,18 @@ from transformers import AutoTokenizer, AutoModelForTokenClassification
 
 class VariantRecognizer:
     """
-    Klasa implementująca rozpoznawanie wariantów genomowych w tekstach biomedycznych
-    przy użyciu modelu NER (Named Entity Recognition).
+    Class implementing the recognition of genomic variants in biomedical texts
+    using the NER (Named Entity Recognition) model.
     
-    Wykorzystuje modele HuggingFace do tokenizacji i klasyfikacji tokenów.
+    Utilizes HuggingFace models for tokenization and token classification.
     """
     
     def __init__(self, model_name: str = "drAbreu/bioBERT-NER-HGVS"):
         """
-        Inicjalizacja rozpoznawacza wariantów.
+        Initializes the variant recognizer.
         
         Args:
-            model_name: Nazwa modelu HuggingFace do rozpoznawania wariantów
+            model_name: Name of the HuggingFace model for variant recognition
         """
         self.model_name = model_name
         self.tokenizer = AutoTokenizer.from_pretrained(model_name)
@@ -34,25 +34,25 @@ class VariantRecognizer:
     
     def tokenize_text(self, text: str) -> Dict[str, torch.Tensor]:
         """
-        Tokenizuje tekst przy użyciu tokenizera.
+        Tokenizes the text using the tokenizer.
         
         Args:
-            text: Tekst do tokenizacji
+            text: Text to be tokenized
             
         Returns:
-            Słownik z tokenami i maskami uwagi
+            Dictionary with tokens and attention masks
         """
         return self.tokenizer(text, return_tensors="pt").to(self.device)
     
     def predict(self, text: str) -> List[str]:
         """
-        Wykonuje predykcję wariantów w tekście.
+        Makes predictions of variants in the text.
         
         Args:
-            text: Tekst do analizy
+            text: Text to analyze
             
         Returns:
-            Lista rozpoznanych wariantów
+            List of recognized variants
         """
         tokenized_text = self.tokenize_text(text)
         
@@ -63,11 +63,11 @@ class VariantRecognizer:
         token_predictions = [self.id2label[prediction.item()] for prediction in predictions[0]]
         tokens = self.tokenizer.convert_ids_to_tokens(tokenized_text["input_ids"][0])
         
-        # Wyodrębnij tylko tokeny z etykietami wariantów
+        # Extract only tokens with variant labels
         variant_tokens = []
         for token, prediction in zip(tokens, token_predictions):
             if prediction in ["B-Sequence_Variant", "I-Sequence_Variant", "variant", "sequence"]:
-                # Usuń znaki specjalne i odfiltruj puste
+                # Remove special characters and filter out empty tokens
                 cleaned_token = token.replace("#", "").replace("▁", "").strip()
                 if cleaned_token:
                     variant_tokens.append(cleaned_token)
@@ -76,13 +76,13 @@ class VariantRecognizer:
     
     def predict_batch(self, texts: List[str]) -> List[List[str]]:
         """
-        Wykonuje predykcję wariantów dla listy tekstów.
+        Makes predictions of variants for a list of texts.
         
         Args:
-            texts: Lista tekstów do analizy
+            texts: List of texts to analyze
             
         Returns:
-            Lista list rozpoznanych wariantów dla każdego tekstu
+            List of lists of recognized variants for each text
         """
         results = []
         for text in texts:
@@ -91,14 +91,14 @@ class VariantRecognizer:
     
     def find_variant_in_text(self, text: str, expected_variant: str) -> Tuple[bool, List[str]]:
         """
-        Sprawdza, czy oczekiwany wariant został znaleziony w tekście.
+        Checks if the expected variant was found in the text.
         
         Args:
-            text: Tekst do analizy
-            expected_variant: Oczekiwany wariant do znalezienia
+            text: Text to analyze
+            expected_variant: Expected variant to find
             
         Returns:
-            Krotka (znaleziono, lista_wariantów)
+            Tuple (found, list_of_variants)
         """
         predicted_variants = self.predict(text)
         found = expected_variant.lower() in [v.lower() for v in predicted_variants]
@@ -108,14 +108,14 @@ class VariantRecognizer:
     def evaluate_on_snippets(self, snippets: List[Dict[str, Any]], 
                             expected_variant_key: str = "variant") -> Dict[str, Any]:
         """
-        Ocenia skuteczność modelu na zbiorze snippetów.
+        Evaluates the model's effectiveness on a set of snippets.
         
         Args:
-            snippets: Lista słowników zawierających snippety i metadane
-            expected_variant_key: Klucz w słowniku snippetu, który zawiera oczekiwany wariant
+            snippets: List of dictionaries containing snippets and metadata
+            expected_variant_key: Key in the snippet dictionary that contains the expected variant
             
         Returns:
-            Słownik z wynikami ewaluacji
+            Dictionary with evaluation results
         """
         results = {
             "total_snippets": len(snippets),
@@ -150,24 +150,24 @@ class VariantRecognizer:
     
     def save_results(self, results: Dict[str, Any], file_path: str) -> None:
         """
-        Zapisuje wyniki ewaluacji do pliku JSON.
+        Saves evaluation results to a JSON file.
         
         Args:
-            results: Słownik z wynikami ewaluacji
-            file_path: Ścieżka do pliku wyjściowego
+            results: Dictionary with evaluation results
+            file_path: Path to the output file
         """
         with open(file_path, 'w', encoding='utf-8') as file:
             json.dump(results, file, indent=2, ensure_ascii=False)
     
     def load_snippets_from_file(self, file_path: str) -> List[Dict[str, Any]]:
         """
-        Wczytuje snippety z pliku JSON.
+        Loads snippets from a JSON file.
         
         Args:
-            file_path: Ścieżka do pliku ze snippetami
+            file_path: Path to the file with snippets
             
         Returns:
-            Lista snippetów
+            List of snippets
         """
         with open(file_path, 'r', encoding='utf-8') as file:
             return json.load(file)
@@ -175,15 +175,15 @@ class VariantRecognizer:
     def process_and_evaluate(self, snippets_file_path: str, results_file_path: str,
                            expected_variant_key: str = "variant") -> Dict[str, Any]:
         """
-        Przeprowadza pełny proces przetwarzania i ewaluacji.
+        Conducts the full processing and evaluation process.
         
         Args:
-            snippets_file_path: Ścieżka do pliku ze snippetami
-            results_file_path: Ścieżka do pliku wyjściowego z wynikami
-            expected_variant_key: Klucz w słowniku snippetu, który zawiera oczekiwany wariant
+            snippets_file_path: Path to the file with snippets
+            results_file_path: Path to the output file with results
+            expected_variant_key: Key in the snippet dictionary that contains the expected variant
             
         Returns:
-            Słownik z wynikami ewaluacji
+            Dictionary with evaluation results
         """
         snippets = self.load_snippets_from_file(snippets_file_path)
         results = self.evaluate_on_snippets(snippets, expected_variant_key)

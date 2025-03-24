@@ -1,5 +1,6 @@
 """
-Klasa LitVarEndpoint umożliwia komunikację z API LitVar2 i pobieranie informacji o wariantach genomowych.
+The LitVarEndpoint class enables communication with the LitVar2 API and retrieving
+genomic variant information.
 """
 
 import requests
@@ -11,20 +12,20 @@ from typing import List, Dict, Any, Optional
 
 class LitVarEndpoint:
     """
-    Klasa do komunikacji z API LitVar2 (https://www.ncbi.nlm.nih.gov/research/litvar2-api/).
+    Class for communication with the LitVar2 API (https://www.ncbi.nlm.nih.gov/research/litvar2-api/).
     
-    Umożliwia:
-    - Wyszukiwanie wariantów powiązanych z określonymi genami
-    - Pobieranie szczegółów dotyczących wariantów
-    - Pobieranie identyfikatorów publikacji (PMID, PMCID) powiązanych z wariantami
-    - Zapisywanie pobranych danych do plików JSON
+    Enables:
+    - Searching for variants associated with specific genes
+    - Retrieving variant details
+    - Retrieving publication identifiers (PMID, PMCID) associated with variants
+    - Saving retrieved data to JSON files
     """
     
     BASE_URL = "https://www.ncbi.nlm.nih.gov/research/litvar2-api"
     
     def __init__(self):
         """
-        Inicjalizacja klienta API LitVar.
+        Initialize the LitVar API client.
         """
         self.variants_data = []
         self.variant_details = {}
@@ -32,13 +33,13 @@ class LitVarEndpoint:
     
     def search_by_genes(self, genes: List[str]) -> List[Dict[str, Any]]:
         """
-        Wyszukuje warianty powiązane z podanymi genami.
+        Searches for variants associated with the given genes.
         
         Args:
-            genes: Lista nazw genów do wyszukania
+            genes: List of gene names to search for
             
         Returns:
-            Lista słowników zawierających informacje o wariantach
+            List of dictionaries containing variant information
         """
         responses_dicts = []
         
@@ -47,10 +48,10 @@ class LitVarEndpoint:
             response = requests.get(url)
             
             if response.status_code == 200:
-                # Konwersja odpowiedzi tekstowej na listę słowników
+                # Convert text response to list of dictionaries
                 response_list = response.text.strip().split('\n')
                 response_dicts = [ast.literal_eval(item) for item in response_list]
-                # Dodanie informacji o genie do każdego słownika
+                # Add gene information to each dictionary
                 gene_response_dicts = [{**item, "gene": gene} for item in response_dicts]
                 responses_dicts.extend(gene_response_dicts)
         
@@ -59,13 +60,13 @@ class LitVarEndpoint:
     
     def get_variants_dataframe(self, variants_data: Optional[List[Dict[str, Any]]] = None) -> pd.DataFrame:
         """
-        Konwertuje dane wariantów na DataFrame pandas.
+        Converts variant data to a pandas DataFrame.
         
         Args:
-            variants_data: Opcjonalna lista słowników z danymi o wariantach
+            variants_data: Optional list of dictionaries with variant data
             
         Returns:
-            DataFrame z danymi o wariantach
+            DataFrame with variant data
         """
         if variants_data is None:
             variants_data = self.variants_data
@@ -74,13 +75,13 @@ class LitVarEndpoint:
     
     def get_variant_details(self, variant_ids: List[str]) -> Dict[str, Any]:
         """
-        Pobiera szczegółowe informacje o wariantach na podstawie ich identyfikatorów.
+        Retrieves detailed information about variants based on their identifiers.
         
         Args:
-            variant_ids: Lista identyfikatorów wariantów (_id z wyszukiwania)
+            variant_ids: List of variant identifiers (_id from search)
             
         Returns:
-            Słownik zawierający szczegóły wariantów
+            Dictionary containing variant details
         """
         variant_details = {}
         
@@ -96,13 +97,13 @@ class LitVarEndpoint:
     
     def get_pmids_pmcids(self, rsids: List[str]) -> Dict[str, Dict[str, List[str]]]:
         """
-        Pobiera identyfikatory publikacji (PMID, PMCID) powiązane z wariantami.
+        Retrieves publication identifiers (PMID, PMCID) associated with variants.
         
         Args:
-            rsids: Lista identyfikatorów rsid wariantów
+            rsids: List of variant rsid identifiers
             
         Returns:
-            Słownik mapujący rsid na słownik z listami PMID i PMCID
+            Dictionary mapping rsid to dictionary with PMID and PMCID lists
         """
         pmids_data = {}
         
@@ -125,39 +126,39 @@ class LitVarEndpoint:
     
     def save_to_json(self, data: Any, file_path: str) -> None:
         """
-        Zapisuje dane do pliku JSON.
+        Saves data to a JSON file.
         
         Args:
-            data: Dane do zapisania
-            file_path: Ścieżka do pliku wyjściowego
+            data: Data to save
+            file_path: Path to the output file
         """
         with open(file_path, 'w', encoding='utf-8') as file:
             json.dump(data, file, indent=2, ensure_ascii=False)
     
     def save_variants_data(self, file_path: str) -> None:
         """
-        Zapisuje dane wariantów do pliku JSON.
+        Saves variant data to a JSON file.
         
         Args:
-            file_path: Ścieżka do pliku wyjściowego
+            file_path: Path to the output file
         """
         self.save_to_json(self.variants_data, file_path)
     
     def save_variant_details(self, file_path: str) -> None:
         """
-        Zapisuje szczegóły wariantów do pliku JSON.
+        Saves variant details to a JSON file.
         
         Args:
-            file_path: Ścieżka do pliku wyjściowego
+            file_path: Path to the output file
         """
         self.save_to_json(self.variant_details, file_path)
     
     def save_pmids_data(self, file_path: str) -> None:
         """
-        Zapisuje dane PMID/PMCID do pliku JSON.
+        Saves PMID/PMCID data to a JSON file.
         
         Args:
-            file_path: Ścieżka do pliku wyjściowego
+            file_path: Path to the output file
         """
         self.save_to_json(self.pmids_data, file_path)
     
@@ -166,35 +167,35 @@ class LitVarEndpoint:
                            details_output_path: Optional[str] = None,
                            pmids_output_path: Optional[str] = None) -> Dict[str, Any]:
         """
-        Przetwarza listę genów, pobierając informacje o wariantach i powiązanych publikacjach.
+        Processes a list of genes, retrieving variant information and associated publications.
         
         Args:
-            genes: Lista nazw genów
-            variants_output_path: Opcjonalna ścieżka do pliku z danymi wariantów
-            details_output_path: Opcjonalna ścieżka do pliku ze szczegółami wariantów
-            pmids_output_path: Opcjonalna ścieżka do pliku z identyfikatorami publikacji
+            genes: List of gene names
+            variants_output_path: Optional path to the file with variant data
+            details_output_path: Optional path to the file with variant details
+            pmids_output_path: Optional path to the file with publication identifiers
             
         Returns:
-            Słownik zawierający wszystkie pobrane dane
+            Dictionary containing all retrieved data
         """
-        # Wyszukaj warianty dla genów
+        # Search for variants for genes
         variants_data = self.search_by_genes(genes)
         
-        # Pobierz rsids z danych wariantów (tylko niepuste)
+        # Get rsids from variant data (only non-empty)
         rsids = [str(variant.get('rsid')) for variant in variants_data 
                 if variant.get('rsid') and pd.notna(variant.get('rsid'))]
         
-        # Pobierz identyfikatory wariantów
+        # Get variant identifiers
         variant_ids = [str(variant.get('_id')) for variant in variants_data 
                       if variant.get('_id') is not None]
         
-        # Pobierz szczegóły wariantów
+        # Get variant details
         variant_details = self.get_variant_details(variant_ids)
         
-        # Pobierz identyfikatory publikacji
+        # Get publication identifiers
         pmids_data = self.get_pmids_pmcids(rsids)
         
-        # Zapisz dane do plików, jeśli podano ścieżki
+        # Save data to files if paths are provided
         if variants_output_path:
             self.save_variants_data(variants_output_path)
             

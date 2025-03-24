@@ -1,6 +1,6 @@
 """
-Moduł implementujący ekstrakcję koordynatów genomowych z tekstów publikacji
-przy użyciu różnych metod: wyrażeń regularnych i/lub modeli LLM.
+Module implementing genomic coordinates extraction from publication texts
+using various methods: regular expressions and/or LLM models.
 """
 
 import re
@@ -14,14 +14,14 @@ from langchain.llms.base import BaseLLM
 
 class CoordinatesRegexExtractor:
     """
-    Klasa do ekstrakcji koordynatów genomowych z tekstów przy użyciu wyrażeń regularnych.
+    Class for extracting genomic coordinates from texts using regular expressions.
     """
     
     def __init__(self):
         """
-        Inicjalizacja ekstraktora opartego na wyrażeniach regularnych.
+        Initialize the regex-based extractor.
         """
-        # Regex do dopasowywania typowych formatów koordynatów genomowych
+        # Regex patterns for matching common genomic coordinate formats
         self.patterns = [
             # HGVS format
             r'[cm]\.[0-9]+[ACGT]+>[ACGT]+',
@@ -38,25 +38,25 @@ class CoordinatesRegexExtractor:
     
     def extract_coordinates(self, text: str) -> List[str]:
         """
-        Ekstrahuje koordynaty genomowe z tekstu przy użyciu wyrażeń regularnych.
+        Extracts genomic coordinates from text using regular expressions.
         
         Args:
-            text: Tekst publikacji do przeszukania
+            text: Publication text to search
             
         Returns:
-            Lista znalezionych koordynatów genomowych
+            List of found genomic coordinates
         """
         if not text:
             return []
         
         coordinates = []
         
-        # Zastosuj każdy wzorzec regex do tekstu
+        # Apply each regex pattern to the text
         for pattern in self.patterns:
             matches = re.findall(pattern, text)
             coordinates.extend(matches)
         
-        # Usuń duplikaty zachowując kolejność
+        # Remove duplicates while preserving order
         unique_coordinates = []
         seen = set()
         for coord in coordinates:
@@ -69,85 +69,85 @@ class CoordinatesRegexExtractor:
 
 class CoordinatesLlmExtractor:
     """
-    Klasa do ekstrakcji koordynatów genomowych z tekstów przy użyciu modeli LLM.
+    Class for extracting genomic coordinates from texts using LLM models.
     """
     
     def __init__(self, llm: BaseLLM):
         """
-        Inicjalizacja ekstraktora opartego na LLM.
+        Initialize the LLM-based extractor.
         
         Args:
-            llm: Obiekt modelu językowego (LLM)
+            llm: Language model (LLM) object
         """
         self.llm = llm
         self.prompt_template = """
-        Jesteś ekspertem w dziedzinie genetyki i genomiki. Twoim zadaniem jest znalezienie wszystkich koordynatów genomowych w tekście poniżej.
+        You are an expert in genetics and genomics. Your task is to find all genomic coordinates in the text below.
         
-        Szukaj koordynatów w następujących formatach:
-        1. HGVS format: np. c.123A>G, c.76_78delACT, m.8993T>G
-        2. Pozycje chromosomowe: np. chr7:140453136-140453136
-        3. Format białkowy: np. p.Val600Glu, p.V600E
+        Look for coordinates in the following formats:
+        1. HGVS format: e.g., c.123A>G, c.76_78delACT, m.8993T>G
+        2. Chromosomal positions: e.g., chr7:140453136-140453136
+        3. Protein format: e.g., p.Val600Glu, p.V600E
         
-        Zwróć listę wszystkich znalezionych koordynatów w formacie: KOORDYNAT1, KOORDYNAT2, ...
-        Jeśli nie znajdziesz żadnych koordynatów, zwróć "Nie znaleziono koordynatów."
+        Return a list of all found coordinates in the format: COORDINATE1, COORDINATE2, ...
+        If no coordinates are found, return "No coordinates found."
         
-        Tekst do przeanalizowania:
+        Text to analyze:
         {text}
         
-        Znalezione koordynaty:
+        Found coordinates:
         """
     
     def extract(self, text: str) -> List[str]:
         """
-        Ekstrahuje koordynaty genomowe z tekstu przy użyciu modelu LLM.
+        Extracts genomic coordinates from text using the LLM model.
         
         Args:
-            text: Tekst publikacji do przeszukania
+            text: Publication text to search
             
         Returns:
-            Lista znalezionych koordynatów genomowych
+            List of found genomic coordinates
         """
         try:
-            # Przygotuj prompt dla LLM
+            # Prepare prompt for LLM
             prompt = PromptTemplate(
                 template=self.prompt_template,
                 input_variables=["text"]
             )
             
-            # Utwórz i uruchom łańcuch LLM
+            # Create and run LLM chain
             llm_chain = LLMChain(llm=self.llm, prompt=prompt)
             result = llm_chain.run({
                 "text": text
             })
             
-            # Przetwórz wynik
-            if "Nie znaleziono koordynatów" in result:
+            # Process result
+            if "No coordinates found" in result:
                 return []
             
-            # Podziel wynik na listę koordynatów
+            # Split result into list of coordinates
             coordinates = [coord.strip() for coord in result.split(',')]
             
-            # Odfiltruj puste wartości
+            # Filter out empty values
             coordinates = [coord for coord in coordinates if coord]
             
             return coordinates
             
         except Exception as e:
-            logging.error(f"Błąd podczas ekstrakcji koordynatów przy użyciu LLM: {str(e)}")
+            logging.error(f"Error during coordinate extraction using LLM: {str(e)}")
             return []
 
 
 class CoordinatesExtractor:
     """
-    Klasa łącząca różne metody ekstrakcji koordynatów genomowych.
+    Class combining various methods for extracting genomic coordinates.
     """
     
     def __init__(self, llm: Optional[BaseLLM] = None):
         """
-        Inicjalizacja ekstraktora koordynatów.
+        Initialize the coordinates extractor.
         
         Args:
-            llm: Opcjonalny obiekt modelu językowego (LLM)
+            llm: Optional language model (LLM) object
         """
         self.regex_extractor = CoordinatesRegexExtractor()
         self.llm_extractor = CoordinatesLlmExtractor(llm) if llm else None
@@ -156,15 +156,15 @@ class CoordinatesExtractor:
                            use_regex: bool = True, 
                            use_llm: bool = True) -> Dict[str, List[str]]:
         """
-        Ekstrahuje koordynaty genomowe z tekstu przy użyciu określonych metod.
+        Extracts genomic coordinates from text using specified methods.
         
         Args:
-            text: Tekst publikacji do przeszukania
-            use_regex: Czy używać metody opartej na wyrażeniach regularnych
-            use_llm: Czy używać metody opartej na LLM
+            text: Publication text to search
+            use_regex: Whether to use regex-based method
+            use_llm: Whether to use LLM-based method
             
         Returns:
-            Słownik z wynikami ekstrakcji dla różnych metod
+            Dictionary with extraction results for different methods
         """
         results = {}
         
@@ -180,20 +180,20 @@ class CoordinatesExtractor:
     
     def get_combined_coordinates(self, results: Dict[str, List[str]]) -> List[str]:
         """
-        Łączy wyniki ekstrakcji z różnych metod w jedną listę.
+        Combines extraction results from different methods into a single list.
         
         Args:
-            results: Słownik z wynikami ekstrakcji dla różnych metod
+            results: Dictionary with extraction results for different methods
             
         Returns:
-            Połączona lista unikatowych koordynatów
+            Combined list of unique coordinates
         """
         all_coords = []
         
         for method, coords in results.items():
             all_coords.extend(coords)
             
-        # Usuń duplikaty zachowując kolejność
+        # Remove duplicates while preserving order
         unique_coords = []
         seen = set()
         

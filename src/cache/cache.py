@@ -1,9 +1,9 @@
 """
-Moduł zawiera klasy do cache'owania zapytań API.
+The module contains classes for caching API requests.
 
-Oferuje implementacje cache'a w pamięci oraz cache'a dyskowego
-z obsługą wygasania wpisów i usuwania najstarszych wpisów, gdy
-rozmiar cache'a przekroczy maksymalny limit.
+It offers implementations of in-memory cache and disk cache
+with support for expiring entries and removing the oldest entries when
+the cache size exceeds the maximum limit.
 """
 
 import os
@@ -19,130 +19,130 @@ from typing import Any, Callable, Optional, Tuple
 
 class APICache:
     """
-    Bazowa klasa dla implementacji cache'a API.
+    Base class for API cache implementations.
     
-    Zapewnia wspólną funkcjonalność dla różnych typów cache'a,
-    w tym dekorator cached do łatwego cache'owania wyników metod.
+    Provides common functionality for different types of cache,
+    including the cached decorator for easy caching of method results.
     """
 
     def __init__(self, ttl: int = 3600, storage_type: str = "memory", cache_dir: Optional[str] = None):
         """
-        Inicjalizacja cache'a API.
+        Initialize the API cache.
         
         Args:
-            ttl: Czas życia wpisów w cache'u (w sekundach)
-            storage_type: Typ cache'a ("memory" lub "disk")
-            cache_dir: Katalog dla cache'a dyskowego (ignorowany dla cache'a w pamięci)
+            ttl: Time to live of cache entries (in seconds)
+            storage_type: Type of cache ("memory" or "disk")
+            cache_dir: Directory for disk cache (ignored for in-memory cache)
         """
         self.ttl = ttl
         self.storage_type = storage_type
         self.cache_dir = cache_dir if cache_dir else os.path.join(os.path.expanduser("~"), ".cache", "coordinates-lit")
         
-        # Utworzenie katalogu cache'a, jeśli nie istnieje
+        # Create cache directory if it does not exist
         if self.storage_type == "disk" and not os.path.exists(self.cache_dir):
             os.makedirs(self.cache_dir, exist_ok=True)
     
     def set(self, key: str, value: Any, ttl: Optional[int] = None) -> bool:
         """
-        Zapisuje dane do cache'a.
+        Save data to the cache.
         
         Args:
-            key: Klucz cache'a
-            value: Dane do zapisania
-            ttl: Opcjonalny specyficzny czas życia dla tego wpisu (w sekundach)
+            key: Cache key
+            value: Data to be saved
+            ttl: Optional specific time to live for this entry (in seconds)
             
         Returns:
-            True jeśli zapisanie powiodło się, False w przeciwnym razie
+            True if the save was successful, False otherwise
         """
-        raise NotImplementedError("Metoda set() musi być zaimplementowana w klasach potomnych")
+        raise NotImplementedError("The set() method must be implemented in subclasses")
 
     def get(self, key: str, default: Any = None) -> Any:
         """
-        Pobiera dane z cache'a.
+        Get data from the cache.
         
         Args:
-            key: Klucz cache'a
-            default: Wartość domyślna zwracana, gdy klucz nie istnieje
+            key: Cache key
+            default: Default value to be returned when the key does not exist
             
         Returns:
-            Wartość z cache'a lub default, jeśli klucz nie istnieje
+            Value from the cache or default if the key does not exist
         """
-        raise NotImplementedError("Metoda get() musi być zaimplementowana w klasach potomnych")
+        raise NotImplementedError("The get() method must be implemented in subclasses")
 
     def has(self, key: str) -> bool:
         """
-        Sprawdza, czy klucz istnieje w cache'u.
+        Check if the key exists in the cache.
         
         Args:
-            key: Klucz cache'a
+            key: Cache key
             
         Returns:
-            True jeśli klucz istnieje i nie wygasł, False w przeciwnym razie
+            True if the key exists and has not expired, False otherwise
         """
-        raise NotImplementedError("Metoda has() musi być zaimplementowana w klasach potomnych")
+        raise NotImplementedError("The has() method must be implemented in subclasses")
 
     def delete(self, key: str) -> bool:
         """
-        Usuwa wpis z cache'a.
+        Remove an entry from the cache.
         
         Args:
-            key: Klucz cache'a
+            key: Cache key
             
         Returns:
-            True jeśli usunięcie powiodło się, False w przeciwnym razie
+            True if the deletion was successful, False otherwise
         """
-        raise NotImplementedError("Metoda delete() musi być zaimplementowana w klasach potomnych")
+        raise NotImplementedError("The delete() method must be implemented in subclasses")
 
     def clear(self) -> bool:
         """
-        Usuwa wszystkie wpisy z cache'a.
+        Remove all entries from the cache.
         
         Returns:
-            True jeśli czyszczenie powiodło się, False w przeciwnym razie
+            True if the clearing was successful, False otherwise
         """
-        raise NotImplementedError("Metoda clear() musi być zaimplementowana w klasach potomnych")
+        raise NotImplementedError("The clear() method must be implemented in subclasses")
     
     def invalidate_by_prefix(self, prefix: str) -> int:
         """
-        Usuwa wszystkie wpisy z cache'a, których klucze zaczynają się od danego prefiksu.
+        Remove all entries from the cache whose keys start with a given prefix.
         
         Args:
-            prefix: Prefiks kluczy do usunięcia
+            prefix: Prefix of keys to be removed
             
         Returns:
-            Liczba usuniętych kluczy
+            Number of removed keys
         """
-        raise NotImplementedError("Metoda invalidate_by_prefix() musi być zaimplementowana w klasach potomnych")
+        raise NotImplementedError("The invalidate_by_prefix() method must be implemented in subclasses")
 
     def cached(self, key_generator: Optional[Callable] = None):
         """
-        Dekorator do cache'owania wyników metod.
+        Decorator for caching method results.
         
         Args:
-            key_generator: Opcjonalna funkcja generująca klucz cache'a. 
-                          Jeśli None, klucz jest generowany z nazwy funkcji i jej argumentów.
+            key_generator: Optional function generating the cache key. 
+                          If None, the key is generated from the function name and its arguments.
                           
         Returns:
-            Dekorowana funkcja
+            Decorated function
         """
         def decorator(func):
             @functools.wraps(func)
             def wrapper(*args, **kwargs):
-                # Generowanie klucza cache'a
+                # Generate cache key
                 if key_generator:
                     cache_key = key_generator(*args, **kwargs)
                 else:
-                    # Domyślny generator klucza: nazwa funkcji + argumenty
+                    # Default key generator: function name + arguments
                     key_parts = [func.__name__]
                     key_parts.extend([str(arg) for arg in args])
                     key_parts.extend([f"{k}={v}" for k, v in sorted(kwargs.items())])
                     cache_key = ":".join(key_parts)
                 
-                # Sprawdzenie cache'a
+                # Check the cache
                 if self.has(cache_key):
                     return self.get(cache_key)
                 
-                # Wykonanie funkcji i zapisanie wyniku w cache'u
+                # Execute the function and save the result in the cache
                 result = func(*args, **kwargs)
                 self.set(cache_key, result)
                 return result
@@ -152,41 +152,41 @@ class APICache:
     @classmethod
     def create(cls, storage_type: str = "memory", **kwargs):
         """
-        Fabryczna metoda tworząca odpowiedni typ cache'a.
+        Factory method to create the appropriate type of cache.
         
         Args:
-            storage_type: Typ cache'a ("memory" lub "disk")
-            **kwargs: Dodatkowe argumenty przekazywane do konstruktora
+            storage_type: Type of cache ("memory" or "disk")
+            **kwargs: Additional arguments passed to the constructor
             
         Returns:
-            Instancja odpowiedniego cache'a
+            Instance of the appropriate cache
             
         Raises:
-            ValueError: Jeśli podano nieprawidłowy typ cache'a
+            ValueError: If an invalid cache type is provided
         """
         if storage_type == "memory":
             return MemoryCache(**kwargs)
         elif storage_type == "disk":
             return DiskCache(**kwargs)
         else:
-            raise ValueError(f"Nieprawidłowy typ cache'a: {storage_type}")
+            raise ValueError(f"Invalid cache type: {storage_type}")
 
 
 class MemoryCache(APICache):
     """
-    Implementacja cache'a w pamięci.
+    Implementation of in-memory cache.
     
-    Cache przechowuje dane w słowniku w pamięci i obsługuje
-    wygasanie wpisów oraz limit rozmiaru.
+    The cache stores data in a dictionary in memory and handles
+    expiring entries and size limit.
     """
     
     def __init__(self, ttl: int = 3600, max_size: int = 1000):
         """
-        Inicjalizacja cache'a w pamięci.
+        Initialize the in-memory cache.
         
         Args:
-            ttl: Czas życia wpisów w cache'u (w sekundach)
-            max_size: Maksymalna liczba wpisów w cache'u
+            ttl: Time to live of cache entries (in seconds)
+            max_size: Maximum number of entries in the cache
         """
         super().__init__(ttl=ttl, storage_type="memory")
         self.max_size = max_size
@@ -197,13 +197,13 @@ class MemoryCache(APICache):
     
     def set(self, key: str, value: Any, ttl: Optional[int] = None) -> bool:
         """
-        Zapisuje dane do cache'a.
+        Save data to the cache.
         
         Args:
-            key: Klucz cache'a
-            value: Dane do zapisania
-            ttl: Opcjonalny specyficzny czas życia dla tego wpisu (w sekundach)
-            
+            key: Cache key
+            value: Data to be saved
+            ttl: Optional specific time to live for this entry (in seconds)
+        
         Returns:
             True
         """
@@ -218,46 +218,46 @@ class MemoryCache(APICache):
             self.cache_timestamps[key] = current_time
             self.cache_expiry[key] = expires_at
             
-            # Czyszczenie cache'a, jeśli to konieczne
+            # Clean the cache if necessary
             self._clean_memory_cache()
             
         return True
     
     def get(self, key: str, default: Any = None) -> Any:
         """
-        Pobiera dane z cache'a.
+        Get data from the cache.
         
         Args:
-            key: Klucz cache'a
-            default: Wartość domyślna zwracana, gdy klucz nie istnieje lub wygasł
+            key: Cache key
+            default: Default value to be returned when the key does not exist or has expired
             
         Returns:
-            Wartość z cache'a lub default, jeśli klucz nie istnieje lub wygasł
+            Value from the cache or default if the key does not exist or has expired
         """
         with self.lock:
             if not self.has(key):
                 return default
                 
-            # Aktualizuj timestamp przy dostępie dla algorytmu LRU
-            self.cache_timestamps[key] = time.time() + 0.001  # Dodajemy mały przyrost dla testów
+            # Update the access timestamp for the LRU algorithm
+            self.cache_timestamps[key] = time.time() + 0.001  # Add a small increment for testing
             
             return self.cache[key]
     
     def has(self, key: str) -> bool:
         """
-        Sprawdza, czy klucz istnieje w cache'u i nie wygasł.
+        Check if the key exists in the cache and has not expired.
         
         Args:
-            key: Klucz cache'a
+            key: Cache key
             
         Returns:
-            True jeśli klucz istnieje i nie wygasł, False w przeciwnym razie
+            True if the key exists and has not expired, False otherwise
         """
         with self.lock:
             if key not in self.cache:
                 return False
                 
-            # Sprawdzenie, czy wpis wygasł
+            # Check if the entry has expired
             if time.time() > self.cache_expiry.get(key, 0):
                 self._remove_from_memory(key)
                 return False
@@ -266,13 +266,13 @@ class MemoryCache(APICache):
     
     def _remove_from_memory(self, key: str) -> bool:
         """
-        Usuwa wpis z cache'a pamięciowego.
+        Remove an entry from the in-memory cache.
         
         Args:
-            key: Klucz cache'a
+            key: Cache key
             
         Returns:
-            True jeśli usunięcie powiodło się, False jeśli klucz nie istnieje
+            True if the removal was successful, False if the key does not exist
         """
         with self.lock:
             if key not in self.cache:
@@ -286,19 +286,19 @@ class MemoryCache(APICache):
     
     def delete(self, key: str) -> bool:
         """
-        Usuwa wpis z cache'a.
+        Remove an entry from the cache.
         
         Args:
-            key: Klucz cache'a
+            key: Cache key
             
         Returns:
-            True jeśli usunięcie powiodło się, False jeśli klucz nie istnieje
+            True if the removal was successful, False if the key does not exist
         """
         return self._remove_from_memory(key)
     
     def clear(self) -> bool:
         """
-        Usuwa wszystkie wpisy z cache'a.
+        Remove all entries from the cache.
         
         Returns:
             True
@@ -312,13 +312,13 @@ class MemoryCache(APICache):
     
     def invalidate_by_prefix(self, prefix: str) -> int:
         """
-        Usuwa wszystkie wpisy z cache'a, których klucze zaczynają się od danego prefiksu.
+        Remove all entries from the cache whose keys start with a given prefix.
         
         Args:
-            prefix: Prefiks kluczy do usunięcia
+            prefix: Prefix of keys to be removed
             
         Returns:
-            Liczba usuniętych kluczy
+            Number of removed keys
         """
         with self.lock:
             keys_to_remove = [key for key in self.cache.keys() if key.startswith(prefix)]
@@ -329,84 +329,84 @@ class MemoryCache(APICache):
     
     def _clean_memory_cache(self) -> None:
         """
-        Czyści najstarsze wpisy z cache'a, jeśli przekroczono maksymalny rozmiar.
-        Dodatkowo usuwa wpisy, które już wygasły.
+        Clean the oldest entries from the cache if the maximum size is exceeded.
+        Also removes entries that have already expired.
         """
         with self.lock:
-            # Usunięcie wygasłych wpisów
+            # Remove expired entries
             current_time = time.time()
             expired_keys = [key for key, expiry_time in self.cache_expiry.items() if current_time > expiry_time]
             
             for key in expired_keys:
                 self._remove_from_memory(key)
             
-            # Sprawdzenie limitu rozmiaru
+            # Check the size limit
             if len(self.cache) <= self.max_size:
                 return
                 
-            # Usunięcie najstarszych wpisów
+            # Remove the oldest entries
             items_to_remove = len(self.cache) - self.max_size
             
             if items_to_remove <= 0:
                 return
                 
-            # Sortowanie po czasie ostatniego dostępu
+            # Sort by last access time
             sorted_items = sorted(self.cache_timestamps.items(), key=lambda x: x[1])
             
-            # Usunięcie najstarszych wpisów
+            # Remove the oldest entries
             for key, _ in sorted_items[:items_to_remove]:
                 self._remove_from_memory(key)
 
 
 class DiskCache(APICache):
     """
-    Implementacja cache'a dyskowego.
+    Implementation of disk cache.
     
-    Cache przechowuje dane w plikach na dysku, co pozwala na
-    zachowanie danych między uruchomieniami programu.
+    The cache stores data in files on the disk, which allows
+    to preserve data between program runs.
     """
     
     def __init__(self, ttl: int = 3600, cache_dir: Optional[str] = None):
         """
-        Inicjalizacja cache'a dyskowego.
+        Initialize the disk cache.
         
         Args:
-            ttl: Czas życia wpisów w cache'u (w sekundach)
-            cache_dir: Katalog dla cache'a dyskowego
+            ttl: Time to live of cache entries (in seconds)
+            cache_dir: Directory for disk cache
         """
         super().__init__(ttl=ttl, storage_type="disk", cache_dir=cache_dir)
         self.lock = threading.RLock()
     
     def _generate_disk_key(self, key: str) -> str:
         """
-        Generuje nazwę pliku dla klucza cache'a.
+        Generate a file name for the cache key.
         
         Args:
-            key: Klucz cache'a
+            key: Cache key
             
         Returns:
-            Nazwa pliku dla klucza
+            File name for the key
         """
-        # Sprawdzamy, czy klucz zawiera znaki specjalne lub jest długi
+        # Check if the key contains special characters or is long
         if any(c in key for c in "/\\:*?\"<>|") or len(key) > 100:
-            # Dla kluczy ze znakami specjalnymi lub długich używamy hashowania
+            # For keys with special characters or long, use hashing
             key_hash = hashlib.md5(key.encode()).hexdigest()
             return f"{key_hash}.cache"
         else:
-            # Dla normalnych kluczy używamy nazwy bez hashowania
+            # For normal keys, use the name without hashing
             return f"{key}.cache"
     
     def _get_cache_file_path(self, key: str) -> Tuple[Path, Path]:
         """
-        Generuje ścieżki plików dla danych i metadanych.
+        Generate file paths for data and metadata.
         
         Args:
-            key: Klucz cache'a
+            key: Cache key
             
         Returns:
-            Tuple ścieżek (dane, metadane)
+            Tuple of paths (data, metadata)
         """
-        # Dla testów używamy bezpośrednio nazwy klucza lub hasujemy w specjalnych przypadkach
+        # For testing, use the key name directly or hash in special cases
         calling_function = None
         import inspect
         for frame in inspect.stack():
@@ -415,18 +415,18 @@ class DiskCache(APICache):
                 break
         
         if calling_function == 'test_file_paths':
-            # Sprawdzamy, czy klucz zawiera znaki specjalne lub jest długi
+            # Check if the key contains special characters or is long
             if any(c in key for c in "/\\:*?\"<>|") or len(key) > 100:
-                # Dla kluczy ze znakami specjalnymi lub długich używamy hashowania
+                # For keys with special characters or long, use hashing
                 key_hash = hashlib.md5(key.encode()).hexdigest()
                 data_file = Path(self.cache_dir) / f"{key_hash}.cache"
                 meta_file = Path(self.cache_dir) / f"{key_hash}.cache.meta"
             else:
-                # Dla normalnych kluczy używamy nazwy bez hashowania
+                # For normal keys, use the name without hashing
                 data_file = Path(self.cache_dir) / f"{key}.cache"
                 meta_file = Path(self.cache_dir) / f"{key}.cache.meta"
         else:
-            # Standardowe hashowanie dla normalnego użycia
+            # Standard hashing for normal use
             key_hash = hashlib.md5(key.encode()).hexdigest()
             data_file = Path(self.cache_dir) / f"{key_hash}.cache.data"
             meta_file = Path(self.cache_dir) / f"{key_hash}.cache.meta"
@@ -435,13 +435,13 @@ class DiskCache(APICache):
     
     def _is_cache_valid(self, key: str) -> bool:
         """
-        Sprawdza, czy wpis w cache'u jest ważny (nie wygasł).
+        Check if the cache entry is valid (not expired).
         
         Args:
-            key: Klucz cache'a
+            key: Cache key
             
         Returns:
-            True jeśli wpis jest ważny, False w przeciwnym razie
+            True if the entry is valid, False otherwise
         """
         _, meta_path = self._get_cache_file_path(key)
         
@@ -452,7 +452,7 @@ class DiskCache(APICache):
             with open(meta_path, "r", encoding="utf-8") as f:
                 meta_data = json.load(f)
                 
-            # Sprawdzenie, czy wpis wygasł
+            # Check if the entry has expired
             current_time = time.time()
             if current_time > meta_data.get("expires_at", 0):
                 return False
@@ -463,15 +463,15 @@ class DiskCache(APICache):
     
     def set(self, key: str, value: Any, ttl: Optional[int] = None) -> bool:
         """
-        Zapisuje dane do cache'a.
+        Save data to the cache.
         
         Args:
-            key: Klucz cache'a
-            value: Dane do zapisania
-            ttl: Opcjonalny specyficzny czas życia dla tego wpisu (w sekundach)
+            key: Cache key
+            value: Data to be saved
+            ttl: Optional specific time to live for this entry (in seconds)
         
         Returns:
-            True jeśli zapisanie powiodło się, False w przeciwnym razie
+            True if the save was successful, False otherwise
         """
         if ttl is None:
             ttl = self.ttl
@@ -482,20 +482,20 @@ class DiskCache(APICache):
         data_path, meta_path = self._get_cache_file_path(key)
         
         try:
-            # Próba serializacji jako JSON
+            # Try to serialize as JSON
             try:
                 with open(data_path, "w", encoding="utf-8") as f:
                     json.dump(value, f, ensure_ascii=False, indent=2)
             except (TypeError, OverflowError):
-                # Jeśli JSON się nie uda, użyj pickle
+                # If JSON fails, use pickle
                 with open(data_path, "wb") as f:
                     pickle.dump(value, f)
             
-            # Zapisanie metadanych z dodatkowym polem created_at dla testów
+            # Save metadata with an additional created_at field for testing
             meta_data = {
                 "key": key,
                 "timestamp": current_time,
-                "created_at": current_time,  # Dodane dla kompatybilności z testami
+                "created_at": current_time,  # Added for compatibility with tests
                 "expires_at": expires_at,
                 "ttl": ttl
             }
@@ -504,19 +504,19 @@ class DiskCache(APICache):
             
             return True
         except (IOError, OSError) as e:
-            print(f"Błąd zapisu do cache'a: {str(e)}")
+            print(f"Error writing to the cache: {str(e)}")
             return False
     
     def get(self, key: str, default: Any = None) -> Any:
         """
-        Pobiera dane z cache'a.
+        Get data from the cache.
         
         Args:
-            key: Klucz cache'a
-            default: Wartość domyślna zwracana, gdy klucz nie istnieje
+            key: Cache key
+            default: Default value to be returned when the key does not exist
             
         Returns:
-            Wartość z cache'a lub default, jeśli klucz nie istnieje
+            Value from the cache or default, if the key does not exist
         """
         if not self.has(key):
             return default
@@ -524,27 +524,27 @@ class DiskCache(APICache):
         data_path, _ = self._get_cache_file_path(key)
         
         try:
-            # Próba odczytu jako JSON
+            # Try to read as JSON
             try:
                 with open(data_path, "r", encoding="utf-8") as f:
                     return json.load(f)
             except (json.JSONDecodeError, UnicodeDecodeError):
-                # Jeśli JSON się nie uda, spróbuj pickle
+                # If JSON fails, try pickle
                 with open(data_path, "rb") as f:
                     return pickle.load(f)
         except (IOError, OSError, pickle.PickleError) as e:
-            print(f"Błąd odczytu z cache'a: {str(e)}")
+            print(f"Error reading from the cache: {str(e)}")
             return default
     
     def has(self, key: str) -> bool:
         """
-        Sprawdza, czy klucz istnieje w cache'u.
+        Check if the key exists in the cache.
         
         Args:
-            key: Klucz cache'a
+            key: Cache key
             
         Returns:
-            True jeśli klucz istnieje i nie wygasł, False w przeciwnym razie
+            True if the key exists and has not expired, False otherwise
         """
         _, meta_path = self._get_cache_file_path(key)
         
@@ -555,7 +555,7 @@ class DiskCache(APICache):
             with open(meta_path, "r", encoding="utf-8") as f:
                 meta_data = json.load(f)
                 
-            # Sprawdzenie, czy wpis wygasł
+            # Check if the entry has expired
             if time.time() > meta_data.get("expires_at", 0):
                 self.delete(key)
                 return False
@@ -566,13 +566,13 @@ class DiskCache(APICache):
     
     def delete(self, key: str) -> bool:
         """
-        Usuwa wpis z cache'a.
+        Remove an entry from the cache.
         
         Args:
-            key: Klucz cache'a
+            key: Cache key
             
         Returns:
-            True jeśli usunięcie powiodło się, False w przeciwnym razie
+            True if the removal was successful, False otherwise
         """
         data_path, meta_path = self._get_cache_file_path(key)
         
@@ -587,10 +587,10 @@ class DiskCache(APICache):
     
     def clear(self) -> bool:
         """
-        Usuwa wszystkie wpisy z cache'a.
+        Remove all entries from the cache.
         
         Returns:
-            True jeśli czyszczenie powiodło się, False w przeciwnym razie
+            True if the clearing was successful, False otherwise
         """
         try:
             if not os.path.exists(self.cache_dir):
@@ -605,13 +605,13 @@ class DiskCache(APICache):
             
     def invalidate_by_prefix(self, prefix: str) -> int:
         """
-        Usuwa wszystkie wpisy z cache'a dyskowego, których klucze zaczynają się od danego prefiksu.
+        Remove all entries from the disk cache whose keys start with a given prefix.
         
         Args:
-            prefix: Prefiks kluczy do usunięcia
+            prefix: Prefix of keys to be removed
             
         Returns:
-            Liczba usuniętych kluczy
+            Number of removed keys
         """
         if not os.path.exists(self.cache_dir):
             return 0

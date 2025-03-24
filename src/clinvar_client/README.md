@@ -1,108 +1,108 @@
 # ClinVar Client
 
-Klient API ClinVar do integracji z narzędziem coordinates_lit, umożliwiający wyszukiwanie i analizę wariantów genetycznych.
+The ClinVar API client for integration with the coordinates_lit tool, enabling the search and analysis of genetic variants.
 
-## Funkcjonalności
+## Features
 
-- Pobieranie informacji o wariantach na podstawie identyfikatorów ClinVar (VCV, RCV)
-- Wyszukiwanie wariantów według koordynatów genomowych
-- Wyszukiwanie wariantów dla określonych genów
-- Wyszukiwanie wariantów według identyfikatorów rs (dbSNP)
-- Wyszukiwanie wariantów o określonym znaczeniu klinicznym
-- Wyszukiwanie wariantów powiązanych z fenotypami
-- Integracja danych z ClinVar z koordynatami z coordinates_lit
+- Retrieving information about variants based on ClinVar identifiers (VCV, RCV)
+- Searching for variants by genomic coordinates
+- Searching for variants for specific genes
+- Searching for variants by rs identifiers (dbSNP)
+- Searching for variants with a specific clinical significance
+- Searching for variants associated with phenotypes
+- Integration of ClinVar data with coordinates from coordinates_lit
 
-## Wymagania
+## Requirements
 
 - Python 3.6+
 - requests
 - logging
 
-## Przykłady użycia
+## Usage Examples
 
-### Inicjalizacja klienta
+### Client Initialization
 
 ```python
 from src.clinvar_client.clinvar_client import ClinVarClient
 
-# Inicjalizacja klienta z adresem email (wymaganym przez NCBI)
-client = ClinVarClient(email="twoj.email@domena.pl")
+# Initializing the client with an email address (required by NCBI)
+client = ClinVarClient(email="your.email@domain.com")
 
-# Opcjonalnie z kluczem API dla zwiększenia limitu zapytań
-client = ClinVarClient(email="twoj.email@domena.pl", api_key="twoj_klucz_api")
+# Optionally with an API key for increased query limit
+client = ClinVarClient(email="your.email@domain.com", api_key="your_api_key")
 ```
 
-### Pobieranie informacji o wariancie według ID
+### Retrieving Variant Information by ID
 
 ```python
-# Pobieranie informacji o wariancie w formacie JSON
+# Retrieving variant information in JSON format
 variant_info = client.get_variant_by_id("VCV000124789")
-print(f"Znaczenie kliniczne: {variant_info['clinical_significance']}")
+print(f"Clinical significance: {variant_info['clinical_significance']}")
 
-# Pobieranie informacji o wariancie w formacie XML
+# Retrieving variant information in XML format
 variant_info_xml = client.get_variant_by_id("VCV000124789", format_type="xml")
 ```
 
-### Wyszukiwanie wariantów według koordynatów genomowych
+### Searching for Variants by Genomic Coordinates
 
 ```python
-# Wyszukiwanie wariantów w regionie chromosomowym
+# Searching for variants in a chromosomal region
 variants = client.search_by_coordinates(chromosome="1", start=100000, end=200000)
 for variant in variants:
-    print(f"Wariant: {variant['name']} - {variant['clinical_significance']}")
+    print(f"Variant: {variant['name']} - {variant['clinical_significance']}")
 ```
 
-### Wyszukiwanie wariantów według genu
+### Searching for Variants by Gene
 
 ```python
-# Wyszukiwanie wariantów dla genu BRCA1
+# Searching for variants for the BRCA1 gene
 brca1_variants = client.search_by_gene("BRCA1")
-print(f"Znaleziono {len(brca1_variants)} wariantów dla genu BRCA1")
+print(f"Found {len(brca1_variants)} variants for the BRCA1 gene")
 ```
 
-### Wyszukiwanie według znaczenia klinicznego
+### Searching by Clinical Significance
 
 ```python
-# Wyszukiwanie wariantów patogennych
+# Searching for pathogenic variants
 pathogenic_variants = client.search_by_clinical_significance("pathogenic")
 
-# Wyszukiwanie wariantów o wielu znaczeniach klinicznych
+# Searching for variants with multiple clinical significances
 variants = client.search_by_clinical_significance(["pathogenic", "likely pathogenic"])
 ```
 
-### Integracja z coordinates_lit
+### Integration with coordinates_lit
 
 ```python
-# Przykładowe dane z coordinates_lit
+# Example data from coordinates_lit
 coordinates_data = [
     {"chromosome": "1", "start": 100000, "end": 200000, "source": "Publication 1"},
     {"chromosome": "X", "start": 30000000, "end": 31000000, "source": "Publication 2"}
 ]
 
-# Integracja danych ClinVar z koordynatami
+# Integrating ClinVar data with coordinates
 enriched_data = client.integrate_with_coordinates_lit(coordinates_data)
 
-# Analiza wyników
+# Analyzing the results
 for entry in enriched_data:
     print(f"Region: {entry['chromosome']}:{entry['start']}-{entry['end']}")
-    print(f"Źródło: {entry['source']}")
-    print(f"Liczba wariantów ClinVar: {len(entry['clinvar_data'])}")
+    print(f"Source: {entry['source']}")
+    print(f"Number of ClinVar variants: {len(entry['clinvar_data'])}")
 ```
 
-## Obsługa błędów
+## Error Handling
 
-Klient ClinVar implementuje zestaw niestandardowych wyjątków dla różnych typów błędów:
+The ClinVar client implements a set of custom exceptions for different types of errors:
 
-- `ClinVarError` - Bazowy wyjątek dla wszystkich błędów
-- `APIRequestError` - Błędy podczas wykonywania zapytania API
-- `InvalidFormatError` - Niewspierane formaty odpowiedzi
-- `ParseError` - Błędy parsowania odpowiedzi
-- `InvalidParameterError` - Nieprawidłowe parametry zapytania
-- `RateLimitError` - Przekroczenie limitu zapytań do API
+- `ClinVarError` - Base exception for all errors
+- `APIRequestError` - Errors during API request execution
+- `InvalidFormatError` - Unsupported response formats
+- `ParseError` - Errors parsing the response
+- `InvalidParameterError` - Invalid query parameters
+- `RateLimitError` - Exceeding the API query limit
 
-## Uwagi
+## Notes
 
-- API NCBI E-utilities wymaga adresu email użytkownika.
-- Aby zwiększyć limit zapytań (z 3 na sekundę do 10 na sekundę), można zarejestrować klucz API NCBI.
-- Klient obsługuje odpowiedzi w formatach JSON i XML.
-- Implementacja automatycznego ponawiania prób w przypadku błędów serwera lub ograniczeń szybkości. 
+- The NCBI E-utilities API requires the user's email address.
+- To increase the query limit (from 3 to 10 per second), an NCBI API key can be registered.
+- The client supports responses in JSON and XML formats.
+- Implementation of automatic retry in case of server errors or rate limits. 

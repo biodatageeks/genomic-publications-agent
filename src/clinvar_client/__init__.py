@@ -1,5 +1,5 @@
 """
-Pakiet clinvar_client do komunikacji z API ClinVar.
+Package clinvar_client for communication with the ClinVar API.
 """
 
 from .clinvar_client import (

@@ -1,9 +1,9 @@
 """
-Demonstracja użycia klienta ClinVar.
+Demonstration of using the ClinVar client.
 
-Ten moduł zawiera przykłady użycia klienta ClinVar do różnych operacji,
-takich jak wyszukiwanie wariantów, pobieranie informacji o wariantach,
-oraz integracja z narzędziem coordinates_lit.
+This module contains examples of using the ClinVar client for various operations,
+such as variant search, variant information retrieval,
+and integration with the coordinates_lit tool.
 """
 
 import json
@@ -14,7 +14,7 @@ from .clinvar_client import ClinVarClient
 from .exceptions import ClinVarError, APIRequestError, InvalidParameterError
 
 
-# Konfiguracja logowania
+# Logging configuration
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
@@ -24,54 +24,54 @@ logger = logging.getLogger(__name__)
 
 def setup_client() -> ClinVarClient:
     """
-    Tworzy i konfiguruje instancję klienta ClinVar.
+    Creates and configures an instance of the ClinVar client.
     
     Returns:
-        Skonfigurowana instancja ClinVarClient
+        Configured instance of ClinVarClient
     """
-    # Zastąp poniższy adres email swoim adresem
-    email = "twoj.email@domena.pl"
+    # Replace the email address below with your own
+    email = "your.email@domain.com"
     
-    # Opcjonalnie możesz dodać swój klucz API dla zwiększenia limitu zapytań
-    # api_key = "twoj_klucz_api"
+    # Optionally, you can add your API key to increase the query limit
+    # api_key = "your_api_key"
     
     return ClinVarClient(email=email)
 
 
 def example_get_variant_by_id() -> None:
     """
-    Przykład pobierania informacji o wariancie na podstawie identyfikatora ClinVar.
+    Example of retrieving variant information based on the ClinVar identifier.
     """
     client = setup_client()
     
-    # Przykładowe identyfikatory ClinVar
-    vcv_id = "VCV000014076"  # Wariant w genie BRCA1
+    # Sample ClinVar identifiers
+    vcv_id = "VCV000014076"  # Variant in the BRCA1 gene
     
     try:
-        # Pobierz informacje o wariancie w formacie JSON
+        # Get variant information in JSON format
         variant_info = client.get_variant_by_id(vcv_id)
-        print(f"\n--- Informacje o wariancie {vcv_id} ---")
-        print(f"Nazwa: {variant_info.get('name', 'N/A')}")
-        print(f"Znaczenie kliniczne: {variant_info.get('clinical_significance', 'N/A')}")
+        print(f"\n--- Variant information for {vcv_id} ---")
+        print(f"Name: {variant_info.get('name', 'N/A')}")
+        print(f"Clinical significance: {variant_info.get('clinical_significance', 'N/A')}")
         
-        # Wyświetl geny
+        # Display genes
         genes = variant_info.get('genes', [])
         if genes:
-            print("\nPowiązane geny:")
+            print("\nRelated genes:")
             for gene in genes:
                 print(f"  - {gene.get('symbol', 'N/A')} (ID: {gene.get('id', 'N/A')})")
         
-        # Wyświetl fenotypy
+        # Display phenotypes
         phenotypes = variant_info.get('phenotypes', [])
         if phenotypes:
-            print("\nPowiązane fenotypy:")
+            print("\nRelated phenotypes:")
             for phenotype in phenotypes:
                 print(f"  - {phenotype.get('name', 'N/A')} (ID: {phenotype.get('id', 'N/A')})")
         
-        # Wyświetl koordynaty genomowe
+        # Display genomic coordinates
         coordinates = variant_info.get('coordinates', [])
         if coordinates:
-            print("\nKoordynaty genomowe:")
+            print("\nGenomic coordinates:")
             for coords in coordinates:
                 print(f"  - {coords.get('assembly', 'N/A')}: "
                       f"{coords.get('chromosome', 'N/A')}:"
@@ -80,78 +80,78 @@ def example_get_variant_by_id() -> None:
                       f"Alt: {coords.get('alternate_allele', 'N/A')}")
     
     except ClinVarError as e:
-        logger.error(f"Błąd podczas pobierania informacji o wariancie: {str(e)}")
+        logger.error(f"Error while retrieving variant information: {str(e)}")
 
 
 def example_search_by_coordinates() -> None:
     """
-    Przykład wyszukiwania wariantów na podstawie koordynatów genomowych.
+    Example of searching for variants based on genomic coordinates.
     """
     client = setup_client()
     
-    # Przykładowe koordynaty: Rejon genu BRCA1
+    # Sample coordinates: BRCA1 gene region
     chromosome = "17"
     start = 43044295
     end = 43125483
     
     try:
-        print(f"\n--- Wyszukiwanie wariantów w regionie {chromosome}:{start}-{end} ---")
+        print(f"\n--- Searching for variants in region {chromosome}:{start}-{end} ---")
         variants = client.search_by_coordinates(
             chromosome=chromosome,
             start=start,
             end=end
         )
         
-        print(f"Znaleziono {len(variants)} wariantów")
+        print(f"Found {len(variants)} variants")
         
-        # Wyświetl pierwsze 5 wariantów
+        # Display the first 5 variants
         for i, variant in enumerate(variants[:5], 1):
-            print(f"\nWariant {i}:")
+            print(f"\nVariant {i}:")
             print(f"  ID: {variant.get('id', 'N/A')}")
-            print(f"  Nazwa: {variant.get('name', 'N/A')}")
-            print(f"  Typ: {variant.get('variation_type', 'N/A')}")
-            print(f"  Znaczenie kliniczne: {variant.get('clinical_significance', 'N/A')}")
+            print(f"  Name: {variant.get('name', 'N/A')}")
+            print(f"  Type: {variant.get('variation_type', 'N/A')}")
+            print(f"  Clinical significance: {variant.get('clinical_significance', 'N/A')}")
             
-            # Wyświetl geny
+            # Display genes
             genes = variant.get('genes', [])
             if genes:
-                print("  Geny:", ", ".join([g.get('symbol', 'N/A') for g in genes]))
+                print("  Genes:", ", ".join([g.get('symbol', 'N/A') for g in genes]))
     
     except InvalidParameterError as e:
-        logger.error(f"Nieprawidłowe parametry: {str(e)}")
+        logger.error(f"Invalid parameters: {str(e)}")
     except APIRequestError as e:
-        logger.error(f"Błąd API: {str(e)}")
+        logger.error(f"API error: {str(e)}")
     except ClinVarError as e:
-        logger.error(f"Ogólny błąd ClinVar: {str(e)}")
+        logger.error(f"General ClinVar error: {str(e)}")
 
 
 def example_search_by_gene() -> None:
     """
-    Przykład wyszukiwania wariantów na podstawie symbolu genu.
+    Example of searching for variants based on gene symbol.
     """
     client = setup_client()
     
-    # Przykładowy gen
+    # Sample gene
     gene_symbol = "BRCA1"
     
     try:
-        print(f"\n--- Wyszukiwanie wariantów dla genu {gene_symbol} ---")
+        print(f"\n--- Searching for variants for gene {gene_symbol} ---")
         variants = client.search_by_gene(gene_symbol)
         
-        print(f"Znaleziono {len(variants)} wariantów")
+        print(f"Found {len(variants)} variants")
         
-        # Analiza znaczenia klinicznego
+        # Analyze clinical significance
         significance_counts = {}
         for variant in variants:
             significance = variant.get('clinical_significance', 'Not provided')
             significance_counts[significance] = significance_counts.get(significance, 0) + 1
         
-        print("\nRozkład znaczenia klinicznego:")
+        print("\nDistribution of clinical significance:")
         for significance, count in significance_counts.items():
-            print(f"  {significance}: {count} wariantów")
+            print(f"  {significance}: {count} variants")
         
-        # Wyświetl pierwsze 3 warianty patogenne
-        print("\nPrzykładowe warianty patogenne:")
+        # Display the first 3 pathogenic variants
+        print("\nSample pathogenic variants:")
         pathogenic_count = 0
         for variant in variants:
             if variant.get('clinical_significance', '').lower() == 'pathogenic':
@@ -161,25 +161,25 @@ def example_search_by_gene() -> None:
                     break
     
     except ClinVarError as e:
-        logger.error(f"Błąd podczas wyszukiwania wariantów dla genu: {str(e)}")
+        logger.error(f"Error while searching for variants for gene: {str(e)}")
 
 
 def example_search_by_clinical_significance() -> None:
     """
-    Przykład wyszukiwania wariantów na podstawie znaczenia klinicznego.
+    Example of searching for variants based on clinical significance.
     """
     client = setup_client()
     
-    # Przykładowe znaczenie kliniczne
+    # Sample clinical significance
     significance = "pathogenic"
     
     try:
-        print(f"\n--- Wyszukiwanie wariantów o znaczeniu klinicznym: {significance} ---")
+        print(f"\n--- Searching for variants with clinical significance: {significance} ---")
         variants = client.search_by_clinical_significance(significance)
         
-        print(f"Znaleziono {len(variants)} wariantów")
+        print(f"Found {len(variants)} variants")
         
-        # Analiza genów
+        # Analyze genes
         gene_counts = {}
         for variant in variants:
             for gene in variant.get('genes', []):
@@ -187,72 +187,72 @@ def example_search_by_clinical_significance() -> None:
                 if gene_symbol != 'N/A':
                     gene_counts[gene_symbol] = gene_counts.get(gene_symbol, 0) + 1
         
-        # Znajdź top 5 genów
+        # Find the top 5 genes
         top_genes = sorted(gene_counts.items(), key=lambda x: x[1], reverse=True)[:5]
         
-        print("\nTop 5 genów z wariantami patogennymi:")
+        print("\nTop 5 genes with pathogenic variants:")
         for gene, count in top_genes:
-            print(f"  {gene}: {count} wariantów")
+            print(f"  {gene}: {count} variants")
     
     except InvalidParameterError as e:
-        logger.error(f"Nieprawidłowe znaczenie kliniczne: {str(e)}")
+        logger.error(f"Invalid clinical significance: {str(e)}")
     except ClinVarError as e:
-        logger.error(f"Błąd podczas wyszukiwania wariantów: {str(e)}")
+        logger.error(f"Error while searching for variants: {str(e)}")
 
 
 def example_search_by_rs_id() -> None:
     """
-    Przykład wyszukiwania wariantów na podstawie identyfikatora rs.
+    Example of searching for variants based on rs identifier.
     """
     client = setup_client()
     
-    # Przykładowy identyfikator rs
-    rs_id = "rs6025"  # Czynnik V Leiden
+    # Sample rs identifier
+    rs_id = "rs6025"  # Factor V Leiden
     
     try:
-        print(f"\n--- Wyszukiwanie wariantów dla identyfikatora {rs_id} ---")
+        print(f"\n--- Searching for variants for identifier {rs_id} ---")
         variants = client.search_by_rs_id(rs_id)
         
-        print(f"Znaleziono {len(variants)} wariantów")
+        print(f"Found {len(variants)} variants")
         
         for variant in variants:
-            print(f"\nWariant: {variant.get('name', 'N/A')}")
-            print(f"Znaczenie kliniczne: {variant.get('clinical_significance', 'N/A')}")
+            print(f"\nVariant: {variant.get('name', 'N/A')}")
+            print(f"Clinical significance: {variant.get('clinical_significance', 'N/A')}")
             
-            # Wyświetl fenotypy
+            # Display phenotypes
             phenotypes = variant.get('phenotypes', [])
             if phenotypes:
-                print("Powiązane fenotypy:")
+                print("Related phenotypes:")
                 for phenotype in phenotypes:
                     print(f"  - {phenotype.get('name', 'N/A')}")
             
-            # Wyświetl koordynaty
+            # Display coordinates
             coordinates = variant.get('coordinates', [])
             if coordinates:
                 for coords in coordinates:
-                    print(f"Koordynaty: {coords.get('chromosome', 'N/A')}:"
+                    print(f"Coordinates: {coords.get('chromosome', 'N/A')}:"
                           f"{coords.get('start', 'N/A')}-{coords.get('stop', 'N/A')}")
     
     except ClinVarError as e:
-        logger.error(f"Błąd podczas wyszukiwania wariantów dla rs ID: {str(e)}")
+        logger.error(f"Error while searching for variants for rs ID: {str(e)}")
 
 
 def example_search_by_phenotype() -> None:
     """
-    Przykład wyszukiwania wariantów na podstawie fenotypu.
+    Example of searching for variants based on phenotype.
     """
     client = setup_client()
     
-    # Przykładowy fenotyp
+    # Sample phenotype
     phenotype = "Breast cancer"
     
     try:
-        print(f"\n--- Wyszukiwanie wariantów dla fenotypu: {phenotype} ---")
+        print(f"\n--- Searching for variants for phenotype: {phenotype} ---")
         variants = client.search_by_phenotype(phenotype)
         
-        print(f"Znaleziono {len(variants)} wariantów")
+        print(f"Found {len(variants)} variants")
         
-        # Analiza genów
+        # Analyze genes
         gene_counts = {}
         for variant in variants:
             for gene in variant.get('genes', []):
@@ -260,100 +260,100 @@ def example_search_by_phenotype() -> None:
                 if gene_symbol != 'N/A':
                     gene_counts[gene_symbol] = gene_counts.get(gene_symbol, 0) + 1
         
-        # Znajdź top 5 genów
+        # Find the top 5 genes
         top_genes = sorted(gene_counts.items(), key=lambda x: x[1], reverse=True)[:5]
         
-        print("\nTop 5 genów związanych z fenotypem:")
+        print("\nTop 5 genes associated with the phenotype:")
         for gene, count in top_genes:
-            print(f"  {gene}: {count} wariantów")
+            print(f"  {gene}: {count} variants")
             
-        # Analiza znaczenia klinicznego
+        # Analyze clinical significance
         significance_counts = {}
         for variant in variants:
             significance = variant.get('clinical_significance', 'Not provided')
             significance_counts[significance] = significance_counts.get(significance, 0) + 1
         
-        print("\nRozkład znaczenia klinicznego:")
+        print("\nDistribution of clinical significance:")
         for significance, count in sorted(significance_counts.items(), key=lambda x: x[1], reverse=True):
-            print(f"  {significance}: {count} wariantów")
+            print(f"  {significance}: {count} variants")
     
     except ClinVarError as e:
-        logger.error(f"Błąd podczas wyszukiwania wariantów dla fenotypu: {str(e)}")
+        logger.error(f"Error while searching for variants for phenotype: {str(e)}")
 
 
 def example_integrate_with_coordinates_lit() -> None:
     """
-    Przykład integracji danych z coordinates_lit z danymi ClinVar.
+    Example of integrating coordinates_lit data with ClinVar data.
     """
     client = setup_client()
     
-    # Przykładowe dane z coordinates_lit
+    # Sample coordinates_lit data
     coordinates_data = [
         {
             "chromosome": "17",
             "start": 43044295,
-            "end": 43125483,
+            "end": 43125483",
             "source": "Publication 1",
-            "title": "Analiza mutacji w genie BRCA1"
+            "title": "Analysis of mutations in the BRCA1 gene"
         },
         {
             "chromosome": "13",
             "start": 32315474,
-            "end": 32400266,
+            "end": 32400266",
             "source": "Publication 2",
-            "title": "Analiza mutacji w genie BRCA2"
+            "title": "Analysis of mutations in the BRCA2 gene"
         }
     ]
     
     try:
-        print("\n--- Integracja danych coordinates_lit z ClinVar ---")
+        print("\n--- Integrating coordinates_lit data with ClinVar ---")
         enriched_data = client.integrate_with_coordinates_lit(coordinates_data)
         
         for i, entry in enumerate(enriched_data, 1):
             print(f"\nRegion {i}: {entry['title']}")
-            print(f"Koordynaty: {entry['chromosome']}:{entry['start']}-{entry['end']}")
-            print(f"Źródło: {entry['source']}")
+            print(f"Coordinates: {entry['chromosome']}:{entry['start']}-{entry['end']}")
+            print(f"Source: {entry['source']}")
             
             clinvar_data = entry.get('clinvar_data', [])
-            print(f"Liczba znalezionych wariantów ClinVar: {len(clinvar_data)}")
+            print(f"Number of ClinVar variants found: {len(clinvar_data)}")
             
             if clinvar_data:
-                # Analiza znaczenia klinicznego
+                # Analyze clinical significance
                 significance_counts = {}
                 for variant in clinvar_data:
                     significance = variant.get('clinical_significance', 'Not provided')
                     significance_counts[significance] = significance_counts.get(significance, 0) + 1
                 
-                print("Rozkład znaczenia klinicznego:")
+                print("Distribution of clinical significance:")
                 for significance, count in significance_counts.items():
-                    print(f"  {significance}: {count} wariantów")
+                    print(f"  {significance}: {count} variants")
                 
-                # Przykładowe warianty
-                print("\nPrzykładowe warianty:")
+                # Sample variants
+                print("\nSample variants:")
                 for j, variant in enumerate(clinvar_data[:3], 1):
                     print(f"  {j}. {variant.get('name', 'N/A')} - "
                           f"{variant.get('clinical_significance', 'N/A')}")
         
-        # Zapis wzbogaconych danych do pliku JSON
+        # Save enriched data to a JSON file
         with open('clinvar_enriched_data.json', 'w') as f:
             json.dump(enriched_data, f, indent=2)
-        print("\nWzbogacone dane zapisano do pliku clinvar_enriched_data.json")
+        print("\nEnriched data saved to file clinvar_enriched_data.json")
     
     except ClinVarError as e:
-        logger.error(f"Błąd podczas integracji danych: {str(e)}")
+        logger.error(f"Error while integrating data: {str(e)}")
 
 
 def example_get_variant_summary() -> None:
     """
-    Przykład pobierania podsumowania wariantu.
+    Example of retrieving a variant summary.
     """
     client = setup_client()
     
-    # Przykładowy identyfikator wariantu
+    # Sample variant identifier
     variant_id = "VCV000014076"
     
     try:
-        print(f"\n--- Podsumowanie wariantu {variant_id} ---")
+        print(f"\n--- Variant summary for {variant_id} ---")
         summary = client.get_variant_summary(variant_id)
         
         for key, value in summary.items():
@@ -371,12 +371,12 @@ def example_get_variant_summary() -> None:
                 print(f"{key}: {value}")
     
     except ClinVarError as e:
-        logger.error(f"Błąd podczas pobierania podsumowania wariantu: {str(e)}")
+        logger.error(f"Error while retrieving variant summary: {str(e)}")
 
 
 def run_all_examples() -> None:
     """
-    Uruchamia wszystkie przykłady użycia klienta ClinVar.
+    Runs all examples of using the ClinVar client.
     """
     examples = [
         example_get_variant_by_id,
@@ -394,18 +394,18 @@ def run_all_examples() -> None:
             example()
             print("\n" + "-" * 80)
         except Exception as e:
-            logger.error(f"Nieoczekiwany błąd podczas wykonywania przykładu {example.__name__}: {str(e)}")
+            logger.error(f"Unexpected error while running example {example.__name__}: {str(e)}")
 
 
 if __name__ == "__main__":
-    print("=== Demonstracja klienta ClinVar ===\n")
-    print("UWAGA: Aby uruchomić te przykłady, należy zaktualizować adres email w funkcji setup_client().")
-    print("Możesz uruchomić wszystkie przykłady lub odkomentować wybrane przykłady poniżej.\n")
+    print("=== ClinVar client demonstration ===\n")
+    print("NOTE: To run these examples, you need to update the email address in the setup_client() function.")
+    print("You can run all examples or uncomment selected examples below.\n")
     
-    # Uruchom wszystkie przykłady
+    # Run all examples
     # run_all_examples()
     
-    # Lub uruchom wybrane przykłady:
+    # Or run selected examples:
     example_get_variant_by_id()
     example_search_by_coordinates()
     # example_search_by_gene()
