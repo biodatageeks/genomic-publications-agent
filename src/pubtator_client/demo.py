@@ -20,7 +20,7 @@ def main():
     )
     
     # Initialize the PubTator client
-    client = PubTatorClient()
+    client = PubTatorClient(email="sitekwb@gmail.com")
     
     # Example 1: Retrieving publications by PMID identifiers
     print("=" * 80)

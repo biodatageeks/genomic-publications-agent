@@ -22,3 +22,19 @@ class Config:
         file_path = os.path.join(self.config['base_dir'], self.config['paths']['coordinates_regexes'])
         with open(file_path, 'r') as file:
             return json.load(file)
+    
+    def get_together_api_key(self):
+        """Get Together API key from config"""
+        return self.config.get('api', {}).get('together_api_key', '')
+    
+    def get_openai_api_key(self):
+        """Get OpenAI API key from config"""
+        return self.config.get('api', {}).get('openai_api_key', '')
+    
+    def get_contact_email(self):
+        """Get contact email from config"""
+        return self.config.get('contact', {}).get('email', 'sitekwb@gmail.com')
+    
+    def get_llm_model_name(self):
+        """Get default LLM model name from config"""
+        return self.config.get('llm_model_name', 'gpt4o-mini')

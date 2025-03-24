@@ -37,3 +37,17 @@ src/flow/__pycache__/PubmedEndpoint.cpython-312.pyc
 
 # Demo output files
 publication_annotations.json
+variant_relationships.csv
+variant_relationships_graph.png
+review_relationships.csv
+review_relationships_graph.png
+pmids_from_reviews.txt
+pmids_lista.txt
+wyniki_cooccurrence.csv
+wyniki_cooccurrence.json
+wyniki_llm_turbo.csv
+wyniki_llm_turbo.json
+wyniki_llm.csv
+wyniki_llm.json
+wyniki_rozszerzone.csv
+wyniki_rozszerzone.json
