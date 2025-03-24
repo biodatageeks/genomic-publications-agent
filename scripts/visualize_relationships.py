@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Skrypt wizualizujący relacje między wariantami, genami i chorobami.
+Script for visualizing relationships between variants, genes, and diseases.
 """
 
 import sys
@@ -12,47 +12,47 @@ import networkx as nx
 import argparse
 from collections import Counter
 
-# Dodanie ścieżki do katalogu głównego projektu
+# Add path to the main project directory
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 def create_relationship_graph(csv_file, output_image):
     """
-    Tworzy graf relacji między wariantami, genami i chorobami.
+    Creates a graph of relationships between variants, genes, and diseases.
     
     Args:
-        csv_file: Ścieżka do pliku CSV z relacjami
-        output_image: Ścieżka do zapisania obrazu grafu
+        csv_file: Path to CSV file with relationships
+        output_image: Path to save the graph image
     """
     try:
-        # Wczytanie danych
+        # Load data
         df = pd.read_csv(csv_file)
         
-        # Utworzenie grafu
+        # Create graph
         G = nx.Graph()
         
-        # Dodanie węzłów (warianty, geny, choroby)
+        # Add nodes (variants, genes, diseases)
         variants = set(df['variant_text'].dropna().unique())
         genes = set(df['gene_text'].dropna().unique())
         diseases = set(df['disease_text'].dropna().unique())
         
-        # Usunięcie pustych stringów
+        # Remove empty strings
         variants = {v for v in variants if v}
         genes = {g for g in genes if g}
         diseases = {d for d in diseases if d}
         
-        # Dodanie wariantów jako węzłów
+        # Add variants as nodes
         for variant in variants:
             G.add_node(variant, type='variant')
             
-        # Dodanie genów jako węzłów
+        # Add genes as nodes
         for gene in genes:
             G.add_node(gene, type='gene')
             
-        # Dodanie chorób jako węzłów
+        # Add diseases as nodes
         for disease in diseases:
             G.add_node(disease, type='disease')
             
-        # Dodanie krawędzi między wariantami a genami
+        # Add edges between variants and genes
         for _, row in df.iterrows():
             variant = row['variant_text']
             gene = row['gene_text']
@@ -67,7 +67,7 @@ def create_relationship_graph(csv_file, output_image):
             if gene and disease and gene in genes and disease in diseases:
                 G.add_edge(gene, disease)
         
-        # Określenie kolorów węzłów
+        # Define node colors
         colors = []
         for node in G.nodes():
             if node in variants:
@@ -77,61 +77,61 @@ def create_relationship_graph(csv_file, output_image):
             elif node in diseases:
                 colors.append('salmon')
         
-        # Określenie pozycji węzłów
+        # Define node positions
         pos = nx.spring_layout(G, seed=42)
         
-        # Wizualizacja grafu
+        # Visualize graph
         plt.figure(figsize=(12, 10))
         nx.draw_networkx(G, pos, node_color=colors, with_labels=True, 
                          node_size=700, font_size=10, 
                          font_weight='bold', alpha=0.7)
         
-        # Dodanie legendy
+        # Add legend
         variant_patch = mlines.Line2D([0], [0], marker='o', color='w', markerfacecolor='skyblue',
-                                  markersize=15, label='Wariant')
+                                  markersize=15, label='Variant')
         gene_patch = mlines.Line2D([0], [0], marker='o', color='w', markerfacecolor='lightgreen',
-                               markersize=15, label='Gen')
+                               markersize=15, label='Gene')
         disease_patch = mlines.Line2D([0], [0], marker='o', color='w', markerfacecolor='salmon',
-                                  markersize=15, label='Choroba')
+                                  markersize=15, label='Disease')
         
         plt.legend(handles=[variant_patch, gene_patch, disease_patch], loc='upper right')
         
-        plt.title('Graf relacji między wariantami, genami i chorobami')
+        plt.title('Relationship Graph between Variants, Genes, and Diseases')
         plt.tight_layout()
         plt.savefig(output_image, dpi=300)
         plt.close()
         
-        print(f"Graf został zapisany do pliku: {output_image}")
+        print(f"Graph has been saved to file: {output_image}")
         
-        # Generowanie statystyk
-        print(f"\nStatystyki grafu:")
-        print(f" - Liczba węzłów: {G.number_of_nodes()}")
-        print(f" - Liczba krawędzi: {G.number_of_edges()}")
-        print(f" - Liczba wariantów: {len(variants)}")
-        print(f" - Liczba genów: {len(genes)}")
-        print(f" - Liczba chorób: {len(diseases)}")
+        # Generate statistics
+        print(f"\nGraph statistics:")
+        print(f" - Number of nodes: {G.number_of_nodes()}")
+        print(f" - Number of edges: {G.number_of_edges()}")
+        print(f" - Number of variants: {len(variants)}")
+        print(f" - Number of genes: {len(genes)}")
+        print(f" - Number of diseases: {len(diseases)}")
         
     except ImportError as e:
-        print(f"Błąd: Brak wymaganych bibliotek. {str(e)}")
-        print("Zainstaluj wymagane biblioteki: pip install matplotlib networkx")
+        print(f"Error: Missing required libraries. {str(e)}")
+        print("Install required libraries: pip install matplotlib networkx")
     except Exception as e:
-        print(f"Błąd podczas tworzenia grafu: {str(e)}")
+        print(f"Error while creating graph: {str(e)}")
 
 def main():
-    """Główna funkcja skryptu."""
-    parser = argparse.ArgumentParser(description="Wizualizacja relacji między wariantami, genami i chorobami.")
+    """Main script function."""
+    parser = argparse.ArgumentParser(description="Visualization of relationships between variants, genes, and diseases.")
     parser.add_argument("--input", "-i", type=str, default="variant_relationships.csv",
-                        help="Ścieżka do pliku CSV z relacjami (domyślnie: variant_relationships.csv)")
+                        help="Path to CSV file with relationships (default: variant_relationships.csv)")
     parser.add_argument("--output", "-o", type=str, default="variant_relationships_graph.png",
-                        help="Ścieżka do pliku wyjściowego z grafem (domyślnie: variant_relationships_graph.png)")
+                        help="Path to output graph file (default: variant_relationships_graph.png)")
     
     args = parser.parse_args()
     
     if not os.path.exists(args.input):
-        print(f"Błąd: Plik {args.input} nie istnieje.")
+        print(f"Error: File {args.input} does not exist.")
         return
     
-    # Tworzenie katalogu dla pliku wyjściowego, jeśli nie istnieje
+    # Create output directory if it doesn't exist
     output_dir = os.path.dirname(os.path.abspath(args.output))
     if output_dir and not os.path.exists(output_dir):
         os.makedirs(output_dir, exist_ok=True)
