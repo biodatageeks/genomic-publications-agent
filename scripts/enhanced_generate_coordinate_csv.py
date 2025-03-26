@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Ulepszona wersja skryptu do generowania tabeli CSV z genami, chorobami i wariantami na podstawie identyfikatorów PubMed.
-Wykorzystuje ulepszoną klasę EnhancedLlmContextAnalyzer do lepszej obsługi błędów parsowania JSON.
+Enhanced version of the script for generating a CSV table with genes, diseases, and variants based on PubMed IDs.
+Uses the UnifiedLlmContextAnalyzer class for better JSON error handling and relationship scoring.
 """
 
 import argparse
@@ -11,14 +11,14 @@ import sys
 import time
 from typing import List, Optional
 
-# Dodaj ścieżkę do głównego katalogu projektu
+# Add the path to the main project directory
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from scripts.generate_coordinate_csv import analyze_pmids
-from src.llm_context_analyzer.enhanced_llm_context_analyzer import EnhancedLlmContextAnalyzer
+from src.llm_context_analyzer.unified_llm_context_analyzer import UnifiedLlmContextAnalyzer
 from src.Config import Config
 
-# Konfiguracja logowania
+# Configure logging
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -39,26 +39,27 @@ def enhanced_analyze_pmids(pmids: List[str],
                          debug_mode: bool = False,
                          retry_on_failure: bool = True,
                          max_retries: int = 3,
-                         retry_delay: int = 5):
+                         retry_delay: int = 5,
+                         cache_storage_type: str = "memory"):
     """
-    Ulepszona wersja funkcji do analizy identyfikatorów PubMed.
-    Używa EnhancedLlmContextAnalyzer do lepszej obsługi błędów i dodaje możliwość 
-    ponownych prób w przypadku niepowodzenia.
+    Enhanced version of the function to analyze PubMed IDs.
+    Uses UnifiedLlmContextAnalyzer for better error handling and adds retry capability in case of failure.
     
     Args:
-        pmids: Lista identyfikatorów PubMed do analizy
-        output_csv: Ścieżka do pliku wyjściowego CSV
-        email: Adres email do API PubTator (opcjonalny)
-        llm_model: Nazwa modelu LLM do użycia (opcjonalny)
-        use_llm: Czy używać analizy LLM
-        only_llm: Czy używać tylko analizy LLM (bez współwystępowania)
-        debug_mode: Czy włączyć tryb debugowania
-        retry_on_failure: Czy próbować ponownie w przypadku niepowodzenia
-        max_retries: Maksymalna liczba ponownych prób
-        retry_delay: Opóźnienie między kolejnymi próbami (w sekundach)
+        pmids: List of PubMed IDs to analyze
+        output_csv: Path to the output CSV file
+        email: Email address for the PubTator API (optional)
+        llm_model: Name of the LLM model to use (optional)
+        use_llm: Whether to use LLM analysis
+        only_llm: Whether to use only LLM analysis (no co-occurrence)
+        debug_mode: Whether to enable debug mode
+        retry_on_failure: Whether to retry in case of failure
+        max_retries: Maximum number of retry attempts
+        retry_delay: Delay between retry attempts (in seconds)
+        cache_storage_type: Type of cache storage (memory or disk)
         
     Returns:
-        DataFrame z wynikami
+        DataFrame with the results
     """
     retries = 0
     last_error = None
@@ -66,9 +67,9 @@ def enhanced_analyze_pmids(pmids: List[str],
     while retries <= max_retries:
         try:
             if retries > 0:
-                logger.info(f"Ponowna próba {retries}/{max_retries}...")
+                logger.info(f"Retry attempt {retries}/{max_retries}...")
             
-            # Uruchom standardową analizę, ale z ulepszonymi parametrami
+            # Run the standard analysis, but with enhanced parameters
             return analyze_pmids(
                 pmids=pmids,
                 output_csv=output_csv,
@@ -77,21 +78,22 @@ def enhanced_analyze_pmids(pmids: List[str],
                 use_llm=use_llm,
                 only_llm=only_llm,
                 debug_mode=debug_mode,
-                llm_context_analyzer_class=EnhancedLlmContextAnalyzer  # Użyj ulepszonej klasy analizatora
+                llm_context_analyzer_class=UnifiedLlmContextAnalyzer,  # Use the new unified analyzer
+                cache_storage_type=cache_storage_type  # Pass cache_storage_type parameter
             )
         
         except Exception as e:
             last_error = e
-            logger.error(f"Błąd podczas analizy: {str(e)}")
+            logger.error(f"Error during analysis: {str(e)}")
             
             if not retry_on_failure or retries >= max_retries:
                 break
             
             retries += 1
-            logger.info(f"Oczekiwanie {retry_delay} sekund przed ponowną próbą...")
+            logger.info(f"Waiting {retry_delay} seconds before retrying...")
             time.sleep(retry_delay)
     
-    # Jeśli wszystkie próby zawiodły, podnieś ostatni błąd
+    # If all attempts failed, raise the last error
     if last_error:
         raise last_error
     
@@ -99,42 +101,44 @@ def enhanced_analyze_pmids(pmids: List[str],
 
 
 def main():
-    """Główna funkcja skryptu."""
-    # Załaduj konfigurację
+    """Main function of the script."""
+    # Load configuration
     config = Config()
     default_email = config.get_contact_email()
     default_model = config.get_llm_model_name()
     
     parser = argparse.ArgumentParser(
-        description="Ulepszona wersja skryptu do generowania tabeli CSV z genami, chorobami i wariantami"
+        description="Enhanced script for generating a CSV table with genes, diseases, and variants"
     )
     
     parser.add_argument("-p", "--pmids", nargs="+", required=False,
-                        help="Lista identyfikatorów PubMed do analizy")
+                        help="List of PubMed IDs to analyze")
     parser.add_argument("-f", "--file", type=str,
-                        help="Plik zawierający identyfikatory PubMed, jeden na linię")
+                        help="File containing PubMed IDs, one per line")
     parser.add_argument("-o", "--output", required=True, 
-                        help="Ścieżka do pliku wyjściowego CSV")
+                        help="Path to the output CSV file")
     parser.add_argument("-m", "--model", default=default_model,
-                        help=f"Nazwa modelu LLM do użycia (domyślnie: {default_model})")
+                        help=f"Name of the LLM model to use (default: {default_model})")
     parser.add_argument("-e", "--email", default=default_email,
-                        help=f"Adres email do API PubTator (domyślnie: {default_email})")
+                        help=f"Email address for the PubTator API (default: {default_email})")
     parser.add_argument("--no-llm", action="store_true",
-                        help="Wyłącz analizę LLM (używaj tylko współwystępowania)")
+                        help="Disable LLM analysis (use only co-occurrence)")
     parser.add_argument("--only-llm", action="store_true",
-                        help="Używaj tylko analizy LLM (wyłącz współwystępowanie)")
+                        help="Use only LLM analysis (disable co-occurrence)")
     parser.add_argument("--debug", action="store_true",
-                        help="Zapisz informacje debugowania (surowe wyjście LLM)")
+                        help="Save debugging information (raw LLM output)")
     parser.add_argument("--no-retry", action="store_true",
-                        help="Wyłącz automatyczne ponowne próby w przypadku niepowodzenia")
+                        help="Disable automatic retries in case of failure")
     parser.add_argument("--max-retries", type=int, default=3,
-                        help="Maksymalna liczba ponownych prób w przypadku niepowodzenia (domyślnie: 3)")
+                        help="Maximum number of retry attempts in case of failure (default: 3)")
     parser.add_argument("--retry-delay", type=int, default=5,
-                        help="Opóźnienie między kolejnymi próbami w sekundach (domyślnie: 5)")
+                        help="Delay between retry attempts in seconds (default: 5)")
+    parser.add_argument("--cache-type", choices=["memory", "disk"], default="memory", 
+                        help="Type of cache storage (memory or disk), default: memory")
     
     args = parser.parse_args()
     
-    # Zbierz identyfikatory PubMed z argumentów lub pliku
+    # Collect PubMed IDs from arguments or file
     pmids = []
     
     if args.pmids:
@@ -146,14 +150,14 @@ def main():
                 file_pmids = [line.strip() for line in f if line.strip()]
                 pmids.extend(file_pmids)
         except Exception as e:
-            logger.error(f"Błąd odczytu pliku PMID: {str(e)}")
+            logger.error(f"Error reading PMID file: {str(e)}")
             sys.exit(1)
     
     if not pmids:
-        logger.error("Nie podano identyfikatorów PubMed. Użyj opcji --pmids lub --file.")
+        logger.error("No PubMed IDs provided. Use the --pmids or --file option.")
         sys.exit(1)
     
-    # Wykonaj analizę
+    # Perform the analysis
     try:
         df = enhanced_analyze_pmids(
             pmids=pmids,
@@ -165,15 +169,16 @@ def main():
             debug_mode=args.debug,
             retry_on_failure=not args.no_retry,
             max_retries=args.max_retries,
-            retry_delay=args.retry_delay
+            retry_delay=args.retry_delay,
+            cache_storage_type=args.cache_type
         )
         
         if df is not None:
-            logger.info(f"Analiza zakończona pomyślnie. Wygenerowano CSV z {len(df)} wpisami.")
+            logger.info(f"Analysis completed successfully. Generated CSV with {len(df)} entries.")
         else:
-            logger.info("Analiza zakończona pomyślnie, ale nie zwrócono danych.")
+            logger.info("Analysis completed successfully, but no data was returned.")
     except Exception as e:
-        logger.error(f"Analiza nie powiodła się: {str(e)}")
+        logger.error(f"Analysis failed: {str(e)}")
         sys.exit(1)
 
 

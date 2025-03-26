@@ -1,0 +1,2796 @@
+[
+  {
+    "pmid": "18836445",
+    "variant_text": "rs642961",
+    "variant_offset": 329,
+    "variant_id": "tmVar:rs642961;VariantGroup:0;RS#:642961",
+    "genes": [
+      {
+        "text": "IRF6",
+        "id": "54139",
+        "offset": 217
+      },
+      {
+        "text": "interferon regulatory factor 6",
+        "id": "54139",
+        "offset": 223
+      },
+      {
+        "text": "IRF6",
+        "id": "54139",
+        "offset": 366
+      },
+      {
+        "text": "AP-2alpha",
+        "id": "21418",
+        "offset": 775
+      },
+      {
+        "text": "IRF6",
+        "id": "54139",
+        "offset": 910
+      },
+      {
+        "text": "AP-2alpha",
+        "id": "21418",
+        "offset": 919
+      }
+    ],
+    "diseases": [
+      {
+        "text": "nonsyndromic cleft lip with or without",
+        "id": "MESH:C566121",
+        "offset": 120
+      },
+      {
+        "text": "cleft palate",
+        "id": "MESH:D002972",
+        "offset": 159
+      },
+      {
+        "text": "NSCL/P",
+        "id": "MESH:D002972",
+        "offset": 173
+      },
+      {
+        "text": "NSCL/P",
+        "id": "MESH:D002972",
+        "offset": 462
+      },
+      {
+        "text": "cleft lip",
+        "id": "MESH:D002971",
+        "offset": 495
+      },
+      {
+        "text": "cleft palate",
+        "id": "MESH:D002972",
+        "offset": 513
+      },
+      {
+        "text": "cleft lip",
+        "id": "MESH:D002971",
+        "offset": 603
+      }
+    ],
+    "tissues": [],
+    "species": [
+      {
+        "text": "mouse",
+        "id": "10090",
+        "offset": 816
+      }
+    ],
+    "chemicals": [],
+    "passage_text": "Previously we have shown that nonsyndromic cleft lip with or without cleft palate (NSCL/P) is strongly associated with SNPs in IRF6 (interferon regulatory factor 6). Here, we use multispecies sequence comparisons to identify a common SNP (rs642961, G>A) in a newly identified IRF6 enhancer. The A allele is significantly overtransmitted (P = 1 x 10(-11)) in families with NSCL/P, in particular those with cleft lip but not cleft palate. Further, there is a dosage effect of the A allele, with a relative risk for cleft lip of 1.68 for the AG genotype and 2.40 for the AA genotype. EMSA and ChIP assays demonstrate that the risk allele disrupts the binding site of transcription factor AP-2alpha and expression analysis in the mouse localizes the enhancer activity to craniofacial and limb structures. Our findings place IRF6 and AP-2alpha in the same developmental pathway and identify a high-frequency variant in a regulatory element contributing substantially to a common, complex disorder."
+  },
+  {
+    "pmid": "18836445",
+    "variant_text": "G>A",
+    "variant_offset": 339,
+    "variant_id": "tmVar:c|SUB|G||A;VariantGroup:0;RS#:642961",
+    "genes": [
+      {
+        "text": "IRF6",
+        "id": "54139",
+        "offset": 217
+      },
+      {
+        "text": "interferon regulatory factor 6",
+        "id": "54139",
+        "offset": 223
+      },
+      {
+        "text": "IRF6",
+        "id": "54139",
+        "offset": 366
+      },
+      {
+        "text": "AP-2alpha",
+        "id": "21418",
+        "offset": 775
+      },
+      {
+        "text": "IRF6",
+        "id": "54139",
+        "offset": 910
+      },
+      {
+        "text": "AP-2alpha",
+        "id": "21418",
+        "offset": 919
+      }
+    ],
+    "diseases": [
+      {
+        "text": "nonsyndromic cleft lip with or without",
+        "id": "MESH:C566121",
+        "offset": 120
+      },
+      {
+        "text": "cleft palate",
+        "id": "MESH:D002972",
+        "offset": 159
+      },
+      {
+        "text": "NSCL/P",
+        "id": "MESH:D002972",
+        "offset": 173
+      },
+      {
+        "text": "NSCL/P",
+        "id": "MESH:D002972",
+        "offset": 462
+      },
+      {
+        "text": "cleft lip",
+        "id": "MESH:D002971",
+        "offset": 495
+      },
+      {
+        "text": "cleft palate",
+        "id": "MESH:D002972",
+        "offset": 513
+      },
+      {
+        "text": "cleft lip",
+        "id": "MESH:D002971",
+        "offset": 603
+      }
+    ],
+    "tissues": [],
+    "species": [
+      {
+        "text": "mouse",
+        "id": "10090",
+        "offset": 816
+      }
+    ],
+    "chemicals": [],
+    "passage_text": "Previously we have shown that nonsyndromic cleft lip with or without cleft palate (NSCL/P) is strongly associated with SNPs in IRF6 (interferon regulatory factor 6). Here, we use multispecies sequence comparisons to identify a common SNP (rs642961, G>A) in a newly identified IRF6 enhancer. The A allele is significantly overtransmitted (P = 1 x 10(-11)) in families with NSCL/P, in particular those with cleft lip but not cleft palate. Further, there is a dosage effect of the A allele, with a relative risk for cleft lip of 1.68 for the AG genotype and 2.40 for the AA genotype. EMSA and ChIP assays demonstrate that the risk allele disrupts the binding site of transcription factor AP-2alpha and expression analysis in the mouse localizes the enhancer activity to craniofacial and limb structures. Our findings place IRF6 and AP-2alpha in the same developmental pathway and identify a high-frequency variant in a regulatory element contributing substantially to a common, complex disorder."
+  },
+  {
+    "pmid": "19306335",
+    "variant_text": "rs2435357",
+    "variant_offset": 368,
+    "variant_id": "tmVar:rs2435357;VariantGroup:0;CorrespondingGene:5979;RS#:2435357;CorrespondingSpecies:9606",
+    "genes": [
+      {
+        "text": "RET",
+        "id": "5979",
+        "offset": 333
+      },
+      {
+        "text": "RET",
+        "id": "5979",
+        "offset": 359
+      },
+      {
+        "text": "RET",
+        "id": "5979",
+        "offset": 568
+      },
+      {
+        "text": "RET",
+        "id": "5979",
+        "offset": 792
+      }
+    ],
+    "diseases": [
+      {
+        "text": "Down syndrome",
+        "id": "MESH:D004314",
+        "offset": 139
+      },
+      {
+        "text": "DS",
+        "id": "MESH:D004314",
+        "offset": 154
+      },
+      {
+        "text": "Hirschsprung disease",
+        "id": "MESH:D006627",
+        "offset": 192
+      },
+      {
+        "text": "HSCR",
+        "id": "MESH:D006627",
+        "offset": 214
+      },
+      {
+        "text": "HSCR",
+        "id": "MESH:D006627",
+        "offset": 289
+      },
+      {
+        "text": "HSCR",
+        "id": "MESH:D006627",
+        "offset": 424
+      },
+      {
+        "text": "DS",
+        "id": "MESH:D004314",
+        "offset": 432
+      },
+      {
+        "text": "DS",
+        "id": "MESH:D004314",
+        "offset": 647
+      },
+      {
+        "text": "HSCR",
+        "id": "MESH:D006627",
+        "offset": 671
+      },
+      {
+        "text": "HSCR",
+        "id": "MESH:D006627",
+        "offset": 712
+      },
+      {
+        "text": "DS",
+        "id": "MESH:D004314",
+        "offset": 721
+      },
+      {
+        "text": "developmental disorders",
+        "id": "MESH:D002658",
+        "offset": 1000
+      }
+    ],
+    "tissues": [],
+    "species": [
+      {
+        "text": "human",
+        "id": "9606",
+        "offset": 994
+      }
+    ],
+    "chemicals": [],
+    "passage_text": "Individuals with Down syndrome (DS) display a 40-fold greater risk of Hirschsprung disease (HSCR) than the general population of newborns implicating chromosome 21 in HSCR etiology. Here we demonstrate that the RET enhancer polymorphism RET+9.7 (rs2435357:C>T) at chromosome 10q11.2 is associated with HSCR in DS individuals both by transmission disequilibrium (P=0.0015) and case-control (P=0.0115) analysis of matched cases. Interestingly, the RET+9.7 T allele frequency is significantly different between individuals with DS alone (0.26+/-0.04), HSCR alone (0.61+/-0.04), and those with HSCR and DS (0.41+/-0.04), demonstrating an association and interaction between RET and chromosome 21 gene dosage. This is the first report of a genetic interaction between a common functional variant (rs2435357) and a not infrequent copy number error (chromosome 21 dosage) in two human developmental disorders."
+  },
+  {
+    "pmid": "19306335",
+    "variant_text": "C>T",
+    "variant_offset": 378,
+    "variant_id": "tmVar:c|SUB|C||T;VariantGroup:0;CorrespondingGene:5979;RS#:2435357;CorrespondingSpecies:9606;CA#:9335",
+    "genes": [
+      {
+        "text": "RET",
+        "id": "5979",
+        "offset": 333
+      },
+      {
+        "text": "RET",
+        "id": "5979",
+        "offset": 359
+      },
+      {
+        "text": "RET",
+        "id": "5979",
+        "offset": 568
+      },
+      {
+        "text": "RET",
+        "id": "5979",
+        "offset": 792
+      }
+    ],
+    "diseases": [
+      {
+        "text": "Down syndrome",
+        "id": "MESH:D004314",
+        "offset": 139
+      },
+      {
+        "text": "DS",
+        "id": "MESH:D004314",
+        "offset": 154
+      },
+      {
+        "text": "Hirschsprung disease",
+        "id": "MESH:D006627",
+        "offset": 192
+      },
+      {
+        "text": "HSCR",
+        "id": "MESH:D006627",
+        "offset": 214
+      },
+      {
+        "text": "HSCR",
+        "id": "MESH:D006627",
+        "offset": 289
+      },
+      {
+        "text": "HSCR",
+        "id": "MESH:D006627",
+        "offset": 424
+      },
+      {
+        "text": "DS",
+        "id": "MESH:D004314",
+        "offset": 432
+      },
+      {
+        "text": "DS",
+        "id": "MESH:D004314",
+        "offset": 647
+      },
+      {
+        "text": "HSCR",
+        "id": "MESH:D006627",
+        "offset": 671
+      },
+      {
+        "text": "HSCR",
+        "id": "MESH:D006627",
+        "offset": 712
+      },
+      {
+        "text": "DS",
+        "id": "MESH:D004314",
+        "offset": 721
+      },
+      {
+        "text": "developmental disorders",
+        "id": "MESH:D002658",
+        "offset": 1000
+      }
+    ],
+    "tissues": [],
+    "species": [
+      {
+        "text": "human",
+        "id": "9606",
+        "offset": 994
+      }
+    ],
+    "chemicals": [],
+    "passage_text": "Individuals with Down syndrome (DS) display a 40-fold greater risk of Hirschsprung disease (HSCR) than the general population of newborns implicating chromosome 21 in HSCR etiology. Here we demonstrate that the RET enhancer polymorphism RET+9.7 (rs2435357:C>T) at chromosome 10q11.2 is associated with HSCR in DS individuals both by transmission disequilibrium (P=0.0015) and case-control (P=0.0115) analysis of matched cases. Interestingly, the RET+9.7 T allele frequency is significantly different between individuals with DS alone (0.26+/-0.04), HSCR alone (0.61+/-0.04), and those with HSCR and DS (0.41+/-0.04), demonstrating an association and interaction between RET and chromosome 21 gene dosage. This is the first report of a genetic interaction between a common functional variant (rs2435357) and a not infrequent copy number error (chromosome 21 dosage) in two human developmental disorders."
+  },
+  {
+    "pmid": "19306335",
+    "variant_text": "rs2435357",
+    "variant_offset": 914,
+    "variant_id": "tmVar:rs2435357;VariantGroup:0;CorrespondingGene:5979;RS#:2435357;CorrespondingSpecies:9606",
+    "genes": [
+      {
+        "text": "RET",
+        "id": "5979",
+        "offset": 333
+      },
+      {
+        "text": "RET",
+        "id": "5979",
+        "offset": 359
+      },
+      {
+        "text": "RET",
+        "id": "5979",
+        "offset": 568
+      },
+      {
+        "text": "RET",
+        "id": "5979",
+        "offset": 792
+      }
+    ],
+    "diseases": [
+      {
+        "text": "Down syndrome",
+        "id": "MESH:D004314",
+        "offset": 139
+      },
+      {
+        "text": "DS",
+        "id": "MESH:D004314",
+        "offset": 154
+      },
+      {
+        "text": "Hirschsprung disease",
+        "id": "MESH:D006627",
+        "offset": 192
+      },
+      {
+        "text": "HSCR",
+        "id": "MESH:D006627",
+        "offset": 214
+      },
+      {
+        "text": "HSCR",
+        "id": "MESH:D006627",
+        "offset": 289
+      },
+      {
+        "text": "HSCR",
+        "id": "MESH:D006627",
+        "offset": 424
+      },
+      {
+        "text": "DS",
+        "id": "MESH:D004314",
+        "offset": 432
+      },
+      {
+        "text": "DS",
+        "id": "MESH:D004314",
+        "offset": 647
+      },
+      {
+        "text": "HSCR",
+        "id": "MESH:D006627",
+        "offset": 671
+      },
+      {
+        "text": "HSCR",
+        "id": "MESH:D006627",
+        "offset": 712
+      },
+      {
+        "text": "DS",
+        "id": "MESH:D004314",
+        "offset": 721
+      },
+      {
+        "text": "developmental disorders",
+        "id": "MESH:D002658",
+        "offset": 1000
+      }
+    ],
+    "tissues": [],
+    "species": [
+      {
+        "text": "human",
+        "id": "9606",
+        "offset": 994
+      }
+    ],
+    "chemicals": [],
+    "passage_text": "Individuals with Down syndrome (DS) display a 40-fold greater risk of Hirschsprung disease (HSCR) than the general population of newborns implicating chromosome 21 in HSCR etiology. Here we demonstrate that the RET enhancer polymorphism RET+9.7 (rs2435357:C>T) at chromosome 10q11.2 is associated with HSCR in DS individuals both by transmission disequilibrium (P=0.0015) and case-control (P=0.0115) analysis of matched cases. Interestingly, the RET+9.7 T allele frequency is significantly different between individuals with DS alone (0.26+/-0.04), HSCR alone (0.61+/-0.04), and those with HSCR and DS (0.41+/-0.04), demonstrating an association and interaction between RET and chromosome 21 gene dosage. This is the first report of a genetic interaction between a common functional variant (rs2435357) and a not infrequent copy number error (chromosome 21 dosage) in two human developmental disorders."
+  },
+  {
+    "pmid": "20598273",
+    "variant_text": "C-->T",
+    "variant_offset": 376,
+    "variant_id": "tmVar:c|SUB|C||T;VariantGroup:1;CorrespondingGene:5979;CorrespondingSpecies:9606",
+    "genes": [
+      {
+        "text": "receptor tyrosine kinase",
+        "id": "5979",
+        "offset": 191
+      },
+      {
+        "text": "RET",
+        "id": "5979",
+        "offset": 216
+      },
+      {
+        "text": "RET",
+        "id": "5979",
+        "offset": 524
+      },
+      {
+        "text": "SOX10",
+        "id": "6663",
+        "offset": 610
+      },
+      {
+        "text": "RET",
+        "id": "5979",
+        "offset": 661
+      },
+      {
+        "text": "RET",
+        "id": "5979",
+        "offset": 1319
+      },
+      {
+        "text": "RET",
+        "id": "5979",
+        "offset": 1466
+      },
+      {
+        "text": "RET",
+        "id": "5979",
+        "offset": 1561
+      },
+      {
+        "text": "RET",
+        "id": "5979",
+        "offset": 1603
+      }
+    ],
+    "diseases": [
+      {
+        "text": "Hirschsprung disease",
+        "id": "MESH:D006627",
+        "offset": 151
+      },
+      {
+        "text": "HSCR",
+        "id": "MESH:D006627",
+        "offset": 173
+      },
+      {
+        "text": "HSCR",
+        "id": "MESH:D006627",
+        "offset": 840
+      },
+      {
+        "text": "aganglionosis",
+        "id": "MESH:D006627",
+        "offset": 941
+      },
+      {
+        "text": "HSCR",
+        "id": "MESH:D006627",
+        "offset": 1440
+      },
+      {
+        "text": "HSCR",
+        "id": "MESH:D006627",
+        "offset": 1490
+      }
+    ],
+    "tissues": [],
+    "species": [
+      {
+        "text": "patients",
+        "id": "9606",
+        "offset": 1300
+      },
+      {
+        "text": "patients",
+        "id": "9606",
+        "offset": 1495
+      },
+      {
+        "text": "patients",
+        "id": "9606",
+        "offset": 1759
+      }
+    ],
+    "chemicals": [],
+    "passage_text": "The major gene for Hirschsprung disease (HSCR) encodes the receptor tyrosine kinase RET. In a study of 690 European- and 192 Chinese-descent probands and their parents or controls, we demonstrate the ubiquity of a >4-fold susceptibility from a C-->T allele (rs2435357: p = 3.9 x 10(-43) in European ancestry; p = 1.1 x 10(-21) in Chinese samples) that probably arose once within the intronic RET enhancer MCS+9.7. With in vitro assays, we now show that the T variant disrupts a SOX10 binding site within MCS+9.7 that compromises RET transactivation. The T allele, with a control frequency of 20%-30%/47% and case frequency of 54%-62%/88% in European/Chinese-ancestry individuals, is involved in all forms of HSCR. It is marginally associated with proband gender (p = 0.13) and significantly so with length of aganglionosis (p = 7.6 x 10(-5)) and familiality (p = 6.2 x 10(-4)). The enhancer variant is more frequent in the common forms of male, short-segment, and simplex families whereas multiple, rare, coding mutations are the norm in the less common and more severe forms of female, long-segment, and multiplex families. The T variant also increases penetrance in patients with rare RET coding mutations. Thus, both rare and common mutations, individually and together, make contributions to the risk of HSCR. The distribution of RET variants in diverse HSCR patients suggests a \"cellular-recessive\" genetic model where both RET alleles' function is compromised. The RET allelic series, and its genotype-phenotype correlations, shows that success in variant identification in complex disorders may strongly depend on which patients are studied."
+  },
+  {
+    "pmid": "20598273",
+    "variant_text": "rs2435357",
+    "variant_offset": 390,
+    "variant_id": "tmVar:rs2435357;VariantGroup:0;CorrespondingGene:5979;RS#:2435357;CorrespondingSpecies:9606",
+    "genes": [
+      {
+        "text": "receptor tyrosine kinase",
+        "id": "5979",
+        "offset": 191
+      },
+      {
+        "text": "RET",
+        "id": "5979",
+        "offset": 216
+      },
+      {
+        "text": "RET",
+        "id": "5979",
+        "offset": 524
+      },
+      {
+        "text": "SOX10",
+        "id": "6663",
+        "offset": 610
+      },
+      {
+        "text": "RET",
+        "id": "5979",
+        "offset": 661
+      },
+      {
+        "text": "RET",
+        "id": "5979",
+        "offset": 1319
+      },
+      {
+        "text": "RET",
+        "id": "5979",
+        "offset": 1466
+      },
+      {
+        "text": "RET",
+        "id": "5979",
+        "offset": 1561
+      },
+      {
+        "text": "RET",
+        "id": "5979",
+        "offset": 1603
+      }
+    ],
+    "diseases": [
+      {
+        "text": "Hirschsprung disease",
+        "id": "MESH:D006627",
+        "offset": 151
+      },
+      {
+        "text": "HSCR",
+        "id": "MESH:D006627",
+        "offset": 173
+      },
+      {
+        "text": "HSCR",
+        "id": "MESH:D006627",
+        "offset": 840
+      },
+      {
+        "text": "aganglionosis",
+        "id": "MESH:D006627",
+        "offset": 941
+      },
+      {
+        "text": "HSCR",
+        "id": "MESH:D006627",
+        "offset": 1440
+      },
+      {
+        "text": "HSCR",
+        "id": "MESH:D006627",
+        "offset": 1490
+      }
+    ],
+    "tissues": [],
+    "species": [
+      {
+        "text": "patients",
+        "id": "9606",
+        "offset": 1300
+      },
+      {
+        "text": "patients",
+        "id": "9606",
+        "offset": 1495
+      },
+      {
+        "text": "patients",
+        "id": "9606",
+        "offset": 1759
+      }
+    ],
+    "chemicals": [],
+    "passage_text": "The major gene for Hirschsprung disease (HSCR) encodes the receptor tyrosine kinase RET. In a study of 690 European- and 192 Chinese-descent probands and their parents or controls, we demonstrate the ubiquity of a >4-fold susceptibility from a C-->T allele (rs2435357: p = 3.9 x 10(-43) in European ancestry; p = 1.1 x 10(-21) in Chinese samples) that probably arose once within the intronic RET enhancer MCS+9.7. With in vitro assays, we now show that the T variant disrupts a SOX10 binding site within MCS+9.7 that compromises RET transactivation. The T allele, with a control frequency of 20%-30%/47% and case frequency of 54%-62%/88% in European/Chinese-ancestry individuals, is involved in all forms of HSCR. It is marginally associated with proband gender (p = 0.13) and significantly so with length of aganglionosis (p = 7.6 x 10(-5)) and familiality (p = 6.2 x 10(-4)). The enhancer variant is more frequent in the common forms of male, short-segment, and simplex families whereas multiple, rare, coding mutations are the norm in the less common and more severe forms of female, long-segment, and multiplex families. The T variant also increases penetrance in patients with rare RET coding mutations. Thus, both rare and common mutations, individually and together, make contributions to the risk of HSCR. The distribution of RET variants in diverse HSCR patients suggests a \"cellular-recessive\" genetic model where both RET alleles' function is compromised. The RET allelic series, and its genotype-phenotype correlations, shows that success in variant identification in complex disorders may strongly depend on which patients are studied."
+  },
+  {
+    "pmid": "21871106",
+    "variant_text": "R338W",
+    "variant_offset": 161,
+    "variant_id": "tmVar:p|SUB|R|338|W;HGVS:p.R338W;VariantGroup:0;CorrespondingGene:7068;RS#:121918697(Expired);CorrespondingSpecies:9606;CA#:122495",
+    "genes": [
+      {
+        "text": "thyroid hormone receptor beta",
+        "id": "7068",
+        "offset": 23
+      }
+    ],
+    "diseases": [
+      {
+        "text": "resistance to thyroid hormone",
+        "id": "MESH:D018382",
+        "offset": 209
+      }
+    ],
+    "tissues": [],
+    "species": [],
+    "chemicals": [],
+    "passage_text": "An intronic SNP in the thyroid hormone receptor beta gene is associated with pituitary cell-specific over-expression of a mutant thyroid hormone receptor beta2 (R338W) in the index case of pituitary-selective resistance to thyroid hormone."
+  },
+  {
+    "pmid": "21871106",
+    "variant_text": "R338W",
+    "variant_offset": 1389,
+    "variant_id": "tmVar:p|SUB|R|338|W;HGVS:p.R338W;VariantGroup:0;CorrespondingGene:7068;RS#:121918697(Expired);CorrespondingSpecies:9606;CA#:122495",
+    "genes": [
+      {
+        "text": "thyroid hormone receptor beta",
+        "id": "7068",
+        "offset": 334
+      },
+      {
+        "text": "TR beta1",
+        "id": "50840",
+        "offset": 673
+      },
+      {
+        "text": "TR beta2",
+        "id": "50839",
+        "offset": 715
+      },
+      {
+        "text": "TR beta2",
+        "id": "50839",
+        "offset": 1674
+      }
+    ],
+    "diseases": [
+      {
+        "text": "resistance to thyroid hormone",
+        "id": "MESH:D018382",
+        "offset": 268
+      },
+      {
+        "text": "RTH",
+        "id": "MESH:D018382",
+        "offset": 299
+      },
+      {
+        "text": "hypothyroidism",
+        "id": "MESH:D007037",
+        "offset": 426
+      },
+      {
+        "text": "hyperthyroid",
+        "id": "MESH:D006980",
+        "offset": 497
+      },
+      {
+        "text": "RTH",
+        "id": "MESH:D018382",
+        "offset": 1134
+      },
+      {
+        "text": "pituitary-selective RTH",
+        "id": "MESH:C564154",
+        "offset": 1273
+      },
+      {
+        "text": "genetic diseases",
+        "id": "MESH:D030342",
+        "offset": 2046
+      }
+    ],
+    "tissues": [],
+    "species": [
+      {
+        "text": "mice",
+        "id": "10090",
+        "offset": 839
+      },
+      {
+        "text": "human",
+        "id": "9606",
+        "offset": 1005
+      },
+      {
+        "text": "patient",
+        "id": "9606",
+        "offset": 1921
+      }
+    ],
+    "chemicals": [],
+    "passage_text": "BACKGROUND: The syndrome of resistance to thyroid hormone (RTH) is caused by mutations in the thyroid hormone receptor beta gene (THRB). The syndrome varies from asymptomatic to diffuse hypothyroidism, to pituitary-selective resistance with predominance of hyperthyroid signs and symptoms. The wide spectrum of clinical presentation is not completely attributable to specific THRB mutations. The THRB gene encodes two main isoforms, TR beta1 which is widely distributed, and TR beta2, whose expression is limited to the cochlea, retina, hypothalamus, and pituitary. Recent data demonstrated that in mice an intron enhancer region plays a critical role in the pituitary expression of the beta2 isoform of the receptor. We thus hypothesized that polymorphisms in the human homologous region could modulate the pituitary expression of the mutated gene contributing to the clinical presentation of RTH. METHODS: Screening and in vitro characterization of polymorphisms of the intron enhancer region of the THRB gene in the index case of pituitary-selective RTH. RESULTS: The index case of pituitary-selective resistance is characterized by the missense R338W exon 9 mutation in cis with two common SNPs, rs2596623T and rs2596622C, located in the intron enhancer region of the THRB gene. Reporter gene assay experiments in GH3 pituitary-derived cells indicate that rs2596623T generates an increased pituitary cell-specific activity of the TR beta2 promoter suggesting that rs2596623T leads to pituitary over-expression of the mutant allele. CONCLUSIONS: The combined coding mutation and non-coding SNP therefore generate a tissue-specific dominant-negative condition recapitulating the patient's peculiar phenotype. This case illustrates the role of regulatory regions in modifying the clinical presentation of genetic diseases."
+  },
+  {
+    "pmid": "21871106",
+    "variant_text": "rs2596623",
+    "variant_offset": 1440,
+    "variant_id": "tmVar:rs2596623;VariantGroup:1;CorrespondingGene:7068;RS#:2596623;CorrespondingSpecies:9606",
+    "genes": [
+      {
+        "text": "thyroid hormone receptor beta",
+        "id": "7068",
+        "offset": 334
+      },
+      {
+        "text": "TR beta1",
+        "id": "50840",
+        "offset": 673
+      },
+      {
+        "text": "TR beta2",
+        "id": "50839",
+        "offset": 715
+      },
+      {
+        "text": "TR beta2",
+        "id": "50839",
+        "offset": 1674
+      }
+    ],
+    "diseases": [
+      {
+        "text": "resistance to thyroid hormone",
+        "id": "MESH:D018382",
+        "offset": 268
+      },
+      {
+        "text": "RTH",
+        "id": "MESH:D018382",
+        "offset": 299
+      },
+      {
+        "text": "hypothyroidism",
+        "id": "MESH:D007037",
+        "offset": 426
+      },
+      {
+        "text": "hyperthyroid",
+        "id": "MESH:D006980",
+        "offset": 497
+      },
+      {
+        "text": "RTH",
+        "id": "MESH:D018382",
+        "offset": 1134
+      },
+      {
+        "text": "pituitary-selective RTH",
+        "id": "MESH:C564154",
+        "offset": 1273
+      },
+      {
+        "text": "genetic diseases",
+        "id": "MESH:D030342",
+        "offset": 2046
+      }
+    ],
+    "tissues": [],
+    "species": [
+      {
+        "text": "mice",
+        "id": "10090",
+        "offset": 839
+      },
+      {
+        "text": "human",
+        "id": "9606",
+        "offset": 1005
+      },
+      {
+        "text": "patient",
+        "id": "9606",
+        "offset": 1921
+      }
+    ],
+    "chemicals": [],
+    "passage_text": "BACKGROUND: The syndrome of resistance to thyroid hormone (RTH) is caused by mutations in the thyroid hormone receptor beta gene (THRB). The syndrome varies from asymptomatic to diffuse hypothyroidism, to pituitary-selective resistance with predominance of hyperthyroid signs and symptoms. The wide spectrum of clinical presentation is not completely attributable to specific THRB mutations. The THRB gene encodes two main isoforms, TR beta1 which is widely distributed, and TR beta2, whose expression is limited to the cochlea, retina, hypothalamus, and pituitary. Recent data demonstrated that in mice an intron enhancer region plays a critical role in the pituitary expression of the beta2 isoform of the receptor. We thus hypothesized that polymorphisms in the human homologous region could modulate the pituitary expression of the mutated gene contributing to the clinical presentation of RTH. METHODS: Screening and in vitro characterization of polymorphisms of the intron enhancer region of the THRB gene in the index case of pituitary-selective RTH. RESULTS: The index case of pituitary-selective resistance is characterized by the missense R338W exon 9 mutation in cis with two common SNPs, rs2596623T and rs2596622C, located in the intron enhancer region of the THRB gene. Reporter gene assay experiments in GH3 pituitary-derived cells indicate that rs2596623T generates an increased pituitary cell-specific activity of the TR beta2 promoter suggesting that rs2596623T leads to pituitary over-expression of the mutant allele. CONCLUSIONS: The combined coding mutation and non-coding SNP therefore generate a tissue-specific dominant-negative condition recapitulating the patient's peculiar phenotype. This case illustrates the role of regulatory regions in modifying the clinical presentation of genetic diseases."
+  },
+  {
+    "pmid": "21871106",
+    "variant_text": "rs2596622",
+    "variant_offset": 1455,
+    "variant_id": "tmVar:rs2596622;VariantGroup:2;CorrespondingGene:7068;RS#:2596622;CorrespondingSpecies:9606",
+    "genes": [
+      {
+        "text": "thyroid hormone receptor beta",
+        "id": "7068",
+        "offset": 334
+      },
+      {
+        "text": "TR beta1",
+        "id": "50840",
+        "offset": 673
+      },
+      {
+        "text": "TR beta2",
+        "id": "50839",
+        "offset": 715
+      },
+      {
+        "text": "TR beta2",
+        "id": "50839",
+        "offset": 1674
+      }
+    ],
+    "diseases": [
+      {
+        "text": "resistance to thyroid hormone",
+        "id": "MESH:D018382",
+        "offset": 268
+      },
+      {
+        "text": "RTH",
+        "id": "MESH:D018382",
+        "offset": 299
+      },
+      {
+        "text": "hypothyroidism",
+        "id": "MESH:D007037",
+        "offset": 426
+      },
+      {
+        "text": "hyperthyroid",
+        "id": "MESH:D006980",
+        "offset": 497
+      },
+      {
+        "text": "RTH",
+        "id": "MESH:D018382",
+        "offset": 1134
+      },
+      {
+        "text": "pituitary-selective RTH",
+        "id": "MESH:C564154",
+        "offset": 1273
+      },
+      {
+        "text": "genetic diseases",
+        "id": "MESH:D030342",
+        "offset": 2046
+      }
+    ],
+    "tissues": [],
+    "species": [
+      {
+        "text": "mice",
+        "id": "10090",
+        "offset": 839
+      },
+      {
+        "text": "human",
+        "id": "9606",
+        "offset": 1005
+      },
+      {
+        "text": "patient",
+        "id": "9606",
+        "offset": 1921
+      }
+    ],
+    "chemicals": [],
+    "passage_text": "BACKGROUND: The syndrome of resistance to thyroid hormone (RTH) is caused by mutations in the thyroid hormone receptor beta gene (THRB). The syndrome varies from asymptomatic to diffuse hypothyroidism, to pituitary-selective resistance with predominance of hyperthyroid signs and symptoms. The wide spectrum of clinical presentation is not completely attributable to specific THRB mutations. The THRB gene encodes two main isoforms, TR beta1 which is widely distributed, and TR beta2, whose expression is limited to the cochlea, retina, hypothalamus, and pituitary. Recent data demonstrated that in mice an intron enhancer region plays a critical role in the pituitary expression of the beta2 isoform of the receptor. We thus hypothesized that polymorphisms in the human homologous region could modulate the pituitary expression of the mutated gene contributing to the clinical presentation of RTH. METHODS: Screening and in vitro characterization of polymorphisms of the intron enhancer region of the THRB gene in the index case of pituitary-selective RTH. RESULTS: The index case of pituitary-selective resistance is characterized by the missense R338W exon 9 mutation in cis with two common SNPs, rs2596623T and rs2596622C, located in the intron enhancer region of the THRB gene. Reporter gene assay experiments in GH3 pituitary-derived cells indicate that rs2596623T generates an increased pituitary cell-specific activity of the TR beta2 promoter suggesting that rs2596623T leads to pituitary over-expression of the mutant allele. CONCLUSIONS: The combined coding mutation and non-coding SNP therefore generate a tissue-specific dominant-negative condition recapitulating the patient's peculiar phenotype. This case illustrates the role of regulatory regions in modifying the clinical presentation of genetic diseases."
+  },
+  {
+    "pmid": "21871106",
+    "variant_text": "rs2596623",
+    "variant_offset": 1600,
+    "variant_id": "tmVar:rs2596623;VariantGroup:1;CorrespondingGene:7068;RS#:2596623;CorrespondingSpecies:9606",
+    "genes": [
+      {
+        "text": "thyroid hormone receptor beta",
+        "id": "7068",
+        "offset": 334
+      },
+      {
+        "text": "TR beta1",
+        "id": "50840",
+        "offset": 673
+      },
+      {
+        "text": "TR beta2",
+        "id": "50839",
+        "offset": 715
+      },
+      {
+        "text": "TR beta2",
+        "id": "50839",
+        "offset": 1674
+      }
+    ],
+    "diseases": [
+      {
+        "text": "resistance to thyroid hormone",
+        "id": "MESH:D018382",
+        "offset": 268
+      },
+      {
+        "text": "RTH",
+        "id": "MESH:D018382",
+        "offset": 299
+      },
+      {
+        "text": "hypothyroidism",
+        "id": "MESH:D007037",
+        "offset": 426
+      },
+      {
+        "text": "hyperthyroid",
+        "id": "MESH:D006980",
+        "offset": 497
+      },
+      {
+        "text": "RTH",
+        "id": "MESH:D018382",
+        "offset": 1134
+      },
+      {
+        "text": "pituitary-selective RTH",
+        "id": "MESH:C564154",
+        "offset": 1273
+      },
+      {
+        "text": "genetic diseases",
+        "id": "MESH:D030342",
+        "offset": 2046
+      }
+    ],
+    "tissues": [],
+    "species": [
+      {
+        "text": "mice",
+        "id": "10090",
+        "offset": 839
+      },
+      {
+        "text": "human",
+        "id": "9606",
+        "offset": 1005
+      },
+      {
+        "text": "patient",
+        "id": "9606",
+        "offset": 1921
+      }
+    ],
+    "chemicals": [],
+    "passage_text": "BACKGROUND: The syndrome of resistance to thyroid hormone (RTH) is caused by mutations in the thyroid hormone receptor beta gene (THRB). The syndrome varies from asymptomatic to diffuse hypothyroidism, to pituitary-selective resistance with predominance of hyperthyroid signs and symptoms. The wide spectrum of clinical presentation is not completely attributable to specific THRB mutations. The THRB gene encodes two main isoforms, TR beta1 which is widely distributed, and TR beta2, whose expression is limited to the cochlea, retina, hypothalamus, and pituitary. Recent data demonstrated that in mice an intron enhancer region plays a critical role in the pituitary expression of the beta2 isoform of the receptor. We thus hypothesized that polymorphisms in the human homologous region could modulate the pituitary expression of the mutated gene contributing to the clinical presentation of RTH. METHODS: Screening and in vitro characterization of polymorphisms of the intron enhancer region of the THRB gene in the index case of pituitary-selective RTH. RESULTS: The index case of pituitary-selective resistance is characterized by the missense R338W exon 9 mutation in cis with two common SNPs, rs2596623T and rs2596622C, located in the intron enhancer region of the THRB gene. Reporter gene assay experiments in GH3 pituitary-derived cells indicate that rs2596623T generates an increased pituitary cell-specific activity of the TR beta2 promoter suggesting that rs2596623T leads to pituitary over-expression of the mutant allele. CONCLUSIONS: The combined coding mutation and non-coding SNP therefore generate a tissue-specific dominant-negative condition recapitulating the patient's peculiar phenotype. This case illustrates the role of regulatory regions in modifying the clinical presentation of genetic diseases."
+  },
+  {
+    "pmid": "21871106",
+    "variant_text": "rs2596623",
+    "variant_offset": 1708,
+    "variant_id": "tmVar:rs2596623;VariantGroup:1;CorrespondingGene:7068;RS#:2596623;CorrespondingSpecies:9606",
+    "genes": [
+      {
+        "text": "thyroid hormone receptor beta",
+        "id": "7068",
+        "offset": 334
+      },
+      {
+        "text": "TR beta1",
+        "id": "50840",
+        "offset": 673
+      },
+      {
+        "text": "TR beta2",
+        "id": "50839",
+        "offset": 715
+      },
+      {
+        "text": "TR beta2",
+        "id": "50839",
+        "offset": 1674
+      }
+    ],
+    "diseases": [
+      {
+        "text": "resistance to thyroid hormone",
+        "id": "MESH:D018382",
+        "offset": 268
+      },
+      {
+        "text": "RTH",
+        "id": "MESH:D018382",
+        "offset": 299
+      },
+      {
+        "text": "hypothyroidism",
+        "id": "MESH:D007037",
+        "offset": 426
+      },
+      {
+        "text": "hyperthyroid",
+        "id": "MESH:D006980",
+        "offset": 497
+      },
+      {
+        "text": "RTH",
+        "id": "MESH:D018382",
+        "offset": 1134
+      },
+      {
+        "text": "pituitary-selective RTH",
+        "id": "MESH:C564154",
+        "offset": 1273
+      },
+      {
+        "text": "genetic diseases",
+        "id": "MESH:D030342",
+        "offset": 2046
+      }
+    ],
+    "tissues": [],
+    "species": [
+      {
+        "text": "mice",
+        "id": "10090",
+        "offset": 839
+      },
+      {
+        "text": "human",
+        "id": "9606",
+        "offset": 1005
+      },
+      {
+        "text": "patient",
+        "id": "9606",
+        "offset": 1921
+      }
+    ],
+    "chemicals": [],
+    "passage_text": "BACKGROUND: The syndrome of resistance to thyroid hormone (RTH) is caused by mutations in the thyroid hormone receptor beta gene (THRB). The syndrome varies from asymptomatic to diffuse hypothyroidism, to pituitary-selective resistance with predominance of hyperthyroid signs and symptoms. The wide spectrum of clinical presentation is not completely attributable to specific THRB mutations. The THRB gene encodes two main isoforms, TR beta1 which is widely distributed, and TR beta2, whose expression is limited to the cochlea, retina, hypothalamus, and pituitary. Recent data demonstrated that in mice an intron enhancer region plays a critical role in the pituitary expression of the beta2 isoform of the receptor. We thus hypothesized that polymorphisms in the human homologous region could modulate the pituitary expression of the mutated gene contributing to the clinical presentation of RTH. METHODS: Screening and in vitro characterization of polymorphisms of the intron enhancer region of the THRB gene in the index case of pituitary-selective RTH. RESULTS: The index case of pituitary-selective resistance is characterized by the missense R338W exon 9 mutation in cis with two common SNPs, rs2596623T and rs2596622C, located in the intron enhancer region of the THRB gene. Reporter gene assay experiments in GH3 pituitary-derived cells indicate that rs2596623T generates an increased pituitary cell-specific activity of the TR beta2 promoter suggesting that rs2596623T leads to pituitary over-expression of the mutant allele. CONCLUSIONS: The combined coding mutation and non-coding SNP therefore generate a tissue-specific dominant-negative condition recapitulating the patient's peculiar phenotype. This case illustrates the role of regulatory regions in modifying the clinical presentation of genetic diseases."
+  },
+  {
+    "pmid": "22745233",
+    "variant_text": "c.109+435G>A",
+    "variant_offset": 753,
+    "variant_id": "tmVar:c|SUB|G|109_435|A;HGVS:c.109_435G>A;VariantGroup:0;CorrespondingGene:5626;RS#:73346254;CorrespondingSpecies:9606",
+    "genes": [
+      {
+        "text": "PROP1",
+        "id": "5626",
+        "offset": 141
+      },
+      {
+        "text": "PROP1",
+        "id": "5626",
+        "offset": 460
+      },
+      {
+        "text": "PROP1",
+        "id": "5626",
+        "offset": 1856
+      }
+    ],
+    "diseases": [
+      {
+        "text": "familial combined pituitary hormone deficiency",
+        "id": "MESH:C580003",
+        "offset": 188
+      },
+      {
+        "text": "CPHD",
+        "id": "MESH:C580003",
+        "offset": 236
+      },
+      {
+        "text": "CPHD",
+        "id": "MESH:C580003",
+        "offset": 640
+      },
+      {
+        "text": "CPHD",
+        "id": "MESH:C580003",
+        "offset": 1823
+      }
+    ],
+    "tissues": [],
+    "species": [
+      {
+        "text": "patients",
+        "id": "9606",
+        "offset": 532
+      },
+      {
+        "text": "PATIENTS",
+        "id": "9606",
+        "offset": 554
+      },
+      {
+        "text": "patients",
+        "id": "9606",
+        "offset": 645
+      },
+      {
+        "text": "patients",
+        "id": "9606",
+        "offset": 1076
+      },
+      {
+        "text": "patients",
+        "id": "9606",
+        "offset": 1296
+      }
+    ],
+    "chemicals": [],
+    "passage_text": "CONTEXT: Mutations within the PROP1 gene represent one of the main causes of familial combined pituitary hormone deficiency (CPHD). However, most of the cases are sporadic with an unknown genetic cause. OBJECTIVE: The aim of this study was the search for low penetrance variations within and around a conserved regulatory element in the intron 1 of PROP1, contributing to a multifactorial form of the disease in sporadic patients. METHODS AND PATIENTS: A fragment of 570 bp encompassing the conserved region was sequenced in 107 CPHD patients and 294 controls, and an association study was performed with the four identified variants, namely c.109+435G>A (rs73346254), c.109+463C>T (rs4498267), c.109+768C>G (rs4431364), and c.109+915_917ins/delTAG (rs148607624). The functional role of the associated polymorphisms was evaluated by luciferase reporter gene expression analyses and EMSA. RESULTS: A statistically significant increased frequency was observed in the patients for rs73346254A (P = 5 x 10(-4)) and rs148607624delTAG (P = 0.01) alleles. Among all the possible allele combinations, only the haplotype bearing both risk alleles showed a significantly higher frequency in the patients vs. controls (P = 4.7 x 10(-4)) and conferred a carrier risk of 4.19 (P = 1.2 x 10(-4)). This haplotype determined a significant decrease of the luciferase activity in comparison with a basal promoter and the other allelic combinations in GH4C and MCF7 cells (P = 4.6 x 10(-6); P = 5.5 x 10(-4), respectively). The EMSA showed a differential affinity for nuclear proteins for the alternative alleles of the two associated variations. CONCLUSIONS: Variations with a functional significance conferring susceptibility to CPHD have been identified in the PROP1 gene, indicating a multifactorial origin of this disorder in sporadic cases."
+  },
+  {
+    "pmid": "22745233",
+    "variant_text": "rs73346254",
+    "variant_offset": 767,
+    "variant_id": "tmVar:rs73346254;VariantGroup:0;CorrespondingGene:5626;RS#:73346254;CorrespondingSpecies:9606",
+    "genes": [
+      {
+        "text": "PROP1",
+        "id": "5626",
+        "offset": 141
+      },
+      {
+        "text": "PROP1",
+        "id": "5626",
+        "offset": 460
+      },
+      {
+        "text": "PROP1",
+        "id": "5626",
+        "offset": 1856
+      }
+    ],
+    "diseases": [
+      {
+        "text": "familial combined pituitary hormone deficiency",
+        "id": "MESH:C580003",
+        "offset": 188
+      },
+      {
+        "text": "CPHD",
+        "id": "MESH:C580003",
+        "offset": 236
+      },
+      {
+        "text": "CPHD",
+        "id": "MESH:C580003",
+        "offset": 640
+      },
+      {
+        "text": "CPHD",
+        "id": "MESH:C580003",
+        "offset": 1823
+      }
+    ],
+    "tissues": [],
+    "species": [
+      {
+        "text": "patients",
+        "id": "9606",
+        "offset": 532
+      },
+      {
+        "text": "PATIENTS",
+        "id": "9606",
+        "offset": 554
+      },
+      {
+        "text": "patients",
+        "id": "9606",
+        "offset": 645
+      },
+      {
+        "text": "patients",
+        "id": "9606",
+        "offset": 1076
+      },
+      {
+        "text": "patients",
+        "id": "9606",
+        "offset": 1296
+      }
+    ],
+    "chemicals": [],
+    "passage_text": "CONTEXT: Mutations within the PROP1 gene represent one of the main causes of familial combined pituitary hormone deficiency (CPHD). However, most of the cases are sporadic with an unknown genetic cause. OBJECTIVE: The aim of this study was the search for low penetrance variations within and around a conserved regulatory element in the intron 1 of PROP1, contributing to a multifactorial form of the disease in sporadic patients. METHODS AND PATIENTS: A fragment of 570 bp encompassing the conserved region was sequenced in 107 CPHD patients and 294 controls, and an association study was performed with the four identified variants, namely c.109+435G>A (rs73346254), c.109+463C>T (rs4498267), c.109+768C>G (rs4431364), and c.109+915_917ins/delTAG (rs148607624). The functional role of the associated polymorphisms was evaluated by luciferase reporter gene expression analyses and EMSA. RESULTS: A statistically significant increased frequency was observed in the patients for rs73346254A (P = 5 x 10(-4)) and rs148607624delTAG (P = 0.01) alleles. Among all the possible allele combinations, only the haplotype bearing both risk alleles showed a significantly higher frequency in the patients vs. controls (P = 4.7 x 10(-4)) and conferred a carrier risk of 4.19 (P = 1.2 x 10(-4)). This haplotype determined a significant decrease of the luciferase activity in comparison with a basal promoter and the other allelic combinations in GH4C and MCF7 cells (P = 4.6 x 10(-6); P = 5.5 x 10(-4), respectively). The EMSA showed a differential affinity for nuclear proteins for the alternative alleles of the two associated variations. CONCLUSIONS: Variations with a functional significance conferring susceptibility to CPHD have been identified in the PROP1 gene, indicating a multifactorial origin of this disorder in sporadic cases."
+  },
+  {
+    "pmid": "22745233",
+    "variant_text": "c.109+463C>T",
+    "variant_offset": 780,
+    "variant_id": "tmVar:c|SUB|C|109_463|T;HGVS:c.109_463C>T;VariantGroup:1;CorrespondingGene:5626;RS#:4498267;CorrespondingSpecies:9606",
+    "genes": [
+      {
+        "text": "PROP1",
+        "id": "5626",
+        "offset": 141
+      },
+      {
+        "text": "PROP1",
+        "id": "5626",
+        "offset": 460
+      },
+      {
+        "text": "PROP1",
+        "id": "5626",
+        "offset": 1856
+      }
+    ],
+    "diseases": [
+      {
+        "text": "familial combined pituitary hormone deficiency",
+        "id": "MESH:C580003",
+        "offset": 188
+      },
+      {
+        "text": "CPHD",
+        "id": "MESH:C580003",
+        "offset": 236
+      },
+      {
+        "text": "CPHD",
+        "id": "MESH:C580003",
+        "offset": 640
+      },
+      {
+        "text": "CPHD",
+        "id": "MESH:C580003",
+        "offset": 1823
+      }
+    ],
+    "tissues": [],
+    "species": [
+      {
+        "text": "patients",
+        "id": "9606",
+        "offset": 532
+      },
+      {
+        "text": "PATIENTS",
+        "id": "9606",
+        "offset": 554
+      },
+      {
+        "text": "patients",
+        "id": "9606",
+        "offset": 645
+      },
+      {
+        "text": "patients",
+        "id": "9606",
+        "offset": 1076
+      },
+      {
+        "text": "patients",
+        "id": "9606",
+        "offset": 1296
+      }
+    ],
+    "chemicals": [],
+    "passage_text": "CONTEXT: Mutations within the PROP1 gene represent one of the main causes of familial combined pituitary hormone deficiency (CPHD). However, most of the cases are sporadic with an unknown genetic cause. OBJECTIVE: The aim of this study was the search for low penetrance variations within and around a conserved regulatory element in the intron 1 of PROP1, contributing to a multifactorial form of the disease in sporadic patients. METHODS AND PATIENTS: A fragment of 570 bp encompassing the conserved region was sequenced in 107 CPHD patients and 294 controls, and an association study was performed with the four identified variants, namely c.109+435G>A (rs73346254), c.109+463C>T (rs4498267), c.109+768C>G (rs4431364), and c.109+915_917ins/delTAG (rs148607624). The functional role of the associated polymorphisms was evaluated by luciferase reporter gene expression analyses and EMSA. RESULTS: A statistically significant increased frequency was observed in the patients for rs73346254A (P = 5 x 10(-4)) and rs148607624delTAG (P = 0.01) alleles. Among all the possible allele combinations, only the haplotype bearing both risk alleles showed a significantly higher frequency in the patients vs. controls (P = 4.7 x 10(-4)) and conferred a carrier risk of 4.19 (P = 1.2 x 10(-4)). This haplotype determined a significant decrease of the luciferase activity in comparison with a basal promoter and the other allelic combinations in GH4C and MCF7 cells (P = 4.6 x 10(-6); P = 5.5 x 10(-4), respectively). The EMSA showed a differential affinity for nuclear proteins for the alternative alleles of the two associated variations. CONCLUSIONS: Variations with a functional significance conferring susceptibility to CPHD have been identified in the PROP1 gene, indicating a multifactorial origin of this disorder in sporadic cases."
+  },
+  {
+    "pmid": "22745233",
+    "variant_text": "rs4498267",
+    "variant_offset": 794,
+    "variant_id": "tmVar:rs4498267;VariantGroup:1;CorrespondingGene:5626;RS#:4498267;CorrespondingSpecies:9606",
+    "genes": [
+      {
+        "text": "PROP1",
+        "id": "5626",
+        "offset": 141
+      },
+      {
+        "text": "PROP1",
+        "id": "5626",
+        "offset": 460
+      },
+      {
+        "text": "PROP1",
+        "id": "5626",
+        "offset": 1856
+      }
+    ],
+    "diseases": [
+      {
+        "text": "familial combined pituitary hormone deficiency",
+        "id": "MESH:C580003",
+        "offset": 188
+      },
+      {
+        "text": "CPHD",
+        "id": "MESH:C580003",
+        "offset": 236
+      },
+      {
+        "text": "CPHD",
+        "id": "MESH:C580003",
+        "offset": 640
+      },
+      {
+        "text": "CPHD",
+        "id": "MESH:C580003",
+        "offset": 1823
+      }
+    ],
+    "tissues": [],
+    "species": [
+      {
+        "text": "patients",
+        "id": "9606",
+        "offset": 532
+      },
+      {
+        "text": "PATIENTS",
+        "id": "9606",
+        "offset": 554
+      },
+      {
+        "text": "patients",
+        "id": "9606",
+        "offset": 645
+      },
+      {
+        "text": "patients",
+        "id": "9606",
+        "offset": 1076
+      },
+      {
+        "text": "patients",
+        "id": "9606",
+        "offset": 1296
+      }
+    ],
+    "chemicals": [],
+    "passage_text": "CONTEXT: Mutations within the PROP1 gene represent one of the main causes of familial combined pituitary hormone deficiency (CPHD). However, most of the cases are sporadic with an unknown genetic cause. OBJECTIVE: The aim of this study was the search for low penetrance variations within and around a conserved regulatory element in the intron 1 of PROP1, contributing to a multifactorial form of the disease in sporadic patients. METHODS AND PATIENTS: A fragment of 570 bp encompassing the conserved region was sequenced in 107 CPHD patients and 294 controls, and an association study was performed with the four identified variants, namely c.109+435G>A (rs73346254), c.109+463C>T (rs4498267), c.109+768C>G (rs4431364), and c.109+915_917ins/delTAG (rs148607624). The functional role of the associated polymorphisms was evaluated by luciferase reporter gene expression analyses and EMSA. RESULTS: A statistically significant increased frequency was observed in the patients for rs73346254A (P = 5 x 10(-4)) and rs148607624delTAG (P = 0.01) alleles. Among all the possible allele combinations, only the haplotype bearing both risk alleles showed a significantly higher frequency in the patients vs. controls (P = 4.7 x 10(-4)) and conferred a carrier risk of 4.19 (P = 1.2 x 10(-4)). This haplotype determined a significant decrease of the luciferase activity in comparison with a basal promoter and the other allelic combinations in GH4C and MCF7 cells (P = 4.6 x 10(-6); P = 5.5 x 10(-4), respectively). The EMSA showed a differential affinity for nuclear proteins for the alternative alleles of the two associated variations. CONCLUSIONS: Variations with a functional significance conferring susceptibility to CPHD have been identified in the PROP1 gene, indicating a multifactorial origin of this disorder in sporadic cases."
+  },
+  {
+    "pmid": "22745233",
+    "variant_text": "c.109+768C>G",
+    "variant_offset": 806,
+    "variant_id": "tmVar:c|SUB|C|109_768|G;HGVS:c.109_768C>G;VariantGroup:2;CorrespondingGene:5626;RS#:4431364;CorrespondingSpecies:9606",
+    "genes": [
+      {
+        "text": "PROP1",
+        "id": "5626",
+        "offset": 141
+      },
+      {
+        "text": "PROP1",
+        "id": "5626",
+        "offset": 460
+      },
+      {
+        "text": "PROP1",
+        "id": "5626",
+        "offset": 1856
+      }
+    ],
+    "diseases": [
+      {
+        "text": "familial combined pituitary hormone deficiency",
+        "id": "MESH:C580003",
+        "offset": 188
+      },
+      {
+        "text": "CPHD",
+        "id": "MESH:C580003",
+        "offset": 236
+      },
+      {
+        "text": "CPHD",
+        "id": "MESH:C580003",
+        "offset": 640
+      },
+      {
+        "text": "CPHD",
+        "id": "MESH:C580003",
+        "offset": 1823
+      }
+    ],
+    "tissues": [],
+    "species": [
+      {
+        "text": "patients",
+        "id": "9606",
+        "offset": 532
+      },
+      {
+        "text": "PATIENTS",
+        "id": "9606",
+        "offset": 554
+      },
+      {
+        "text": "patients",
+        "id": "9606",
+        "offset": 645
+      },
+      {
+        "text": "patients",
+        "id": "9606",
+        "offset": 1076
+      },
+      {
+        "text": "patients",
+        "id": "9606",
+        "offset": 1296
+      }
+    ],
+    "chemicals": [],
+    "passage_text": "CONTEXT: Mutations within the PROP1 gene represent one of the main causes of familial combined pituitary hormone deficiency (CPHD). However, most of the cases are sporadic with an unknown genetic cause. OBJECTIVE: The aim of this study was the search for low penetrance variations within and around a conserved regulatory element in the intron 1 of PROP1, contributing to a multifactorial form of the disease in sporadic patients. METHODS AND PATIENTS: A fragment of 570 bp encompassing the conserved region was sequenced in 107 CPHD patients and 294 controls, and an association study was performed with the four identified variants, namely c.109+435G>A (rs73346254), c.109+463C>T (rs4498267), c.109+768C>G (rs4431364), and c.109+915_917ins/delTAG (rs148607624). The functional role of the associated polymorphisms was evaluated by luciferase reporter gene expression analyses and EMSA. RESULTS: A statistically significant increased frequency was observed in the patients for rs73346254A (P = 5 x 10(-4)) and rs148607624delTAG (P = 0.01) alleles. Among all the possible allele combinations, only the haplotype bearing both risk alleles showed a significantly higher frequency in the patients vs. controls (P = 4.7 x 10(-4)) and conferred a carrier risk of 4.19 (P = 1.2 x 10(-4)). This haplotype determined a significant decrease of the luciferase activity in comparison with a basal promoter and the other allelic combinations in GH4C and MCF7 cells (P = 4.6 x 10(-6); P = 5.5 x 10(-4), respectively). The EMSA showed a differential affinity for nuclear proteins for the alternative alleles of the two associated variations. CONCLUSIONS: Variations with a functional significance conferring susceptibility to CPHD have been identified in the PROP1 gene, indicating a multifactorial origin of this disorder in sporadic cases."
+  },
+  {
+    "pmid": "22745233",
+    "variant_text": "rs4431364",
+    "variant_offset": 820,
+    "variant_id": "tmVar:rs4431364;VariantGroup:2;CorrespondingGene:5626;RS#:4431364;CorrespondingSpecies:9606",
+    "genes": [
+      {
+        "text": "PROP1",
+        "id": "5626",
+        "offset": 141
+      },
+      {
+        "text": "PROP1",
+        "id": "5626",
+        "offset": 460
+      },
+      {
+        "text": "PROP1",
+        "id": "5626",
+        "offset": 1856
+      }
+    ],
+    "diseases": [
+      {
+        "text": "familial combined pituitary hormone deficiency",
+        "id": "MESH:C580003",
+        "offset": 188
+      },
+      {
+        "text": "CPHD",
+        "id": "MESH:C580003",
+        "offset": 236
+      },
+      {
+        "text": "CPHD",
+        "id": "MESH:C580003",
+        "offset": 640
+      },
+      {
+        "text": "CPHD",
+        "id": "MESH:C580003",
+        "offset": 1823
+      }
+    ],
+    "tissues": [],
+    "species": [
+      {
+        "text": "patients",
+        "id": "9606",
+        "offset": 532
+      },
+      {
+        "text": "PATIENTS",
+        "id": "9606",
+        "offset": 554
+      },
+      {
+        "text": "patients",
+        "id": "9606",
+        "offset": 645
+      },
+      {
+        "text": "patients",
+        "id": "9606",
+        "offset": 1076
+      },
+      {
+        "text": "patients",
+        "id": "9606",
+        "offset": 1296
+      }
+    ],
+    "chemicals": [],
+    "passage_text": "CONTEXT: Mutations within the PROP1 gene represent one of the main causes of familial combined pituitary hormone deficiency (CPHD). However, most of the cases are sporadic with an unknown genetic cause. OBJECTIVE: The aim of this study was the search for low penetrance variations within and around a conserved regulatory element in the intron 1 of PROP1, contributing to a multifactorial form of the disease in sporadic patients. METHODS AND PATIENTS: A fragment of 570 bp encompassing the conserved region was sequenced in 107 CPHD patients and 294 controls, and an association study was performed with the four identified variants, namely c.109+435G>A (rs73346254), c.109+463C>T (rs4498267), c.109+768C>G (rs4431364), and c.109+915_917ins/delTAG (rs148607624). The functional role of the associated polymorphisms was evaluated by luciferase reporter gene expression analyses and EMSA. RESULTS: A statistically significant increased frequency was observed in the patients for rs73346254A (P = 5 x 10(-4)) and rs148607624delTAG (P = 0.01) alleles. Among all the possible allele combinations, only the haplotype bearing both risk alleles showed a significantly higher frequency in the patients vs. controls (P = 4.7 x 10(-4)) and conferred a carrier risk of 4.19 (P = 1.2 x 10(-4)). This haplotype determined a significant decrease of the luciferase activity in comparison with a basal promoter and the other allelic combinations in GH4C and MCF7 cells (P = 4.6 x 10(-6); P = 5.5 x 10(-4), respectively). The EMSA showed a differential affinity for nuclear proteins for the alternative alleles of the two associated variations. CONCLUSIONS: Variations with a functional significance conferring susceptibility to CPHD have been identified in the PROP1 gene, indicating a multifactorial origin of this disorder in sporadic cases."
+  },
+  {
+    "pmid": "22745233",
+    "variant_text": "c.109+915_917ins/delTAG",
+    "variant_offset": 836,
+    "variant_id": "tmVar:c|INDEL|109+915_917|X;HGVS:c.109+915_917delinsX;VariantGroup:3;CorrespondingGene:5626;RS#:148607624;CorrespondingSpecies:9606",
+    "genes": [
+      {
+        "text": "PROP1",
+        "id": "5626",
+        "offset": 141
+      },
+      {
+        "text": "PROP1",
+        "id": "5626",
+        "offset": 460
+      },
+      {
+        "text": "PROP1",
+        "id": "5626",
+        "offset": 1856
+      }
+    ],
+    "diseases": [
+      {
+        "text": "familial combined pituitary hormone deficiency",
+        "id": "MESH:C580003",
+        "offset": 188
+      },
+      {
+        "text": "CPHD",
+        "id": "MESH:C580003",
+        "offset": 236
+      },
+      {
+        "text": "CPHD",
+        "id": "MESH:C580003",
+        "offset": 640
+      },
+      {
+        "text": "CPHD",
+        "id": "MESH:C580003",
+        "offset": 1823
+      }
+    ],
+    "tissues": [],
+    "species": [
+      {
+        "text": "patients",
+        "id": "9606",
+        "offset": 532
+      },
+      {
+        "text": "PATIENTS",
+        "id": "9606",
+        "offset": 554
+      },
+      {
+        "text": "patients",
+        "id": "9606",
+        "offset": 645
+      },
+      {
+        "text": "patients",
+        "id": "9606",
+        "offset": 1076
+      },
+      {
+        "text": "patients",
+        "id": "9606",
+        "offset": 1296
+      }
+    ],
+    "chemicals": [],
+    "passage_text": "CONTEXT: Mutations within the PROP1 gene represent one of the main causes of familial combined pituitary hormone deficiency (CPHD). However, most of the cases are sporadic with an unknown genetic cause. OBJECTIVE: The aim of this study was the search for low penetrance variations within and around a conserved regulatory element in the intron 1 of PROP1, contributing to a multifactorial form of the disease in sporadic patients. METHODS AND PATIENTS: A fragment of 570 bp encompassing the conserved region was sequenced in 107 CPHD patients and 294 controls, and an association study was performed with the four identified variants, namely c.109+435G>A (rs73346254), c.109+463C>T (rs4498267), c.109+768C>G (rs4431364), and c.109+915_917ins/delTAG (rs148607624). The functional role of the associated polymorphisms was evaluated by luciferase reporter gene expression analyses and EMSA. RESULTS: A statistically significant increased frequency was observed in the patients for rs73346254A (P = 5 x 10(-4)) and rs148607624delTAG (P = 0.01) alleles. Among all the possible allele combinations, only the haplotype bearing both risk alleles showed a significantly higher frequency in the patients vs. controls (P = 4.7 x 10(-4)) and conferred a carrier risk of 4.19 (P = 1.2 x 10(-4)). This haplotype determined a significant decrease of the luciferase activity in comparison with a basal promoter and the other allelic combinations in GH4C and MCF7 cells (P = 4.6 x 10(-6); P = 5.5 x 10(-4), respectively). The EMSA showed a differential affinity for nuclear proteins for the alternative alleles of the two associated variations. CONCLUSIONS: Variations with a functional significance conferring susceptibility to CPHD have been identified in the PROP1 gene, indicating a multifactorial origin of this disorder in sporadic cases."
+  },
+  {
+    "pmid": "22745233",
+    "variant_text": "rs148607624",
+    "variant_offset": 861,
+    "variant_id": "tmVar:rs148607624;VariantGroup:3;CorrespondingGene:5626;RS#:148607624;CorrespondingSpecies:9606",
+    "genes": [
+      {
+        "text": "PROP1",
+        "id": "5626",
+        "offset": 141
+      },
+      {
+        "text": "PROP1",
+        "id": "5626",
+        "offset": 460
+      },
+      {
+        "text": "PROP1",
+        "id": "5626",
+        "offset": 1856
+      }
+    ],
+    "diseases": [
+      {
+        "text": "familial combined pituitary hormone deficiency",
+        "id": "MESH:C580003",
+        "offset": 188
+      },
+      {
+        "text": "CPHD",
+        "id": "MESH:C580003",
+        "offset": 236
+      },
+      {
+        "text": "CPHD",
+        "id": "MESH:C580003",
+        "offset": 640
+      },
+      {
+        "text": "CPHD",
+        "id": "MESH:C580003",
+        "offset": 1823
+      }
+    ],
+    "tissues": [],
+    "species": [
+      {
+        "text": "patients",
+        "id": "9606",
+        "offset": 532
+      },
+      {
+        "text": "PATIENTS",
+        "id": "9606",
+        "offset": 554
+      },
+      {
+        "text": "patients",
+        "id": "9606",
+        "offset": 645
+      },
+      {
+        "text": "patients",
+        "id": "9606",
+        "offset": 1076
+      },
+      {
+        "text": "patients",
+        "id": "9606",
+        "offset": 1296
+      }
+    ],
+    "chemicals": [],
+    "passage_text": "CONTEXT: Mutations within the PROP1 gene represent one of the main causes of familial combined pituitary hormone deficiency (CPHD). However, most of the cases are sporadic with an unknown genetic cause. OBJECTIVE: The aim of this study was the search for low penetrance variations within and around a conserved regulatory element in the intron 1 of PROP1, contributing to a multifactorial form of the disease in sporadic patients. METHODS AND PATIENTS: A fragment of 570 bp encompassing the conserved region was sequenced in 107 CPHD patients and 294 controls, and an association study was performed with the four identified variants, namely c.109+435G>A (rs73346254), c.109+463C>T (rs4498267), c.109+768C>G (rs4431364), and c.109+915_917ins/delTAG (rs148607624). The functional role of the associated polymorphisms was evaluated by luciferase reporter gene expression analyses and EMSA. RESULTS: A statistically significant increased frequency was observed in the patients for rs73346254A (P = 5 x 10(-4)) and rs148607624delTAG (P = 0.01) alleles. Among all the possible allele combinations, only the haplotype bearing both risk alleles showed a significantly higher frequency in the patients vs. controls (P = 4.7 x 10(-4)) and conferred a carrier risk of 4.19 (P = 1.2 x 10(-4)). This haplotype determined a significant decrease of the luciferase activity in comparison with a basal promoter and the other allelic combinations in GH4C and MCF7 cells (P = 4.6 x 10(-6); P = 5.5 x 10(-4), respectively). The EMSA showed a differential affinity for nuclear proteins for the alternative alleles of the two associated variations. CONCLUSIONS: Variations with a functional significance conferring susceptibility to CPHD have been identified in the PROP1 gene, indicating a multifactorial origin of this disorder in sporadic cases."
+  },
+  {
+    "pmid": "22745233",
+    "variant_text": "rs73346254",
+    "variant_offset": 1089,
+    "variant_id": "tmVar:rs73346254;VariantGroup:0;CorrespondingGene:5626;RS#:73346254;CorrespondingSpecies:9606",
+    "genes": [
+      {
+        "text": "PROP1",
+        "id": "5626",
+        "offset": 141
+      },
+      {
+        "text": "PROP1",
+        "id": "5626",
+        "offset": 460
+      },
+      {
+        "text": "PROP1",
+        "id": "5626",
+        "offset": 1856
+      }
+    ],
+    "diseases": [
+      {
+        "text": "familial combined pituitary hormone deficiency",
+        "id": "MESH:C580003",
+        "offset": 188
+      },
+      {
+        "text": "CPHD",
+        "id": "MESH:C580003",
+        "offset": 236
+      },
+      {
+        "text": "CPHD",
+        "id": "MESH:C580003",
+        "offset": 640
+      },
+      {
+        "text": "CPHD",
+        "id": "MESH:C580003",
+        "offset": 1823
+      }
+    ],
+    "tissues": [],
+    "species": [
+      {
+        "text": "patients",
+        "id": "9606",
+        "offset": 532
+      },
+      {
+        "text": "PATIENTS",
+        "id": "9606",
+        "offset": 554
+      },
+      {
+        "text": "patients",
+        "id": "9606",
+        "offset": 645
+      },
+      {
+        "text": "patients",
+        "id": "9606",
+        "offset": 1076
+      },
+      {
+        "text": "patients",
+        "id": "9606",
+        "offset": 1296
+      }
+    ],
+    "chemicals": [],
+    "passage_text": "CONTEXT: Mutations within the PROP1 gene represent one of the main causes of familial combined pituitary hormone deficiency (CPHD). However, most of the cases are sporadic with an unknown genetic cause. OBJECTIVE: The aim of this study was the search for low penetrance variations within and around a conserved regulatory element in the intron 1 of PROP1, contributing to a multifactorial form of the disease in sporadic patients. METHODS AND PATIENTS: A fragment of 570 bp encompassing the conserved region was sequenced in 107 CPHD patients and 294 controls, and an association study was performed with the four identified variants, namely c.109+435G>A (rs73346254), c.109+463C>T (rs4498267), c.109+768C>G (rs4431364), and c.109+915_917ins/delTAG (rs148607624). The functional role of the associated polymorphisms was evaluated by luciferase reporter gene expression analyses and EMSA. RESULTS: A statistically significant increased frequency was observed in the patients for rs73346254A (P = 5 x 10(-4)) and rs148607624delTAG (P = 0.01) alleles. Among all the possible allele combinations, only the haplotype bearing both risk alleles showed a significantly higher frequency in the patients vs. controls (P = 4.7 x 10(-4)) and conferred a carrier risk of 4.19 (P = 1.2 x 10(-4)). This haplotype determined a significant decrease of the luciferase activity in comparison with a basal promoter and the other allelic combinations in GH4C and MCF7 cells (P = 4.6 x 10(-6); P = 5.5 x 10(-4), respectively). The EMSA showed a differential affinity for nuclear proteins for the alternative alleles of the two associated variations. CONCLUSIONS: Variations with a functional significance conferring susceptibility to CPHD have been identified in the PROP1 gene, indicating a multifactorial origin of this disorder in sporadic cases."
+  },
+  {
+    "pmid": "22745233",
+    "variant_text": "148607624delTAG",
+    "variant_offset": 1124,
+    "variant_id": "tmVar:p|DEL|148607624|X;HGVS:p.X148607624del;VariantGroup:4;CorrespondingGene:5626;CorrespondingSpecies:9606",
+    "genes": [
+      {
+        "text": "PROP1",
+        "id": "5626",
+        "offset": 141
+      },
+      {
+        "text": "PROP1",
+        "id": "5626",
+        "offset": 460
+      },
+      {
+        "text": "PROP1",
+        "id": "5626",
+        "offset": 1856
+      }
+    ],
+    "diseases": [
+      {
+        "text": "familial combined pituitary hormone deficiency",
+        "id": "MESH:C580003",
+        "offset": 188
+      },
+      {
+        "text": "CPHD",
+        "id": "MESH:C580003",
+        "offset": 236
+      },
+      {
+        "text": "CPHD",
+        "id": "MESH:C580003",
+        "offset": 640
+      },
+      {
+        "text": "CPHD",
+        "id": "MESH:C580003",
+        "offset": 1823
+      }
+    ],
+    "tissues": [],
+    "species": [
+      {
+        "text": "patients",
+        "id": "9606",
+        "offset": 532
+      },
+      {
+        "text": "PATIENTS",
+        "id": "9606",
+        "offset": 554
+      },
+      {
+        "text": "patients",
+        "id": "9606",
+        "offset": 645
+      },
+      {
+        "text": "patients",
+        "id": "9606",
+        "offset": 1076
+      },
+      {
+        "text": "patients",
+        "id": "9606",
+        "offset": 1296
+      }
+    ],
+    "chemicals": [],
+    "passage_text": "CONTEXT: Mutations within the PROP1 gene represent one of the main causes of familial combined pituitary hormone deficiency (CPHD). However, most of the cases are sporadic with an unknown genetic cause. OBJECTIVE: The aim of this study was the search for low penetrance variations within and around a conserved regulatory element in the intron 1 of PROP1, contributing to a multifactorial form of the disease in sporadic patients. METHODS AND PATIENTS: A fragment of 570 bp encompassing the conserved region was sequenced in 107 CPHD patients and 294 controls, and an association study was performed with the four identified variants, namely c.109+435G>A (rs73346254), c.109+463C>T (rs4498267), c.109+768C>G (rs4431364), and c.109+915_917ins/delTAG (rs148607624). The functional role of the associated polymorphisms was evaluated by luciferase reporter gene expression analyses and EMSA. RESULTS: A statistically significant increased frequency was observed in the patients for rs73346254A (P = 5 x 10(-4)) and rs148607624delTAG (P = 0.01) alleles. Among all the possible allele combinations, only the haplotype bearing both risk alleles showed a significantly higher frequency in the patients vs. controls (P = 4.7 x 10(-4)) and conferred a carrier risk of 4.19 (P = 1.2 x 10(-4)). This haplotype determined a significant decrease of the luciferase activity in comparison with a basal promoter and the other allelic combinations in GH4C and MCF7 cells (P = 4.6 x 10(-6); P = 5.5 x 10(-4), respectively). The EMSA showed a differential affinity for nuclear proteins for the alternative alleles of the two associated variations. CONCLUSIONS: Variations with a functional significance conferring susceptibility to CPHD have been identified in the PROP1 gene, indicating a multifactorial origin of this disorder in sporadic cases."
+  },
+  {
+    "pmid": "25652407",
+    "variant_text": "rs7850258",
+    "variant_offset": 1137,
+    "variant_id": "tmVar:rs7850258;VariantGroup:0;RS#:7850258",
+    "genes": [
+      {
+        "text": "FOXE1",
+        "id": "2304",
+        "offset": 304
+      },
+      {
+        "text": "FOXE1",
+        "id": "2304",
+        "offset": 426
+      },
+      {
+        "text": "foxe1",
+        "id": "2304",
+        "offset": 793
+      },
+      {
+        "text": "FOXE1",
+        "id": "2304",
+        "offset": 867
+      },
+      {
+        "text": "MYC",
+        "id": "4609",
+        "offset": 1602
+      },
+      {
+        "text": "ARNT",
+        "id": "405",
+        "offset": 1610
+      },
+      {
+        "text": "FOXE1",
+        "id": "2304",
+        "offset": 1690
+      }
+    ],
+    "diseases": [
+      {
+        "text": "cleft lip",
+        "id": "MESH:D002971",
+        "offset": 221
+      },
+      {
+        "text": "cleft palate",
+        "id": "MESH:D002972",
+        "offset": 235
+      },
+      {
+        "text": "CLP",
+        "id": "MESH:D002972",
+        "offset": 249
+      },
+      {
+        "text": "hypothyroidism",
+        "id": "MESH:D007037",
+        "offset": 255
+      },
+      {
+        "text": "thyroid cancer",
+        "id": "MESH:D013964",
+        "offset": 274
+      },
+      {
+        "text": "CLP",
+        "id": "MESH:D002972",
+        "offset": 384
+      },
+      {
+        "text": "CLP",
+        "id": "MESH:D002972",
+        "offset": 1313
+      },
+      {
+        "text": "hypothyroidism",
+        "id": "MESH:D007037",
+        "offset": 1321
+      },
+      {
+        "text": "thyroid cancer",
+        "id": "MESH:D013964",
+        "offset": 1412
+      }
+    ],
+    "tissues": [],
+    "species": [
+      {
+        "text": "patients",
+        "id": "9606",
+        "offset": 370
+      },
+      {
+        "text": "zebrafish",
+        "id": "7955",
+        "offset": 591
+      },
+      {
+        "text": "mouse",
+        "id": "10090",
+        "offset": 605
+      }
+    ],
+    "chemicals": [],
+    "passage_text": "Three common diseases, isolated cleft lip and cleft palate (CLP), hypothyroidism and thyroid cancer all map to the FOXE1 locus, but causative variants have yet to be identified. In patients with CLP, the frequency of coding mutations in FOXE1 fails to account for the risk attributable to this locus, suggesting that the common risk alleles reside in nearby regulatory elements. Using a combination of zebrafish and mouse transgenesis, we screened 15 conserved non-coding sequences for enhancer activity, identifying three that regulate expression in a tissue specific pattern consistent with endogenous foxe1 expression. These three, located -82.4, -67.7 and +22.6 kb from the FOXE1 start codon, are all active in the oral epithelium or branchial arches. The -67.7 and +22.6 kb elements are also active in the developing heart, and the -67.7 kb element uniquely directs expression in the developing thyroid. Within the -67.7 kb element is the SNP rs7850258 that is associated with all three diseases. Quantitative reporter assays in oral epithelial and thyroid cell lines show that the rs7850258 allele (G) associated with CLP and hypothyroidism has significantly greater enhancer activity than the allele associated with thyroid cancer (A). Moreover, consistent with predicted transcription factor binding differences, the -67.7 kb element containing rs7850258 allele G is significantly more responsive to both MYC and ARNT than allele A. By demonstrating that this common non-coding variant alters FOXE1 expression, we have identified at least in part the functional basis for the genetic risk of these seemingly disparate disorders. "
+  },
+  {
+    "pmid": "25652407",
+    "variant_text": "rs7850258",
+    "variant_offset": 1276,
+    "variant_id": "tmVar:rs7850258;VariantGroup:0;RS#:7850258",
+    "genes": [
+      {
+        "text": "FOXE1",
+        "id": "2304",
+        "offset": 304
+      },
+      {
+        "text": "FOXE1",
+        "id": "2304",
+        "offset": 426
+      },
+      {
+        "text": "foxe1",
+        "id": "2304",
+        "offset": 793
+      },
+      {
+        "text": "FOXE1",
+        "id": "2304",
+        "offset": 867
+      },
+      {
+        "text": "MYC",
+        "id": "4609",
+        "offset": 1602
+      },
+      {
+        "text": "ARNT",
+        "id": "405",
+        "offset": 1610
+      },
+      {
+        "text": "FOXE1",
+        "id": "2304",
+        "offset": 1690
+      }
+    ],
+    "diseases": [
+      {
+        "text": "cleft lip",
+        "id": "MESH:D002971",
+        "offset": 221
+      },
+      {
+        "text": "cleft palate",
+        "id": "MESH:D002972",
+        "offset": 235
+      },
+      {
+        "text": "CLP",
+        "id": "MESH:D002972",
+        "offset": 249
+      },
+      {
+        "text": "hypothyroidism",
+        "id": "MESH:D007037",
+        "offset": 255
+      },
+      {
+        "text": "thyroid cancer",
+        "id": "MESH:D013964",
+        "offset": 274
+      },
+      {
+        "text": "CLP",
+        "id": "MESH:D002972",
+        "offset": 384
+      },
+      {
+        "text": "CLP",
+        "id": "MESH:D002972",
+        "offset": 1313
+      },
+      {
+        "text": "hypothyroidism",
+        "id": "MESH:D007037",
+        "offset": 1321
+      },
+      {
+        "text": "thyroid cancer",
+        "id": "MESH:D013964",
+        "offset": 1412
+      }
+    ],
+    "tissues": [],
+    "species": [
+      {
+        "text": "patients",
+        "id": "9606",
+        "offset": 370
+      },
+      {
+        "text": "zebrafish",
+        "id": "7955",
+        "offset": 591
+      },
+      {
+        "text": "mouse",
+        "id": "10090",
+        "offset": 605
+      }
+    ],
+    "chemicals": [],
+    "passage_text": "Three common diseases, isolated cleft lip and cleft palate (CLP), hypothyroidism and thyroid cancer all map to the FOXE1 locus, but causative variants have yet to be identified. In patients with CLP, the frequency of coding mutations in FOXE1 fails to account for the risk attributable to this locus, suggesting that the common risk alleles reside in nearby regulatory elements. Using a combination of zebrafish and mouse transgenesis, we screened 15 conserved non-coding sequences for enhancer activity, identifying three that regulate expression in a tissue specific pattern consistent with endogenous foxe1 expression. These three, located -82.4, -67.7 and +22.6 kb from the FOXE1 start codon, are all active in the oral epithelium or branchial arches. The -67.7 and +22.6 kb elements are also active in the developing heart, and the -67.7 kb element uniquely directs expression in the developing thyroid. Within the -67.7 kb element is the SNP rs7850258 that is associated with all three diseases. Quantitative reporter assays in oral epithelial and thyroid cell lines show that the rs7850258 allele (G) associated with CLP and hypothyroidism has significantly greater enhancer activity than the allele associated with thyroid cancer (A). Moreover, consistent with predicted transcription factor binding differences, the -67.7 kb element containing rs7850258 allele G is significantly more responsive to both MYC and ARNT than allele A. By demonstrating that this common non-coding variant alters FOXE1 expression, we have identified at least in part the functional basis for the genetic risk of these seemingly disparate disorders. "
+  },
+  {
+    "pmid": "25652407",
+    "variant_text": "rs7850258",
+    "variant_offset": 1542,
+    "variant_id": "tmVar:rs7850258;VariantGroup:0;RS#:7850258",
+    "genes": [
+      {
+        "text": "FOXE1",
+        "id": "2304",
+        "offset": 304
+      },
+      {
+        "text": "FOXE1",
+        "id": "2304",
+        "offset": 426
+      },
+      {
+        "text": "foxe1",
+        "id": "2304",
+        "offset": 793
+      },
+      {
+        "text": "FOXE1",
+        "id": "2304",
+        "offset": 867
+      },
+      {
+        "text": "MYC",
+        "id": "4609",
+        "offset": 1602
+      },
+      {
+        "text": "ARNT",
+        "id": "405",
+        "offset": 1610
+      },
+      {
+        "text": "FOXE1",
+        "id": "2304",
+        "offset": 1690
+      }
+    ],
+    "diseases": [
+      {
+        "text": "cleft lip",
+        "id": "MESH:D002971",
+        "offset": 221
+      },
+      {
+        "text": "cleft palate",
+        "id": "MESH:D002972",
+        "offset": 235
+      },
+      {
+        "text": "CLP",
+        "id": "MESH:D002972",
+        "offset": 249
+      },
+      {
+        "text": "hypothyroidism",
+        "id": "MESH:D007037",
+        "offset": 255
+      },
+      {
+        "text": "thyroid cancer",
+        "id": "MESH:D013964",
+        "offset": 274
+      },
+      {
+        "text": "CLP",
+        "id": "MESH:D002972",
+        "offset": 384
+      },
+      {
+        "text": "CLP",
+        "id": "MESH:D002972",
+        "offset": 1313
+      },
+      {
+        "text": "hypothyroidism",
+        "id": "MESH:D007037",
+        "offset": 1321
+      },
+      {
+        "text": "thyroid cancer",
+        "id": "MESH:D013964",
+        "offset": 1412
+      }
+    ],
+    "tissues": [],
+    "species": [
+      {
+        "text": "patients",
+        "id": "9606",
+        "offset": 370
+      },
+      {
+        "text": "zebrafish",
+        "id": "7955",
+        "offset": 591
+      },
+      {
+        "text": "mouse",
+        "id": "10090",
+        "offset": 605
+      }
+    ],
+    "chemicals": [],
+    "passage_text": "Three common diseases, isolated cleft lip and cleft palate (CLP), hypothyroidism and thyroid cancer all map to the FOXE1 locus, but causative variants have yet to be identified. In patients with CLP, the frequency of coding mutations in FOXE1 fails to account for the risk attributable to this locus, suggesting that the common risk alleles reside in nearby regulatory elements. Using a combination of zebrafish and mouse transgenesis, we screened 15 conserved non-coding sequences for enhancer activity, identifying three that regulate expression in a tissue specific pattern consistent with endogenous foxe1 expression. These three, located -82.4, -67.7 and +22.6 kb from the FOXE1 start codon, are all active in the oral epithelium or branchial arches. The -67.7 and +22.6 kb elements are also active in the developing heart, and the -67.7 kb element uniquely directs expression in the developing thyroid. Within the -67.7 kb element is the SNP rs7850258 that is associated with all three diseases. Quantitative reporter assays in oral epithelial and thyroid cell lines show that the rs7850258 allele (G) associated with CLP and hypothyroidism has significantly greater enhancer activity than the allele associated with thyroid cancer (A). Moreover, consistent with predicted transcription factor binding differences, the -67.7 kb element containing rs7850258 allele G is significantly more responsive to both MYC and ARNT than allele A. By demonstrating that this common non-coding variant alters FOXE1 expression, we have identified at least in part the functional basis for the genetic risk of these seemingly disparate disorders. "
+  },
+  {
+    "pmid": "25704602",
+    "variant_text": "rs227727",
+    "variant_offset": 605,
+    "variant_id": "tmVar:rs227727;VariantGroup:0;RS#:227727",
+    "genes": [
+      {
+        "text": "NOG",
+        "id": "9241",
+        "offset": 581
+      },
+      {
+        "text": "NTN1",
+        "id": "9423",
+        "offset": 723
+      },
+      {
+        "text": "NOG",
+        "id": "9241",
+        "offset": 732
+      },
+      {
+        "text": "ARHGAP29",
+        "id": "9411",
+        "offset": 846
+      },
+      {
+        "text": "PAX7",
+        "id": "5081",
+        "offset": 998
+      },
+      {
+        "text": "FGFR2",
+        "id": "2263",
+        "offset": 1186
+      }
+    ],
+    "diseases": [
+      {
+        "text": "nonsyndromic orofacial clefts",
+        "id": "MESH:C566121",
+        "offset": 203
+      },
+      {
+        "text": "nonsyndromic clefting",
+        "id": "MESH:C566121",
+        "offset": 1365
+      }
+    ],
+    "tissues": [],
+    "species": [
+      {
+        "text": "humans",
+        "id": "9606",
+        "offset": 1390
+      }
+    ],
+    "chemicals": [],
+    "passage_text": "Although genome-wide association studies (GWASs) for nonsyndromic orofacial clefts have identified multiple strongly associated regions, the causal variants are unknown. To address this, we selected 13 regions from GWASs and other studies, performed targeted sequencing in 1,409 Asian and European trios, and carried out a series of statistical and functional analyses. Within a cluster of strongly associated common variants near NOG, we found that one, rs227727, disrupts enhancer activity. We furthermore identified significant clusters of non-coding rare variants near NTN1 and NOG and found several rare coding variants likely to affect protein function, including four nonsense variants in ARHGAP29. We confirmed 48 de novo mutations and, based on best biological evidence available, chose two of these for functional assays. One mutation in PAX7 disrupted the DNA binding of the encoded transcription factor in an in vitro assay. The second, a non-coding mutation, disrupted the activity of a neural crest enhancer downstream of FGFR2 both in vitro and in vivo. This targeted sequencing study provides strong functional evidence implicating several specific variants as primary contributory risk alleles for nonsyndromic clefting in humans."
+  },
+  {
+    "pmid": "26043427",
+    "variant_text": "rs16969681",
+    "variant_offset": 775,
+    "variant_id": "tmVar:rs16969681;VariantGroup:2;RS#:16969681",
+    "genes": [
+      {
+        "text": "GREM1",
+        "id": "26585",
+        "offset": 202
+      },
+      {
+        "text": "GREM1",
+        "id": "26585",
+        "offset": 346
+      },
+      {
+        "text": "GREM1",
+        "id": "26585",
+        "offset": 565
+      },
+      {
+        "text": "GREM1",
+        "id": "26585",
+        "offset": 1233
+      },
+      {
+        "text": "GREM1",
+        "id": "26585",
+        "offset": 1482
+      }
+    ],
+    "diseases": [
+      {
+        "text": "nonsyndromic cleft lip",
+        "id": "MESH:D002971",
+        "offset": 239
+      },
+      {
+        "text": "cleft palate",
+        "id": "MESH:D002972",
+        "offset": 278
+      },
+      {
+        "text": "NSCL/P",
+        "id": "MESH:D002972",
+        "offset": 292
+      },
+      {
+        "text": "developmental anomaly",
+        "id": "MESH:C566440",
+        "offset": 415
+      },
+      {
+        "text": "NSCL/P",
+        "id": "MESH:D002972",
+        "offset": 514
+      },
+      {
+        "text": "NSCL/P",
+        "id": "MESH:D002972",
+        "offset": 613
+      },
+      {
+        "text": "oral clefts",
+        "id": "MESH:D002971",
+        "offset": 678
+      },
+      {
+        "text": "NSCL/P",
+        "id": "MESH:D002972",
+        "offset": 1008
+      },
+      {
+        "text": "NSCL/P",
+        "id": "MESH:D002972",
+        "offset": 1150
+      },
+      {
+        "text": "oral clefts",
+        "id": "MESH:D002971",
+        "offset": 1405
+      },
+      {
+        "text": "NSCL/P",
+        "id": "MESH:D002972",
+        "offset": 1602
+      }
+    ],
+    "tissues": [],
+    "species": [
+      {
+        "text": "patients",
+        "id": "9606",
+        "offset": 521
+      },
+      {
+        "text": "patients",
+        "id": "9606",
+        "offset": 620
+      }
+    ],
+    "chemicals": [],
+    "passage_text": "BACKGROUND: The locus on chromosome 15q13.3 containing GREM1 is correlated with the risk of nonsyndromic cleft lip with or without cleft palate (NSCL/P). The aim of the present study was to find the GREM1 functional variants implicated in the aetiology of this common developmental anomaly in the Polish population. METHODS: Eight polymorphisms were genotyped in 334 NSCL/P patients and 955 controls. In addition, the GREM1 protein-coding region was sequenced in 96 NSCL/P patients. RESULTS: Significant association with a risk of oral clefts was found for 5 tested polymorphisms. The lowest p(trend) values were identified for rs16969681, rs16969816, and rs1258763 (p(trend) 4.09E-05, 3.35E-05, and 0.0002, respectively). The putative functional variant rs16969681, located in a region that has enhancer activity, was associated with a 2.6-fold lower risk for NSCL/P (odds ratio [OR] = 0.38; 95% confidence interval [CI], 0.24-0.61, p = 2.37E-05). The previously reported association of rs1258763 with NSCL/P was replicated (OR = 0.57; 95% CI, 0.44-0.73; p = 1.10E-05). For all tested GREM1 variants, no significant sex-by-genotype interaction effects were observed. The sequencing analysis did not detect any rare variants implicated in the development of oral clefts. CONCLUSION: Our results might suggest that variants influencing GREM1 expression levels, rather than variants affecting the function of the encoded protein, are significant factors in NSCL/P etiology."
+  },
+  {
+    "pmid": "26043427",
+    "variant_text": "rs16969816",
+    "variant_offset": 787,
+    "variant_id": "tmVar:rs16969816;VariantGroup:0;RS#:16969816",
+    "genes": [
+      {
+        "text": "GREM1",
+        "id": "26585",
+        "offset": 202
+      },
+      {
+        "text": "GREM1",
+        "id": "26585",
+        "offset": 346
+      },
+      {
+        "text": "GREM1",
+        "id": "26585",
+        "offset": 565
+      },
+      {
+        "text": "GREM1",
+        "id": "26585",
+        "offset": 1233
+      },
+      {
+        "text": "GREM1",
+        "id": "26585",
+        "offset": 1482
+      }
+    ],
+    "diseases": [
+      {
+        "text": "nonsyndromic cleft lip",
+        "id": "MESH:D002971",
+        "offset": 239
+      },
+      {
+        "text": "cleft palate",
+        "id": "MESH:D002972",
+        "offset": 278
+      },
+      {
+        "text": "NSCL/P",
+        "id": "MESH:D002972",
+        "offset": 292
+      },
+      {
+        "text": "developmental anomaly",
+        "id": "MESH:C566440",
+        "offset": 415
+      },
+      {
+        "text": "NSCL/P",
+        "id": "MESH:D002972",
+        "offset": 514
+      },
+      {
+        "text": "NSCL/P",
+        "id": "MESH:D002972",
+        "offset": 613
+      },
+      {
+        "text": "oral clefts",
+        "id": "MESH:D002971",
+        "offset": 678
+      },
+      {
+        "text": "NSCL/P",
+        "id": "MESH:D002972",
+        "offset": 1008
+      },
+      {
+        "text": "NSCL/P",
+        "id": "MESH:D002972",
+        "offset": 1150
+      },
+      {
+        "text": "oral clefts",
+        "id": "MESH:D002971",
+        "offset": 1405
+      },
+      {
+        "text": "NSCL/P",
+        "id": "MESH:D002972",
+        "offset": 1602
+      }
+    ],
+    "tissues": [],
+    "species": [
+      {
+        "text": "patients",
+        "id": "9606",
+        "offset": 521
+      },
+      {
+        "text": "patients",
+        "id": "9606",
+        "offset": 620
+      }
+    ],
+    "chemicals": [],
+    "passage_text": "BACKGROUND: The locus on chromosome 15q13.3 containing GREM1 is correlated with the risk of nonsyndromic cleft lip with or without cleft palate (NSCL/P). The aim of the present study was to find the GREM1 functional variants implicated in the aetiology of this common developmental anomaly in the Polish population. METHODS: Eight polymorphisms were genotyped in 334 NSCL/P patients and 955 controls. In addition, the GREM1 protein-coding region was sequenced in 96 NSCL/P patients. RESULTS: Significant association with a risk of oral clefts was found for 5 tested polymorphisms. The lowest p(trend) values were identified for rs16969681, rs16969816, and rs1258763 (p(trend) 4.09E-05, 3.35E-05, and 0.0002, respectively). The putative functional variant rs16969681, located in a region that has enhancer activity, was associated with a 2.6-fold lower risk for NSCL/P (odds ratio [OR] = 0.38; 95% confidence interval [CI], 0.24-0.61, p = 2.37E-05). The previously reported association of rs1258763 with NSCL/P was replicated (OR = 0.57; 95% CI, 0.44-0.73; p = 1.10E-05). For all tested GREM1 variants, no significant sex-by-genotype interaction effects were observed. The sequencing analysis did not detect any rare variants implicated in the development of oral clefts. CONCLUSION: Our results might suggest that variants influencing GREM1 expression levels, rather than variants affecting the function of the encoded protein, are significant factors in NSCL/P etiology."
+  },
+  {
+    "pmid": "26043427",
+    "variant_text": "rs1258763",
+    "variant_offset": 803,
+    "variant_id": "tmVar:rs1258763;VariantGroup:1;RS#:1258763",
+    "genes": [
+      {
+        "text": "GREM1",
+        "id": "26585",
+        "offset": 202
+      },
+      {
+        "text": "GREM1",
+        "id": "26585",
+        "offset": 346
+      },
+      {
+        "text": "GREM1",
+        "id": "26585",
+        "offset": 565
+      },
+      {
+        "text": "GREM1",
+        "id": "26585",
+        "offset": 1233
+      },
+      {
+        "text": "GREM1",
+        "id": "26585",
+        "offset": 1482
+      }
+    ],
+    "diseases": [
+      {
+        "text": "nonsyndromic cleft lip",
+        "id": "MESH:D002971",
+        "offset": 239
+      },
+      {
+        "text": "cleft palate",
+        "id": "MESH:D002972",
+        "offset": 278
+      },
+      {
+        "text": "NSCL/P",
+        "id": "MESH:D002972",
+        "offset": 292
+      },
+      {
+        "text": "developmental anomaly",
+        "id": "MESH:C566440",
+        "offset": 415
+      },
+      {
+        "text": "NSCL/P",
+        "id": "MESH:D002972",
+        "offset": 514
+      },
+      {
+        "text": "NSCL/P",
+        "id": "MESH:D002972",
+        "offset": 613
+      },
+      {
+        "text": "oral clefts",
+        "id": "MESH:D002971",
+        "offset": 678
+      },
+      {
+        "text": "NSCL/P",
+        "id": "MESH:D002972",
+        "offset": 1008
+      },
+      {
+        "text": "NSCL/P",
+        "id": "MESH:D002972",
+        "offset": 1150
+      },
+      {
+        "text": "oral clefts",
+        "id": "MESH:D002971",
+        "offset": 1405
+      },
+      {
+        "text": "NSCL/P",
+        "id": "MESH:D002972",
+        "offset": 1602
+      }
+    ],
+    "tissues": [],
+    "species": [
+      {
+        "text": "patients",
+        "id": "9606",
+        "offset": 521
+      },
+      {
+        "text": "patients",
+        "id": "9606",
+        "offset": 620
+      }
+    ],
+    "chemicals": [],
+    "passage_text": "BACKGROUND: The locus on chromosome 15q13.3 containing GREM1 is correlated with the risk of nonsyndromic cleft lip with or without cleft palate (NSCL/P). The aim of the present study was to find the GREM1 functional variants implicated in the aetiology of this common developmental anomaly in the Polish population. METHODS: Eight polymorphisms were genotyped in 334 NSCL/P patients and 955 controls. In addition, the GREM1 protein-coding region was sequenced in 96 NSCL/P patients. RESULTS: Significant association with a risk of oral clefts was found for 5 tested polymorphisms. The lowest p(trend) values were identified for rs16969681, rs16969816, and rs1258763 (p(trend) 4.09E-05, 3.35E-05, and 0.0002, respectively). The putative functional variant rs16969681, located in a region that has enhancer activity, was associated with a 2.6-fold lower risk for NSCL/P (odds ratio [OR] = 0.38; 95% confidence interval [CI], 0.24-0.61, p = 2.37E-05). The previously reported association of rs1258763 with NSCL/P was replicated (OR = 0.57; 95% CI, 0.44-0.73; p = 1.10E-05). For all tested GREM1 variants, no significant sex-by-genotype interaction effects were observed. The sequencing analysis did not detect any rare variants implicated in the development of oral clefts. CONCLUSION: Our results might suggest that variants influencing GREM1 expression levels, rather than variants affecting the function of the encoded protein, are significant factors in NSCL/P etiology."
+  },
+  {
+    "pmid": "26043427",
+    "variant_text": "rs16969681",
+    "variant_offset": 902,
+    "variant_id": "tmVar:rs16969681;VariantGroup:2;RS#:16969681",
+    "genes": [
+      {
+        "text": "GREM1",
+        "id": "26585",
+        "offset": 202
+      },
+      {
+        "text": "GREM1",
+        "id": "26585",
+        "offset": 346
+      },
+      {
+        "text": "GREM1",
+        "id": "26585",
+        "offset": 565
+      },
+      {
+        "text": "GREM1",
+        "id": "26585",
+        "offset": 1233
+      },
+      {
+        "text": "GREM1",
+        "id": "26585",
+        "offset": 1482
+      }
+    ],
+    "diseases": [
+      {
+        "text": "nonsyndromic cleft lip",
+        "id": "MESH:D002971",
+        "offset": 239
+      },
+      {
+        "text": "cleft palate",
+        "id": "MESH:D002972",
+        "offset": 278
+      },
+      {
+        "text": "NSCL/P",
+        "id": "MESH:D002972",
+        "offset": 292
+      },
+      {
+        "text": "developmental anomaly",
+        "id": "MESH:C566440",
+        "offset": 415
+      },
+      {
+        "text": "NSCL/P",
+        "id": "MESH:D002972",
+        "offset": 514
+      },
+      {
+        "text": "NSCL/P",
+        "id": "MESH:D002972",
+        "offset": 613
+      },
+      {
+        "text": "oral clefts",
+        "id": "MESH:D002971",
+        "offset": 678
+      },
+      {
+        "text": "NSCL/P",
+        "id": "MESH:D002972",
+        "offset": 1008
+      },
+      {
+        "text": "NSCL/P",
+        "id": "MESH:D002972",
+        "offset": 1150
+      },
+      {
+        "text": "oral clefts",
+        "id": "MESH:D002971",
+        "offset": 1405
+      },
+      {
+        "text": "NSCL/P",
+        "id": "MESH:D002972",
+        "offset": 1602
+      }
+    ],
+    "tissues": [],
+    "species": [
+      {
+        "text": "patients",
+        "id": "9606",
+        "offset": 521
+      },
+      {
+        "text": "patients",
+        "id": "9606",
+        "offset": 620
+      }
+    ],
+    "chemicals": [],
+    "passage_text": "BACKGROUND: The locus on chromosome 15q13.3 containing GREM1 is correlated with the risk of nonsyndromic cleft lip with or without cleft palate (NSCL/P). The aim of the present study was to find the GREM1 functional variants implicated in the aetiology of this common developmental anomaly in the Polish population. METHODS: Eight polymorphisms were genotyped in 334 NSCL/P patients and 955 controls. In addition, the GREM1 protein-coding region was sequenced in 96 NSCL/P patients. RESULTS: Significant association with a risk of oral clefts was found for 5 tested polymorphisms. The lowest p(trend) values were identified for rs16969681, rs16969816, and rs1258763 (p(trend) 4.09E-05, 3.35E-05, and 0.0002, respectively). The putative functional variant rs16969681, located in a region that has enhancer activity, was associated with a 2.6-fold lower risk for NSCL/P (odds ratio [OR] = 0.38; 95% confidence interval [CI], 0.24-0.61, p = 2.37E-05). The previously reported association of rs1258763 with NSCL/P was replicated (OR = 0.57; 95% CI, 0.44-0.73; p = 1.10E-05). For all tested GREM1 variants, no significant sex-by-genotype interaction effects were observed. The sequencing analysis did not detect any rare variants implicated in the development of oral clefts. CONCLUSION: Our results might suggest that variants influencing GREM1 expression levels, rather than variants affecting the function of the encoded protein, are significant factors in NSCL/P etiology."
+  },
+  {
+    "pmid": "26043427",
+    "variant_text": "rs1258763",
+    "variant_offset": 1135,
+    "variant_id": "tmVar:rs1258763;VariantGroup:1;RS#:1258763",
+    "genes": [
+      {
+        "text": "GREM1",
+        "id": "26585",
+        "offset": 202
+      },
+      {
+        "text": "GREM1",
+        "id": "26585",
+        "offset": 346
+      },
+      {
+        "text": "GREM1",
+        "id": "26585",
+        "offset": 565
+      },
+      {
+        "text": "GREM1",
+        "id": "26585",
+        "offset": 1233
+      },
+      {
+        "text": "GREM1",
+        "id": "26585",
+        "offset": 1482
+      }
+    ],
+    "diseases": [
+      {
+        "text": "nonsyndromic cleft lip",
+        "id": "MESH:D002971",
+        "offset": 239
+      },
+      {
+        "text": "cleft palate",
+        "id": "MESH:D002972",
+        "offset": 278
+      },
+      {
+        "text": "NSCL/P",
+        "id": "MESH:D002972",
+        "offset": 292
+      },
+      {
+        "text": "developmental anomaly",
+        "id": "MESH:C566440",
+        "offset": 415
+      },
+      {
+        "text": "NSCL/P",
+        "id": "MESH:D002972",
+        "offset": 514
+      },
+      {
+        "text": "NSCL/P",
+        "id": "MESH:D002972",
+        "offset": 613
+      },
+      {
+        "text": "oral clefts",
+        "id": "MESH:D002971",
+        "offset": 678
+      },
+      {
+        "text": "NSCL/P",
+        "id": "MESH:D002972",
+        "offset": 1008
+      },
+      {
+        "text": "NSCL/P",
+        "id": "MESH:D002972",
+        "offset": 1150
+      },
+      {
+        "text": "oral clefts",
+        "id": "MESH:D002971",
+        "offset": 1405
+      },
+      {
+        "text": "NSCL/P",
+        "id": "MESH:D002972",
+        "offset": 1602
+      }
+    ],
+    "tissues": [],
+    "species": [
+      {
+        "text": "patients",
+        "id": "9606",
+        "offset": 521
+      },
+      {
+        "text": "patients",
+        "id": "9606",
+        "offset": 620
+      }
+    ],
+    "chemicals": [],
+    "passage_text": "BACKGROUND: The locus on chromosome 15q13.3 containing GREM1 is correlated with the risk of nonsyndromic cleft lip with or without cleft palate (NSCL/P). The aim of the present study was to find the GREM1 functional variants implicated in the aetiology of this common developmental anomaly in the Polish population. METHODS: Eight polymorphisms were genotyped in 334 NSCL/P patients and 955 controls. In addition, the GREM1 protein-coding region was sequenced in 96 NSCL/P patients. RESULTS: Significant association with a risk of oral clefts was found for 5 tested polymorphisms. The lowest p(trend) values were identified for rs16969681, rs16969816, and rs1258763 (p(trend) 4.09E-05, 3.35E-05, and 0.0002, respectively). The putative functional variant rs16969681, located in a region that has enhancer activity, was associated with a 2.6-fold lower risk for NSCL/P (odds ratio [OR] = 0.38; 95% confidence interval [CI], 0.24-0.61, p = 2.37E-05). The previously reported association of rs1258763 with NSCL/P was replicated (OR = 0.57; 95% CI, 0.44-0.73; p = 1.10E-05). For all tested GREM1 variants, no significant sex-by-genotype interaction effects were observed. The sequencing analysis did not detect any rare variants implicated in the development of oral clefts. CONCLUSION: Our results might suggest that variants influencing GREM1 expression levels, rather than variants affecting the function of the encoded protein, are significant factors in NSCL/P etiology."
+  }
+]

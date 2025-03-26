@@ -243,7 +243,9 @@ def merge_variant_data(cooccurrence_data: List[Dict], llm_data: List[Dict]) -> L
                 'variant_name': hgvs or variant_text,
                 'variant_type': variant_type,
                 'genes': set(),
+                'gene_scores': {},  # Dodane: słownik dla scoringu genów
                 'diseases': set(),
+                'disease_scores': {},  # Dodane: słownik dla scoringu chorób
                 'variant_mode': 'unknown',
                 'passage_text': rel.get('passage_text', '')
             }
@@ -288,7 +290,9 @@ def merge_variant_data(cooccurrence_data: List[Dict], llm_data: List[Dict]) -> L
                 'variant_name': hgvs or variant_text,
                 'variant_type': variant_type,
                 'genes': set(),
+                'gene_scores': {},  # Dodane: słownik dla scoringu genów
                 'diseases': set(),
+                'disease_scores': {},  # Dodane: słownik dla scoringu chorób
                 'variant_mode': 'unknown',
                 'passage_text': rel.get('passage_text', '')
             }
@@ -303,17 +307,25 @@ def merge_variant_data(cooccurrence_data: List[Dict], llm_data: List[Dict]) -> L
                 for gene in rel.get('genes', []):
                     gene_text = gene.get('text', '')
                     gene_id = gene.get('id', '')
+                    relationship_score = gene.get('relationship_score', 0)
                     if gene_text and gene_id:
-                        logger.debug(f"Adding gene from direct LLM data: {gene_text} ({gene_id})")
-                        merged_data[key]['genes'].add(f"{gene_text} ({gene_id})")
+                        logger.debug(f"Adding gene from direct LLM data: {gene_text} ({gene_id}) with score {relationship_score}")
+                        gene_key = f"{gene_text} ({gene_id})"
+                        merged_data[key]['genes'].add(gene_key)
+                        # Zapisz scoring dla genu
+                        merged_data[key]['gene_scores'][gene_key] = relationship_score
             
             if 'diseases' in rel:
                 for disease in rel.get('diseases', []):
                     disease_text = disease.get('text', '')
                     disease_id = disease.get('id', '')
+                    relationship_score = disease.get('relationship_score', 0)
                     if disease_text and disease_id:
-                        logger.debug(f"Adding disease from direct LLM data: {disease_text} ({disease_id})")
-                        merged_data[key]['diseases'].add(f"{disease_text} ({disease_id})")
+                        logger.debug(f"Adding disease from direct LLM data: {disease_text} ({disease_id}) with score {relationship_score}")
+                        disease_key = f"{disease_text} ({disease_id})"
+                        merged_data[key]['diseases'].add(disease_key)
+                        # Zapisz scoring dla choroby
+                        merged_data[key]['disease_scores'][disease_key] = relationship_score
             
             for relationship in relationships:
                 if relationship.get('has_relationship', False):
@@ -321,14 +333,21 @@ def merge_variant_data(cooccurrence_data: List[Dict], llm_data: List[Dict]) -> L
                     entity_text = relationship.get('entity_text', '')
                     entity_id = relationship.get('entity_id', '')
                     explanation = relationship.get('explanation', '')
+                    relationship_score = relationship.get('relationship_score', 0)
                     
-                    logger.debug(f"Processing relationship: {entity_type} {entity_text} ({entity_id})")
+                    logger.debug(f"Processing relationship: {entity_type} {entity_text} ({entity_id}) with score {relationship_score}")
                     
                     if entity_type == 'gene' and entity_text and entity_id:
-                        merged_data[key]['genes'].add(f"{entity_text} ({entity_id})")
+                        gene_key = f"{entity_text} ({entity_id})"
+                        merged_data[key]['genes'].add(gene_key)
+                        # Zapisz scoring dla genu
+                        merged_data[key]['gene_scores'][gene_key] = relationship_score
                     
                     elif entity_type == 'disease' and entity_text and entity_id:
-                        merged_data[key]['diseases'].add(f"{entity_text} ({entity_id})")
+                        disease_key = f"{entity_text} ({entity_id})"
+                        merged_data[key]['diseases'].add(disease_key)
+                        # Zapisz scoring dla choroby
+                        merged_data[key]['disease_scores'][disease_key] = relationship_score
                     
                     # Try to determine variant mode from explanation
                     if 'enhancer' in explanation.lower():
@@ -341,11 +360,36 @@ def merge_variant_data(cooccurrence_data: List[Dict], llm_data: List[Dict]) -> L
     # Log the number of merged entries
     logger.info(f"Merged data contains {len(merged_data)} entries")
     
-    # Convert sets to strings for DataFrame compatibility
+    # Convert sets to strings for DataFrame compatibility and handle scoring
     result = []
     for key, data in merged_data.items():
-        data['genes'] = '; '.join(data['genes'])
-        data['diseases'] = '; '.join(data['diseases'])
+        # Przekształć zbiory na ciągi znaków, zapisując przy tym scoring
+        genes_str = []
+        gene_scores_str = []
+        
+        for gene in data['genes']:
+            genes_str.append(gene)
+            score = data['gene_scores'].get(gene, 0)
+            gene_scores_str.append(str(score))
+        
+        diseases_str = []
+        disease_scores_str = []
+        
+        for disease in data['diseases']:
+            diseases_str.append(disease)
+            score = data['disease_scores'].get(disease, 0)
+            disease_scores_str.append(str(score))
+        
+        # Zastąp zbiory ciągami znaków
+        data['genes'] = '; '.join(genes_str)
+        data['gene_score'] = '; '.join(gene_scores_str)
+        data['diseases'] = '; '.join(diseases_str)
+        data['disease_score'] = '; '.join(disease_scores_str)
+        
+        # Usuń słowniki scoringu, które nie będą już potrzebne
+        del data['gene_scores']
+        del data['disease_scores']
+        
         result.append(data)
     
     return result
@@ -358,7 +402,8 @@ def analyze_pmids(pmids: List[str],
                   use_llm: bool = True,
                   only_llm: bool = False,
                   debug_mode: bool = False,
-                  llm_context_analyzer_class = None) -> pd.DataFrame:
+                  llm_context_analyzer_class = None,
+                  cache_storage_type: str = "memory") -> pd.DataFrame:
     """
     Analyze PubMed IDs using both cooccurrence and LLM methods to create a structured CSV.
     
@@ -371,6 +416,7 @@ def analyze_pmids(pmids: List[str],
         only_llm: Whether to use only LLM analysis (default: False)
         debug_mode: Whether to save debug information (raw LLM output)
         llm_context_analyzer_class: Class to use for LLM analysis (default: LlmContextAnalyzer)
+        cache_storage_type: Type of cache to use (memory or disk) (default: memory)
         
     Returns:
         DataFrame with processed results
@@ -420,7 +466,11 @@ def analyze_pmids(pmids: List[str],
         llm_results = []
         if use_llm:
             # Użyj dostarczonej klasy analizatora zamiast domyślnej
-            llm_analyzer = llm_context_analyzer_class(pubtator_client=pubtator_client, llm_model_name=llm_model)
+            llm_analyzer = llm_context_analyzer_class(
+                pubtator_client=pubtator_client, 
+                llm_model_name=llm_model,
+                cache_storage_type=cache_storage_type
+            )
             logger.info(f"Starting LLM analysis using model {llm_model}...")
             llm_results = llm_analyzer.analyze_publications(unique_pmids)
             logger.info(f"Found {len(llm_results)} relationships using LLM")
@@ -445,7 +495,8 @@ def analyze_pmids(pmids: List[str],
         # Reorder columns to match required format
         columns = [
             'chr', 'start', 'end', 'id', 'genes', 'diseases', 
-            'variant_type', 'variant_name', 'variant_mode', 'pmid'
+            'variant_type', 'variant_name', 'variant_mode', 'pmid',
+            'gene_score', 'disease_score'
         ]
         
         # Filter and reorder columns
@@ -505,7 +556,7 @@ def analyze_pmids(pmids: List[str],
                     llm_data = json.load(f)
                     
                 headers = ["pmid", "variant_text", "variant_id", "entity_type", "entity_text", 
-                           "entity_id", "has_relationship", "explanation", "passage_text"]
+                           "entity_id", "has_relationship", "explanation", "relationship_score", "passage_text"]
                 
                 with open(debug_output, 'w', newline='') as f:
                     writer = csv.DictWriter(f, fieldnames=headers)
@@ -530,6 +581,7 @@ def analyze_pmids(pmids: List[str],
                                         "entity_id": entity.get("id", ""),
                                         "has_relationship": "True",
                                         "explanation": entity.get("explanation", ""),
+                                        "relationship_score": entity.get("relationship_score", 0),
                                         "passage_text": passage_text
                                     })
                 

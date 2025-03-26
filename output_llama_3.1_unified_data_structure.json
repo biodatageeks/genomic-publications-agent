@@ -1,0 +1,25 @@
+{
+  "total_entries": 32,
+  "first_entry_keys": [
+    "pmid",
+    "variant_text",
+    "variant_offset",
+    "variant_id",
+    "genes",
+    "diseases",
+    "tissues",
+    "species",
+    "chemicals",
+    "passage_text"
+  ],
+  "has_genes": true,
+  "has_diseases": true,
+  "has_llm_relationships": false,
+  "entry_counts": {
+    "genes": 32,
+    "diseases": 32,
+    "tissues": 0,
+    "species": 25,
+    "chemicals": 0
+  }
+}
