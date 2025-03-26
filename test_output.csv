@@ -1,0 +1,2 @@
+chr,start,end,id,genes,diseases,variant_type,variant_name,variant_mode,pmid
+chr7,117188683,117188683,tmVar:c|SUB|G|123|A;HGVS:NC_000007.13:g.117188683G>A,GENE1 (123); GENE2 (789),DISEASE1 (456),substitution,NC_000007.13:g.117188683G>A,enhancer,12345

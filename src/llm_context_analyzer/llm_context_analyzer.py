@@ -1,10 +1,10 @@
 """
-LLM Context Analyzer dla publikacji biomedycznych.
+LLM Context Analyzer for biomedical publications.
 
-Ten moduł dostarcza narzędzia do analizy kontekstu bytów biomedycznych 
-w publikacjach naukowych przy użyciu modeli językowych (LLM).
-Wykorzystuje adnotacje z API PubTator3 i model Llama 3.1 8B do identyfikacji 
-relacji między wariantami a innymi bytami biomedycznymi.
+This module provides tools for analyzing the context of biomedical entities 
+in scientific publications using language models (LLM).
+It utilizes annotations from the PubTator3 API and the Llama 3.1 8B model to identify 
+relationships between variants and other biomedical entities.
 """
 
 import csv
@@ -27,21 +27,21 @@ from src.cache.cache import APICache
 
 class LlmContextAnalyzer(ContextAnalyzer):
     """
-    Analizator relacji kontekstowych między wariantami a innymi bytami biomedycznymi
-    wykorzystujący modele językowe (LLM).
+    Analyzer of contextual relationships between variants and other biomedical entities
+    using language models (LLM).
     
-    Ta klasa identyfikuje relacje między wariantami a innymi bytami (genami, chorobami, tkankami)
-    w kontekście pasaży publikacji biomedycznych, używając modelu Llama 3.1 8B
-    do analizy tekstu i wykrywania relacji semantycznych.
+    This class identifies relationships between variants and other entities (genes, diseases, tissues)
+    in the context of passages from biomedical publications, using the Llama 3.1 8B model
+    to analyze text and detect semantic relationships.
     
-    Przykład użycia:
+    Example usage:
         analyzer = LlmContextAnalyzer()
         pmids = ["32735606", "32719766"]
         relationships = analyzer.analyze_publications(pmids)
         analyzer.save_relationships_to_csv(relationships, "variant_relationships.csv")
     """
     
-    # Typy bytów do ekstrakcji z publikacji
+    # Entity types to extract from publications
     ENTITY_TYPES = {
         "variant": ["Mutation", "DNAMutation", "Variant"],
         "gene": ["Gene"],
@@ -51,33 +51,33 @@ class LlmContextAnalyzer(ContextAnalyzer):
         "chemical": ["Chemical"]
     }
     
-    # Szablon promptu systemowego
-    SYSTEM_PROMPT = """Jesteś ekspertem w analizie tekstu biomedycznego i rozpoznawaniu relacji między 
-bytami biomedycznymi. Twoim zadaniem jest określenie, czy istnieją relacje między wariantem 
-genetycznym a innymi bytami biomedycznymi w podanym tekście. Odpowiedz tylko i wyłącznie w 
-formacie JSON, zawierającym informacje o relacjach.
+    # System prompt template
+    SYSTEM_PROMPT = """You are an expert in biomedical text analysis and recognizing relationships between 
+biomedical entities. Your task is to determine whether there are relationships between a genetic 
+variant and other biomedical entities in the provided text. Respond only in 
+JSON format, containing information about the relationships.
 """
     
-    # Szablon promptu użytkownika
-    USER_PROMPT_TEMPLATE = """Przeanalizuj podany fragment tekstu biomedycznego i określ, czy istnieją 
-relacje między wariantem {variant_text} a następującymi bytami biomedycznymi:
+    # User prompt template
+    USER_PROMPT_TEMPLATE = """Analyze the provided biomedical text fragment and determine whether there are 
+relationships between the variant {variant_text} and the following biomedical entities:
 
 {entities_list}
 
-Odpowiedź zwróć w ściśle określonym formacie JSON, gdzie dla każdej encji określisz, czy istnieje 
-relacja z wariantem (true/false) i krótko uzasadnisz swoją odpowiedź w 1-2 zdaniach.
+Respond in a strictly defined JSON format, where for each entity you specify whether there is 
+a relationship with the variant (true/false) and briefly justify your answer in 1-2 sentences.
 
-Tekst fragmentu: "{passage_text}"
+Text fragment: "{passage_text}"
 
-Format odpowiedzi:
+Response format:
 {{
   "relationships": [
     {{
-      "entity_type": "typ encji, np. gene",
-      "entity_text": "tekst encji",
-      "entity_id": "identyfikator encji",
+      "entity_type": "entity type, e.g., gene",
+      "entity_text": "entity text",
+      "entity_id": "entity identifier",
       "has_relationship": true/false,
-      "explanation": "Krótkie uzasadnienie decyzji"
+      "explanation": "Brief justification of the decision"
     }},
     ...
   ]
@@ -89,47 +89,47 @@ Format odpowiedzi:
                  use_cache: bool = True, cache_ttl: int = 86400,
                  cache_storage_type: str = "memory"):
         """
-        Inicjalizuje LLM Context Analyzer.
+        Initializes the LLM Context Analyzer.
         
         Args:
-            pubtator_client: Opcjonalny klient PubTator
-            llm_model_name: Nazwa modelu LLM do wykorzystania
-            use_cache: Czy używać cache'a dla zapytań do LLM (domyślnie True)
-            cache_ttl: Czas życia wpisów w cache'u w sekundach (domyślnie 24h)
-            cache_storage_type: Typ cache'a: "memory" lub "disk"
+            pubtator_client: Optional PubTator client
+            llm_model_name: Name of the LLM model to use
+            use_cache: Whether to use cache for LLM queries (default True)
+            cache_ttl: Time-to-live for cache entries in seconds (default 24h)
+            cache_storage_type: Type of cache: "memory" or "disk"
         """
         super().__init__(pubtator_client)
         self.logger = logging.getLogger(__name__)
         self.llm_manager = LlmManager('together', llm_model_name)
         self.llm = self.llm_manager.get_llm()
-        self.logger.info(f'Załadowano model LLM: {llm_model_name}')
+        self.logger.info(f'Loaded LLM model: {llm_model_name}')
         
-        # Inicjalizacja cache'a
+        # Initialize cache
         self.use_cache = use_cache
         if use_cache:
-            self.cache = APICache(ttl=cache_ttl, storage_type=cache_storage_type)
-            self.logger.info(f"Cache włączony ({cache_storage_type}), TTL: {cache_ttl}s")
+            self.cache = APICache.create(storage_type=cache_storage_type, ttl=cache_ttl)
+            self.logger.info(f"Cache enabled ({cache_storage_type}), TTL: {cache_ttl}s")
         else:
             self.cache = None
-            self.logger.info("Cache wyłączony")
+            self.logger.info("Cache disabled")
     
     def analyze_publications(self, pmids: List[str]) -> List[Dict[str, Any]]:
         """
-        Analizuje listę publikacji, aby wydobyć relacje kontekstowe.
+        Analyzes a list of publications to extract contextual relationships.
         
         Args:
-            pmids: Lista identyfikatorów PubMed do analizy
+            pmids: List of PubMed identifiers to analyze
             
         Returns:
-            Lista słowników zawierających dane relacji
+            List of dictionaries containing relationship data
             
         Raises:
-            PubTatorError: Jeśli wystąpi błąd pobierania lub przetwarzania publikacji
+            PubTatorError: If an error occurs while fetching or processing publications
         """
         relationships = []
         
         try:
-            # Pobierz publikacje z PubTator
+            # Fetch publications from PubTator
             publications = self.pubtator_client.get_publications_by_pmids(pmids)
             
             for publication in publications:
@@ -138,50 +138,50 @@ Format odpowiedzi:
                 
             return relationships
         except Exception as e:
-            self.logger.error(f"Błąd analizy publikacji: {str(e)}")
-            raise PubTatorError(f"Błąd analizy publikacji: {str(e)}") from e
+            self.logger.error(f"Error analyzing publications: {str(e)}")
+            raise PubTatorError(f"Error analyzing publications: {str(e)}") from e
     
     def analyze_publication(self, pmid: str) -> List[Dict[str, Any]]:
         """
-        Analizuje pojedynczą publikację, aby wydobyć relacje kontekstowe.
+        Analyzes a single publication to extract contextual relationships.
         
         Args:
-            pmid: Identyfikator PubMed do analizy
+            pmid: PubMed identifier to analyze
             
         Returns:
-            Lista słowników zawierających dane relacji
+            List of dictionaries containing relationship data
             
         Raises:
-            PubTatorError: Jeśli wystąpi błąd pobierania lub przetwarzania publikacji
+            PubTatorError: If an error occurs while fetching or processing the publication
         """
         try:
             publication = self.pubtator_client.get_publication_by_pmid(pmid)
             if not publication:
-                self.logger.warning(f"Nie znaleziono publikacji dla PMID: {pmid}")
+                self.logger.warning(f"Publication not found for PMID: {pmid}")
                 return []
                 
             return self._analyze_publication(publication)
         except PubTatorError as e:
-            self.logger.error(f"Błąd analizy publikacji {pmid}: {str(e)}")
+            self.logger.error(f"Error analyzing publication {pmid}: {str(e)}")
             raise
         
-        # Dodajemy domyślny zwrot pustej listy w przypadku nieprzewidzianego przepływu kontroli
+        # Add default return of an empty list in case of unexpected control flow
         return []
     
     def _analyze_publication(self, publication: bioc.BioCDocument) -> List[Dict[str, Any]]:
         """
-        Wydobywa relacje kontekstowe z pojedynczej publikacji.
+        Extracts contextual relationships from a single publication.
         
         Args:
-            publication: Obiekt BioCDocument zawierający publikację z adnotacjami
+            publication: BioCDocument object containing the publication with annotations
             
         Returns:
-            Lista słowników zawierających dane relacji
+            List of dictionaries containing relationship data
         """
         relationships = []
         pmid = publication.id
         
-        # Przetwórz każdy pasaż w publikacji
+        # Process each passage in the publication
         for passage in publication.passages:
             passage_relationships = self._analyze_passage(pmid, passage)
             relationships.extend(passage_relationships)
@@ -190,36 +190,36 @@ Format odpowiedzi:
     
     def _analyze_passage(self, pmid: str, passage: bioc.BioCPassage) -> List[Dict[str, Any]]:
         """
-        Wydobywa relacje kontekstowe z pojedynczego pasażu przy użyciu LLM.
+        Extracts contextual relationships from a single passage using LLM.
         
         Args:
-            pmid: Identyfikator PubMed publikacji
-            passage: Obiekt BioCPassage zawierający pasaż z adnotacjami
+            pmid: PubMed identifier of the publication
+            passage: BioCPassage object containing the passage with annotations
             
         Returns:
-            Lista słowników zawierających dane relacji dla tego pasażu
+            List of dictionaries containing relationship data for this passage
         """
         relationships = []
         
-        # Grupuj adnotacje w pasażu według typu
+        # Group annotations in the passage by type
         entities_by_type = self._group_annotations_by_type(passage)
         
-        # Jeśli brak wariantów w tym pasażu, zwróć pustą listę
+        # If there are no variants in this passage, return an empty list
         if not any(variant_type in entities_by_type for variant_type in self.ENTITY_TYPES["variant"]):
             return []
         
-        # Pobierz wszystkie warianty
+        # Get all variants
         variants = []
         for variant_type in self.ENTITY_TYPES["variant"]:
             if variant_type in entities_by_type:
                 variants.extend(entities_by_type[variant_type])
         
-        # Dla każdego wariantu, utwórz relację z innymi bytami w pasażu
+        # For each variant, create a relationship with other entities in the passage
         for variant in variants:
             variant_text = variant.text
             variant_offset = variant.locations[0].offset if variant.locations else None
             
-            # Utwórz słownik z danymi bazowymi relacji
+            # Create a dictionary with the base relationship data
             relationship = {
                 "pmid": pmid,
                 "variant_text": variant_text,
@@ -233,7 +233,7 @@ Format odpowiedzi:
                 "passage_text": passage.text
             }
             
-            # Przygotuj listę wszystkich bytów w pasażu (poza wariantami)
+            # Prepare a list of all entities in the passage (excluding variants)
             all_entities = []
             for entity_type, type_list in self.ENTITY_TYPES.items():
                 if entity_type == "variant":
@@ -250,19 +250,19 @@ Format odpowiedzi:
                             }
                             all_entities.append(entity_data)
             
-            # Jeśli nie ma innych bytów w pasażu, pomiń analizę LLM
+            # If there are no other entities in the passage, skip LLM analysis
             if not all_entities:
                 relationships.append(relationship)
                 continue
             
-            # Analizuj relacje między wariantem a innymi bytami za pomocą LLM
+            # Analyze relationships between the variant and other entities using LLM
             llm_relationships = self._analyze_relationships_with_llm(
                 variant_text=variant_text, 
                 entities=all_entities, 
                 passage_text=passage.text
             )
             
-            # Przetwórz wyniki z LLM
+            # Process results from LLM
             if llm_relationships:
                 for rel in llm_relationships:
                     entity_type = rel.get("entity_type", "").lower()
@@ -272,7 +272,9 @@ Format odpowiedzi:
                             "id": rel.get("entity_id", ""),
                             "explanation": rel.get("explanation", "")
                         }
-                        relationship[entity_type + "s"].append(entity_data)
+                        # Handle special case for "species", which already ends with 's'
+                        key = entity_type + "s" if entity_type != "species" else entity_type
+                        relationship[key].append(entity_data)
             
             relationships.append(relationship)
         
@@ -281,30 +283,29 @@ Format odpowiedzi:
     def _analyze_relationships_with_llm(self, variant_text: str, entities: List[Dict[str, Any]], 
                                       passage_text: str) -> List[Dict[str, Any]]:
         """
-        Analizuje relacje między wariantem a bytami w pasażu za pomocą LLM.
+        Analyzes relationships between the variant and entities in the passage using LLM.
         
         Args:
-            variant_text: Tekst wariantu
-            entities: Lista bytów w pasażu (słowniki z polami entity_type, text, id, offset)
-            passage_text: Tekst pasażu
+            variant_text: Text of the variant
+            entities: List of entities in the passage (dictionaries with fields entity_type, text, id, offset)
+            passage_text: Text of the passage
             
         Returns:
-            Lista słowników zawierających dane relacji określone przez LLM
+            List of dictionaries containing relationship data specified by LLM
         """
         if not entities:
             return []
             
-        # Przygotuj listę bytów w formacie dla promptu
+        # Prepare the list of entities in the format for the prompt
         entities_list = "\n".join([f"- {e['entity_type']}: {e['text']} (ID: {e['id']})" for e in entities])
         
-        # Sprawdź cache
-        if self.use_cache and self.cache:
-            cache_key = f"llm_analysis:{variant_text}:{json.dumps(entities, sort_keys=True)}:{passage_text}"
-            if self.cache.has(cache_key):
-                self.logger.debug(f"Cache hit dla analizy LLM: {variant_text}")
-                return self.cache.get(cache_key)
+        # Check cache
+        cache_key = f"llm_analysis:{variant_text}:{json.dumps(entities, sort_keys=True)}:{passage_text}"
+        if self.use_cache and self.cache and self.cache.has(cache_key):
+            self.logger.debug(f"Cache hit for LLM analysis: {variant_text}")
+            return self.cache.get(cache_key)
         
-        # Przygotuj wiadomości dla LLM
+        # Prepare messages for LLM
         system_message = SystemMessage(content=self.SYSTEM_PROMPT)
         
         prompt_template = PromptTemplate.from_template(self.USER_PROMPT_TEMPLATE)
@@ -315,69 +316,68 @@ Format odpowiedzi:
         )
         user_message = HumanMessage(content=user_message_content)
         
-        # Wyślij zapytanie do LLM
+        # Send request to LLM
         try:
             response = self.llm.invoke([system_message, user_message])
             response_content = response.content
             
-            # Parsuj odpowiedź JSON
+            # Parse JSON response
             try:
-                # Upewnij się, że response_content jest typu string
+                # Ensure response_content is of type string
                 response_str = str(response_content) if response_content is not None else "{}"
                 
-                # Usuń ewentualne znaki specjalne i kod markdown z JSON
+                # Remove any special characters and markdown code from JSON
                 clean_json = self._clean_json_response(response_str)
                 result_data = json.loads(clean_json)
                 
                 if "relationships" in result_data:
-                    # Zapisz do cache'a
+                    # Save to cache
                     if self.use_cache and self.cache:
-                        self.cache.set(f"llm_analysis:{variant_text}:{json.dumps(entities, sort_keys=True)}:{passage_text}", 
-                                      result_data["relationships"])
+                        self.cache.set(cache_key, result_data["relationships"])
                     
                     return result_data["relationships"]
                 else:
-                    self.logger.warning(f"Nieprawidłowa struktura odpowiedzi LLM: brak pola 'relationships'")
+                    self.logger.warning(f"Invalid LLM response structure: missing 'relationships' field")
                     return []
             except json.JSONDecodeError as e:
-                self.logger.error(f"Błąd parsowania odpowiedzi LLM: {str(e)}")
-                self.logger.debug(f"Odpowiedź LLM: {response_content}")
+                self.logger.error(f"Error parsing LLM response: {str(e)}")
+                self.logger.debug(f"LLM response: {response_content}")
                 return []
         except Exception as e:
-            self.logger.error(f"Błąd wywołania LLM: {str(e)}")
+            self.logger.error(f"Error calling LLM: {str(e)}")
             return []
     
     def _clean_json_response(self, response: str) -> str:
         """
-        Czyści odpowiedź LLM, aby uzyskać poprawny format JSON.
+        Cleans the LLM response to obtain a valid JSON format.
         
         Args:
-            response: Odpowiedź od LLM
+            response: Response from LLM
             
         Returns:
-            Oczyszczony string JSON
+            Cleaned JSON string
         """
-        # Znajdź pierwszy znak '{' i ostatni znak '}'
+        # Find the first '{' and the last '}'
         start_idx = response.find('{')
         end_idx = response.rfind('}')
         
         if start_idx == -1 or end_idx == -1 or start_idx > end_idx:
-            # Jeśli nie znaleziono poprawnego JSON, zwróć pusty obiekt
+            # If no valid JSON found, return an empty object
             return "{}"
         
-        # Wytnij JSON z odpowiedzi
+        # Extract JSON from the response
         json_str = response[start_idx:end_idx+1]
         return json_str
     
     def _group_annotations_by_type(self, passage: bioc.BioCPassage) -> Dict[str, List[bioc.BioCAnnotation]]:
         """
-        Grupuje adnotacje w pasażu według typu.
+        Groups annotations in the passage by type.
         
         Args:
-            passage: Obiekt BioCPassage zawierający pasaż z adnotacjami
+            passage: BioCPassage object containing the passage with annotations
             
         Returns:
-            Słownik mapujący typy adnotacji na listy obiektów BioCAnnotation
+            Dictionary mapping annotation types to lists of BioCAnnotation objects
         """
         grouped = defaultdict(list)
         

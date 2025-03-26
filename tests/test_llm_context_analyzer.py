@@ -293,4 +293,99 @@ def test_process_llm_results():
     assert "czerniakiem" in relationship["diseases"][0]["explanation"]
     
     # Sprawdzenie, czy nie dodano bytów bez relacji
-    assert not any(gene["text"] == "KRAS" for gene in relationship["genes"]) 
+    assert not any(gene["text"] == "KRAS" for gene in relationship["genes"])
+
+
+def test_cache_functionality():
+    """Test sprawdzający poprawność działania cache w LlmContextAnalyzer."""
+    # Tworzenie analizatora z włączonym cache
+    pubtator_client_mock = Mock()
+    
+    with patch('src.llm_context_analyzer.llm_context_analyzer.LlmManager') as mock_llm_manager_class, \
+         patch('src.llm_context_analyzer.llm_context_analyzer.APICache') as mock_api_cache_class:
+        
+        # Przygotowanie atrapy LLM
+        mock_llm = Mock()
+        mock_llm.invoke.return_value = AIMessage(content=json.dumps(MOCK_LLM_RESPONSE))
+        
+        mock_llm_manager = mock_llm_manager_class.return_value
+        mock_llm_manager.get_llm.return_value = mock_llm
+        
+        # Przygotowanie atrapy cache'a
+        mock_cache = Mock()
+        mock_cache.has.return_value = False  # Na początku nie ma danych w cache
+        mock_cache.get.return_value = MOCK_LLM_RESPONSE["relationships"]
+        mock_cache.set.return_value = True
+        
+        mock_api_cache_class.create.return_value = mock_cache
+        
+        # Utworzenie analizatora z włączonym cache
+        analyzer = LlmContextAnalyzer(pubtator_client=pubtator_client_mock, use_cache=True)
+        
+        # Przygotowanie danych testowych
+        variant_text = "V600E"
+        entities = [
+            {"entity_type": "gene", "text": "BRAF", "id": "673", "offset": 0},
+            {"entity_type": "disease", "text": "melanoma", "id": "D008545", "offset": 24}
+        ]
+        passage_text = "BRAF with V600E mutation in melanoma."
+        
+        # Pierwszy wywołanie - dane powinny być obliczone przez LLM i zapisane do cache
+        result1 = analyzer._analyze_relationships_with_llm(variant_text, entities, passage_text)
+        
+        # Weryfikacja wywołania LLM
+        assert mock_llm.invoke.call_count == 1
+        
+        # Weryfikacja zapisu do cache
+        assert mock_cache.set.call_count == 1
+        
+        # Symulacja istnienia danych w cache przy następnym wywołaniu
+        mock_cache.has.return_value = True
+        
+        # Drugie wywołanie z tymi samymi parametrami - dane powinny być pobrane z cache
+        result2 = analyzer._analyze_relationships_with_llm(variant_text, entities, passage_text)
+        
+        # LLM nie powinien być wywoływany ponownie
+        assert mock_llm.invoke.call_count == 1
+        
+        # Cache powinien być sprawdzony
+        assert mock_cache.has.call_count > 0
+        
+        # Dane powinny być pobrane z cache
+        assert mock_cache.get.call_count > 0
+        
+        # Wyniki powinny być identyczne
+        assert result1 == result2
+
+
+def test_cache_disabled():
+    """Test sprawdzający działanie, gdy cache jest wyłączone."""
+    # Tworzenie analizatora z wyłączonym cache
+    pubtator_client_mock = Mock()
+    
+    with patch('src.llm_context_analyzer.llm_context_analyzer.LlmManager') as mock_llm_manager_class:
+        # Przygotowanie atrapy LLM
+        mock_llm = Mock()
+        mock_llm.invoke.return_value = AIMessage(content=json.dumps(MOCK_LLM_RESPONSE))
+        
+        mock_llm_manager = mock_llm_manager_class.return_value
+        mock_llm_manager.get_llm.return_value = mock_llm
+        
+        # Utworzenie analizatora z wyłączonym cache
+        analyzer = LlmContextAnalyzer(pubtator_client=pubtator_client_mock, use_cache=False)
+        assert analyzer.cache is None
+        
+        # Przygotowanie danych testowych
+        variant_text = "V600E"
+        entities = [
+            {"entity_type": "gene", "text": "BRAF", "id": "673", "offset": 0},
+            {"entity_type": "disease", "text": "melanoma", "id": "D008545", "offset": 24}
+        ]
+        passage_text = "BRAF with V600E mutation in melanoma."
+        
+        # Wywołanie metody dwukrotnie
+        analyzer._analyze_relationships_with_llm(variant_text, entities, passage_text)
+        analyzer._analyze_relationships_with_llm(variant_text, entities, passage_text)
+        
+        # LLM powinien być wywoływany dwukrotnie
+        assert mock_llm.invoke.call_count == 2 

@@ -71,7 +71,7 @@ class APICache:
 
     def has(self, key: str) -> bool:
         """
-        Check if the key exists in the cache.
+        Check if the key exists in the cache and has not expired.
         
         Args:
             key: Cache key
@@ -257,8 +257,9 @@ class MemoryCache(APICache):
             if key not in self.cache:
                 return False
                 
-            # Check if the entry has expired
-            if time.time() > self.cache_expiry.get(key, 0):
+            current_time = time.time()
+            if current_time > self.cache_expiry.get(key, 0):
+                # Key has expired, remove it
                 self._remove_from_memory(key)
                 return False
                 
@@ -538,7 +539,7 @@ class DiskCache(APICache):
     
     def has(self, key: str) -> bool:
         """
-        Check if the key exists in the cache.
+        Check if the key exists in the cache and has not expired.
         
         Args:
             key: Cache key
@@ -546,23 +547,7 @@ class DiskCache(APICache):
         Returns:
             True if the key exists and has not expired, False otherwise
         """
-        _, meta_path = self._get_cache_file_path(key)
-        
-        if not meta_path.exists():
-            return False
-        
-        try:
-            with open(meta_path, "r", encoding="utf-8") as f:
-                meta_data = json.load(f)
-                
-            # Check if the entry has expired
-            if time.time() > meta_data.get("expires_at", 0):
-                self.delete(key)
-                return False
-                
-            return True
-        except (IOError, OSError, json.JSONDecodeError):
-            return False
+        return self._is_cache_valid(key)
     
     def delete(self, key: str) -> bool:
         """

@@ -1,0 +1,10 @@
+chr,start,end,id,gene,disease,variant type (nie brać pod uwagę),variant name,variant mode,PMID,Comments
+chr5,177994801,177995999,DE_00479,PROP1,Combined pituitary hormone deficiency,SNP,rs73346254,G>A,22745233,
+chr5,177994801,177995999,DE_00479,PROP1,Combined pituitary hormone deficiency,Indel,rs148607624,delATG,22745233,
+chr9,97786120,97787518,DE_00639,FOXE1,Cleft palate,SNP,rs7850258,A>G,25652407,
+chr1,209814457,209821455,DE_00597,IRF6,Cleft palate,SNP,rs642961,G>A,18836445,
+chr10,43085608,43087608,DE_00513,RET,Hirschsprung disease,SNP,rs2435357,C>T,19306335,
+chr15,32698801,32702199,DE_00484,GREM1,Orofacial clefting,SNP,rs16969681,C>T,26043427,
+chr17,56694877,56696877,DE_00511,NOG,Cleft lip,SNP,rs227731,A>T,25704602,
+chr3,24160111,24163509,DE_00521,THRB,The syndrome of resistance to thyroid hormone,SNP,rs2596623,C>T,21871106,
+chr10,43085608,43087608,DE_00513,RET,Hirschsprung disease,SNP,rs2435357,C>T,"25839327, 27693352, 20598273",

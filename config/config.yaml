@@ -1,4 +1,4 @@
-llm_model_name: "gpt4o-mini"
+llm_model_name: "mistralai/Mistral-7B-Instruct-v0.3"
 base_dir: "/Users/wojtek/Documents/bioinf/coordinates-lit/"
 paths:
   coordinates_extraction_examples: "data/coordinates-extraction/example-coordinates.txt"

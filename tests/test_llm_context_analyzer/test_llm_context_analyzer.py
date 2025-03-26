@@ -4,7 +4,7 @@ Tests for the LlmContextAnalyzer class from llm_context_analyzer module.
 import os
 import pytest
 import json
-from unittest.mock import patch, MagicMock, mock_open
+from unittest.mock import patch, MagicMock, mock_open, Mock
 
 from src.llm_context_analyzer.llm_context_analyzer import LlmContextAnalyzer
 
@@ -441,4 +441,88 @@ class TestLlmContextAnalyzer:
             
             # Clean up
             os.remove(variant_output)
-            os.remove(gene_output) 
+            os.remove(gene_output)
+
+    def test_cache_integration():
+        """Test integracyjny sprawdzający cache LlmContextAnalyzer."""
+        pubtator_client_mock = Mock()
+        
+        # Przygotowanie atrapy LLM
+        with patch("src.llm_context_analyzer.llm_context_analyzer.LlmManager") as mock_llm_manager_class, \
+             patch("src.cache.cache.MemoryCache") as mock_memory_cache_class:
+            
+            # Konfiguracja atrapy LLM
+            mock_llm = Mock()
+            mock_llm.invoke.return_value = MagicMock(content=json.dumps({
+                "relationships": [
+                    {
+                        "entity_type": "gene",
+                        "entity_text": "BRAF",
+                        "entity_id": "673",
+                        "has_relationship": True,
+                        "explanation": "BRAF is directly affected by the V600E mutation."
+                    }
+                ]
+            }))
+            
+            mock_llm_manager = mock_llm_manager_class.return_value
+            mock_llm_manager.get_llm.return_value = mock_llm
+            
+            # Wywołanie rzeczywistego konstruktora MemoryCache z symulowanym TTL
+            memory_cache_instance = MagicMock()
+            memory_cache_instance.has.return_value = False
+            memory_cache_instance.get.return_value = None
+            memory_cache_instance.set.return_value = True
+            
+            mock_memory_cache_class.return_value = memory_cache_instance
+            
+            from src.cache.cache import APICache
+            with patch("src.llm_context_analyzer.llm_context_analyzer.APICache.create") as mock_create:
+                mock_create.return_value = memory_cache_instance
+                
+                # Utworzenie analizatora z włączonym cache
+                analyzer = LlmContextAnalyzer(
+                    pubtator_client=pubtator_client_mock,
+                    use_cache=True,
+                    cache_storage_type="memory"
+                )
+                
+                # Przygotowanie danych testowych
+                variant_text = "V600E"
+                entities = [
+                    {"entity_type": "gene", "text": "BRAF", "id": "673", "offset": 0}
+                ]
+                passage_text = "V600E mutation in BRAF gene."
+                
+                # Pierwsze wywołanie - LLM jest wywoływany, wynik zapisywany do cache
+                analyzer._analyze_relationships_with_llm(variant_text, entities, passage_text)
+                
+                # Weryfikacja wywołania LLM
+                assert mock_llm.invoke.call_count == 1
+                
+                # Weryfikacja zapisania wyniku do cache
+                assert memory_cache_instance.set.call_count == 1
+                
+                # Symulacja istnienia danych w cache
+                memory_cache_instance.has.return_value = True
+                memory_cache_instance.get.return_value = [
+                    {
+                        "entity_type": "gene",
+                        "entity_text": "BRAF",
+                        "entity_id": "673",
+                        "has_relationship": True,
+                        "explanation": "BRAF is directly affected by the V600E mutation."
+                    }
+                ]
+                
+                # Drugie wywołanie - dane powinny być pobrane z cache
+                analyzer._analyze_relationships_with_llm(variant_text, entities, passage_text)
+                
+                # LLM nie powinien być wywoływany ponownie
+                assert mock_llm.invoke.call_count == 1
+                
+                # Cache powinien być sprawdzony
+                assert memory_cache_instance.has.call_count > 0
+                
+                # Dane powinny być pobrane z cache
+                assert memory_cache_instance.get.call_count > 0 
