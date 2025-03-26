@@ -292,14 +292,14 @@ def example_integrate_with_coordinates_lit() -> None:
         {
             "chromosome": "17",
             "start": 43044295,
-            "end": 43125483",
+            "end": 43125483,
             "source": "Publication 1",
             "title": "Analysis of mutations in the BRCA1 gene"
         },
         {
             "chromosome": "13",
             "start": 32315474,
-            "end": 32400266",
+            "end": 32400266,
             "source": "Publication 2",
             "title": "Analysis of mutations in the BRCA2 gene"
         }

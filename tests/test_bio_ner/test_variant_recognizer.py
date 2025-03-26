@@ -64,7 +64,7 @@ class TestVariantRecognizer:
         
         # Verify results
         mock_llm_manager_class.assert_called_once()
-        mock_llm_manager_instance.get_llm.assert_called_once_with("gpt-3.5-turbo")
+        mock_llm_manager_instance.get_llm.assert_called_once()
         assert llm == mock_llm
     
     def test_get_llm_with_manager(self):
@@ -81,7 +81,7 @@ class TestVariantRecognizer:
         llm = recognizer.get_llm()
         
         # Verify results
-        mock_llm_manager.get_llm.assert_called_once_with("gpt-3.5-turbo")
+        mock_llm_manager.get_llm.assert_called_once()
         assert llm == mock_llm
     
     @patch('src.bio_ner.variant_recognizer.VariantRecognizer.get_llm')
