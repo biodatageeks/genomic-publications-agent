@@ -1,4 +1,4 @@
-llm_model_name: "mistralai/Mistral-7B-Instruct-v0.3"
+llm_model_name: "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo"
 base_dir: "/Users/wojtek/Documents/bioinf/coordinates-lit/"
 paths:
   coordinates_extraction_examples: "data/coordinates-extraction/example-coordinates.txt"
