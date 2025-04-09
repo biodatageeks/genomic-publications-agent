@@ -10,6 +10,7 @@ import argparse
 import logging
 import requests
 from typing import List, Dict, Any, Set
+from scripts.utils import load_pmids_from_file, save_json_file, ensure_dirs_exist
 
 # Konfiguracja logowania
 logging.basicConfig(
@@ -17,24 +18,6 @@ logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 )
 logger = logging.getLogger(__name__)
-
-def load_pmids_from_file(input_file: str) -> Set[str]:
-    """
-    Wczytuje PMID-y z pliku tekstowego.
-    
-    Args:
-        input_file: Ścieżka do pliku z listą PMID-ów
-        
-    Returns:
-        Zbiór unikalnych PMID-ów
-    """
-    try:
-        with open(input_file, 'r', encoding='utf-8') as f:
-            pmids = {line.strip() for line in f if line.strip()}
-        return pmids
-    except Exception as e:
-        logger.error(f"Błąd odczytu pliku {input_file}: {str(e)}")
-        sys.exit(1)
 
 def check_variant_annotations(pmids: Set[str]) -> Dict[str, Dict[str, Any]]:
     """
@@ -123,6 +106,9 @@ def check_variant_annotations(pmids: Set[str]) -> Dict[str, Dict[str, Any]]:
     return results
 
 def main():
+    # Upewnij się, że wymagane katalogi istnieją
+    ensure_dirs_exist()
+    
     parser = argparse.ArgumentParser(description="Sprawdza anotacje wariantów w PubTator dla listy PMID-ów")
     parser.add_argument("input_file", help="Ścieżka do pliku z listą PMID-ów")
     parser.add_argument("--output-file", help="Ścieżka do pliku wyjściowego JSON z wynikami")
@@ -175,12 +161,8 @@ def main():
     # Zapisz wyniki do pliku JSON
     if args.output_file:
         logger.info(f"Zapisywanie wyników do {args.output_file}")
-        try:
-            with open(args.output_file, 'w', encoding='utf-8') as f:
-                json.dump(results, f, indent=2)
-            print(f"\nWyniki zapisano do pliku {args.output_file}")
-        except Exception as e:
-            logger.error(f"Błąd zapisywania do pliku {args.output_file}: {str(e)}")
+        save_json_file(results, args.output_file)
+        print(f"\nWyniki zapisano do pliku {args.output_file}")
 
 if __name__ == "__main__":
     main() 

@@ -21,7 +21,7 @@ from langchain.schema import HumanMessage, SystemMessage
 from src.pubtator_client.pubtator_client import PubTatorClient
 from src.pubtator_client.exceptions import PubTatorError
 from src.context_analyzer.context_analyzer import ContextAnalyzer
-from src.LlmManager import LlmManager
+from src.core.llm.manager import LlmManager
 from src.cache.cache import APICache
 
 

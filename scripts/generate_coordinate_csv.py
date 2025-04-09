@@ -21,7 +21,7 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')
 from src.cooccurrence_context_analyzer.cooccurrence_context_analyzer import CooccurrenceContextAnalyzer
 from src.llm_context_analyzer.llm_context_analyzer import LlmContextAnalyzer
 from src.pubtator_client.pubtator_client import PubTatorClient
-from src.Config import Config
+from src.core.config.config import Config
 
 # Logging configuration
 logging.basicConfig(

@@ -1,25 +1,25 @@
 import os
 import subprocess
 import time
+from scripts.utils import load_pmids_from_file, ensure_dirs_exist, DIRS, get_path
+
+# Upewnij się, że wymagane katalogi istnieją
+ensure_dirs_exist()
 
 # Wczytaj wszystkie PMIDy
-with open('exp1_fox_pmids.txt', 'r') as f:
-    all_pmids = [line.strip() for line in f if line.strip()]
+all_pmids = load_pmids_from_file('exp1_fox_pmids.txt')
 
 print(f"Łącznie wczytano {len(all_pmids)} PMIDów.")
 
 # Rozmiar partii
 BATCH_SIZE = 100
-batches = [all_pmids[i:i + BATCH_SIZE] for i in range(0, len(all_pmids), BATCH_SIZE)]
+batches = [list(all_pmids)[i:i + BATCH_SIZE] for i in range(0, len(all_pmids), BATCH_SIZE)]
 print(f"Podzielono na {len(batches)} partii po maksymalnie {BATCH_SIZE} PMIDów.")
-
-# Utwórz katalog na wyniki
-os.makedirs('batch_results', exist_ok=True)
 
 # Przetwórz każdą partię
 for i, batch in enumerate(batches):
-    batch_filename = f"batch_results/batch_{i+1}_pmids.txt"
-    output_filename = f"batch_results/batch_{i+1}_results.csv"
+    batch_filename = get_path(f"batch_{i+1}_pmids.txt", DIRS['batch_results'])
+    output_filename = get_path(f"batch_{i+1}_results.csv", DIRS['batch_results'])
     
     # Zapisz bieżącą partię do pliku
     with open(batch_filename, 'w') as f:

@@ -13,8 +13,8 @@ import sys
 # Add project root to path
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
 
-from src.LlmManager import LlmManager
-from src.Config import Config
+from src.core.llm.manager import LlmManager
+from src.core.config.config import Config
 
 
 @pytest.fixture

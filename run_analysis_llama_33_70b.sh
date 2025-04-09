@@ -3,13 +3,16 @@
 # Script to run enhanced coordinate generation and comparative analysis
 # using the UnifiedLlmContextAnalyzer and Llama 3.3-70B model
 
+# Make sure directories exist
+mkdir -p data/pmids data/csv data/results/experiments data/results/images
+
 # Set variables
-INPUT_PMIDS="input_pmids.txt"
+INPUT_PMIDS="data/pmids/input_pmids.txt"
 CONFIRMED_DATA="data/Enhancer candidates - DiseaseEnhancer - to verify.csv"
-OUTPUT_CSV="output_llama_3.3_70b_unified.csv"
-ANALYSIS_PREFIX="analysis_unified_llama_3.3_70b"
+OUTPUT_CSV="data/csv/output_llama_3.3_70b_unified.csv"
+ANALYSIS_PREFIX="data/results/images/analysis_unified_llama_3.3_70b"
 MODEL_NAME="meta-llama/Llama-3.3-70B-Instruct-Turbo-Free"
-RESULTS_JSON="threshold_analysis_results_llama_33_70b.json"
+RESULTS_JSON="data/results/experiments/threshold_analysis_results_llama_33_70b.json"
 
 echo "=== Starting analysis pipeline with model: $MODEL_NAME ==="
 echo
@@ -102,6 +105,12 @@ else
     echo "Install jq for better formatting of JSON results"
     cat $RESULTS_JSON
 fi
+
+# Generate CSV from threshold results
+echo "Converting threshold results to CSV..."
+python scripts/analysis/threshold_to_csv_with_model.py \
+    --json_files $RESULTS_JSON \
+    --output "data/csv/threshold_metrics_llama_33_70b.csv"
 
 echo
 echo "=== Analysis complete ===" 

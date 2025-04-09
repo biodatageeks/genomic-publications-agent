@@ -1,12 +1,15 @@
 import json
 import os
+from scripts.utils import load_json_file, save_pmids_to_file, ensure_dirs_exist
+
+# Upewnij się, że wymagane katalogi istnieją
+ensure_dirs_exist()
 
 # Geny do wyodrębnienia
 target_genes = ['FOXD1', 'FOXQ1', 'FOXK1', 'FOXI1', 'FOXD2', 'FOXA3']
 
 # Wczytaj plik JSON z metadanymi
-with open('data/pmids/fox_pmids_metadata.json', 'r') as f:
-    metadata = json.load(f)
+metadata = load_json_file('data/pmids/fox_pmids_metadata.json')
 
 # Znajdź PMIDy dla wybranych genów
 exp1_pmids = []
@@ -17,11 +20,7 @@ for pmid, data in metadata.items():
 print(f'Znaleziono {len(exp1_pmids)} PMIDów dla genów: {", ".join(target_genes)}')
 
 # Zapisz znalezione PMIDy do pliku
-with open('exp1_fox_pmids.txt', 'w') as f:
-    for pmid in exp1_pmids:
-        f.write(f'{pmid}\n')
-
-print(f'Zapisano PMIDy do pliku exp1_fox_pmids.txt')
+save_pmids_to_file(set(exp1_pmids), 'exp1_fox_pmids.txt')
 
 # Pokaż liczbę PMIDów dla każdego genu
 counts = {}

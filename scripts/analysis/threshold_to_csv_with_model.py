@@ -2,6 +2,7 @@ import json
 import csv
 import os
 import argparse
+from scripts.utils import load_json_file, get_csv_path, get_experiments_path, ensure_dirs_exist
 
 def extract_model_name_from_file(filename):
     """Extrapolate model name from the filename pattern"""
@@ -12,8 +13,7 @@ def extract_model_name_from_file(filename):
 
 def process_json_file(json_file, model_name=None):
     """Process a single JSON file and return data with model information"""
-    with open(json_file, 'r') as f:
-        data = json.load(f)
+    data = load_json_file(json_file)
     
     # If model name not provided, try to extract from filename
     if model_name is None:
@@ -26,6 +26,9 @@ def process_json_file(json_file, model_name=None):
     return data
 
 def main():
+    # Upewnij się, że wymagane katalogi istnieją
+    ensure_dirs_exist()
+    
     parser = argparse.ArgumentParser(description="Convert threshold analysis JSON results to CSV with model information")
     parser.add_argument("--json_files", nargs="+", required=True, help="JSON files with threshold analysis results")
     parser.add_argument("--output", default="threshold_metrics_combined.csv", help="Output CSV file")
@@ -44,10 +47,13 @@ def main():
     
     # Sort data by model and threshold
     sorted_data = sorted(all_data, key=lambda x: (x['model'], 
-                                                  float('-inf') if x['score_threshold'] is None else x['score_threshold']))
+                                                 float('-inf') if x['score_threshold'] is None else x['score_threshold']))
+    
+    # Ustaw ścieżkę do pliku wyjściowego
+    output_file = get_csv_path(args.output)
     
     # Write to CSV
-    with open(args.output, 'w', newline='') as f:
+    with open(output_file, 'w', newline='') as f:
         writer = csv.writer(f)
         # Headers
         writer.writerow(['model', 'threshold', 'gene_precision', 'gene_recall', 'gene_f1', 
@@ -67,7 +73,7 @@ def main():
                 item['disease_f1']
             ])
     
-    print(f'Zapisano dane do pliku {args.output}')
+    print(f'Zapisano dane do pliku {output_file}')
 
 if __name__ == "__main__":
     main() 

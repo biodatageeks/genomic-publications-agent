@@ -10,7 +10,7 @@ import os
 import re
 from typing import List, Dict, Any, Optional, Tuple, Union
 from transformers import AutoTokenizer, AutoModelForTokenClassification, BatchEncoding
-from src.LlmManager import LlmManager
+from src.core.llm.manager import LlmManager
 
 
 class VariantRecognizer:

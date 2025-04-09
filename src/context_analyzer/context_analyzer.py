@@ -9,7 +9,7 @@ from abc import ABC, abstractmethod
 from typing import List, Dict, Any, Optional
 
 from src.pubtator_client.pubtator_client import PubTatorClient
-from src.Config import Config
+from src.core.config.config import Config
 
 
 class ContextAnalyzer(ABC):
