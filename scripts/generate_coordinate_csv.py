@@ -14,6 +14,7 @@ import pandas as pd
 from typing import List, Dict, Any, Optional, Set, Tuple
 from collections import defaultdict
 import csv
+import datetime
 
 # Add path to the main project directory
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
@@ -23,14 +24,7 @@ from src.llm_context_analyzer.llm_context_analyzer import LlmContextAnalyzer
 from src.pubtator_client.pubtator_client import PubTatorClient
 from src.core.config.config import Config
 
-# Logging configuration
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-    handlers=[
-        logging.StreamHandler(sys.stdout)
-    ]
-)
+# Logowanie zostanie skonfigurowane w oparciu o argumenty uruchomienia
 
 logger = logging.getLogger(__name__)
 
@@ -594,6 +588,60 @@ def analyze_pmids(pmids: List[str],
         raise
 
 
+def setup_logging(log_file=None, log_level=logging.INFO, log_format='json'):
+    """
+    Konfiguruje system logowania.
+    
+    Args:
+        log_file: Ścieżka do pliku logu (opcjonalna)
+        log_level: Poziom logowania
+        log_format: Format logów ('json' lub 'text')
+        
+    Returns:
+        Skonfigurowany logger
+    """
+    handlers = []
+    
+    # Zawsze dodajemy handler konsoli
+    handlers.append(logging.StreamHandler(sys.stdout))
+    
+    # Dodaj handler pliku, jeśli podano ścieżkę
+    if log_file:
+        os.makedirs(os.path.dirname(os.path.abspath(log_file)), exist_ok=True)
+        handlers.append(logging.FileHandler(log_file))
+    
+    # Wybierz format logów
+    if log_format.lower() == 'json':
+        formatter = logging.Formatter(
+            '{"timestamp":"%(asctime)s","level":"%(levelname)s","name":"%(name)s","message":%(message)s}',
+            datefmt='%Y-%m-%d %H:%M:%S'
+        )
+        
+        # Nadpisz funkcję formatującą dla obsługi JSON
+        def _format_log_record(record):
+            if isinstance(record.msg, str):
+                record.msg = json.dumps(record.msg)
+            return record
+        
+        # Dodaj niestandardowy filtr do każdego handlera
+        for handler in handlers:
+            handler.addFilter(lambda record: _format_log_record(record))
+    else:
+        formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+    
+    # Zastosuj formatter do wszystkich handlerów
+    for handler in handlers:
+        handler.setFormatter(formatter)
+    
+    # Konfiguruj główny logger
+    logging.basicConfig(
+        level=log_level,
+        handlers=handlers
+    )
+    
+    return logging.getLogger(__name__)
+
+
 def main():
     """Main script function."""
     # Load configuration
@@ -621,8 +669,33 @@ def main():
                         help="Use only LLM analysis (disable cooccurrence)")
     parser.add_argument("--debug", action="store_true",
                         help="Save debug information (raw LLM output)")
+    parser.add_argument("--limit", type=int,
+                        help="Limit the number of PMIDs to analyze (first N)")
+    parser.add_argument("--log-file", type=str,
+                        help="Path to log file (if not specified, logs only to console)")
+    parser.add_argument("--log-level", type=str, default="INFO",
+                        choices=["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"],
+                        help="Log level (default: INFO)")
+    parser.add_argument("--log-format", type=str, default="text",
+                        choices=["text", "json"],
+                        help="Log format (default: text)")
     
     args = parser.parse_args()
+    
+    # Utwórz katalog logów, jeśli podano plik logu
+    if args.log_file:
+        log_dir = os.path.dirname(os.path.abspath(args.log_file))
+        os.makedirs(log_dir, exist_ok=True)
+        
+        # Dodaj datę do nazwy pliku logu, jeśli nie została dodana
+        if not any(part in os.path.basename(args.log_file) for part in [str(datetime.date.today()), datetime.datetime.now().strftime('%Y%m%d')]):
+            base, ext = os.path.splitext(args.log_file)
+            args.log_file = f"{base}_{datetime.datetime.now().strftime('%Y%m%d')}{ext}"
+    
+    # Konfiguruj logowanie
+    global logger
+    log_level = getattr(logging, args.log_level.upper())
+    logger = setup_logging(args.log_file, log_level, args.log_format)
     
     # Collect PMIDs from arguments or file
     pmids = []
@@ -642,6 +715,12 @@ def main():
     if not pmids:
         logger.error("No PMIDs provided. Use --pmids or --file option.")
         sys.exit(1)
+    
+    # Ogranicz PMIDy do pierwszych N, jeśli podano limit
+    if args.limit and args.limit > 0:
+        original_count = len(pmids)
+        pmids = pmids[:args.limit]
+        logger.info(f"Limited analysis to first {len(pmids)} PMIDs (from {original_count} total)")
     
     # Execute analysis
     try:
