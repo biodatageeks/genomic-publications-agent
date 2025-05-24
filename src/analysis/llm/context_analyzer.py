@@ -19,11 +19,11 @@ import bioc
 from langchain.prompts import PromptTemplate
 from langchain.schema import HumanMessage, SystemMessage
 
-from src.data.clients.pubtator import PubTatorClient
-from src.data.clients.exceptions import PubTatorError
+from src.models.data.clients.pubtator import PubTatorClient
+from src.models.data.clients.exceptions import PubTatorError
 from src.analysis.base.analyzer import BaseAnalyzer
-from src.core.llm.manager import LlmManager
-from src.data.cache.cache import CacheManager
+from src.utils.llm.manager import LlmManager
+from src.api.cache.cache import CacheManager
 
 
 class UnifiedLlmContextAnalyzer(BaseAnalyzer):

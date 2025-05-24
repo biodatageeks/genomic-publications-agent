@@ -3,9 +3,9 @@ Main application module.
 """
 import os
 from dotenv import load_dotenv
-from src.core.config.config import Config
-from src.core.llm.manager import LlmManager
-from src.core.utils.logging import get_logger
+from src.utils.config.config import Config
+from src.utils.llm.manager import LlmManager
+from src.utils.logging import get_logger
 
 # Load environment variables
 load_dotenv()

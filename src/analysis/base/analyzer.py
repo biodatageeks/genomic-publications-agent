@@ -10,7 +10,7 @@ from typing import Optional, List, Dict, Any
 import bioc
 from abc import ABC, abstractmethod
 
-from src.data.clients.pubtator import PubTatorClient
+from src.models.data.clients.pubtator import PubTatorClient
 
 
 class BaseAnalyzer(ABC):

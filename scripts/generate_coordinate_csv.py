@@ -1,33 +1,40 @@
 #!/usr/bin/env python3
 """
-Script for generating a CSV table with genes, diseases, and variants based on PubMed IDs.
-Uses cooccurrence and LLM analysis methods to extract relationships from publications.
+Enhanced version of the script for generating a CSV table with genes, diseases, and variants based on PubMed IDs.
+Uses the UnifiedLlmContextAnalyzer class for better JSON error handling and relationship scoring.
 """
 
 import argparse
 import logging
 import os
 import sys
+import time
+from typing import List, Optional, Dict, Any, Set, Tuple
 import re
 import json
 import pandas as pd
-from typing import List, Dict, Any, Optional, Set, Tuple
 from collections import defaultdict
 import csv
 import datetime
 
-# Add path to the main project directory
+# Add the path to the main project directory
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from src.cooccurrence_context_analyzer.cooccurrence_context_analyzer import CooccurrenceContextAnalyzer
-from src.llm_context_analyzer.llm_context_analyzer import LlmContextAnalyzer
+from src.llm_context_analyzer.unified_llm_context_analyzer import UnifiedLlmContextAnalyzer
 from src.pubtator_client.pubtator_client import PubTatorClient
-from src.core.config.config import Config
+from src.Config import Config
 
-# Logowanie zostanie skonfigurowane w oparciu o argumenty uruchomienia
+# Configure logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    handlers=[
+        logging.StreamHandler(sys.stdout)
+    ]
+)
 
 logger = logging.getLogger(__name__)
-
 
 def extract_coordinates_from_variant(variant_id: str) -> Tuple[Optional[str], Optional[int], Optional[int]]:
     """
@@ -124,10 +131,7 @@ def extract_coordinates_from_variant(variant_id: str) -> Tuple[Optional[str], Op
                 # For protein variants, we can only return gene coordinates
                 return chrom, gene_start, gene_start
     
-    # Additional formats could be handled here
-    
     return None, None, None
-
 
 def get_gene_coordinates(gene_id: str) -> Tuple[Optional[str], Optional[int]]:
     """
@@ -153,7 +157,6 @@ def get_gene_coordinates(gene_id: str) -> Tuple[Optional[str], Optional[int]]:
     
     return None, None
 
-
 def determine_variant_type(variant_text: str, variant_id: str) -> str:
     """
     Determine the variant type from variant text or ID.
@@ -178,7 +181,6 @@ def determine_variant_type(variant_text: str, variant_id: str) -> str:
     else:
         return 'unknown'
 
-
 def extract_hgvs_notation(variant_id: str) -> Optional[str]:
     """
     Extract HGVS notation from variant identifier.
@@ -193,7 +195,6 @@ def extract_hgvs_notation(variant_id: str) -> Optional[str]:
     if hgvs_match:
         return hgvs_match.group(1)
     return None
-
 
 def merge_variant_data(cooccurrence_data: List[Dict], llm_data: List[Dict]) -> List[Dict]:
     """
@@ -338,7 +339,7 @@ def merge_variant_data(cooccurrence_data: List[Dict], llm_data: List[Dict]) -> L
                         merged_data[key]['gene_scores'][gene_key] = relationship_score
                     
                     elif entity_type == 'disease' and entity_text and entity_id:
-                        disease_key = f"{entity_text} ({entity_id})"
+                        disease_key = f"{disease_text} ({disease_id})"
                         merged_data[key]['diseases'].add(disease_key)
                         # Zapisz scoring dla choroby
                         merged_data[key]['disease_scores'][disease_key] = relationship_score
@@ -388,7 +389,6 @@ def merge_variant_data(cooccurrence_data: List[Dict], llm_data: List[Dict]) -> L
     
     return result
 
-
 def analyze_pmids(pmids: List[str],
                   output_csv: str,
                   email: Optional[str] = None,
@@ -427,7 +427,7 @@ def analyze_pmids(pmids: List[str],
     
     # Default analyzer class if not provided
     if llm_context_analyzer_class is None:
-        llm_context_analyzer_class = LlmContextAnalyzer
+        llm_context_analyzer_class = UnifiedLlmContextAnalyzer
     
     # Ensure we have required values
     assert email is not None, "Email must be specified either directly or in config"
@@ -587,117 +587,115 @@ def analyze_pmids(pmids: List[str],
         logger.error(f"Error during analysis: {str(e)}")
         raise
 
-
-def setup_logging(log_file=None, log_level=logging.INFO, log_format='json'):
+def enhanced_analyze_pmids(pmids: List[str],
+                         output_csv: str,
+                         email: Optional[str] = None,
+                         llm_model: Optional[str] = None,
+                         use_llm: bool = True,
+                         only_llm: bool = False,
+                         debug_mode: bool = False,
+                         retry_on_failure: bool = True,
+                         max_retries: int = 3,
+                         retry_delay: int = 5,
+                         cache_storage_type: str = "memory"):
     """
-    Konfiguruje system logowania.
+    Enhanced version of the function to analyze PubMed IDs.
+    Uses UnifiedLlmContextAnalyzer for better error handling and adds retry capability in case of failure.
     
     Args:
-        log_file: Ścieżka do pliku logu (opcjonalna)
-        log_level: Poziom logowania
-        log_format: Format logów ('json' lub 'text')
+        pmids: List of PubMed IDs to analyze
+        output_csv: Path to the output CSV file
+        email: Email address for the PubTator API (optional)
+        llm_model: Name of the LLM model to use (optional)
+        use_llm: Whether to use LLM analysis
+        only_llm: Whether to use only LLM analysis (no co-occurrence)
+        debug_mode: Whether to enable debug mode
+        retry_on_failure: Whether to retry in case of failure
+        max_retries: Maximum number of retry attempts
+        retry_delay: Delay between retry attempts (in seconds)
+        cache_storage_type: Type of cache storage (memory or disk)
         
     Returns:
-        Skonfigurowany logger
+        DataFrame with the results
     """
-    handlers = []
+    retries = 0
+    last_error = None
     
-    # Zawsze dodajemy handler konsoli
-    handlers.append(logging.StreamHandler(sys.stdout))
-    
-    # Dodaj handler pliku, jeśli podano ścieżkę
-    if log_file:
-        os.makedirs(os.path.dirname(os.path.abspath(log_file)), exist_ok=True)
-        handlers.append(logging.FileHandler(log_file))
-    
-    # Wybierz format logów
-    if log_format.lower() == 'json':
-        formatter = logging.Formatter(
-            '{"timestamp":"%(asctime)s","level":"%(levelname)s","name":"%(name)s","message":%(message)s}',
-            datefmt='%Y-%m-%d %H:%M:%S'
-        )
+    while retries <= max_retries:
+        try:
+            if retries > 0:
+                logger.info(f"Retry attempt {retries}/{max_retries}...")
+            
+            # Run the standard analysis, but with enhanced parameters
+            return analyze_pmids(
+                pmids=pmids,
+                output_csv=output_csv,
+                email=email,
+                llm_model=llm_model,
+                use_llm=use_llm,
+                only_llm=only_llm,
+                debug_mode=debug_mode,
+                llm_context_analyzer_class=UnifiedLlmContextAnalyzer,  # Use the new unified analyzer
+                cache_storage_type=cache_storage_type  # Pass cache_storage_type parameter
+            )
         
-        # Nadpisz funkcję formatującą dla obsługi JSON
-        def _format_log_record(record):
-            if isinstance(record.msg, str):
-                record.msg = json.dumps(record.msg)
-            return record
-        
-        # Dodaj niestandardowy filtr do każdego handlera
-        for handler in handlers:
-            handler.addFilter(lambda record: _format_log_record(record))
-    else:
-        formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+        except Exception as e:
+            last_error = e
+            logger.error(f"Error during analysis: {str(e)}")
+            
+            if not retry_on_failure or retries >= max_retries:
+                break
+            
+            retries += 1
+            logger.info(f"Waiting {retry_delay} seconds before retrying...")
+            time.sleep(retry_delay)
     
-    # Zastosuj formatter do wszystkich handlerów
-    for handler in handlers:
-        handler.setFormatter(formatter)
+    # If all attempts failed, raise the last error
+    if last_error:
+        raise last_error
     
-    # Konfiguruj główny logger
-    logging.basicConfig(
-        level=log_level,
-        handlers=handlers
-    )
-    
-    return logging.getLogger(__name__)
+    return None
 
 
 def main():
-    """Main script function."""
+    """Main function of the script."""
     # Load configuration
     config = Config()
     default_email = config.get_contact_email()
     default_model = config.get_llm_model_name()
     
     parser = argparse.ArgumentParser(
-        description="Generate CSV table with genes, diseases, and variants from PubMed IDs"
+        description="Enhanced script for generating a CSV table with genes, diseases, and variants"
     )
     
     parser.add_argument("-p", "--pmids", nargs="+", required=False,
-                        help="List of PMIDs to analyze")
+                        help="List of PubMed IDs to analyze")
     parser.add_argument("-f", "--file", type=str,
-                        help="File containing PMIDs, one per line")
+                        help="File containing PubMed IDs, one per line")
     parser.add_argument("-o", "--output", required=True, 
-                        help="Path to output CSV file")
+                        help="Path to the output CSV file")
     parser.add_argument("-m", "--model", default=default_model,
                         help=f"Name of the LLM model to use (default: {default_model})")
     parser.add_argument("-e", "--email", default=default_email,
-                        help=f"Email address for PubTator API (default: {default_email})")
+                        help=f"Email address for the PubTator API (default: {default_email})")
     parser.add_argument("--no-llm", action="store_true",
-                        help="Disable LLM analysis (use only cooccurrence)")
+                        help="Disable LLM analysis (use only co-occurrence)")
     parser.add_argument("--only-llm", action="store_true",
-                        help="Use only LLM analysis (disable cooccurrence)")
+                        help="Use only LLM analysis (disable co-occurrence)")
     parser.add_argument("--debug", action="store_true",
-                        help="Save debug information (raw LLM output)")
-    parser.add_argument("--limit", type=int,
-                        help="Limit the number of PMIDs to analyze (first N)")
-    parser.add_argument("--log-file", type=str,
-                        help="Path to log file (if not specified, logs only to console)")
-    parser.add_argument("--log-level", type=str, default="INFO",
-                        choices=["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"],
-                        help="Log level (default: INFO)")
-    parser.add_argument("--log-format", type=str, default="text",
-                        choices=["text", "json"],
-                        help="Log format (default: text)")
+                        help="Save debugging information (raw LLM output)")
+    parser.add_argument("--no-retry", action="store_true",
+                        help="Disable automatic retries in case of failure")
+    parser.add_argument("--max-retries", type=int, default=3,
+                        help="Maximum number of retry attempts in case of failure (default: 3)")
+    parser.add_argument("--retry-delay", type=int, default=5,
+                        help="Delay between retry attempts in seconds (default: 5)")
+    parser.add_argument("--cache-type", choices=["memory", "disk"], default="memory", 
+                        help="Type of cache storage (memory or disk), default: memory")
     
     args = parser.parse_args()
     
-    # Utwórz katalog logów, jeśli podano plik logu
-    if args.log_file:
-        log_dir = os.path.dirname(os.path.abspath(args.log_file))
-        os.makedirs(log_dir, exist_ok=True)
-        
-        # Dodaj datę do nazwy pliku logu, jeśli nie została dodana
-        if not any(part in os.path.basename(args.log_file) for part in [str(datetime.date.today()), datetime.datetime.now().strftime('%Y%m%d')]):
-            base, ext = os.path.splitext(args.log_file)
-            args.log_file = f"{base}_{datetime.datetime.now().strftime('%Y%m%d')}{ext}"
-    
-    # Konfiguruj logowanie
-    global logger
-    log_level = getattr(logging, args.log_level.upper())
-    logger = setup_logging(args.log_file, log_level, args.log_format)
-    
-    # Collect PMIDs from arguments or file
+    # Collect PubMed IDs from arguments or file
     pmids = []
     
     if args.pmids:
@@ -713,28 +711,29 @@ def main():
             sys.exit(1)
     
     if not pmids:
-        logger.error("No PMIDs provided. Use --pmids or --file option.")
+        logger.error("No PubMed IDs provided. Use the --pmids or --file option.")
         sys.exit(1)
     
-    # Ogranicz PMIDy do pierwszych N, jeśli podano limit
-    if args.limit and args.limit > 0:
-        original_count = len(pmids)
-        pmids = pmids[:args.limit]
-        logger.info(f"Limited analysis to first {len(pmids)} PMIDs (from {original_count} total)")
-    
-    # Execute analysis
+    # Perform the analysis
     try:
-        df = analyze_pmids(
+        df = enhanced_analyze_pmids(
             pmids=pmids,
             output_csv=args.output,
             email=args.email,
             llm_model=args.model,
             use_llm=not args.no_llm,
             only_llm=args.only_llm,
-            debug_mode=args.debug
+            debug_mode=args.debug,
+            retry_on_failure=not args.no_retry,
+            max_retries=args.max_retries,
+            retry_delay=args.retry_delay,
+            cache_storage_type=args.cache_type
         )
         
-        logger.info(f"Analysis completed successfully. Generated CSV with {len(df)} entries.")
+        if df is not None:
+            logger.info(f"Analysis completed successfully. Generated CSV with {len(df)} entries.")
+        else:
+            logger.info("Analysis completed successfully, but no data was returned.")
     except Exception as e:
         logger.error(f"Analysis failed: {str(e)}")
         sys.exit(1)

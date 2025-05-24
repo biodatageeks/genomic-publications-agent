@@ -32,7 +32,7 @@ setup(
     url="https://github.com/yourusername/coordinates-lit",
     classifiers=[
         "Programming Language :: Python :: 3",
-        "License :: OSI Approved :: MIT License",
+        "License :: CC BY-NC 4.0",
         "Operating System :: OS Independent",
     ],
 ) 

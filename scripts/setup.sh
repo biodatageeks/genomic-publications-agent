@@ -1,42 +1,42 @@
 #!/bin/bash
 
-# Skrypt instalacyjny dla projektu coordinates-lit
+# Installation script for coordinates-lit project
 
-# Sprawdzenie czy Python jest zainstalowany
+# Check if Python is installed
 if ! command -v python3 &> /dev/null; then
-    echo "Python 3 nie jest zainstalowany. Proszę zainstalować Python 3."
+    echo "Python 3 is not installed. Please install Python 3."
     exit 1
 fi
 
-# Sprawdzenie czy pip jest zainstalowany
+# Check if pip is installed
 if ! command -v pip3 &> /dev/null; then
-    echo "pip nie jest zainstalowany. Proszę zainstalować pip."
+    echo "pip is not installed. Please install pip."
     exit 1
 fi
 
-# Tworzenie wirtualnego środowiska
-echo "Tworzenie wirtualnego środowiska..."
+# Create virtual environment
+echo "Creating virtual environment..."
 python3 -m venv venv
 
-# Aktywacja wirtualnego środowiska
-echo "Aktywacja wirtualnego środowiska..."
+# Activate virtual environment
+echo "Activating virtual environment..."
 source venv/bin/activate
 
-# Instalacja zależności
-echo "Instalacja zależności..."
+# Install dependencies
+echo "Installing dependencies..."
 pip install -e .
 
-# Instalacja zależności deweloperskich
-echo "Instalacja zależności deweloperskich..."
+# Install development dependencies
+echo "Installing development dependencies..."
 pip install -e ".[dev]"
 
-# Tworzenie katalogów danych
-echo "Tworzenie katalogów danych..."
+# Create data directories
+echo "Creating data directories..."
 mkdir -p data/{raw,processed,cache}
 
-# Tworzenie plików konfiguracyjnych
-echo "Tworzenie plików konfiguracyjnych..."
+# Create configuration files
+echo "Creating configuration files..."
 cp config/development.yaml config/local.yaml
 
-echo "Instalacja zakończona pomyślnie!"
-echo "Aby aktywować środowisko, użyj: source venv/bin/activate" 
+echo "Installation completed successfully!"
+echo "To activate the environment, use: source venv/bin/activate"
