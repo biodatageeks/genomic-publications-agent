@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Moduł narzędziowy zawierający wspólne funkcje używane w różnych skryptach.
+Utility module containing common functions used in various scripts.
 """
 import os
 import sys
@@ -8,14 +8,14 @@ import json
 import logging
 from typing import Set, Dict, Any, List, Optional, Union
 
-# Konfiguracja logowania
+# Logging configuration
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 )
 logger = logging.getLogger(__name__)
 
-# Stałe definicje katalogów
+# Directory constant definitions
 DIRS = {
     'pmids': 'data/pmids',
     'csv': 'data/csv',
@@ -28,24 +28,24 @@ DIRS = {
 
 def ensure_dirs_exist() -> None:
     """
-    Tworzy wszystkie wymagane katalogi, jeśli nie istnieją.
+    Creates all required directories if they don't exist.
     """
     for dir_path in DIRS.values():
         os.makedirs(dir_path, exist_ok=True)
 
 def get_path(file_path: str, default_dir: str) -> str:
     """
-    Zwraca pełną ścieżkę do pliku, dodając prefiks katalogu, jeśli nie podano pełnej ścieżki.
+    Returns the full path to a file, adding directory prefix if full path not provided.
     
     Args:
-        file_path: Ścieżka do pliku
-        default_dir: Domyślny katalog, jeśli nie podano pełnej ścieżki
+        file_path: Path to the file
+        default_dir: Default directory if full path not provided
         
     Returns:
-        Pełna ścieżka do pliku
+        Full path to the file
     """
     if not file_path:
-        raise ValueError("Ścieżka do pliku nie może być pusta")
+        raise ValueError("File path cannot be empty")
         
     if '/' not in file_path:
         os.makedirs(default_dir, exist_ok=True)
@@ -58,90 +58,90 @@ def get_path(file_path: str, default_dir: str) -> str:
 
 def get_pmids_path(file_path: str) -> str:
     """
-    Zwraca pełną ścieżkę do pliku z PMID-ami.
+    Returns the full path to a PMIDs file.
     
     Args:
-        file_path: Ścieżka do pliku
+        file_path: Path to the file
         
     Returns:
-        Pełna ścieżka do pliku
+        Full path to the file
     """
     return get_path(file_path, DIRS['pmids'])
 
 def get_csv_path(file_path: str) -> str:
     """
-    Zwraca pełną ścieżkę do pliku CSV.
+    Returns the full path to a CSV file.
     
     Args:
-        file_path: Ścieżka do pliku
+        file_path: Path to the file
         
     Returns:
-        Pełna ścieżka do pliku
+        Full path to the file
     """
     return get_path(file_path, DIRS['csv'])
 
 def get_experiments_path(file_path: str) -> str:
     """
-    Zwraca pełną ścieżkę do pliku z wynikami eksperymentów.
+    Returns the full path to an experiments results file.
     
     Args:
-        file_path: Ścieżka do pliku
+        file_path: Path to the file
         
     Returns:
-        Pełna ścieżka do pliku
+        Full path to the file
     """
     return get_path(file_path, DIRS['experiments'])
 
 def get_images_path(file_path: str) -> str:
     """
-    Zwraca pełną ścieżkę do pliku obrazu.
+    Returns the full path to an image file.
     
     Args:
-        file_path: Ścieżka do pliku
+        file_path: Path to the file
         
     Returns:
-        Pełna ścieżka do pliku
+        Full path to the file
     """
     return get_path(file_path, DIRS['images'])
 
 def load_pmids_from_file(input_file: str) -> Set[str]:
     """
-    Wczytuje PMID-y z pliku tekstowego.
+    Loads PMIDs from a text file.
     
     Args:
-        input_file: Ścieżka do pliku z listą PMID-ów
+        input_file: Path to the file containing PMIDs list
         
     Returns:
-        Zbiór unikalnych PMID-ów
+        Set of unique PMIDs
     """
     try:
         input_file = get_pmids_path(input_file)
         with open(input_file, 'r', encoding='utf-8') as f:
             pmids = {line.strip() for line in f if line.strip()}
-        logger.info(f"Wczytano {len(pmids)} PMIDów z pliku {input_file}")
+        logger.info(f"Loaded {len(pmids)} PMIDs from file {input_file}")
         return pmids
     except Exception as e:
-        logger.error(f"Błąd odczytu pliku {input_file}: {str(e)}")
-        raise Exception(f"Nie można wczytać pliku z PMIDami: {e}")
+        logger.error(f"Error reading file {input_file}: {str(e)}")
+        raise Exception(f"Cannot load PMIDs file: {e}")
 
 def load_csv_pmids(csv_file: str, pmid_column: int = 0, has_header: bool = True) -> Set[str]:
     """
-    Wczytuje PMID-y z pliku CSV.
+    Loads PMIDs from a CSV file.
     
     Args:
-        csv_file: Ścieżka do pliku CSV
-        pmid_column: Indeks kolumny z PMID-ami (domyślnie 0 - pierwsza kolumna)
-        has_header: Czy plik CSV ma nagłówek
+        csv_file: Path to the CSV file
+        pmid_column: Index of the PMID column (default 0 - first column)
+        has_header: Whether the CSV file has a header
         
     Returns:
-        Zbiór unikalnych PMID-ów
+        Set of unique PMIDs
     """
     try:
         csv_file = get_csv_path(csv_file)
         pmids = set()
         with open(csv_file, 'r', encoding='utf-8') as f:
             if has_header:
-                next(f)  # Pomiń nagłówek
+                next(f)  # Skip header
             for line in f:
                 if line.strip():
                     parts = line.strip().split(',')
@@ -149,39 +149,39 @@ def load_csv_pmids(csv_file: str, pmid_column: int = 0, has_header: bool = True)
                         pmid = parts[pmid_column].strip()
                         if pmid:
                             pmids.add(pmid)
-        logger.info(f"Wczytano {len(pmids)} PMIDów z pliku CSV {csv_file}")
+        logger.info(f"Loaded {len(pmids)} PMIDs from CSV file {csv_file}")
         return pmids
     except Exception as e:
-        logger.error(f"Błąd odczytu pliku CSV {csv_file}: {str(e)}")
-        raise Exception(f"Nie można wczytać pliku CSV: {e}")
+        logger.error(f"Error reading CSV file {csv_file}: {str(e)}")
+        raise Exception(f"Cannot load CSV file: {e}")
 
 def save_pmids_to_file(pmids: Set[str], output_file: str) -> None:
     """
-    Zapisuje PMID-y do pliku tekstowego.
+    Saves PMIDs to a text file.
     
     Args:
-        pmids: Zbiór PMID-ów do zapisania
-        output_file: Ścieżka do pliku wyjściowego
+        pmids: Set of PMIDs to save
+        output_file: Path to the output file
     """
     try:
         output_file = get_pmids_path(output_file)
         with open(output_file, 'w', encoding='utf-8') as f:
             for pmid in sorted(pmids):
                 f.write(f"{pmid}\n")
-        logger.info(f"Zapisano {len(pmids)} PMIDów do pliku {output_file}")
+        logger.info(f"Saved {len(pmids)} PMIDs to file {output_file}")
     except Exception as e:
-        logger.error(f"Błąd zapisywania do pliku {output_file}: {str(e)}")
-        raise Exception(f"Nie można zapisać pliku z PMIDami: {e}")
+        logger.error(f"Error writing to file {output_file}: {str(e)}")
+        raise Exception(f"Cannot save PMIDs file: {e}")
 
 def load_json_file(json_file: str) -> Dict[str, Any]:
     """
-    Wczytuje dane z pliku JSON.
+    Loads data from a JSON file.
     
     Args:
-        json_file: Ścieżka do pliku JSON
+        json_file: Path to the JSON file
         
     Returns:
-        Dane z pliku JSON
+        Data from the JSON file
     """
     try:
         json_file = get_experiments_path(json_file)
@@ -189,39 +189,39 @@ def load_json_file(json_file: str) -> Dict[str, Any]:
             data = json.load(f)
         return data
     except Exception as e:
-        logger.error(f"Błąd odczytu pliku JSON {json_file}: {str(e)}")
-        raise Exception(f"Nie można wczytać pliku JSON: {e}")
+        logger.error(f"Error reading JSON file {json_file}: {str(e)}")
+        raise Exception(f"Cannot load JSON file: {e}")
 
 def save_json_file(data: Union[Dict[str, Any], List[Any]], output_file: str) -> None:
     """
-    Zapisuje dane do pliku JSON.
+    Saves data to a JSON file.
     
     Args:
-        data: Dane do zapisania
-        output_file: Ścieżka do pliku wyjściowego
+        data: Data to save
+        output_file: Path to the output file
     """
     try:
         output_file = get_experiments_path(output_file)
         with open(output_file, 'w', encoding='utf-8') as f:
             json.dump(data, f, indent=2)
-        logger.info(f"Zapisano dane do pliku JSON {output_file}")
+        logger.info(f"Saved data to JSON file {output_file}")
     except Exception as e:
-        logger.error(f"Błąd zapisywania do pliku JSON {output_file}: {str(e)}")
-        raise Exception(f"Nie można zapisać pliku JSON: {e}")
+        logger.error(f"Error writing to JSON file {output_file}: {str(e)}")
+        raise Exception(f"Cannot save JSON file: {e}")
 
 def append_to_json_file(new_item: Any, json_file: str) -> None:
     """
-    Dodaje nowy element do listy w pliku JSON.
-    Jeśli plik nie istnieje, tworzy nowy z jednym elementem.
-    Jeśli plik istnieje, ale nie zawiera listy, tworzy nową listę z elementem.
+    Adds a new item to a list in a JSON file.
+    If the file doesn't exist, creates a new one with one item.
+    If the file exists but doesn't contain a list, creates a new list with the item.
     
     Args:
-        new_item: Element do dodania
-        json_file: Ścieżka do pliku JSON
+        new_item: Item to add
+        json_file: Path to the JSON file
     """
     json_file = get_experiments_path(json_file)
     
-    # Sprawdź, czy plik istnieje i zawiera dane
+    # Check if file exists and contains data
     existing_items = []
     if os.path.exists(json_file):
         try:
@@ -232,30 +232,30 @@ def append_to_json_file(new_item: Any, json_file: str) -> None:
         except (json.JSONDecodeError, Exception):
             existing_items = []
     
-    # Dodaj nowy element i zapisz
+    # Add new item and save
     existing_items.append(new_item)
     
     try:
         with open(json_file, 'w', encoding='utf-8') as f:
             json.dump(existing_items, f, indent=2)
-        logger.info(f"Dodano nowy element do pliku JSON {json_file}")
+        logger.info(f"Added new item to JSON file {json_file}")
     except Exception as e:
-        logger.error(f"Błąd zapisywania do pliku JSON {json_file}: {str(e)}")
-        raise Exception(f"Nie można zapisać pliku JSON: {e}")
+        logger.error(f"Error writing to JSON file {json_file}: {str(e)}")
+        raise Exception(f"Cannot save JSON file: {e}")
 
 def initialize_json_file(json_file: str, initial_data: Any = None) -> None:
     """
-    Inicjalizuje plik JSON z pustą listą lub podanymi danymi.
+    Initializes a JSON file with an empty list or provided data.
     
     Args:
-        json_file: Ścieżka do pliku JSON
-        initial_data: Dane początkowe (domyślnie pusta lista)
+        json_file: Path to the JSON file
+        initial_data: Initial data (default empty list)
     """
     try:
         json_file = get_experiments_path(json_file)
         with open(json_file, 'w', encoding='utf-8') as f:
             json.dump(initial_data if initial_data is not None else [], f)
-        logger.info(f"Zainicjalizowano plik JSON {json_file}")
+        logger.info(f"Initialized JSON file {json_file}")
     except Exception as e:
-        logger.error(f"Błąd inicjalizacji pliku JSON {json_file}: {str(e)}")
-        raise Exception(f"Nie można zainicjalizować pliku JSON: {e}") 
+        logger.error(f"Error initializing JSON file {json_file}: {str(e)}")
+        raise Exception(f"Cannot initialize JSON file: {e}")

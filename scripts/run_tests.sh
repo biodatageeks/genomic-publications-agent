@@ -1,24 +1,24 @@
 #!/bin/bash
 
-# Skrypt do uruchamiania testów dla projektu coordinates-lit
+# Script for running tests for coordinates-lit project
 
-# Sprawdzenie czy wirtualne środowisko jest aktywne
+# Check if virtual environment is active
 if [ -z "$VIRTUAL_ENV" ]; then
-    echo "Wirtualne środowisko nie jest aktywne. Proszę aktywować środowisko."
+    echo "Virtual environment is not active. Please activate the environment."
     exit 1
 fi
 
-# Uruchomienie testów z pokryciem kodu
-echo "Uruchamianie testów z pokryciem kodu..."
+# Run tests with code coverage
+echo "Running tests with code coverage..."
 pytest --cov=src --cov-report=term-missing tests/
 
-# Sprawdzenie typów
-echo "Sprawdzanie typów..."
+# Type checking
+echo "Checking types..."
 mypy src/
 
-# Formatowanie kodu
-echo "Formatowanie kodu..."
+# Code formatting
+echo "Formatting code..."
 black src/ tests/
 isort src/ tests/
 
-echo "Testy zakończone!" 
+echo "Tests completed!"

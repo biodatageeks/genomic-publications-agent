@@ -15,8 +15,8 @@ import time
 from typing import List, Optional
 
 from src.analysis.llm.context_analyzer import UnifiedLlmContextAnalyzer
-from src.data.clients.pubtator import PubTatorClient
-from src.core.config.config import Config
+from src.models.data.clients.pubtator import PubTatorClient
+from src.utils.config.config import Config
 
 
 def configure_logging(log_level: str = "INFO") -> None:

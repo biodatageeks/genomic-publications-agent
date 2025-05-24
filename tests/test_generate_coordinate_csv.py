@@ -10,7 +10,7 @@ import json
 
 # Add the parent directory to the path to import the script
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from scripts.generate_coordinate_csv import (
+from scripts.enhanced_generate_coordinate_csv import (
     extract_coordinates_from_variant,
     determine_variant_type,
     extract_hgvs_notation,
