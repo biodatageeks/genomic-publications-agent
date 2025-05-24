@@ -307,7 +307,7 @@ If you're upgrading from an older version, see:
 ## 📄 License
 
 ### Source Code
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the Creative Commons Attribution-NonCommercial 4.0 International License (CC BY-NC 4.0) - see the [LICENSE](LICENSE) file for details.
 
 ### Documentation
 Documentation is licensed under Creative Commons Attribution 4.0 International (CC BY 4.0) - see the [LICENSE-DOCS](LICENSE-DOCS) file for details.

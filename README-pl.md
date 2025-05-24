@@ -1,22 +1,21 @@
 # 🧬 Coordinates Literature Analysis
 
-Kompleksowe narzędzie do analizy literatury biomedycznej w celu ekstraktowania i rozumienia relacji między współrzędnymi genomowymi, wariantami, genami i chorobami z wykorzystaniem zaawansowanego NLP i dużych modeli językowych.
+Kompleksowe narzędzie do analizy literatury biomedycznej w celu ekstrahowania i rozumienia relacji między współrzędnymi genomowymi, wariantami, genami i chorobami z wykorzystaniem zaawansowanego NLP i dużych modeli językowych.
 
 ## 📋 Przegląd
 
-Ten projekt zapewnia zaawansowane narzędzia do analizy artykułów PubMed w celu ekstraktowania i rozumienia relacji między wariantami genomowymi a innymi encjami biomedycznymi, takimi jak geny, choroby i tkanki. Wykorzystuje przetwarzanie języka naturalnego (NLP) i duże modele językowe (LLM) do identyfikacji, analizy i oceny siły tych relacji.
+Ten projekt zapewnia zaawansowane narzędzia do analizy artykułów PubMed w celu ekstrahowania i rozumienia relacji między wariantami genomowymi a innymi encjami biomedycznymi, takimi jak geny, choroby i tkanki. Wykorzystuje przetwarzanie języka naturalnego (NLP) i duże modele językowe (LLM) do identyfikacji, analizy i oceny siły tych relacji.
 
-System został zaprojektowany dla naukowców, bioinformatyków i klinicystów, którzy potrzebują systematycznie analizować duże ilości literatury biomedycznej, aby zrozumieć asocjacje wariant-choroba i relacje genomowe.
+System został zaprojektowany dla naukowców, bioinformatyków i specjalistów klinicznych, którzy potrzebują systematycznie analizować duże ilości literatury biomedycznej, aby zrozumieć asocjacje wariant-choroba i relacje genomowe.
 
 ## ✨ Kluczowe funkcje
 
-- **🔍 Ekstraktowanie wariantów genomowych**: Wydobywanie współrzędnych genomowych i wariantów z literatury biomedycznej
+- **🔍 Ekstrahowanie wariantów genomowych**: Wydobywanie współrzędnych genomowych i wariantów z literatury biomedycznej
 - **🧬 Analiza relacji**: Analiza relacji między wariantami a encjami biomedycznymi (geny, choroby, tkanki)
-- **📊 System oceniania**: Ocena siły relacji w skali 0-10 z wykorzystaniem zaawansowanej analizy LLM
+- **📊 System oceniania**: Ocena siły relacji w skali 0-10 z wykorzystaniem analizy LLM
 - **📁 Wiele formatów eksportu**: Eksport wyników do formatów CSV i JSON
 - **⚡ Inteligentne cache'owanie**: Cache'owanie odpowiedzi API dla szybszego przetwarzania i redukcji kosztów
 - **🤖 Wsparcie dla wielu LLM**: Wsparcie dla wielu dostawców LLM (OpenAI, TogetherAI)
-- **🔧 Architektura modularna**: Profesjonalna, skalowalna baza kodu z wyraźnym podziałem odpowiedzialności
 - **🧪 Kompleksowe testowanie**: Rozbudowany zestaw testów z >80% pokryciem kodu
 - **📚 Bogata dokumentacja**: Szczegółowa dokumentacja i przykłady
 
@@ -34,8 +33,8 @@ System został zaprojektowany dla naukowców, bioinformatyków i klinicystów, k
 
 1. **Sklonuj repozytorium:**
    ```bash
-   git clone https://github.com/yourusername/coordinates-lit.git
-   cd coordinates-lit
+   git clone https://github.com/biodatageeks/coordinates-agent.git
+   cd coordinates-agent
    ```
 
 2. **Utwórz i aktywuj środowisko wirtualne:**
@@ -135,8 +134,8 @@ wyniki = analizator.analyze_publications_by_pmids(["32735606", "32719766"])
 ```python
 from src.analysis.bio_ner.variant_recognizer import VariantRecognizer
 
-rozpoznawacz = VariantRecognizer()
-warianty = rozpoznawacz.extract_variants("Znaleziono mutację c.123A>G w genie BRCA1")
+recognizer = VariantRecognizer()
+warianty = recognizer.extract_variants("Znaleziono mutację c.123A>G w genie BRCA1")
 ```
 
 ### Serwisy
@@ -230,13 +229,13 @@ python -m src.cli.analyze --pmids 32735606 --model gpt-4 --debug --log-level DEB
 
 ### 1. **Badania kliniczne**
 - Identyfikacja asocjacji wariant-choroba w literaturze
-- Walidacja odkryć genomowych przeciwko publikowanym badaniom
+- Walidacja odkryć genomowych w publikowanych badaniach
 - Systematyczne przeglądy literatury dla konkretnych wariantów
 
 ### 2. **Analiza bioinformatyczna**
 - Ekstraktowanie współrzędnych genomowych z publikacji
 - Budowanie grafów wiedzy o relacjach wariantów
-- Automatyczna kuratorstwo literatury
+- Automatyczny przegląd literatury
 
 ### 3. **Odkrywanie leków**
 - Znajdowanie wariantów związanych z odpowiedziami na leki
@@ -280,21 +279,15 @@ export TOGETHER_API_KEY="twój-klucz-together"
 export PUBTATOR_EMAIL="twój-email@example.com"
 ```
 
-## 🔄 Migracja ze starej struktury
-
-Jeśli aktualizujesz ze starszej wersji, zobacz:
-- [Przewodnik migracji](MIGRATION_GUIDE.md) - Dla reorganizacji src
-- [Przewodnik migracji testów](TESTS_MIGRATION_GUIDE.md) - Dla reorganizacji testów
-
 ## 🤝 Współpraca
 
 1. Forkuj repozytorium
-2. Utwórz branch funkcji (`git checkout -b feature/niesamowita-funkcja`)
+2. Utwórz branch funkcji (`git checkout -b feature/nowa-funkcja`)
 3. Wprowadź zmiany zgodnie ze strukturą projektu
 4. Dodaj testy dla nowej funkcjonalności
 5. Upewnij się, że wszystkie testy przechodzą (`pytest`)
-6. Zatwierdź zmiany (`git commit -m 'Dodaj niesamowitą funkcję'`)
-7. Wypchnij do brancha (`git push origin feature/niesamowita-funkcja`)
+6. Wykonaj commit zmian (`git commit -m 'Dodaj nową funkcję'`)
+7. Wypchnij do brancha (`git push origin feature/nowa-funkcja`)
 8. Otwórz Pull Request
 
 ## 📚 Dokumentacja
@@ -307,7 +300,7 @@ Jeśli aktualizujesz ze starszej wersji, zobacz:
 ## 📄 Licencja
 
 ### Kod źródłowy
-Ten projekt jest licencjonowany na licencji MIT - szczegóły w pliku [LICENSE](LICENSE).
+Ten projekt jest licencjonowany na licencji Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0) - szczegóły w pliku [LICENSE](LICENSE).
 
 ### Dokumentacja
 Dokumentacja jest licencjonowana na Creative Commons Attribution 4.0 International (CC BY 4.0) - szczegóły w pliku [LICENSE-DOCS](LICENSE-DOCS).
