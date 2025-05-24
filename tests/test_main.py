@@ -6,10 +6,10 @@ from unittest.mock import patch, MagicMock, call
 from src.main import main
 
 # Użyjemy dekoratorów patch, aby zastąpić wszystkie zależności na poziomie najniższym
-@patch('src.core.llm.manager.ChatOpenAI')  # Mockujemy klasę ChatOpenAI
-@patch('src.core.utils.logging.get_logger')
-@patch('src.core.llm.manager.LlmManager')
-@patch('src.core.config.config.Config')
+@patch('src.utils.llm.manager.ChatOpenAI')  # Mockujemy klasę ChatOpenAI
+@patch('src.utils.logging.get_logger')
+@patch('src.utils.llm.manager.LlmManager')
+@patch('src.utils.config.config.Config')
 def test_main_success(mock_config_class, mock_llm_manager_class, mock_get_logger, mock_chat_openai):
     """Test successful main execution."""
     # Konfiguracja mocków
@@ -42,10 +42,10 @@ def test_main_success(mock_config_class, mock_llm_manager_class, mock_get_logger
     mock_logger.info.assert_any_call('LLM manager initialized successfully')
     mock_logger.error.assert_not_called()
 
-@patch('src.core.utils.logging.get_logger')
-@patch('src.core.llm.manager.ChatOpenAI')
-@patch('src.core.llm.manager.LlmManager')
-@patch('src.core.config.config.Config')
+@patch('src.utils.logging.get_logger')
+@patch('src.utils.llm.manager.ChatOpenAI')
+@patch('src.utils.llm.manager.LlmManager')
+@patch('src.utils.config.config.Config')
 def test_main_config_error(mock_config_class, mock_llm_manager_class, mock_chat_openai, mock_get_logger):
     """Test main execution with config error."""
     # Symulowanie wyjątku przy tworzeniu Config
@@ -71,10 +71,10 @@ def test_main_config_error(mock_config_class, mock_llm_manager_class, mock_chat_
     # Sprawdzenie logów błędu
     mock_logger.error.assert_called_once_with('Application error: Config error')
 
-@patch('src.core.utils.logging.get_logger')
-@patch('src.core.llm.manager.ChatOpenAI')
-@patch('src.core.llm.manager.LlmManager')
-@patch('src.core.config.config.Config')
+@patch('src.utils.logging.get_logger')
+@patch('src.utils.llm.manager.ChatOpenAI')
+@patch('src.utils.llm.manager.LlmManager')
+@patch('src.utils.config.config.Config')
 def test_main_llm_error(mock_config_class, mock_llm_manager_class, mock_chat_openai, mock_get_logger):
     """Test main execution with LLM error."""
     # Konfiguracja mocków Config

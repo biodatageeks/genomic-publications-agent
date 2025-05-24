@@ -14,9 +14,9 @@ import bioc
 from typing import List, Dict, Any
 
 from src.analysis.llm.context_analyzer import UnifiedLlmContextAnalyzer
-from src.data.clients.pubtator import PubTatorClient
-from src.data.clients.exceptions import PubTatorError
-from src.core.llm.manager import LlmManager
+from src.models.data.clients.pubtator import PubTatorClient
+from src.models.data.clients.exceptions import PubTatorError
+from src.utils.llm.manager import LlmManager
 
 
 @pytest.fixture
