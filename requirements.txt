@@ -1,9 +1,9 @@
 # Core dependencies
-pyyaml==6.0
-bioc==2.1.2
-langchain==0.1.9
-langchain-openai==0.1.4
-langchain-together==0.0.13
+pyyaml==6.0.1
+bioc==2.1
+langchain==0.3.25
+langchain-openai==0.3.18
+langchain-together==0.3.0
 requests==2.31.0
 
 # Testing

@@ -1,0 +1,38 @@
+
+=== RAPORT DEMONSTRACYJNEJ ANALIZY FOXF1 ===
+Data: 2025-05-24 16:19:48
+
+PODSUMOWANIE:
+- Przeanalizowane publikacje: 50
+- Relevantne publikacje: 41 (82.0%)
+- Średni wynik relevancji: 5.14
+
+STATYSTYKI TREŚCI:
+- Wzmianki o FOXF1: 60
+- Wzmianki o chorobach: 25
+- Wzmianki o wariantach: 15
+
+TOP 5 PUBLIKACJI:
+    pmid                                                                                                                                                                                               title year  relevance_score
+19500772                                      Genomic and genic deletions of the FOX gene cluster on 16q24.1 and inactivating mutations of FOXF1 cause alveolar capillary dysplasia and other malformations. 2009               23
+15492844                                                                                                                                                                     Human FOX gene family (Review). 2005               14
+15704124                                Subtelomeric deletions of chromosome 6p: molecular and cytogenetic characterization of three new cases with phenotypic overlap with Ritscher-Schinzel (3C) syndrome. 2005               13
+19822228 Genetic factors in esophageal atresia, tracheo-esophageal fistula and the VACTERL association: roles for FOXF1 and the 16q24.1 FOX transcription factor gene cluster, and review of the literature. 2010               13
+11943666                                                                                             Fusion of lung lobes and vessels in mouse embryos heterozygous for the forkhead box f1 targeted allele. 2002               10
+
+ROZKŁAD CZASOWY:
+year
+1999     1
+2001     3
+2002     1
+2003     2
+2004     6
+2005     6
+2006     4
+2007     4
+2008     4
+2009    10
+2010     9
+
+ZNALEZIONE WARIANTY:
+6 publikacji zawiera warianty genomowe

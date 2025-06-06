@@ -46,4 +46,14 @@ class InvalidParameterError(ClinVarError):
 
 class RateLimitError(ClinVarError):
     """Exception thrown when the API request limit is exceeded."""
+    pass
+
+
+class FormatNotSupportedException(ClinVarError):
+    """Exception thrown when the requested format is not supported."""
+    pass
+
+
+class PubTatorError(Exception):
+    """Base exception class for all errors related to PubTator API."""
     pass 

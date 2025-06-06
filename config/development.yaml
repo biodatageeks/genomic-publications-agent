@@ -1,5 +1,20 @@
 # Konfiguracja środowiska deweloperskiego
 
+llm_model_name: "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo"
+base_dir: "/Users/wojtek/Documents/bioinf/coordinates-lit/"
+paths:
+  coordinates_extraction_examples: "data/coordinates-extraction/example-coordinates.txt"
+  coordinates_regexes: "data/coordinates-extraction/coordinates_regexes.json"
+  so_obo: 'data/sequence-ontology/so-edit.obo'
+  lancedb_path: 'index/lancedb'
+
+# Contact information for API services
+contact:
+  email: "sitekwb@gmail.com"  # Email for PubTator API
+
+api_keys:
+  together: "tgp_v1_lKW5Q0Txf28ByQg_Ys06noFmMYO8G_sKHd1eqUexC7s"
+
 # Ustawienia API
 api:
   timeout: 30

@@ -14,8 +14,8 @@ from typing import Dict, List, Union
 # Add project root to path
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
 
-from src.utils.llm.manager.LlmManager import LlmManager
-from src.analysis.inference.BenchmarkTestService import BenchmarkTestService
+from src.utils.llm.manager import LlmManager
+from src.analysis.BenchmarkTestService import BenchmarkTestService
 from src.utils.config.config.Config import Config
 
 
@@ -32,7 +32,7 @@ def mock_llm_manager():
 @pytest.fixture
 def mock_coordinates_inference():
     """Creates a mock CoordinatesInference"""
-    with patch('src.inference.BenchmarkTestService.CoordinatesInference') as mock:
+    with patch('src.analysis.BenchmarkTestService.CoordinatesInference') as mock:
         mock_instance = MagicMock()
         mock.return_value = mock_instance
         yield mock
@@ -57,7 +57,7 @@ class TestBenchmarkIntegration:
     def test_benchmark_service_init(self, mock_llm_manager, mock_coordinates_inference):
         """Test initialization of BenchmarkTestService"""
         # Patch the LlmManager to return our mock
-        with patch('src.inference.BenchmarkTestService.LlmManager', return_value=mock_llm_manager):
+        with patch('src.analysis.BenchmarkTestService.LlmManager', return_value=mock_llm_manager):
             # Create BenchmarkTestService
             service = BenchmarkTestService(
                 endpoint_type="mock_endpoint",
@@ -79,8 +79,8 @@ class TestBenchmarkIntegration:
         ]
         
         # Patch LlmManager and PubmedEndpoint
-        with patch('src.inference.BenchmarkTestService.LlmManager', return_value=mock_llm_manager), \
-             patch('src.inference.BenchmarkTestService.PubmedEndpoint') as mock_pubmed:
+        with patch('src.analysis.BenchmarkTestService.LlmManager', return_value=mock_llm_manager), \
+             patch('src.analysis.BenchmarkTestService.PubmedEndpoint') as mock_pubmed:
             
             # Mock PubmedEndpoint to return test text
             mock_pubmed.fetch_full_text_from_pubmed_id.return_value = "Test publication text"
@@ -93,7 +93,7 @@ class TestBenchmarkIntegration:
             )
             
             # Set up mock text splitter to return single chunk
-            with patch('src.inference.BenchmarkTestService.RecursiveCharacterTextSplitter') as mock_splitter_class:
+            with patch('src.analysis.BenchmarkTestService.RecursiveCharacterTextSplitter') as mock_splitter_class:
                 mock_splitter = MagicMock()
                 mock_splitter_class.return_value = mock_splitter
                 
@@ -131,8 +131,8 @@ class TestBenchmarkIntegration:
         )
         
         # Patch LlmManager and PubmedEndpoint
-        with patch('src.inference.BenchmarkTestService.LlmManager', return_value=mock_llm_manager), \
-             patch('src.inference.BenchmarkTestService.PubmedEndpoint') as mock_pubmed:
+        with patch('src.analysis.BenchmarkTestService.LlmManager', return_value=mock_llm_manager), \
+             patch('src.analysis.BenchmarkTestService.PubmedEndpoint') as mock_pubmed:
             
             # Mock PubmedEndpoint to return test text
             mock_pubmed.fetch_full_text_from_pubmed_id.return_value = "Test publication text"
@@ -145,7 +145,7 @@ class TestBenchmarkIntegration:
             )
             
             # Set up mock text splitter to return single chunk
-            with patch('src.inference.BenchmarkTestService.RecursiveCharacterTextSplitter') as mock_splitter_class:
+            with patch('src.analysis.BenchmarkTestService.RecursiveCharacterTextSplitter') as mock_splitter_class:
                 mock_splitter = MagicMock()
                 mock_splitter_class.return_value = mock_splitter
                 
@@ -173,8 +173,8 @@ class TestBenchmarkIntegration:
     def test_prepare_texts_from_pmids(self, mock_llm_manager, mock_coordinates_inference):
         """Test prepare_texts_from_pmids method"""
         # Patch LlmManager and PubmedEndpoint
-        with patch('src.inference.BenchmarkTestService.LlmManager', return_value=mock_llm_manager), \
-             patch('src.inference.BenchmarkTestService.PubmedEndpoint') as mock_pubmed:
+        with patch('src.analysis.BenchmarkTestService.LlmManager', return_value=mock_llm_manager), \
+             patch('src.analysis.BenchmarkTestService.PubmedEndpoint') as mock_pubmed:
             
             # Mock PubmedEndpoint to return test text
             mock_pubmed.fetch_full_text_from_pubmed_id.return_value = "Test publication text with multiple paragraphs.\n\nSecond paragraph."
@@ -187,7 +187,7 @@ class TestBenchmarkIntegration:
             )
             
             # Set up mock text splitter to return chunks
-            with patch('src.inference.BenchmarkTestService.RecursiveCharacterTextSplitter') as mock_splitter_class:
+            with patch('src.analysis.BenchmarkTestService.RecursiveCharacterTextSplitter') as mock_splitter_class:
                 mock_splitter = MagicMock()
                 mock_splitter_class.return_value = mock_splitter
                 
@@ -233,7 +233,7 @@ class TestRealBenchmarkIntegration:
         pmids = ["31157530"]  # PMID with TP53 mutations
         
         # Patch PubmedEndpoint to return a simple test text to avoid actual API calls
-        with patch('src.inference.BenchmarkTestService.PubmedEndpoint') as mock_pubmed:
+        with patch('src.analysis.BenchmarkTestService.PubmedEndpoint') as mock_pubmed:
             mock_pubmed.fetch_full_text_from_pubmed_id.return_value = (
                 "The TP53 gene with mutation c.215C>G (p.Pro72Arg) is associated with Li-Fraumeni syndrome."
             )

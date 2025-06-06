@@ -3,7 +3,7 @@ import logging
 
 from langchain.prompts import ChatPromptTemplate
 from langchain.chains import LLMChain
-from src.Config import Config
+from src.utils.config.config import Config
 
 config = Config()
 genomic_coordinates_examples = config.load_genomic_coordinates_examples()

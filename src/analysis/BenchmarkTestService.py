@@ -3,8 +3,8 @@ from typing import Dict, List, Union, Tuple, Optional
 
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
-from src.analysis.inference.CoordinatesInference import CoordinatesInference
-from src.LlmManager import LlmManager
+from src.analysis.CoordinatesInference import CoordinatesInference
+from src.utils.llm.manager import LlmManager
 from src.services.flow.PubmedEndpoint import PubmedEndpoint
 
 

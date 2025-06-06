@@ -14,8 +14,11 @@ from typing import Dict, List, Any, Optional
 # Add project root to path
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
 
-from src.utils.llm.manager.LlmManager import LlmManager
+from src.utils.llm.manager import LlmManager
 from src.analysis.llm.llm_context_analyzer import LlmContextAnalyzer
+from src.analysis.llm.enhanced_llm_context_analyzer import EnhancedLlmContextAnalyzer
+from src.analysis.llm.unified_llm_context_analyzer import UnifiedLlmContextAnalyzer
+from src.analysis.bio_ner.variant_recognizer import VariantRecognizer
 
 
 @pytest.fixture

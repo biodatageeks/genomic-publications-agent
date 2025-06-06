@@ -1,75 +1,99 @@
 """
-Testy dla testowego modułu main.
+Tests for main application module.
 """
-import unittest.mock as mock
-from unittest.mock import call, patch
 import pytest
-from tests.resources.test_main_module import main, MockConfig, MockLlmManager, MockLogger, get_logger
+from unittest.mock import patch, MagicMock
+from src.main import main
 
 
 @pytest.fixture
 def mock_logger():
     """
-    Fixture zwracający mocka dla loggera.
+    Fixture returning a mock for logger.
     """
-    logger_mock = mock.MagicMock(spec=MockLogger)
-    with patch('tests.resources.test_main_module.logger', logger_mock):
-        with patch('tests.resources.test_main_module.get_logger', return_value=logger_mock):
-            yield logger_mock
+    with patch('src.main.get_logger') as mock_get_logger:
+        logger_mock = MagicMock()
+        mock_get_logger.return_value = logger_mock
+        yield logger_mock
 
 
-def test_main_success(mock_logger):
+@patch('src.main.LlmManager')
+@patch('src.main.Config')
+def test_main_success(mock_config_class, mock_llm_manager_class, mock_logger):
     """
-    Test sprawdzający poprawne wykonanie funkcji main.
+    Test checking successful execution of main function.
     
-    Oczekiwane zachowanie:
-    - Funkcja powinna zalogować informacje o pomyślnym załadowaniu konfiguracji i inicjalizacji LLM.
-    - Nie powinno wystąpić żadne wyjątki.
+    Expected behavior:
+    - Function should log information about successful configuration loading and LLM initialization.
+    - No exceptions should occur.
     """
-    # Wywołanie testowanej funkcji
-    result = main()
+    # Setup mocks
+    mock_config_instance = MagicMock()
+    mock_config_class.return_value = mock_config_instance
     
-    # Sprawdzenie wyniku
-    assert result is True
+    mock_llm_instance = MagicMock()
+    mock_llm_manager_class.return_value = mock_llm_instance
     
-    # Sprawdzenie logów
+    # Call tested function
+    main()
+    
+    # Check that Config was created
+    mock_config_class.assert_called_once()
+    
+    # Check that LlmManager was created with correct parameters
+    mock_llm_manager_class.assert_called_once_with(
+        provider='openai',
+        temperature=0.7
+    )
+    
+    # Check logs
     mock_logger.info.assert_any_call('Configuration loaded successfully')
     mock_logger.info.assert_any_call('LLM manager initialized successfully')
 
 
-def test_main_config_error(mock_logger):
+@patch('src.main.LlmManager')
+@patch('src.main.Config')
+def test_main_config_error(mock_config_class, mock_llm_manager_class, mock_logger):
     """
-    Test sprawdzający reakcję na błąd podczas tworzenia obiektu Config.
+    Test checking reaction to error during Config object creation.
     
-    Oczekiwane zachowanie:
-    - Funkcja powinna zalogować błąd.
-    - Wyjątek powinien być propagowany.
+    Expected behavior:
+    - Function should log error.
+    - Exception should be propagated.
     """
-    # Mock dla klasy Config, który rzuca wyjątek
+    # Mock for Config class that throws exception
     error_message = "Configuration error"
-    with patch('tests.resources.test_main_module.Config', side_effect=ValueError(error_message)):
-        # Wywołanie testowanej funkcji powinno rzucić wyjątek
-        with pytest.raises(ValueError, match=error_message):
-            main()
-        
-        # Sprawdzenie logów
-        mock_logger.error.assert_called_once_with(f'Application error: {error_message}')
-
-
-def test_main_llm_error(mock_logger):
-    """
-    Test sprawdzający reakcję na błąd podczas tworzenia LlmManager.
+    mock_config_class.side_effect = ValueError(error_message)
     
-    Oczekiwane zachowanie:
-    - Funkcja powinna zalogować błąd.
-    - Wyjątek powinien być propagowany.
+    # Call tested function should throw exception
+    with pytest.raises(ValueError, match=error_message):
+        main()
+    
+    # Check logs
+    mock_logger.error.assert_called_once_with(f'Application error: {error_message}')
+
+
+@patch('src.main.LlmManager')
+@patch('src.main.Config')
+def test_main_llm_error(mock_config_class, mock_llm_manager_class, mock_logger):
     """
-    # Mock dla klasy LlmManager, który rzuca wyjątek
+    Test checking reaction to error during LlmManager creation.
+    
+    Expected behavior:
+    - Function should log error.
+    - Exception should be propagated.
+    """
+    # Setup Config mock
+    mock_config_instance = MagicMock()
+    mock_config_class.return_value = mock_config_instance
+    
+    # Mock for LlmManager class that throws exception
     error_message = "LlmManager initialization error"
-    with patch('tests.resources.test_main_module.LlmManager', side_effect=ValueError(error_message)):
-        # Wywołanie testowanej funkcji powinno rzucić wyjątek
-        with pytest.raises(ValueError, match=error_message):
-            main()
-        
-        # Sprawdzenie logów
-        mock_logger.error.assert_called_once_with(f'Application error: {error_message}') 
+    mock_llm_manager_class.side_effect = ValueError(error_message)
+    
+    # Call tested function should throw exception
+    with pytest.raises(ValueError, match=error_message):
+        main()
+    
+    # Check logs
+    mock_logger.error.assert_called_once_with(f'Application error: {error_message}') 

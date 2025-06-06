@@ -83,6 +83,10 @@ class BaseCache:
         return hashlib.md5(key.encode('utf-8')).hexdigest()
 
 
+# Alias for backward compatibility
+APICache = BaseCache
+
+
 class MemoryCache(BaseCache):
     """
     In-memory implementation of the cache.
@@ -127,6 +131,31 @@ class MemoryCache(BaseCache):
         
         self.logger.debug(f"Cache hit for key: {key}")
         return entry['value']
+    
+    def has(self, key: str) -> bool:
+        """
+        Checks if a key exists in the cache and is not expired.
+        
+        Args:
+            key: Cache key
+            
+        Returns:
+            True if key exists and is not expired, False otherwise
+        """
+        hashed_key = self._hash_key(key)
+        
+        if hashed_key not in self._cache:
+            return False
+        
+        entry = self._cache[hashed_key]
+        
+        # Check if entry has expired
+        if time.time() > entry['expires_at']:
+            self.logger.debug(f"Cache entry expired for key: {key}")
+            self.delete(key)
+            return False
+        
+        return True
     
     def set(self, key: str, value: Any) -> None:
         """
@@ -230,6 +259,39 @@ class DiskCache(BaseCache):
             # Delete corrupted cache file
             self.delete(key)
             return None
+    
+    def has(self, key: str) -> bool:
+        """
+        Checks if a key exists in the cache and is not expired.
+        
+        Args:
+            key: Cache key
+            
+        Returns:
+            True if key exists and is not expired, False otherwise
+        """
+        file_path = self._get_file_path(key)
+        
+        if not os.path.exists(file_path):
+            return False
+        
+        try:
+            with open(file_path, 'r', encoding='utf-8') as f:
+                entry = json.load(f)
+            
+            # Check if entry has expired
+            if time.time() > entry['expires_at']:
+                self.logger.debug(f"Cache entry expired for key: {key}")
+                self.delete(key)
+                return False
+            
+            return True
+            
+        except Exception as e:
+            self.logger.error(f"Error reading cache file for key {key}: {str(e)}")
+            # Delete corrupted cache file
+            self.delete(key)
+            return False
     
     def set(self, key: str, value: Any) -> None:
         """

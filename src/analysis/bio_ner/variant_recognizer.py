@@ -3,13 +3,24 @@ The VariantRecognizer class is used for recognizing genomic variants in biomedic
 using the NER model.
 """
 
-import torch
-import numpy as np
 import json
 import os
 import re
 from typing import List, Dict, Any, Optional, Tuple, Union
-from transformers import AutoTokenizer, AutoModelForTokenClassification, BatchEncoding
+
+try:
+    import torch
+    import numpy as np
+    from transformers import AutoTokenizer, AutoModelForTokenClassification, BatchEncoding
+    HAS_TORCH = True
+except ImportError:
+    HAS_TORCH = False
+    torch = None
+    np = None
+    AutoTokenizer = None
+    AutoModelForTokenClassification = None
+    BatchEncoding = None
+
 from src.utils.llm.manager import LlmManager
 
 
@@ -33,8 +44,11 @@ class VariantRecognizer:
         self.llm_manager = llm_manager
         self.model_name = model_name
         
-        # Only initialize HuggingFace models if needed for NER
+        # Only initialize HuggingFace models if needed for NER and torch is available
         if self._is_huggingface_model():
+            if not HAS_TORCH:
+                raise ImportError("torch and transformers are required for HuggingFace models. "
+                                "Install them with: pip install torch transformers")
             self.tokenizer = AutoTokenizer.from_pretrained(model_name)
             self.model = AutoModelForTokenClassification.from_pretrained(model_name)
             self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -56,7 +70,7 @@ class VariantRecognizer:
             self.llm_manager = LlmManager('together', self.model_name)
         return self.llm_manager.get_llm()
     
-    def tokenize_text(self, text: str) -> BatchEncoding:
+    def tokenize_text(self, text: str):
         """
         Tokenizes the text using the tokenizer.
         
@@ -66,6 +80,8 @@ class VariantRecognizer:
         Returns:
             BatchEncoding object with tokens and attention masks
         """
+        if not HAS_TORCH:
+            raise ImportError("torch and transformers are required for tokenization")
         return self.tokenizer(text, return_tensors="pt").to(self.device)
     
     def predict(self, text: str) -> List[str]:
@@ -78,6 +94,9 @@ class VariantRecognizer:
         Returns:
             List of recognized variants
         """
+        if not HAS_TORCH:
+            raise ImportError("torch and transformers are required for NER predictions")
+            
         tokenized_text = self.tokenize_text(text)
         
         with torch.no_grad():

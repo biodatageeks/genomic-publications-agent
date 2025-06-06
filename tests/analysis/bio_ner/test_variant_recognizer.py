@@ -47,7 +47,7 @@ class TestVariantRecognizer:
         assert recognizer.llm_manager is None
         assert recognizer.model_name == model_name
     
-    @patch(\'src.analysis.bio_ner.variant_recognizer.LlmManager')
+    @patch('src.analysis.bio_ner.variant_recognizer.LlmManager')
     def test_get_llm_no_manager(self, mock_llm_manager_class):
         """Test getting LLM without a manager provided during initialization."""
         # Set up the mock
@@ -84,7 +84,7 @@ class TestVariantRecognizer:
         mock_llm_manager.get_llm.assert_called_once()
         assert llm == mock_llm
     
-    @patch(\'src.analysis.bio_ner.variant_recognizer.VariantRecognizer.get_llm')
+    @patch('src.analysis.bio_ner.variant_recognizer.VariantRecognizer.get_llm')
     def test_recognize_variants_text(self, mock_get_llm):
         """Test recognizing variants in text."""
         # Set up the mock
@@ -108,7 +108,7 @@ class TestVariantRecognizer:
         assert "p.V600E" in variants
         assert "chr7:140453136-140453136" in variants
     
-    @patch(\'src.analysis.bio_ner.variant_recognizer.VariantRecognizer.get_llm')
+    @patch('src.analysis.bio_ner.variant_recognizer.VariantRecognizer.get_llm')
     def test_recognize_variants_text_empty_response(self, mock_get_llm):
         """Test recognizing variants in text with empty LLM response."""
         # Set up the mock
@@ -127,7 +127,7 @@ class TestVariantRecognizer:
         assert isinstance(variants, list)
         assert len(variants) == 0
     
-    @patch(\'src.analysis.bio_ner.variant_recognizer.VariantRecognizer.get_llm')
+    @patch('src.analysis.bio_ner.variant_recognizer.VariantRecognizer.get_llm')
     def test_recognize_variants_text_no_variants(self, mock_get_llm):
         """Test recognizing variants in text where no variants are found."""
         # Set up the mock
@@ -146,7 +146,7 @@ class TestVariantRecognizer:
         assert isinstance(variants, list)
         assert len(variants) == 0
     
-    @patch(\'src.analysis.bio_ner.variant_recognizer.VariantRecognizer.get_llm')
+    @patch('src.analysis.bio_ner.variant_recognizer.VariantRecognizer.get_llm')
     def test_recognize_variants_text_with_formatting(self, mock_get_llm):
         """Test recognizing variants in text with different formatting."""
         # Set up the mock
@@ -172,7 +172,7 @@ class TestVariantRecognizer:
         assert "p.V600E" in variants
         assert "chr7:140453136-140453136" in variants
     
-    @patch(\'src.analysis.bio_ner.variant_recognizer.VariantRecognizer.get_llm')
+    @patch('src.analysis.bio_ner.variant_recognizer.VariantRecognizer.get_llm')
     def test_generate_llm_prompt(self, mock_get_llm):
         """Test the generation of LLM prompt."""
         # Create a VariantRecognizer
@@ -241,7 +241,7 @@ class TestVariantRecognizer:
         assert len(variants) == 0
     
     @patch('builtins.open', new_callable=MagicMock)
-    @patch(\'src.analysis.bio_ner.variant_recognizer.VariantRecognizer.recognize_variants_text')
+    @patch('src.analysis.bio_ner.variant_recognizer.VariantRecognizer.recognize_variants_text')
     def test_recognize_variants_file(self, mock_recognize_text, mock_open):
         """Test recognizing variants in a file."""
         # Set up the mocks
@@ -277,7 +277,7 @@ class TestVariantRecognizer:
         # Verify the mock was called
         mock_open.assert_called_once_with("nonexistent.txt", 'r', encoding='utf-8')
     
-    @patch(\'src.analysis.bio_ner.variant_recognizer.VariantRecognizer.recognize_variants_text')
+    @patch('src.analysis.bio_ner.variant_recognizer.VariantRecognizer.recognize_variants_text')
     def test_recognize_variants_dir(self, mock_recognize_text):
         """Test recognizing variants in all files in a directory."""
         # Create a VariantRecognizer
@@ -319,7 +319,7 @@ class TestVariantRecognizer:
             # Ensure recognize_variants_text was called twice
             assert mock_recognize_text.call_count == 2
     
-    @patch(\'src.analysis.bio_ner.variant_recognizer.VariantRecognizer.recognize_variants_text')
+    @patch('src.analysis.bio_ner.variant_recognizer.VariantRecognizer.recognize_variants_text')
     def test_recognize_variants_dir_no_matching_files(self, mock_recognize_text):
         """Test recognizing variants in a directory with no matching files."""
         # Create a VariantRecognizer

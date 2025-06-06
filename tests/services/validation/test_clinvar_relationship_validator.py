@@ -348,7 +348,7 @@ class TestClinvarRelationshipValidator:
         assert validator._text_similarity("BRCA1", "TP53") is False
         assert validator._text_similarity("Diabetes mellitus", "Cancer syndrome") is False
     
-    @patch(\'src.api.clients.clinvar_client.ClinVarClient")
+    @patch('src.api.clients.clinvar_client.ClinVarClient')
     def test_api_error_handling(self, mock_client_class, sample_relationships):
         """Test obsługi błędów API ClinVar."""
         # Skonfiguruj mock do zgłaszania wyjątku

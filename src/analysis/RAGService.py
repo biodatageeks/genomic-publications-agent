@@ -1,13 +1,29 @@
 import os
 import lancedb
-import obonet
 import yaml
 
+try:
+    import obonet
+    HAS_OBONET = True
+except ImportError:
+    HAS_OBONET = False
+    obonet = None
+
 from src.analysis.Embedder import Embedder
+from src.utils.config.config import Config
 
-with open("../config/config.yaml", "r") as file:
-    config = yaml.safe_load(file)
-
+try:
+    config = Config()
+    config_data = config._config  # Access internal config data
+except Exception:
+    # Fallback config if main Config fails
+    config_data = {
+        'base_dir': '.',
+        'paths': {
+            'lancedb_path': 'data/lancedb',
+            'so_obo': 'data/so.obo'
+        }
+    }
 
 class RAGService:
     def __init__(self, setup=True):
@@ -16,6 +32,9 @@ class RAGService:
         self.setup_retriever() if setup else self.open_retriever()
 
     def parse_obo(self, file_path):
+        if not HAS_OBONET:
+            raise ImportError("obonet is required for parsing OBO files. Install with: pip install obonet")
+        
         graph = obonet.read_obo(file_path)
         data = []
         for id_, data_ in graph.nodes(data=True):
@@ -46,11 +65,11 @@ class RAGService:
         return data
 
     def connect_lancedb(self):
-        lancedb_path = str(os.path.join(config['base_dir'], config['paths']['lancedb_path']))
+        lancedb_path = str(os.path.join(config_data['base_dir'], config_data['paths']['lancedb_path']))
         self.db = lancedb.connect(lancedb_path)
 
     def setup_retriever(self):
-        obo_path = os.path.join(config['base_dir'], config['paths']['so_obo'])
+        obo_path = os.path.join(config_data['base_dir'], config_data['paths']['so_obo'])
 
         data = self.parse_obo(obo_path)
         self.table = self.db.create_table("ontology_data", data, mode='overwrite')

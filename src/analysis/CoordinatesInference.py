@@ -1,7 +1,7 @@
 import logging
 
 from src.services.flow.PubmedEndpoint import PubmedEndpoint
-from src.services.flow.coordinates_extraction.CoordinatesLLMExtractor import CoordinatesLlmExtractor
+from src.services.flow.coordinates_extraction.CoordinatesLlmExtractor import CoordinatesLlmExtractor
 from src.services.flow.ContextRetriever import ContextRetriever
 from src.services.flow.SequenceOntologyMapper import SequenceOntologyMapper
 from src.services.flow.KeyValueMapper import KeyValueMapper

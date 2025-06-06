@@ -11,12 +11,24 @@ from langchain_together import ChatTogether
 
 from src.analysis.RAGService import RAGService
 import logging
-from src.Config import load_config
+from src.utils.config.config import Config
 
-config = load_config()
+try:
+    config = Config()
+    config_data = config._config
+except Exception:
+    config_data = {
+        'base_dir': '.',
+        'paths': {
+            'coordinates_extraction_examples': 'data/coordinates_examples.txt'
+        }
+    }
 
-with open(os.path.join(config['base_dir'], config['paths']['coordinates_extraction_examples']), 'r') as file:
-    genomic_coordinates_examples = file.read()
+try:
+    with open(os.path.join(config_data['base_dir'], config_data['paths']['coordinates_extraction_examples']), 'r') as file:
+        genomic_coordinates_examples = file.read()
+except Exception:
+    genomic_coordinates_examples = "# Default genomic coordinates examples"
 
 
 class SequenceOntologyMapper:

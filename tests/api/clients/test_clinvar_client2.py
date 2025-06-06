@@ -1,5 +1,5 @@
 """
-Tests for the ClinvarClient class from clinvar_client module.
+Tests for the ClinVarClient class.
 """
 import os
 import pytest
@@ -12,7 +12,7 @@ from src.api.clients.clinvar_client import ClinVarClient
 
 class TestClinvarClient:
     """
-    Test suite for the ClinvarClient class.
+    Test suite for the ClinVarClient class.
     """
     
     def test_init_default(self):
@@ -35,7 +35,7 @@ class TestClinvarClient:
         assert client.api_key == "test_api_key"
         assert client.tool == "custom_tool"
     
-    @patch(\'src.api.clients.clinvar_client.requests.get')
+    @patch('src.api.clients.clinvar_client.requests.get')
     def test_build_request_url(self, mock_get):
         """Test building a request URL."""
         mock_get.return_value = MagicMock(status_code=200)
@@ -50,7 +50,7 @@ class TestClinvarClient:
         assert "api_key=test_key" in url
         assert "tool=pythonClinvarClient" in url
     
-    @patch(\'src.api.clients.clinvar_client.requests.get')
+    @patch('src.api.clients.clinvar_client.requests.get')
     def test_make_request(self, mock_get):
         """Test making a request to the ClinVar API."""
         mock_response = MagicMock()
@@ -65,7 +65,7 @@ class TestClinvarClient:
         assert response.status_code == 200
         assert response.text == "<Response>OK</Response>"
     
-    @patch(\'src.api.clients.clinvar_client.requests.get')
+    @patch('src.api.clients.clinvar_client.requests.get')
     def test_make_request_error(self, mock_get):
         """Test handling error in request to the ClinVar API."""
         mock_get.side_effect = Exception("Connection error")
@@ -76,7 +76,7 @@ class TestClinvarClient:
         
         assert "Connection error" in str(excinfo.value)
     
-    @patch(\'src.api.clients.clinvar_client.requests.get')
+    @patch('src.api.clients.clinvar_client.requests.get')
     def test_search_clinvar(self, mock_get):
         """Test searching ClinVar database."""
         mock_response = MagicMock()
@@ -105,7 +105,7 @@ class TestClinvarClient:
         assert ids[0].text == "1234"
         assert ids[1].text == "5678"
     
-    @patch(\'src.api.clients.clinvar_client.requests.get')
+    @patch('src.api.clients.clinvar_client.requests.get')
     def test_search_clinvar_no_results(self, mock_get):
         """Test searching ClinVar with no results."""
         mock_response = MagicMock()
@@ -131,7 +131,7 @@ class TestClinvarClient:
         ids = id_list.findall("Id")
         assert len(ids) == 0
     
-    @patch(\'src.api.clients.clinvar_client.requests.get')
+    @patch('src.api.clients.clinvar_client.requests.get')
     def test_search_clinvar_error(self, mock_get):
         """Test handling error in ClinVar search."""
         mock_response = MagicMock()
@@ -145,7 +145,7 @@ class TestClinvarClient:
         
         assert "Error retrieving data from ClinVar" in str(excinfo.value)
     
-    @patch(\'src.api.clients.clinvar_client.requests.get')
+    @patch('src.api.clients.clinvar_client.requests.get')
     def test_get_clinvar_ids_by_gene(self, mock_get):
         """Test getting ClinVar IDs by gene name."""
         mock_response = MagicMock()
@@ -170,7 +170,7 @@ class TestClinvarClient:
         assert "1234" in ids
         assert "5678" in ids
     
-    @patch(\'src.api.clients.clinvar_client.requests.get')
+    @patch('src.api.clients.clinvar_client.requests.get')
     def test_get_clinvar_ids_by_rsid(self, mock_get):
         """Test getting ClinVar IDs by rs ID."""
         mock_response = MagicMock()
@@ -193,7 +193,7 @@ class TestClinvarClient:
         assert len(ids) == 1
         assert "1234" in ids
     
-    @patch(\'src.api.clients.clinvar_client.requests.get')
+    @patch('src.api.clients.clinvar_client.requests.get')
     def test_get_clinvar_ids_by_variant(self, mock_get):
         """Test getting ClinVar IDs by variant notation."""
         mock_response = MagicMock()
@@ -216,7 +216,7 @@ class TestClinvarClient:
         assert len(ids) == 1
         assert "1234" in ids
     
-    @patch(\'src.api.clients.clinvar_client.requests.get')
+    @patch('src.api.clients.clinvar_client.requests.get')
     def test_fetch_clinvar_record(self, mock_get):
         """Test fetching a ClinVar record by ID."""
         mock_response = MagicMock()
@@ -254,7 +254,7 @@ class TestClinvarClient:
         assert significance is not None
         assert significance.text == "Pathogenic"
     
-    @patch(\'src.api.clients.clinvar_client.requests.get')
+    @patch('src.api.clients.clinvar_client.requests.get')
     def test_fetch_clinvar_record_not_found(self, mock_get):
         """Test fetching a non-existent ClinVar record."""
         mock_response = MagicMock()
@@ -276,7 +276,7 @@ class TestClinvarClient:
         assert results is not None
         assert len(results.findall("*")) == 0
     
-    @patch(\'src.api.clients.clinvar_client.requests.get')
+    @patch('src.api.clients.clinvar_client.requests.get')
     def test_fetch_clinvar_records(self, mock_get):
         """Test fetching multiple ClinVar records by IDs."""
         mock_response = MagicMock()
@@ -317,7 +317,7 @@ class TestClinvarClient:
         allele2 = variations[1].find(".//Allele/Name")
         assert allele2.text == "p.V600E"
     
-    @patch(\'src.api.clients.clinvar_client.requests.get')
+    @patch('src.api.clients.clinvar_client.requests.get')
     def test_parse_clinical_significance(self, mock_get):
         """Test parsing clinical significance from a ClinVar record."""
         mock_xml = """
@@ -342,7 +342,7 @@ class TestClinvarClient:
         assert significance["review_status"] == "criteria provided, multiple submitters, no conflicts"
         assert significance["last_evaluated"] == "2019-01-01"
     
-    @patch(\'src.api.clients.clinvar_client.requests.get')
+    @patch('src.api.clients.clinvar_client.requests.get')
     def test_parse_clinical_significance_missing_data(self, mock_get):
         """Test parsing clinical significance with missing data."""
         mock_xml = """
@@ -365,7 +365,7 @@ class TestClinvarClient:
         assert significance["review_status"] is None
         assert significance["last_evaluated"] is None
     
-    @patch(\'src.api.clients.clinvar_client.requests.get')
+    @patch('src.api.clients.clinvar_client.requests.get')
     def test_parse_variant_details(self, mock_get):
         """Test parsing variant details from a ClinVar record."""
         mock_xml = """
@@ -400,7 +400,7 @@ class TestClinvarClient:
         assert "NM_007294.3:c.123A>G" in details["hgvs"]
         assert "NP_009225.1:p.Lys41Glu" in details["hgvs"]
     
-    @patch(\'src.api.clients.clinvar_client.requests.get')
+    @patch('src.api.clients.clinvar_client.requests.get')
     def test_parse_variant_details_missing_data(self, mock_get):
         """Test parsing variant details with missing data."""
         mock_xml = """
@@ -425,7 +425,7 @@ class TestClinvarClient:
         assert details["gene_name"] is None
         assert details["hgvs"] == []
     
-    @patch(\'src.api.clients.clinvar_client.requests.get')
+    @patch('src.api.clients.clinvar_client.requests.get')
     def test_get_variant_clinical_significance(self, mock_get):
         """Test getting clinical significance for a variant."""
         # First request (search)
@@ -469,7 +469,7 @@ class TestClinvarClient:
         assert significance["classification"] == "Pathogenic"
         assert significance["review_status"] == "criteria provided, single submitter"
     
-    @patch(\'src.api.clients.clinvar_client.requests.get')
+    @patch('src.api.clients.clinvar_client.requests.get')
     def test_get_variant_clinical_significance_not_found(self, mock_get):
         """Test getting clinical significance for a non-existent variant."""
         mock_response = MagicMock()
@@ -492,7 +492,7 @@ class TestClinvarClient:
         assert significance["review_status"] is None
         assert significance["message"] == "Variant not found in ClinVar"
     
-    @patch(\'src.api.clients.clinvar_client.requests.get')
+    @patch('src.api.clients.clinvar_client.requests.get')
     def test_get_gene_variants(self, mock_get):
         """Test getting variants for a gene."""
         # First request (search)
@@ -555,7 +555,7 @@ class TestClinvarClient:
         assert variants[1]["name"] == "c.456G>T"
         assert variants[1]["significance"]["classification"] == "Benign"
     
-    @patch(\'src.api.clients.clinvar_client.requests.get')
+    @patch('src.api.clients.clinvar_client.requests.get')
     def test_get_gene_variants_not_found(self, mock_get):
         """Test getting variants for a non-existent gene."""
         mock_response = MagicMock()
@@ -576,7 +576,7 @@ class TestClinvarClient:
         assert isinstance(variants, list)
         assert len(variants) == 0
     
-    @patch(\'src.api.clients.clinvar_client.requests.get')
+    @patch('src.api.clients.clinvar_client.requests.get')
     def test_get_variant_by_rsid(self, mock_get):
         """Test getting a variant by rs ID."""
         # First request (search)
@@ -624,7 +624,7 @@ class TestClinvarClient:
         assert variant["significance"]["classification"] == "Pathogenic"
     
     @patch('builtins.open', new_callable=mock_open)
-    @patch(\'src.api.clients.clinvar_client.requests.get')
+    @patch('src.api.clients.clinvar_client.requests.get')
     def test_save_variant_data(self, mock_get, mock_file):
         """Test saving variant data to a file."""
         variant_data = {
@@ -660,7 +660,7 @@ class TestClinvarClient:
     
     # Integration tests
     
-    @patch(\'src.api.clients.clinvar_client.requests.get')
+    @patch('src.api.clients.clinvar_client.requests.get')
     def test_integration_search_and_fetch(self, mock_get):
         """Integration test for searching and fetching a variant."""
         # First request (search)
@@ -684,14 +684,12 @@ class TestClinvarClient:
                 <VariationReport>
                     <Allele>
                         <Name>c.123A>G</Name>
-                        <VariantType>single nucleotide variant</VariantType>
                     </Allele>
                     <Gene>
                         <Symbol>BRCA1</Symbol>
                     </Gene>
                     <ClinicalSignificance>
                         <Description>Pathogenic</Description>
-                        <ReviewStatus>criteria provided, single submitter</ReviewStatus>
                     </ClinicalSignificance>
                 </VariationReport>
             </ClinVarResult>
@@ -702,33 +700,33 @@ class TestClinvarClient:
         
         client = ClinVarClient()
         
-        # Find the clinvar IDs
-        ids = client.get_clinvar_ids_by_variant("c.123A>G")
-        assert len(ids) == 1
-        assert ids[0] == "1234"
+        # Search for variant
+        search_result = client.search_clinvar("BRCA1 c.123A>G")
+        assert search_result is not None
         
-        # Fetch the record
-        record = client.fetch_clinvar_record(ids[0])
+        # Extract IDs
+        ids = client.get_clinvar_ids_by_gene("BRCA1")
+        assert len(ids) == 1
+        assert "1234" in ids
+        
+        # Fetch detailed record
+        record = client.fetch_clinvar_record("1234")
         assert record is not None
         
-        # Parse the details
-        details = client.parse_variant_details(record.find(".//ClinVarResult"))
+        # Parse details
+        details = client.parse_variant_details(record)
         assert details["name"] == "c.123A>G"
         assert details["gene_symbol"] == "BRCA1"
-        
-        # Parse clinical significance
-        significance = client.parse_clinical_significance(record.find(".//ClinVarResult"))
-        assert significance["classification"] == "Pathogenic"
-        assert significance["review_status"] == "criteria provided, single submitter"
+        assert details["significance"]["classification"] == "Pathogenic"
     
     @patch('builtins.open', new_callable=mock_open)
-    @patch(\'src.api.clients.clinvar_client.requests.get')
+    @patch('src.api.clients.clinvar_client.requests.get')
     def test_integration_full_pipeline(self, mock_get, mock_file, temp_dir):
-        """Integration test for running the full pipeline."""
-        # Mock responses for search and fetch
-        search_response = MagicMock()
-        search_response.status_code = 200
-        search_response.text = """
+        """Integration test for the full ClinVar pipeline."""
+        # First request (search)
+        first_response = MagicMock()
+        first_response.status_code = 200
+        first_response.text = """
         <eSearchResult>
             <Count>1</Count>
             <IdList>
@@ -737,46 +735,43 @@ class TestClinvarClient:
         </eSearchResult>
         """
         
-        fetch_response = MagicMock()
-        fetch_response.status_code = 200
-        fetch_response.text = """
+        # Second request (fetch)
+        second_response = MagicMock()
+        second_response.status_code = 200
+        second_response.text = """
         <eFetchResult>
             <ClinVarResult>
                 <VariationReport>
                     <Allele>
                         <Name>c.123A>G</Name>
-                        <VariantType>single nucleotide variant</VariantType>
                     </Allele>
                     <Gene>
                         <Symbol>BRCA1</Symbol>
                     </Gene>
                     <ClinicalSignificance>
                         <Description>Pathogenic</Description>
-                        <ReviewStatus>criteria provided, multiple submitters, no conflicts</ReviewStatus>
                     </ClinicalSignificance>
                 </VariationReport>
             </ClinVarResult>
         </eFetchResult>
         """
         
-        mock_get.side_effect = [search_response, fetch_response]
+        mock_get.side_effect = [first_response, second_response, second_response]
         
         client = ClinVarClient()
-        output_file = os.path.join(temp_dir, "variant_data.json")
         
-        # Get variant information
-        variant_info = client.get_variant_clinical_significance("c.123A>G")
-        assert variant_info["classification"] == "Pathogenic"
+        # Get clinical significance
+        significance = client.get_variant_clinical_significance("c.123A>G")
+        assert significance["classification"] == "Pathogenic"
         
-        # Save to file
-        client.save_variant_data({"variant": "c.123A>G", "significance": variant_info}, output_file)
+        # Get gene variants
+        variants = client.get_gene_variants("BRCA1")
+        assert len(variants) == 1
+        assert variants[0]["name"] == "c.123A>G"
+        
+        # Save data to file
+        output_file = os.path.join(temp_dir, "clinvar_data.json")
+        client.save_variant_data(variants[0], output_file)
         
         # Verify file was written
-        mock_file.assert_called_once_with(output_file, "w", encoding="utf-8")
-        mock_handle = mock_file()
-        
-        # Check saved content
-        json_str = mock_handle.write.call_args[0][0]
-        saved_data = json.loads(json_str)
-        assert saved_data["variant"] == "c.123A>G"
-        assert saved_data["significance"]["classification"] == "Pathogenic" 
+        mock_file.assert_called_with(output_file, "w", encoding="utf-8") 

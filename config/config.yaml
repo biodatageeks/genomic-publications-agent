@@ -8,7 +8,7 @@ paths:
 
 # API keys and credentials
 api:
-  together_api_key: "tgp_v1_NiaNUCO_6CtdqHO4OR--3BT2F63pimAzY5qx4LgURlA"
+  together_api_key: "tgp_v1_lKW5Q0Txf28ByQg_Ys06noFmMYO8G_sKHd1eqUexC7s"
   openai_api_key: ""  # Add your OpenAI API key here
 
 # Contact information for API services

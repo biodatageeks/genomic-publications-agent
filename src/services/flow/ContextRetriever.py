@@ -4,10 +4,10 @@ from langchain.chat_models import ChatOpenAI
 from getpass import getpass
 import yaml
 import os
-from src.Config import load_config
+from src.utils.config.config import Config
 
 
-config = load_config()
+config = Config()
 
 class ContextRetriever:
     # TODO EXPAND WITH GIVING THE LOCATION IN THE TEXT

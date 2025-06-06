@@ -1,5 +1,5 @@
 """
-Tests for the PubtatorClient class from pubtator_client module.
+Tests for the PubTatorClient class.
 """
 import os
 import pytest
@@ -7,27 +7,40 @@ import json
 import requests
 from unittest.mock import patch, MagicMock, mock_open
 
-from src.api.clients.pubtator_client import PubtatorClient
+from src.api.clients.pubtator_client import PubTatorClient
 
 
-class TestPubtatorClient:
+class TestPubTatorClient:
     """
-    Test suite for the PubtatorClient class.
+    Test suite for the PubTatorClient class.
     """
     
     def test_init_default(self):
         """Test initialization with default parameters."""
-        client = PubtatorClient()
-        assert client.base_url == "https://www.ncbi.nlm.nih.gov/research/pubtator-api"
-        assert client.timeout == 30
+        client = PubTatorClient()
+        assert client.email is None
+        assert client.tool == "pythonPubTatorClient"
     
     def test_init_with_params(self):
         """Test initialization with custom parameters."""
-        client = PubtatorClient(base_url="https://custom-pubtator.example.com", timeout=60)
-        assert client.base_url == "https://custom-pubtator.example.com"
-        assert client.timeout == 60
+        client = PubTatorClient(email="test@example.com", tool="custom_tool")
+        assert client.email == "test@example.com"
+        assert client.tool == "custom_tool"
     
-    @patch(\'src.api.clients.pubtator_client.requests.get')
+    @patch('src.api.clients.pubtator_client.requests.get')
+    def test_build_request_url(self, mock_get):
+        """Test building a request URL."""
+        mock_get.return_value = MagicMock(status_code=200)
+        client = PubTatorClient(email="test@example.com")
+        
+        url = client._build_request_url("pmid", "12345", "biocjson")
+        
+        assert "pmid/12345" in url
+        assert "format=biocjson" in url
+        assert "email=test%40example.com" in url
+        assert "tool=pythonPubTatorClient" in url
+    
+    @patch('src.api.clients.pubtator_client.requests.get')
     def test_get_annotations_by_pmid(self, mock_get):
         """Test getting annotations for a specific PMID."""
         mock_response = MagicMock()
@@ -49,7 +62,7 @@ class TestPubtatorClient:
         }
         mock_get.return_value = mock_response
         
-        client = PubtatorClient()
+        client = PubTatorClient()
         result = client.get_annotations_by_pmid("12345678")
         
         mock_get.assert_called_once_with(
@@ -64,7 +77,7 @@ class TestPubtatorClient:
         assert len(result["passages"][0]["annotations"]) == 1
         assert result["passages"][0]["annotations"][0]["text"] == "BRCA1"
     
-    @patch(\'src.api.clients.pubtator_client.requests.get')
+    @patch('src.api.clients.pubtator_client.requests.get')
     def test_get_annotations_by_pmid_error(self, mock_get):
         """Test handling error when getting annotations for a PMID."""
         mock_response = MagicMock()
@@ -73,25 +86,25 @@ class TestPubtatorClient:
         mock_response.text = "Not found"
         mock_get.return_value = mock_response
         
-        client = PubtatorClient()
+        client = PubTatorClient()
         with pytest.raises(Exception) as excinfo:
             client.get_annotations_by_pmid("99999999")
         
         assert "Error retrieving annotations" in str(excinfo.value)
         assert "404" in str(excinfo.value)
     
-    @patch(\'src.api.clients.pubtator_client.requests.get')
+    @patch('src.api.clients.pubtator_client.requests.get')
     def test_get_annotations_by_pmid_connection_error(self, mock_get):
         """Test handling connection error when getting annotations."""
         mock_get.side_effect = requests.exceptions.RequestException("Connection error")
         
-        client = PubtatorClient()
+        client = PubTatorClient()
         with pytest.raises(Exception) as excinfo:
             client.get_annotations_by_pmid("12345678")
         
         assert "Connection error" in str(excinfo.value)
     
-    @patch(\'src.api.clients.pubtator_client.requests.get')
+    @patch('src.api.clients.pubtator_client.requests.get')
     def test_get_annotations_for_multiple_pmids(self, mock_get):
         """Test getting annotations for multiple PMIDs."""
         mock_response = MagicMock()
@@ -135,7 +148,7 @@ class TestPubtatorClient:
         ]
         mock_get.return_value = mock_response
         
-        client = PubtatorClient()
+        client = PubTatorClient()
         results = client.get_annotations_for_multiple_pmids(["12345678", "23456789"])
         
         mock_get.assert_called_once_with(
@@ -152,16 +165,16 @@ class TestPubtatorClient:
         assert len(results[1]["passages"][0]["annotations"]) == 2
         assert results[1]["passages"][0]["annotations"][1]["text"] == "p.V600E"
     
-    @patch(\'src.api.clients.pubtator_client.requests.get')
+    @patch('src.api.clients.pubtator_client.requests.get')
     def test_get_annotations_for_multiple_pmids_empty_list(self, mock_get):
         """Test getting annotations for an empty list of PMIDs."""
-        client = PubtatorClient()
+        client = PubTatorClient()
         results = client.get_annotations_for_multiple_pmids([])
         
         mock_get.assert_not_called()
         assert results == []
     
-    @patch(\'src.api.clients.pubtator_client.requests.get')
+    @patch('src.api.clients.pubtator_client.requests.get')
     def test_extract_mutations_from_annotations(self, mock_get):
         """Test extracting mutations from annotations."""
         annotations = {
@@ -190,7 +203,7 @@ class TestPubtatorClient:
             ]
         }
         
-        client = PubtatorClient()
+        client = PubTatorClient()
         mutations = client.extract_mutations_from_annotations(annotations)
         
         assert mutations is not None
@@ -198,7 +211,7 @@ class TestPubtatorClient:
         assert "c.123A>G" in mutations
         assert "p.V600E" in mutations
     
-    @patch(\'src.api.clients.pubtator_client.requests.get')
+    @patch('src.api.clients.pubtator_client.requests.get')
     def test_extract_mutations_no_mutations(self, mock_get):
         """Test extracting mutations when no mutations are present."""
         annotations = {
@@ -217,13 +230,13 @@ class TestPubtatorClient:
             ]
         }
         
-        client = PubtatorClient()
+        client = PubTatorClient()
         mutations = client.extract_mutations_from_annotations(annotations)
         
         assert mutations is not None
         assert len(mutations) == 0
     
-    @patch(\'src.api.clients.pubtator_client.requests.get')
+    @patch('src.api.clients.pubtator_client.requests.get')
     def test_extract_genes_from_annotations(self, mock_get):
         """Test extracting genes from annotations."""
         annotations = {
@@ -252,7 +265,7 @@ class TestPubtatorClient:
             ]
         }
         
-        client = PubtatorClient()
+        client = PubTatorClient()
         genes = client.extract_genes_from_annotations(annotations)
         
         assert genes is not None
@@ -260,7 +273,7 @@ class TestPubtatorClient:
         assert "BRCA1" in genes
         assert "BRAF" in genes
     
-    @patch(\'src.api.clients.pubtator_client.requests.get')
+    @patch('src.api.clients.pubtator_client.requests.get')
     def test_extract_genes_no_genes(self, mock_get):
         """Test extracting genes when no genes are present."""
         annotations = {
@@ -279,13 +292,13 @@ class TestPubtatorClient:
             ]
         }
         
-        client = PubtatorClient()
+        client = PubTatorClient()
         genes = client.extract_genes_from_annotations(annotations)
         
         assert genes is not None
         assert len(genes) == 0
     
-    @patch(\'src.api.clients.pubtator_client.requests.get')
+    @patch('src.api.clients.pubtator_client.requests.get')
     def test_extract_diseases_from_annotations(self, mock_get):
         """Test extracting diseases from annotations."""
         annotations = {
@@ -314,7 +327,7 @@ class TestPubtatorClient:
             ]
         }
         
-        client = PubtatorClient()
+        client = PubTatorClient()
         diseases = client.extract_diseases_from_annotations(annotations)
         
         assert diseases is not None
@@ -322,7 +335,7 @@ class TestPubtatorClient:
         assert "breast cancer" in diseases
         assert "melanoma" in diseases
     
-    @patch(\'src.api.clients.pubtator_client.requests.get')
+    @patch('src.api.clients.pubtator_client.requests.get')
     def test_get_mutations_for_pmid(self, mock_get):
         """Test getting mutations for a specific PMID."""
         mock_response = MagicMock()
@@ -349,7 +362,7 @@ class TestPubtatorClient:
         }
         mock_get.return_value = mock_response
         
-        client = PubtatorClient()
+        client = PubTatorClient()
         mutations = client.get_mutations_for_pmid("12345678")
         
         assert mutations is not None
@@ -357,7 +370,7 @@ class TestPubtatorClient:
         assert "c.123A>G" in mutations
         assert "p.V600E" in mutations
     
-    @patch(\'src.api.clients.pubtator_client.requests.get')
+    @patch('src.api.clients.pubtator_client.requests.get')
     def test_get_genes_for_pmid(self, mock_get):
         """Test getting genes for a specific PMID."""
         mock_response = MagicMock()
@@ -384,7 +397,7 @@ class TestPubtatorClient:
         }
         mock_get.return_value = mock_response
         
-        client = PubtatorClient()
+        client = PubTatorClient()
         genes = client.get_genes_for_pmid("12345678")
         
         assert genes is not None
@@ -392,7 +405,7 @@ class TestPubtatorClient:
         assert "BRCA1" in genes
         assert "BRAF" in genes
     
-    @patch(\'src.api.clients.pubtator_client.requests.get')
+    @patch('src.api.clients.pubtator_client.requests.get')
     def test_get_diseases_for_pmid(self, mock_get):
         """Test getting diseases for a specific PMID."""
         mock_response = MagicMock()
@@ -419,7 +432,7 @@ class TestPubtatorClient:
         }
         mock_get.return_value = mock_response
         
-        client = PubtatorClient()
+        client = PubTatorClient()
         diseases = client.get_diseases_for_pmid("12345678")
         
         assert diseases is not None
@@ -427,7 +440,7 @@ class TestPubtatorClient:
         assert "breast cancer" in diseases
         assert "melanoma" in diseases
     
-    @patch(\'src.api.clients.pubtator_client.requests.get')
+    @patch('src.api.clients.pubtator_client.requests.get')
     def test_get_mutations_for_multiple_pmids(self, mock_get):
         """Test getting mutations for multiple PMIDs."""
         mock_response = MagicMock()
@@ -464,7 +477,7 @@ class TestPubtatorClient:
         ]
         mock_get.return_value = mock_response
         
-        client = PubtatorClient()
+        client = PubTatorClient()
         mutations_by_pmid = client.get_mutations_for_multiple_pmids(["12345678", "23456789"])
         
         assert mutations_by_pmid is not None
@@ -476,7 +489,7 @@ class TestPubtatorClient:
         assert "p.V600E" in mutations_by_pmid["23456789"]
     
     @patch('builtins.open', new_callable=mock_open)
-    @patch(\'src.api.clients.pubtator_client.requests.get')
+    @patch('src.api.clients.pubtator_client.requests.get')
     def test_save_annotations(self, mock_get, mock_file):
         """Test saving annotations to a file."""
         annotations = {
@@ -495,7 +508,7 @@ class TestPubtatorClient:
             ]
         }
         
-        client = PubtatorClient()
+        client = PubTatorClient()
         client.save_annotations(annotations, "annotations.json")
         
         mock_file.assert_called_once_with("annotations.json", "w", encoding="utf-8")
@@ -513,11 +526,11 @@ class TestPubtatorClient:
         """Test handling file error when saving annotations."""
         annotations = {"pmid": "12345678"}
         
-        client = PubtatorClient()
+        client = PubTatorClient()
         with pytest.raises(IOError):
             client.save_annotations(annotations, "invalid/path.json")
     
-    @patch(\'src.api.clients.pubtator_client.requests.get')
+    @patch('src.api.clients.pubtator_client.requests.get')
     def test_merge_annotations(self, mock_get):
         """Test merging annotations from multiple sources."""
         annotation1 = {
@@ -550,7 +563,7 @@ class TestPubtatorClient:
             ]
         }
         
-        client = PubtatorClient()
+        client = PubTatorClient()
         merged = client.merge_annotations([annotation1, annotation2])
         
         assert merged is not None
@@ -567,7 +580,7 @@ class TestPubtatorClient:
     
     # Integration tests
     
-    @patch(\'src.api.clients.pubtator_client.requests.get')
+    @patch('src.api.clients.pubtator_client.requests.get')
     def test_integration_get_and_extract(self, mock_get):
         """Integration test for getting and extracting annotations."""
         mock_response = MagicMock()
@@ -599,7 +612,7 @@ class TestPubtatorClient:
         }
         mock_get.return_value = mock_response
         
-        client = PubtatorClient()
+        client = PubTatorClient()
         
         # Get annotations
         annotations = client.get_annotations_by_pmid("12345678")
@@ -621,7 +634,7 @@ class TestPubtatorClient:
         assert "breast cancer" in diseases
     
     @patch('builtins.open', new_callable=mock_open)
-    @patch(\'src.api.clients.pubtator_client.requests.get')
+    @patch('src.api.clients.pubtator_client.requests.get')
     def test_integration_full_pipeline(self, mock_get, mock_file, temp_dir):
         """Integration test for running the full annotation pipeline."""
         # Mock response for multiple PMIDs
@@ -676,7 +689,7 @@ class TestPubtatorClient:
         ]
         mock_get.return_value = mock_response
         
-        client = PubtatorClient()
+        client = PubTatorClient()
         pmids = ["12345678", "23456789"]
         output_file = os.path.join(temp_dir, "annotations.json")
         
