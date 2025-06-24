@@ -1,0 +1,31 @@
+# Konfiguracja środowiska testowego
+
+# Ustawienia API
+api:
+  timeout: 5
+  retry_attempts: 1
+  retry_delay: 0
+
+# Ustawienia logowania
+logging:
+  level: WARNING
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: "logs/test.log"
+
+# Ustawienia cache
+cache:
+  enabled: false
+  expiry: 60  # 1 minuta
+  directory: "tests/fixtures/cache"
+
+# Ustawienia danych
+data:
+  raw_directory: "tests/fixtures/raw"
+  processed_directory: "tests/fixtures/processed"
+  max_file_size: 1048576  # 1MB
+
+# Ustawienia analizy
+analysis:
+  batch_size: 10
+  max_retries: 1
+  timeout: 30  # 30 sekund 

@@ -1,0 +1,3 @@
+chr,start,end,id,genes,diseases,variant_type,variant_name,variant_mode,pmid
+chr1,209989270.0,209989270.0,tmVar:rs642961;VariantGroup:0;RS#:642961,,,unknown,rs642961,unknown,18836445
+,,,tmVar:c|SUB|G||A;VariantGroup:0;RS#:642961,,,substitution,G>A,unknown,18836445

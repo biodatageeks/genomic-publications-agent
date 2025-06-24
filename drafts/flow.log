@@ -1,0 +1,4553 @@
+INFO:src.flow.coordinates_extraction.CoordinatesRegexExtractor:Loaded 3 coordinates regexes
+INFO:src.flow.coordinates_extraction.CoordinatesRegexExtractor:Loaded 3 coordinates regexes
+INFO:src.flow.PubmedEndpoint:Fetching full text for article with PubMed ID: 21441262
+INFO:src.flow.coordinates_extraction.CoordinatesRegexExtractor:Loaded 3 coordinates regexes
+INFO:src.flow.coordinates_extraction.CoordinatesRegexExtractor:Loaded 3 coordinates regexes
+INFO:src.flow.coordinates_extraction.CoordinatesRegexExtractor:Loaded 3 coordinates regexes
+INFO:src.flow.coordinates_extraction.CoordinatesRegexExtractor:Loaded 3 coordinates regexes
+INFO:src.flow.coordinates_extraction.CoordinatesRegexExtractor:Loaded 3 coordinates regexes
+INFO:src.LlmManager:Loaded OpenAI model
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesRegexExtractor:Loaded 3 coordinates regexes
+INFO:src.LlmManager:Loaded OpenAI model
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: NONE
+INFO:src.flow.coordinates_extraction.CoordinatesRegexExtractor:Loaded 3 coordinates regexes
+INFO:src.LlmManager:Loaded OpenAI model
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: NC_000014.8:g.101179660_101179695
+NC_000014.8:g.[101179660_101179695TG[14]];[101179660_101179695TG[18]]
+NM_023035.2:c.6955_6993CAG[26]
+NC_000003.12:g.63912687_63912716AGC[13] / c.89_118AGC[13]
+NM_002024.5:c.-128_-69GGC[10]GGA[1]GGC[9]GGA[1]GGC[10]
+INFO:src.flow.coordinates_extraction.CoordinatesRegexExtractor:Loaded 3 coordinates regexes
+INFO:src.LlmManager:Loaded OpenAI model
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: NC_000023.10:g.32361330_32361333
+NC_000023.10:g.32867908=
+NC_000023.10:g.32867908_32867923=
+INFO:src.flow.coordinates_extraction.CoordinatesRegexExtractor:Loaded 3 coordinates regexes
+INFO:src.LlmManager:Loaded OpenAI model
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: NC_000014.8:g.101179660_101179695
+NC_000014.8:g.101179660_101179695
+NC_000014.8:g.101179660_101179695
+NC_000014.8:g.101179660_101179695
+NC_000014.8:g.101179660_101179695
+
+NC_000014.8:g.101179660_101179695
+NC_000014.8:g.101179660_101179695
+NC_000014.8:g.101179660_101179695
+NC_000014.8:g.101179660_101179695
+NC_000014.8:g.101179660_101179695
+INFO:src.flow.PubmedEndpoint:Fetching full text for article with PubMed ID: 23502222
+INFO:src.LlmManager:Loaded OpenAI model
+INFO:src.flow.coordinates_extraction.CoordinatesRegexExtractor:Loaded 3 coordinates regexes
+INFO:src.flow.coordinates_extraction.CoordinatesRegexExtractor:Loaded 3 coordinates regexes
+INFO:src.LlmManager:Loaded OpenAI model
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: Coordinates Extracted:
+
+NC_000023.10:g.33038255C>A
+NC_000023.11:g.33344591del
+NM_004006.2:c.5697del
+NC_000023.11:g.33344590_33344592del
+NC_000023.11(NM_004006.2):c.183_186+48del
+LRG_199t1:c.3921del
+LRG_199t1:c.1704+1del
+LRG_199t1:c.1813del
+NC_000023.10:g.32867861_32867862insT
+NC_000023.10:g.32862923_32862924insCCT
+NM_004006.2:c.849_850ins858_895
+NC_000002.11:g.47643464_47643465ins
+NM_004006.2:c.419_420ins[T;401_419]
+LRG_199t1:c.419_420ins[T;450_470;AGGG]
+NC_000006.11:g.10791926_10791927ins
+NM_004006.2:c.849_850ins850_900inv
+NM_004006.2:c.900_901ins850_900inv
+LRG_199t1:c.940_941ins[885_940inv;A;851_883inv]
+NM_004006.2:c.940_941ins[903_940inv;851_885inv]
+NM_004006.2:c.(222_226)insG
+NC_000004.11:g.(3076562_3076732)ins
+NC_000023.10:g.32717298_32717299ins
+NC_000023.11:g.32867908=
+LRG_199t1:c.123=
+NC_000023.11:g.32867908_32867923=
+LRG_199t1:c.123_145=
+NM_004006.2:c.[123=;456=;789=]
+NC_000011.10:g.1999904_1999946
+NC_000011.10:g.1999904_1999946
+NC_000011.10:g.1999904_1999946
+INFO:src.flow.coordinates_extraction.CoordinatesRegexExtractor:Loaded 3 coordinates regexes
+INFO:src.LlmManager:Loaded OpenAI model
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: NC_000002.12:g.32310435_32310710
+NM_023035.2:c.6955_6993
+NC_000002.12:g.17450009_qterdelins[NC_000011.10:g.108111987_qter]
+NC_000005.10:g.29658442delins[NC_000010.11:g.67539995_qterinv]
+INFO:src.flow.coordinates_extraction.CoordinatesRegexExtractor:Loaded 3 coordinates regexes
+INFO:src.LlmManager:Loaded OpenAI model
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: PUBLICATION: 
+
+1. c.1017+572C>T (i5C>T)
+2. c.1017+572C>T (i5)
+3. c.1017+572C>T (i5)
+4. c.1017+572C>T (i5)
+5. c.1017+572C>T (i5)
+6. c.1017+512del28 (i5)
+7. c.1017+572C>T (i5)
+8. c.1017+572C>T (i5)
+9. c.1017+572C>T (i5)
+10. c.302delG
+11. c.586_593dup
+12. c.1017+572C>T
+13. c.761C>T
+14. c.1017+572C>T
+15. c.1017+572C>T
+16. c.1017+572C>T
+17. c.1017+572C>T
+18. c.1017+572C>T
+19. c.1017+572C>T
+20. c.1017+572C>T
+21. c.1017+512del28
+22. c.1192C>T
+23. c.586_593dup
+24. c.302delG
+25. c.243_244delAinsGC
+26. c.1-200_871+527 del 2033bp
+27. c.769_778dup
+28. c.941_951dup
+29. c.1017+572C>T
+30. c.1009C>T; R337×
+31. c.1192C>T; R398W
+32. c.1061C>T; T354M
+33. c.1192C>T; R398W
+34. c.1186C>T; R396W
+35. c.1061C>T; T354M
+36. c.1163T>C; M388T
+37. c.1081C>T; R361C
+38. c.1017+572C>T
+39. c.1017+572C>T
+40. c.1017+572C>T
+41. c.1017+572C>T
+42. c.1017+572C>T
+43. c.1017+572C>T
+44. c.1017+572C>T
+45. c.1017+572C>T
+46. c.302delG
+47. c.586_593dup
+48. c.1061C>T; T354M
+49. c.1192C>T; R398W
+50. c.1192C>T; R398W
+51. c.1187G>A; R396Q
+
+List of Genomic Coordinates from the provided text.
+INFO:src.flow.coordinates_extraction.CoordinatesRegexExtractor:Loaded 3 coordinates regexes
+INFO:src.LlmManager:Loaded OpenAI model
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: NONE
+INFO:src.flow.coordinates_extraction.CoordinatesRegexExtractor:Loaded 3 coordinates regexes
+INFO:src.LlmManager:Loaded OpenAI model
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: Coordinates extracted from the text:
+- c.1017+572C>T
+- c.1017+512del28
+- c.761C>T
+- c.302delG
+- c.586_593dup
+- c.243_244delAinsGC
+- c.1-200_871+527 del 2033bp
+- c.769_778dup
+- c.941_951dup
+- c.1192C>T
+- c.1061C>T
+- c.1163T>C
+- c.1081C>T
+- c.1186C>T
+- c.1099insG
+
+List of extracted genomic coordinates:
+- c.1017+572C>T
+- c.1017+512del28
+- c.761C>T
+- c.302delG
+- c.586_593dup
+- c.243_244delAinsGC
+- c.1-200_871+527 del 2033bp
+- c.769_778dup
+- c.941_951dup
+- c.1192C>T
+- c.1061C>T
+- c.1163T>C
+- c.1081C>T
+- c.1186C>T
+- c.1099insG
+INFO:src.flow.coordinates_extraction.CoordinatesRegexExtractor:Loaded 3 coordinates regexes
+INFO:src.LlmManager:Loaded OpenAI model
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: NONE
+INFO:src.flow.coordinates_extraction.CoordinatesRegexExtractor:Loaded 3 coordinates regexes
+INFO:src.LlmManager:Loaded OpenAI model
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: Coordinates Extracted:
+- c.1017+572C>T
+- c.1017+512del28
+- c.761C>T
+- c.243_244delAinsGC
+- c.769_778dup
+- c.941_951dup
+- c.302delG
+- c.586_593dup
+- c.1009C>T; R337×
+- c.1192C>T; R398W
+- c.1061C>T; T354M
+- c.1163T>C; M388T
+- c.1081C>T; R361C
+- c.1192C>T; R398W
+- c.1186C>T; R396W
+- c.1061C>T; T354M
+- c.1099insG; D367fs c.1-276T>G
+- c.1187G>A; R396Q
+INFO:src.flow.coordinates_extraction.CoordinatesRegexExtractor:Loaded 3 coordinates regexes
+INFO:src.LlmManager:Loaded OpenAI model
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: NONE
+INFO:src.flow.coordinates_extraction.CoordinatesRegexExtractor:Loaded 3 coordinates regexes
+INFO:src.LlmManager:Loaded OpenAI model
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: Coordinates extracted from the text:
+- c.1017+572
+- c.1017+512del28
+- c.302delG
+- c.586_593dup
+- c.761C>T
+- c.243_244delAinsGC
+- c.1-200_871+527 del 2033bp
+- c.769_778dup
+- c.941_951dup
+- c.1192C>T; R398W
+- c.1061C>T; T354M
+- c.1163T>C; M388T
+- c.1081C>T; R361C
+- c.1192C>T; R398W
+- c.1186C>T; R396W
+- c.1061C>T; T354M
+- c.1099insG; D367fs c.1-276T>G
+- c.1187G>A; R396Q
+
+List of extracted genomic coordinates:
+c.1017+572
+c.1017+512del28
+c.302delG
+c.586_593dup
+c.761C>T
+c.243_244delAinsGC
+c.1-200_871+527 del 2033bp
+c.769_778dup
+c.941_951dup
+c.1192C>T; R398W
+c.1061C>T; T354M
+c.1163T>C; M388T
+c.1081C>T; R361C
+c.1192C>T; R398W
+c.1186C>T; R396W
+c.1061C>T; T354M
+c.1099insG; D367fs c.1-276T>G
+c.1187G>A; R396Q
+INFO:src.flow.coordinates_extraction.CoordinatesRegexExtractor:Loaded 3 coordinates regexes
+INFO:src.LlmManager:Loaded OpenAI model
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: NONE
+INFO:src.flow.coordinates_extraction.CoordinatesRegexExtractor:Loaded 3 coordinates regexes
+INFO:src.LlmManager:Loaded OpenAI model
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: 383, 1017
+761, 1017
+1017, 572
+302, 586, 593
+243, 244
+1, 200, 871, 527, 2033
+769, 778
+941, 951
+1163, 1099
+1192, 398
+1061, 354, 1061, 354
+1081, 361
+1186, 396, 1187
+1187, 396
+INFO:src.flow.coordinates_extraction.CoordinatesRegexExtractor:Loaded 3 coordinates regexes
+INFO:src.LlmManager:Loaded OpenAI model
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: NONE
+INFO:src.flow.coordinates_extraction.CoordinatesRegexExtractor:Loaded 3 coordinates regexes
+INFO:src.LlmManager:Loaded OpenAI model
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: NONE
+INFO:src.flow.coordinates_extraction.CoordinatesRegexExtractor:Loaded 3 coordinates regexes
+INFO:src.LlmManager:Loaded OpenAI model
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: NONE
+INFO:src.flow.coordinates_extraction.CoordinatesRegexExtractor:Loaded 3 coordinates regexes
+INFO:src.LlmManager:Loaded OpenAI model
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: NONE
+INFO:src.flow.coordinates_extraction.CoordinatesRegexExtractor:Loaded 3 coordinates regexes
+INFO:src.LlmManager:Loaded OpenAI model
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: Coordinates extracted from the text are as follows:
+- c.1017+572C>T
+- c.302delG
+- c.586_593dup
+- c.1017+512del28
+- c.761C>T
+- c.243_244delAinsGC
+- c.769_778dup
+- c.941_951dup
+- c.1192C>T
+- c.1061C>T
+- c.1186C>T
+- c.1163T>C
+- c.1081C>T
+- c.1009C>T
+- c.1192C>T
+- c.1061C>T
+- c.1099insG
+- c.1187G>A
+
+These are the genomic coordinates extracted from the text provided under the PUBLICATION section.
+INFO:src.flow.coordinates_extraction.CoordinatesRegexExtractor:Loaded 3 coordinates regexes
+INFO:src.LlmManager:Loaded OpenAI model
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: Coordinates extracted from the text:
+- c.1017+572C>T (i5C>T)
+- c.1017+512del28 (i5)
+- c.761C>T (P254L)
+- c.302delG
+- c.586_593dup
+- c.1-200_871+527 del 2033bp
+- c.769_778dup
+- c.941_951dup
+- c.1081C>T; R361C
+- c.1192C>T; R398W
+- c.1061C>T; T354M
+- c.1163T>C; M388T
+- c.1186C>T; R396W
+- c.1192C>T; R398W
+- c.1187G>A; R396Q
+
+List of extracted genomic coordinates:
+1. c.1017+572C>T (i5C>T)
+2. c.1017+512del28 (i5)
+3. c.761C>T (P254L)
+4. c.302delG
+5. c.586_593dup
+6. c.1-200_871+527 del 2033bp
+7. c.769_778dup
+8. c.941_951dup
+9. c.1081C>T; R361C
+10. c.1192C>T; R398W
+11. c.1061C>T; T354M
+12. c.1163T>C; M388T
+13. c.1186C>T; R396W
+14. c.1192C>T; R398W
+15. c.1187G>A; R396Q
+INFO:src.flow.coordinates_extraction.CoordinatesRegexExtractor:Loaded 3 coordinates regexes
+INFO:src.LlmManager:Loaded OpenAI model
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: Extracted Genomic Coordinates:
+NONE
+INFO:src.flow.coordinates_extraction.CoordinatesRegexExtractor:Loaded 3 coordinates regexes
+INFO:src.LlmManager:Loaded OpenAI model
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: Extracted Genomic Coordinates:
+- c.1017+572C>T
+- c.1017+512del28
+- c.761C>T
+- c.302delG
+- c.586_593dup
+- c.243_244delAinsGC
+- c.1-200_871+527 del 2033bp
+- c.769_778dup
+- c.941_951dup
+- c.1192C>T
+- c.1061C>T
+- c.1061C>T
+- c.1186C>T
+- c.1163T>C
+- c.1081C>T
+- c.1009C>T
+- c.1192C>T
+- c.1192C>T
+- c.1187G>A
+- c.1061C>T
+- c.1099insG
+INFO:src.flow.coordinates_extraction.CoordinatesRegexExtractor:Loaded 3 coordinates regexes
+INFO:src.LlmManager:Loaded OpenAI model
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: PUBLICATION:
+- c.1017+572C>T (i5C>T)
+- c.1017+512del28
+- c.302delG
+- c.586_593dup
+- c.761C>T/unknown
+- c.243_244delAinsGC
+- c.1-200_871+527 del 2033bp
+- c.769_778dup
+- c.941_951dup
+- c.1192C>T; R398W
+- c.1061C>T; T354M
+- c.1081C>T; R361C
+- c.1192C>T; R398W
+- c.1186C>T; R396W
+- c.1163T>C; M388T
+- c.1099insG; D367fs c.1-276T>G
+- c.1187G>A; R396Q
+- c.1017+572C>T (i5C>T)
+- c.1017+512del28
+INFO:src.LlmManager:Loaded OpenAI model
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: PUBLICATION:
+
+1. c.1017+572C>T (i5C>T)
+2. c.1017+572C>T (i5C>T)
+3. c.1017+572C>T (i5C>T)
+4. c.1017+572C>T (i5C>T)
+5. c.1017+572C>T (i5C>T)
+6. c.1017+512del28 (i5)
+7. c.1017+572C>T (i5)
+8. c.1017+572C>T (i5)
+9. c.1017+572C>T (i5)
+10. c.1017+572C>T (i5)
+11. c.1017+572C>T (i5)
+12. c.302delG (Haplo)
+13. c.586_593dup (Haplo)
+14. c.761C>T/unknown (Unknown)
+15. c.243_244delAinsGC (Haplo)
+16. c.1-200_871+527 del 2033bp (Haplo)
+17. c.769_778dup (Haplo)
+18. c.941_951dup (Haplo)
+19. c.302delG (Haplo)
+20. c.586_593dup (Haplo)
+21. c.1009C>T; R337× (Haplo)
+22. c.1192C>T; R398W (Mis)
+23. c.1061C>T; T354M (Mis)
+24. c.1192C>T; R398W (Mis)
+25. c.1186C>T; R396W (Mis)
+26. c.1061C>T; T354M (Mis)
+27. c.1163T>C; M388T (Mis)
+28. c.1081C>T; R361C (Mis)
+29. c.1192C>T; R398W (Mis)
+30. c.1187G>A; R396Q (Mis)
+INFO:src.flow.coordinates_extraction.CoordinatesRegexExtractor:Loaded 3 coordinates regexes
+INFO:src.LlmManager:Loaded OpenAI model
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: Coordinates extracted from the text:
+- c.1017+572C>T
+- c.302delG
+- c.586_593dup
+- c.1017+512del28
+- c.761C>T
+- c.769_778dup
+- c.941_951dup
+- c.1009C>T
+- c.1192C>T
+- c.1061C>T
+- c.1163T>C
+- c.1081C>T
+- c.1192C>T
+
+List of extracted genomic coordinates:
+- c.1017+572C>T
+- c.302delG
+- c.586_593dup
+- c.1017+512del28
+- c.761C>T
+- c.769_778dup
+- c.941_951dup
+- c.1009C>T
+- c.1192C>T
+- c.1061C>T
+- c.1163T>C
+- c.1081C>T
+- c.1192C>T
+INFO:src.LlmManager:Loaded OpenAI model
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: Coordinates extracted from the text:
+
+1. c.1017+572C>T
+2. c.1017+572C>T
+3. c.1017+572C>T
+4. c.1017+572C>T
+5. c.1017+572C>T
+6. c.1017+572C>T
+7. c.1017+512del28
+8. c.1017+572C>T
+9. c.302delG
+10. c.586_593dup
+11. c.761C>T
+12. c.302delG
+13. c.586_593dup
+14. c.1009C>T; R337×
+15. c.1-200_871+527 del 2033bp
+16. c.769_778dup
+17. c.941_951dup
+18. c.302delG
+19. c.586_593dup
+20. c.1017+572C>T
+21. c.761C>T
+22. c.243_244delAinsGC
+23. c.1-200_871+527 del 2033bp
+24. c.769_778dup
+25. c.941_951dup
+26. c.302delG
+27. c.586_593dup
+28. c.1009C>T; R337×
+29. c.1192C>T; R398W
+30. c.1061C>T; T354M
+31. c.1192C>T; R398W
+32. c.1186C>T; R396W
+33. c.1061C>T; T354M
+34. c.1163T>C; M388T
+35. c.1081C>T; R361C
+36. c.1-276T>G
+37. c.1192C>T; R398W
+38. c.1061C>T; T354M
+39. c.1163T>C; M388T
+40. c.1081C>T; R361C
+41. c.1021C>T; R341W
+42. c.761C>T; P254L
+43. c.564G>C
+
+Total of 43 genomic coordinates extracted.
+INFO:src.flow.coordinates_extraction.CoordinatesRegexExtractor:Loaded 3 coordinates regexes
+INFO:src.LlmManager:Loaded OpenAI model
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: PUBLICATION:
+- c.1017+572C>T
+- c.1017+512del28
+- c.761C>T
+- c.302delG
+- c.586_593dup
+- c.243_244delAinsGC
+- c.1192C>T
+- c.769_778dup
+- c.941_951dup
+- c.1009C>T
+- c.1-200_871+527 del 2033bp
+- c.1081C>T
+- c.1192C>T; R398W
+- c.1061C>T; T354M
+- c.1163T>C; M388T
+- c.1081C>T; R361C
+- c.1-276T>G
+- c.1186C>T; R396W
+- c.1099insG; D367fs
+INFO:src.LlmManager:Loaded OpenAI model
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: Coordinates extracted from the text:
+- c.1017+572
+- c.1017+512
+- c.302
+- c.586_593
+- c.761
+- c.769_778
+- c.941_951
+- c.1192
+- c.1061
+- c.1163
+- c.1081
+- c.1009
+- c.1217
+- c.243_244
+- c.1-200_871+527
+- c.1192
+- c.1186
+- c.1163
+- c.1099
+- c.1187
+
+List of extracted genomic coordinates:
+c.1017+572
+c.1017+512
+c.302
+c.586_593
+c.761
+c.769_778
+c.941_951
+c.1192
+c.1061
+c.1163
+c.1081
+c.1009
+c.1217
+c.243_244
+c.1-200_871+527
+c.1192
+c.1186
+c.1163
+c.1099
+c.1187
+INFO:src.flow.coordinates_extraction.CoordinatesRegexExtractor:Loaded 3 coordinates regexes
+INFO:src.LlmManager:Loaded OpenAI model
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: PUBLICATION:
+- c.1017+572C>T
+- c.761C>T
+- c.302delG
+- c.586_593dup
+- c.1017+512del28
+INFO:src.LlmManager:Loaded OpenAI model
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: PUBLICATION GENOMIC COORDINATES:
+- c.1017+572C>T
+- c.1017+512del28
+- c.761C>T
+- c.302delG
+- c.586_593dup
+- c.243_244delAinsGC
+- c.1-200_871+527 del 2033bp
+- c.769_778dup
+- c.941_951dup
+- c.1192C>T; R398W
+- c.1061C>T; T354M
+- c.1163T>C; M388T
+- c.1081C>T; R361C
+- c.1186C>T; R396W
+- c.1192C>T; R398W
+INFO:src.flow.coordinates_extraction.CoordinatesRegexExtractor:Loaded 3 coordinates regexes
+INFO:src.LlmManager:Loaded OpenAI model
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: Coordinates extracted from the text:
+
+1. c.1017+572C>T
+2. c.1017+512del28
+3. c.302delG
+4. c.586_593dup
+5. c.761C>T
+6. c.243_244delAinsGC
+7. c.1-200_871+527 del 2033bp
+8. c.769_778dup
+9. c.941_951dup
+10. c.1192C>T; R398W
+11. c.1061C>T; T354M
+12. c.1163T>C; M388T
+13. c.1081C>T; R361C
+14. c.1192C>T; R398W
+15. c.1186C>T; R396W
+16. c.1061C>T; T354M
+17. c.1099insG; D367fs c.1-276T>G
+18. c.1187G>A; R396Q
+
+List of extracted genomic coordinates.
+INFO:src.LlmManager:Loaded OpenAI model
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: PUBLICATION:
+- c.1017+572C>T
+- c.1017+572C>T
+- c.1017+572C>T
+- c.1017+572C>T
+- c.1017+512del28
+- c.1017+572C>T
+- c.1017+572C>T
+- c.1017+572C>T
+- c.1017+572C>T
+- c.1017+572C>T
+- c.1017+572C>T
+- c.1017+572C>T
+- c.1017+572C>T
+- c.1017+572C>T
+- c.761C>T
+- c.243_244delAinsGC
+- c.1-200_871+527 del 2033bp
+- c.769_778dup
+- c.941_951dup
+- c.302delG
+- c.586_593dup
+- c.1009C>T; R337x
+- c.1192C>T; R398W
+- c.1061C>T; T354M
+- c.1192C>T; R398W
+- c.1186C>T; R396W
+- c.1061C>T; T354M
+- c.1081C>T; R361C
+- c.1-276T>G
+- c.1192C>T; R398W
+- c.1163T>C; M388T
+- c.1099insG; D367fs c.1-276T>G
+- c.1187G>A; R396Q
+INFO:src.flow.coordinates_extraction.CoordinatesRegexExtractor:Loaded 3 coordinates regexes
+INFO:src.LlmManager:Loaded OpenAI model
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: Coordinates extracted from the text:
+- c.1017+572C>T
+- c.1017+512del28
+- c.302delG
+- c.586_593dup
+- c.761C>T
+- c.243_244delAinsGC
+- c.769_778dup
+- c.941_951dup
+- c.1009C>T
+- c.1-200_871+527 del 2033bp
+- c.1192C>T; R398W
+- c.1061C>T; T354M
+- c.1163T>C; M388T
+- c.1081C>T; R361C
+- c.1192C>T; R398W
+- c.1186C>T; R396W
+- c.1099insG; D367fs c.1-276T>G
+
+List of extracted genomic coordinates:
+- c.1017+572C>T
+- c.1017+512del28
+- c.302delG
+- c.586_593dup
+- c.761C>T
+- c.243_244delAinsGC
+- c.769_778dup
+- c.941_951dup
+- c.1009C>T
+- c.1-200_871+527 del 2033bp
+- c.1192C>T; R398W
+- c.1061C>T; T354M
+- c.1163T>C; M388T
+- c.1081C>T; R361C
+- c.1192C>T; R398W
+- c.1186C>T; R396W
+- c.1099insG; D367fs c.1-276T>G
+INFO:src.LlmManager:Loaded OpenAI model
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: PUBLICATION:
+- c.1017+572C>T (i5C>T)
+- c.1017+512del28
+- c.761C>T
+- c.564
+- c.302delG
+- c.586_593dup
+- c.243_244delAinsGC
+- c.1-200_871+527 del 2033bp
+- c.769_778dup
+- c.941_951dup
+- c.1192C>T; R398W
+- c.1061C>T; T354M
+- c.1099insG; D367fs
+- c.1187G>A; R396Q
+- c.1163T>C; p.M388T
+INFO:src.flow.coordinates_extraction.CoordinatesRegexExtractor:Loaded 3 coordinates regexes
+INFO:src.LlmManager:Loaded OpenAI model
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: Coordinates extracted from the text are:
+1. c.1017+572C>T
+2. c.302delG
+3. c.586_593dup
+4. c.761C>T
+5. c.1017+512del28
+6. c.243_244delAinsGC
+7. c.1-200_871+527 del 2033bp
+8. c.769_778dup
+9. c.941_951dup
+10. c.1192C>T; R398W
+11. c.1061C>T; T354M
+12. c.1192C>T; R398W
+13. c.1186C>T; R396W
+14. c.1163T>C; M388T
+15. c.1081C>T; R361C
+16. c.1017+572C>T
+17. c.1017+572C>T
+18. c.1017+572C>T
+19. c.1017+572C>T
+20. c.1017+572C>T
+21. c.1017+572C>T
+22. c.1017+572C>T
+23. c.761C>T
+24. c.302delG
+25. c.586_593dup
+26. c.1009C>T; R337×
+27. c.1192C>T; R398W
+28. c.1061C>T; T354M
+29. c.1192C>T; R398W
+30. c.1186C>T; R396W
+31. c.1061C>T; T354M
+32. c.1163T>C; M388T
+33. c.1081C>T; R361C
+34. c.1017+572C>T
+35. c.1017+572C>T
+36. c.1017+572C>T
+37. c.1017+572C>T
+38. c.761C>T
+39. c.1192C>T; R398W
+40. c.1192C>T; R398W
+41. c.1187G>A; R396Q
+42. c.1017+572C>T
+43. c.1017+572C>T
+44. c.1-276T>G
+45. c.1-200_871+527 del 2033bp
+46. c.1192C>T; R398W
+47. c.1163T>C; p.M388T
+
+This is the list of genomic coordinates extracted from the provided text labeled PUBLICATION.
+INFO:src.LlmManager:Loaded OpenAI model
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: PUBLICATION:
+- c.1017+572C>T
+- i5C>T
+- c.1017+512del28
+- c.302delG
+- c.586_593dup
+- c.761C>T
+- c.243_244delAinsGC
+- c.769_778dup
+- c.941_951dup
+- c.1192C>T
+- c.1061C>T
+- c.1163T>C
+- c.1081C>T
+- c.1192C>T
+- c.1061C>T
+- c.1186C>T
+- c.1099insG
+- c.1187G>A
+- R337×
+- P254L
+- R398W
+- R396W
+- T354M
+- R398W
+- M388T
+- R361C
+- R398Q
+INFO:src.LlmManager:Loaded OpenAI model
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: Extracted Genomic Coordinates:
+- c.1017+572C>T
+- c.1017+512del28
+- c.761C>T
+- c.302delG
+- c.586_593dup
+- c.243_244delAinsGC
+- c.1-200_871+527 del 2033bp
+- c.769_778dup
+- c.941_951dup
+- c.1192C>T
+- c.1061C>T
+- c.1163T>C
+- c.1081C>T
+- c.1099insG
+- c.1187G>A
+
+(Note: These are the genomic coordinates extracted from the provided text in the PUBLICATION section)
+INFO:src.flow.coordinates_extraction.CoordinatesRegexExtractor:Loaded 3 coordinates regexes
+INFO:src.LlmManager:Loaded OpenAI model
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: PUBLICATION:
+- c.1017+572C>T
+- c.302delG
+- c.586_593dup
+- c.1017+512del28
+- c.761C>T
+- c.243_244delAinsGC
+- c.1-200_871+527 del 2033bp
+- c.769_778dup
+- c.941_951dup
+- c.1081C>T
+- c.1192C>T; R398W
+- c.1061C>T; T354M
+- c.1163T>C; M388T
+- c.1009C>T; R337×
+- c.1017+572C>T; i5C>T
+- c.1017+572C>T; i5
+- c.586_593dup; Haplo
+- c.302delG; Haplo
+- c.1-200_871+527 del 2033bp; Haplo
+- c.1192C>T; R398W; Mis
+- c.1061C>T; T354M; Mis
+- c.1192C>T; R398W; Mis
+- c.1186C>T; R396W; Mis
+- c.1081C>T; R361C; Mis
+- c.1017+572C>T; i5; 1
+- c.1017+572C>T; i5; 2
+- c.1017+572C>T; i5; 1, 17
+- c.761C>T/unknown†; Unknown
+- c.302delG; Haplo
+- c.586_593dup; Haplo
+- c.1009C>T; R337×; Haplo
+- c.1-200_871+527 del 2033bp; Haplo
+- c.769_778dup; Haplo
+- c.941_951dup; Haplo
+- c.302delG; Haplo
+- c.586_593dup; Haplo
+- c.1061C>T; T354M; Mis
+- c.1192C>T; R398W; Mis
+- c.1163T>C; M388T; Mis
+- c.1081C>T; R361C; Mis
+- c.1192C>T; R398W; Mis
+- c.1061C>T; T354M; Mis
+- c.1163T>C; p.M388T; Mis
+- c.1099insG; D367fs c.1-276T>G‡; Mis
+- c.1187G>A; R396Q; Mis
+
+NONE
+INFO:src.LlmManager:Loaded OpenAI model
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: PUBLICATION:
+- c.1017+572C>T
+- c.1017+512del28
+- c.761C>T
+- c.302delG
+- c.586_593dup
+- c.243_244delAinsGC
+- c.1-200_871+527 del 2033bp
+- c.769_778dup
+- c.941_951dup
+- c.1192C>T; R398W
+- c.1061C>T; T354M
+- c.1099insG; D367fs
+- c.1187G>A; R396Q
+INFO:src.LlmManager:Loaded OpenAI model
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: Coordinates extracted from the text:
+- c.1017+572C>T
+- c.302delG
+- c.586_593dup
+- c.761C>T
+- c.1017+512del28
+- c.243_244delAinsGC
+- c.769_778dup
+- c.941_951dup
+- c.1192C>T
+- c.1061C>T
+- c.1163T>C
+- c.1081C>T
+- c.1186C>T
+- c.1061C>T
+- c.1192C>T
+- c.1187G>A
+
+List of extracted coordinates:
+- c.1017+572C>T
+- c.302delG
+- c.586_593dup
+- c.761C>T
+- c.1017+512del28
+- c.243_244delAinsGC
+- c.769_778dup
+- c.941_951dup
+- c.1192C>T
+- c.1061C>T
+- c.1163T>C
+- c.1081C>T
+- c.1186C>T
+- c.1061C>T
+- c.1192C>T
+- c.1187G>A
+WARNING:matplotlib.font_manager:Matplotlib is building the font cache; this may take a moment.
+INFO:matplotlib.font_manager:Failed to extract font properties from /System/Library/Fonts/SFNSMono.ttf: <flag 'StyleFlags'> invalid value 393216
+    given 0b0 1100000000000000000
+  allowed 0b0 0000000000000000011
+INFO:matplotlib.font_manager:Failed to extract font properties from /System/Library/Fonts/Supplemental/NISC18030.ttf: Could not set the fontsize (invalid pixel size; error code 0x17)
+INFO:matplotlib.font_manager:Failed to extract font properties from /System/Library/Fonts/SFCompactItalic.ttf: <flag 'StyleFlags'> invalid value 2686977
+    given 0b0 1010010000000000000001
+  allowed 0b0 0000000000000000000011
+INFO:matplotlib.font_manager:Failed to extract font properties from /System/Library/Fonts/LastResort.otf: tuple indices must be integers or slices, not str
+INFO:matplotlib.font_manager:Failed to extract font properties from /System/Library/Fonts/SFCompact.ttf: <flag 'StyleFlags'> invalid value 2686976
+    given 0b0 1010010000000000000000
+  allowed 0b0 0000000000000000000011
+INFO:matplotlib.font_manager:Failed to extract font properties from /System/Library/Fonts/Apple Color Emoji.ttc: Could not set the fontsize (invalid pixel size; error code 0x17)
+INFO:matplotlib.font_manager:generated new fontManager
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: NONE
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: NONE
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: NONE
+INFO:src.flow.PubmedEndpoint:Fetching full text for article with PubMed ID: 23502222
+INFO:src.LlmManager:Loaded OpenAI model
+INFO:src.flow.coordinates_extraction.CoordinatesRegexExtractor:Loaded 3 coordinates regexes
+INFO:src.flow.coordinates_extraction.CoordinatesRegexExtractor:Loaded 3 coordinates regexes
+INFO:src.LlmManager:Loaded OpenAI model
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: NONE
+INFO:src.LlmManager:Loaded OpenAI model
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: NONE
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: NONE
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: NONE
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: NONE
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: NONE
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: NONE
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: NONE
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: Coordinates extracted from the text:
+- 14q12
+- 2q11.2
+- 14q12-q13.1
+- 14q12 deletion
+- 2;14 translocation
+- c.757A>G
+- c.700T>C
+- c.460dupG
+- c.256C>T
+- c.505_506delGGinsT
+- c.263_278del16
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: Coordinates extracted from the text are as follows:
+- 14q12
+- 14q12-q13.1
+- chr14:28,754,647-28,756,495 bp
+- chr14:28,930,280-28,932,099 bp
+- 2q11.2
+
+These are the genomic coordinates found in the text.
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: NONE
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: NONE
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: Coordinates extracted from the text:
+- Deletion in 14q12
+- Deletion in 14q12-q13.1
+- Deletion in chromosome 14 (46,XX,del(14)(q13.1q13.2))
+- Deletion in 14q12-q13.1 including FOXG1
+- Deletion in chromosome 14 encompassing FOXG1
+- Deletion in 14q12-q13.1 in patient 3
+- Deletion of 0.14 − 1.8 Mb that does not include FOXG1
+- 14q breakpoint in 14q12
+- Deletion in 14q12 about 265 kb downstream of FOXG1
+- Deletion in 14q12 translocation found in patient 1
+- 14q breakpoint of a de novo 2;14 translocation
+- Deletion in 14q12-q13.1 in patient 4
+- Deletion of ~5.4-Mb in 14q12-q13.1 in patient 3
+- Deletion of ~1.09-Mb downstream of FOXG1 in patient 4
+- Deletion of 14q12 in patient 2
+- Deletion in 14q12-q13.1 in patient 3
+- Deletion in 14q12 encompassing FOXG1 and other genes
+- Deletion in 14q12 in patient 2
+- Deletion of 34 kb downstream of FOXG1 in patient 4
+- Deletion in chromosome 14 in patient 2
+- Deletion in 14q12 in patient 2
+- Deletion in 14q12 in patient 3
+- Deletion in 14q12 in patient 4
+- Deletion in 14q12 in patient 1
+- Deletion in 14q12 in patient 4
+- Deletion in 14q12 in patient 3
+- Deletion in 14q12 in patient 4
+- Deletion in 14q12 in patient 1
+- Deletion in 14q12 in patient 4
+- Deletion in 14q12 in patient 3
+- Deletion in 14q12 in patient 1
+- Deletion in 14q12 in patient 2
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: Coordinates extracted from the text:
+- Deletion in 14q12
+- De novo interstitial deletions in 14q12
+- Deletions including FOXG1
+- Deletions in 14q12-q13.1
+- Deletion downstream of FOXG1
+- Deletion 14q12
+- Deletion in chromosome 14 (46,XX,del(14)(q13.1q13.2))
+- Heterozygous deletion in chromosome 14
+- Deletion of 14q12-q13.1
+- Deletion in 14q12
+- Deletion downstream of FOXG1
+- Microdeletion in 14q12-q13.1
+- Deletion of 14q12
+- Deletion in chromosome 14
+- Deletion of 14q12-q13.1
+- Microdeletion downstream of FOXG1
+- Deletion in 14q12
+- Deletion of 14q12
+
+Extracted Coordinates:
+- 14q12
+- 14q12-q13.1
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12-q13.1
+- 14q12
+- 14q12
+- 14q12-q13.1
+- 14q12
+- 14q12
+- 14q12
+- 14q12-q13.1
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12-q13.1
+- 14q12
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: NONE
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: NONE
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: The genomic coordinates mentioned in the provided text are:
+
+- 14q12
+- 2q11.2
+- chr14:28,754,647-28,756,495
+- chr14:28,930,280-28,932,099
+
+Therefore, the extracted genomic coordinates are as follows:
+14q12
+2q11.2
+chr14:28,754,647-28,756,495
+chr14:28,930,280-28,932,099
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: Coordinates extracted from the text are as follows:
+- 14q12
+- 14q12-q13.1
+- 14q12-q13.1
+- 14q12
+These coordinates represent the genomic locations specified in the text.
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: COORDINATES:
+- Deletion or sequence alterations of FOXG1: 14q12
+- Common deleted region: telomeric breakpoint of the inversion
+- FOXG1 gene location: ~265 kb downstream of the 14q12 breakpoint
+- Deletion in chromosome 14: 14q13.1q13.2
+- Microdeletion in patient 4: ~1.09-Mb downstream of FOXG1
+- Deletions identified in patients 2-4: 14q12
+- Deletions identified in patients 2-4: 14q12-q13.1
+- Intragenic mutations identified in patients: FOXG1 gene (1 exon; GenBank accession no. NM_005249)
+- Intragenic mutations identified in patients: c.757A>G (p.N253D), c.700T>C (p.S234P), c.460dupG (p.E154GfsX301), c.256C>T (p.R86X)
+- Intragenic mutations identified in patients: c.505_506delGGinsT (p.G168SfsX23), c.263_278del16 (p.R88PfsX99)
+- Missense mutations identified in patients: p.F215L, p.N227K, p.S234P, p.N253D
+- Recurrent mutation: c.460dupG
+- 14q12 breakpoint in patient 1: ~265 kb downstream of FOXG1
+- De novo 2;14 translocation breakpoint: ~5 kb downstream of FOXG1
+- Putative regulatory elements: located at genomic positions chr14:28,930,280-28,932,099 and chr14:28,754,647-28,756,495
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: Coordinates extracted from the text:
+- 14q12
+- 2q11.2
+- 14q12-q13.1
+- 14q12-q13.1
+- FOXG1
+- 14q12
+- FOXG1
+- 14q12
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+
+List of extracted genomic coordinates:
+- 14q12
+- 2q11.2
+- 14q12-q13.1
+- FOXG1
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: Coordinates extracted from the text:
+- 14q12
+- 14q12-q13.1
+- 14q12-q13.1
+- chr14:28,754,647-28,756,495 bp
+- chr14:28,930,280-28,932,099 bp
+- 14q12
+- 14q12-q13.1
+- 14q12-q13.1
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 2q11.2
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: Coordinates extracted from the provided text:
+- 14q12
+- 14q12-q13.1
+- 14q12-q13.1
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: Coordinates extracted from the text:
+
+1. 14q12
+2. 2q11.2
+3. 14q12-q13.1
+4. 14q12-q13.1
+5. chr14:28,754,647-28,756,495 bp
+6. chr14:28,930,280-28,932,099 bp
+7. FOXG1 gene (1 exon; GenBank accession no. NM_005249)
+8. FOXG1
+9. FOXG1
+10. FOXG1
+11. FOXG1
+12. FOXG1
+13. FOXG1
+14. FOXG1
+15. FOXG1
+16. FOXG1
+17. FOXG1
+18. FOXG1
+
+List of extracted genomic coordinates:
+14q12
+2q11.2
+14q12-q13.1
+14q12-q13.1
+chr14:28,754,647-28,756,495 bp
+chr14:28,930,280-28,932,099 bp
+FOXG1 gene (1 exon; GenBank accession no. NM_005249)
+FOXG1
+INFO:src.flow.PubmedEndpoint:Fetching full text for article with PubMed ID: 18836447
+INFO:src.LlmManager:Loaded OpenAI model
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: Extracted Genomic Coordinates:
+
+460kb upstream of SHH
+1 Mb upstream of SHH on human chromosome 7
+500 kb interval surrounding the Shh gene
+460 kb upstream of the SHH coding sequence
+1.1 kb SBE2 region
+10 bp-block of SBE2 sequence
+350 million years
+Enhancer sequence mediating SBE2 activity
+10 nucleotides
+Nucleotide position 444 of the enhancer sequence
+10 bp sequence overlapping the C/T substitution
+6.5 kb downstream of SBE2
+100% conserved residues
+Sequence alignment
+18 bp double-stranded SBE2 probe
+6.5% acrylamide gel
+35 bp probe overlapping wild type SBE2(C)
+Radiolabeled SBE2(C) probe
+Radiolabeled SBE2(T) probe
+Radiolabeled WEE probe
+20 pmol primer
+10 ng DNA template
+50% slurry of streptavidin agarose beads
+18mer DNA oligonucleotide
+ChIP assay
+1% formaldehyde
+100 mM glycine
+ChIP antibody
+5×104 to 10×104 cpm
+20 mM Tris-HCl, pH7.5
+140 mM NaCl
+0.5% Triton X-100
+1% SDS
+10 mM EDTA
+2.0 μM primer A
+2.0 μM primer B
+20 μl of 2× Master Mix
+20 μl final reaction volume
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: Genomic Coordinates extracted from the text:
+- 460kb upstream of SHH
+- Nucleotide position 444
+- 10 bp sequence overlapping the C/T substitution
+
+List of extracted genomic coordinates:
+- 460kb upstream of SHH
+- Nucleotide position 444
+- 10 bp sequence overlapping the C/T substitution
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: Coordinates extracted from the text:
+- 460kb upstream of SHH
+- 1 Mb upstream of SHH
+- 6.5 kb downstream of SBE2
+
+List of extracted genomic coordinates:
+- 460kb upstream of SHH
+- 1 Mb upstream of SHH
+- 6.5 kb downstream of SBE2
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: The genomic coordinates extracted from the provided text are:
+- 460kb upstream of SHH
+- Nucleotide position 444 of the enhancer sequence
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: Genomic Coordinates:
+460kb upstream of SHH
+SBE2 sequence
+10 bp sequence overlapping the C/T substitution
+6.5 kb downstream of SBE2
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: 163 kb upstream of SHH
+460 kb upstream of SHH
+1 Mb upstream of SHH
+500 kb interval surrounding the Shh gene
+10 bp-block of SBE2 sequence
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: Coordinates extracted from the text:
+
+460kb upstream of SHH
+460 kb
+1 Mb upstream of SHH
+460 kb upstream of the SHH coding sequence
+6.5 kb downstream of SBE2
+
+List of extracted genomic coordinates:
+- 460kb upstream of SHH
+- 460 kb
+- 1 Mb upstream of SHH
+- 460 kb upstream of the SHH coding sequence
+- 6.5 kb downstream of SBE2
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: Coordinates extracted from the text:
+
+1. 460kb upstream of SHH
+2. 460 kb upstream of the SHH coding sequence
+3. 500 kb interval surrounding the Shh gene
+4. 1.1 kb SBE2 region
+
+List of extracted genomic coordinates:
+1. 460kb upstream of SHH
+2. 460 kb upstream of the SHH coding sequence
+3. 500 kb interval surrounding the Shh gene
+4. 1.1 kb SBE2 region
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: NONE
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: NONE
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: COORDINATES:
+- 14q12
+- 2q11.2
+- chr14:28,754,647-28,756,495
+- chr14:28,930,280-28,932,099
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: Coordinates extracted from the text:
+- 14q12
+- 14q12-q13.1
+- 14q12-q13.1
+- 14q12-q13.1
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: NONE
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: NONE
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: Genomic coordinates found in the provided text:
+
+- 460kb upstream of SHH
+- 1.1 kb SBE2 sequence
+- 10 bp block of SBE2 sequence
+- 6.5 kb downstream of SBE2
+
+List of extracted genomic coordinates:
+- 460kb upstream of SHH
+- 1.1 kb SBE2 sequence
+- 10 bp block of SBE2 sequence
+- 6.5 kb downstream of SBE2
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: Genomic Coordinates extracted from the text:
+- 460kb upstream of SHH
+- 10 bp block of SBE2 sequence
+- 1.1 kb SBE2 region
+- 6.5 kb downstream of SBE2
+
+List of extracted coordinates:
+- 460kb upstream of SHH
+- 10 bp block of SBE2 sequence
+- 1.1 kb SBE2 region
+- 6.5 kb downstream of SBE2
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: NONE
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: NONE
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: Coordinates extracted from the text:
+- Deletion or sequence alterations of FOXG1 as the cause of a developmental disorder in 14q12
+- Common deleted region includes the telomeric breakpoint of the inversion
+- 5 small cohorts of patients with intragenic mutations
+- 11 patients with intragenic mutations including 5 nonsense, 4 frameshift, and 2 missense mutations
+- Brain imaging revealed hypogenesis of the corpus callosum
+- Duplications of FOXG1 associated with developmental epilepsy, mental retardation, and severe speech impairment
+- De novo chromosome translocation found in a severely mentally retarded girl
+- Deletions including FOXG1 and regulatory mutations identified
+- 14q12 breakpoint in patient 1 about 265 kb downstream of FOXG1
+- Recurrent c.460dupG mutation causing duplication of a guanine after 7 subsequent guanines in FOXG1
+- 2q11.2 and 14q12 breakpoints delineated by FISH with BAC and fosmid clones
+- Molecular karyotyping using Affymetrix Mapping GeneChip 250 K Mapping SNP-Array
+- Array CGH in patient 4 using a whole genome oligonucleotide array
+- Sequence analysis of FOXG1 in patients with overlapping phenotypes
+- Intragenic mutations detected in patients with severe postnatal microcephaly, frontal pachygyria, or hypogenesis of the corpus callosum
+- Deletions in 14q12 identified in patients presenting with developmental delay, slow head growth, and severe feeding problems
+- FOXG1 mutations identified in a cohort of patients tested for MECP2 mutations
+- Phenotype of the FOXG1-mutation positive patients with severe mental retardation, absent language, decelerating head circumference, and generalized seizures
+- Brain imaging features of patients with deletion 14q12 or FOXG1 mutations showing simplified gyral pattern, reduced white matter volume, and callosal hypogenesis
+- FOXG1 genotype-phenotype analysis indicating the association between mutations causing protein truncation and the core phenotype
+- FOXG1 syndrome characterized by moderate postnatal growth deficiency, severe postnatal microcephaly, severe mental retardation, absent or minimal language development, deficient social interactions, combined stereotypies and dyskinesias, epilepsy, poor sleep patterns, irritability, and recurrent aspiration
+- Brain imaging features of FOXG1 syndrome patients include frontal predominant simplified gyral pattern, reduced white matter volume, and callosal hypogenesis
+- FOXG1 syndrome distinct from classic Rett syndrome and other developmental encephalopathies
+- Mutations of cis-regulatory elements required for correct activity of FOXG1 identified in patients with the same phenotype as individuals with intragenic FOXG1 lesions
+- Specific pattern of developmental features and brain malformations in individuals with FOXG1 mutations allowing clinical recognition of the FOXG1 syndrome
+- Phenotypic overlap with other complex developmental syndromes suggesting the term complex or mixed "developmental encephalopathies" for the group as a whole
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: Coordinates extracted from the text:
+- 14q12
+- 2q11.2
+- FOXG1
+- 28,754,647-28,756,495 bp
+- 28,930,280-28,932,099 bp
+- 265 kb downstream of FOXG1
+- 34 kb downstream of FOXG1
+- 5 kb downstream of FOXG1
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: NONE
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: NONE
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: Coordinates:
+- 460 kb upstream of SHH
+- Nucleotide position 444 of the enhancer sequence
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: Genomic coordinates extracted from the text:
+- 460kb upstream of SHH
+- 1 Mb upstream of SHH on human chromosome 7
+- 10 bp-block of SBE2 sequence
+- 6.5 kb downstream of SBE2
+
+List of extracted genomic coordinates:
+- 460kb upstream of SHH
+- 1 Mb upstream of SHH on human chromosome 7
+- 10 bp-block of SBE2 sequence
+- 6.5 kb downstream of SBE2
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: NONE
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: NONE
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: Coordinates extracted from the provided text:
+- 14q12
+- 14q12-q13.1
+- 14q12-q13.1
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+-
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: COORDINATES:
+- 14q12
+- 2q11.2
+- 2;14
+- chr14:28,754,647-28,756,495
+- chr14:28,930,280-28,932,099
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: NONE
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: NONE
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: Extracted Genomic Coordinates:
+460kb upstream of SHH
+SBE2
+500 kb interval surrounding the Shh gene
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: Genomic coordinates extracted from the text:
+
+- 460kb upstream of SHH
+- Nucleotide position 444 of the enhancer sequence
+
+List of extracted genomic coordinates:
+- 460kb upstream of SHH
+- Nucleotide position 444 of the enhancer sequence
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: Genomic Coordinates:
+- 460kb upstream of SHH
+- Nucleotide position 444 of the enhancer sequence
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: Coordinates extracted from the text:
+- 460 kb upstream of SHH
+- nucleotide position 444 (C to T base change)
+- 10 bp-block of SBE2 sequence
+- 6.5 kb downstream of SBE2
+
+List of extracted coordinates:
+- 460 kb upstream of SHH
+- Nucleotide position 444
+- 10 bp-block of SBE2 sequence
+- 6.5 kb downstream of SBE2
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: NONE
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: NONE
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: Coordinates extracted from the text:
+- Deletion in 14q12
+- Sequence alterations of FOXG1
+- 14q12 breakpoint in patient 1 (265 kb downstream of FOXG1)
+- 14q12 breakpoint of a different de novo 2;14 translocation (~5 kb downstream of FOXG1)
+- ~1-Mb microdeletion in patient 4 downstream of FOXG1
+- Two putative cis-regulatory elements crucial for FOXG1 expression at genomic positions chr14:28,930,280-28,932,099 and chr14:28,754,647-28,756,495
+- 14q12 deletions including FOXG1 and regulatory mutations
+- Deletion in chromosome 14 (46,XX,del(14)(q13.1q13.2)) in patient 2
+- ~5.4-Mb heterozygous deletion in 14q12-q13.1 in patient 3
+- ~1.09-Mb microdeletion downstream of FOXG1 in patient 4
+- Intragenic mutations in FOXG1 gene
+- Intragenic sequence changes of FOXG1 including 5 nonsense, 4 frameshift, and 2 missense mutations
+- 18 intragenic sequence changes of FOXG1 reported
+- Recurrent c.460dupG mutation causing duplication of a guanine in FOXG1
+- Missense mutations in FOXG1 affecting evolutionary highly conserved amino acid residues in the forkhead domain
+- Regulatory mutations causing displacement and deletion of putative cis-regulatory elements for FOXG1 expression
+- 14q12 breakpoint in patient 1 at ~265 kb downstream of FOXG1
+- 14q12 breakpoint of a different de novo 2;14 translocation ~5 kb downstream of FOXG1
+- ~1-Mb microdeletion not covering FOXG1 in patient 4
+- Long-range regulatory elements of FOXG1 identified in patient 1 and patient 4
+- Deletions in 14q12 in patients 2 and 3
+- Deletions of 14q12 including FOXG1 and other genes may have more severe phenotypes
+- Association between FOXG1 and developmental abnormalities in humans
+- Duplication 14q12 including FOXG1 in 8 patients
+- FOXG1 genotype-phenotype correlation
+- Core phenotype seen in individuals with protein truncation mutations and some missense mutations
+- Large deletions of 14q12 including FOXG1 and other genes may have more severe phenotypes
+- Missense or putative regulatory mutations may have less severe phenotypes
+- 14q12 deletions and duplication syndrome resembling FOXG1 haploinsufficiency syndrome
+- FOXG1 syndrome or congenital Rett syndrome variant
+- Mutations of cis-regulatory elements required for correct activity of FOXG1
+- Specific pattern of developmental features and brain malformations in individuals with FOXG1 mutations
+- Recognition of the FOXG1 syndrome based on clinical features and brain imaging abnormalities
+- Phenotypic overlap with other complex developmental syndromes
+- Use of the term complex or mixed "developmental encephalopathies" to refer to the group as a whole
+- Mutations of cis-regulatory elements affecting FOXG1 expression in patients with similar phenotype as individuals with intragenic FOXG1 lesions
+- Novel intragenic mutations discovered in FOXG1
+- Development of the FOXG1 syndrome due to mutations in FOXG1 or cis-regulatory elements
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: Extracted genomic coordinates:
+- 14q12
+- 14q12-q13.1
+- 14q12-q13.1
+- chr14:28,754,647-28,756,495
+- chr14:28,930,280-28,932,099
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+- 14q12
+-
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: NONE
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: NONE
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: Coordinates extracted:
+- 14q12
+- 2q11.2
+- 14q12-q13.1
+- chr14:28,754,647-28,756,495 bp
+- chr14:28,930,280-28,932,099 bp
+- 14q12-q13.1
+- c.757A>G
+- c.700T>C
+- c.460dupG
+- c.256C>T
+- c.505_506delGGinsT
+- c.263_278del16
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.flow.coordinates_extraction.CoordinatesLlmExtractor:Model response: Coordinates Extracted:
+- 14q12
+- 2q11.2
+- 14q12-q13.1
+- FOXG1
+- 2;14
+- 14q12-q13.1
+- 14q12
+- 14q12
+- 14q12
+- FOXG1
+- FOXG1
+- FOXG1
+- 14q12
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- C14orf23
+- FOXG1
+- PRKD1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1
+- FOXG1

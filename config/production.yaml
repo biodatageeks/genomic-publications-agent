@@ -1,0 +1,31 @@
+# Konfiguracja środowiska produkcyjnego
+
+# Ustawienia API
+api:
+  timeout: 60
+  retry_attempts: 5
+  retry_delay: 2
+
+# Ustawienia logowania
+logging:
+  level: INFO
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: "/var/log/coordinates-lit/production.log"
+
+# Ustawienia cache
+cache:
+  enabled: true
+  expiry: 86400  # 24 godziny
+  directory: "/var/cache/coordinates-lit"
+
+# Ustawienia danych
+data:
+  raw_directory: "/var/data/coordinates-lit/raw"
+  processed_directory: "/var/data/coordinates-lit/processed"
+  max_file_size: 104857600  # 100MB
+
+# Ustawienia analizy
+analysis:
+  batch_size: 1000
+  max_retries: 5
+  timeout: 1800  # 30 minut 

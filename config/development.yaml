@@ -1,0 +1,46 @@
+# Konfiguracja środowiska deweloperskiego
+
+llm_model_name: "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo"
+base_dir: "/Users/wojtek/Documents/bioinf/coordinates-lit/"
+paths:
+  coordinates_extraction_examples: "data/coordinates-extraction/example-coordinates.txt"
+  coordinates_regexes: "data/coordinates-extraction/coordinates_regexes.json"
+  so_obo: 'data/sequence-ontology/so-edit.obo'
+  lancedb_path: 'index/lancedb'
+
+# Contact information for API services
+contact:
+  email: "sitekwb@gmail.com"  # Email for PubTator API
+
+api_keys:
+  together: "tgp_v1_lKW5Q0Txf28ByQg_Ys06noFmMYO8G_sKHd1eqUexC7s"
+
+# Ustawienia API
+api:
+  timeout: 30
+  retry_attempts: 3
+  retry_delay: 1
+
+# Ustawienia logowania
+logging:
+  level: DEBUG
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: "logs/development.log"
+
+# Ustawienia cache
+cache:
+  enabled: true
+  expiry: 3600  # 1 godzina
+  directory: "data/cache"
+
+# Ustawienia danych
+data:
+  raw_directory: "data/raw"
+  processed_directory: "data/processed"
+  max_file_size: 10485760  # 10MB
+
+# Ustawienia analizy
+analysis:
+  batch_size: 100
+  max_retries: 3
+  timeout: 300  # 5 minut 
