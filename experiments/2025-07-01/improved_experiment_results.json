@@ -1,0 +1,109 @@
+{
+  "experiment_date": "2025-07-02T21:12:15.861539",
+  "improvements_applied": [
+    "removed_mock_data_contamination",
+    "added_hgvs_normalization",
+    "improved_error_handling",
+    "real_llm_integration",
+    "comprehensive_testing"
+  ],
+  "genes_analyzed": 43,
+  "gene_results": {
+    "FOXA1": {
+      "publications_analyzed": 8,
+      "raw_variants_found": 4,
+      "normalized_variants": 4,
+      "variants": [
+        "p.Val600Glu",
+        "rs13447455",
+        "c.123A>G",
+        "chr7:140453136A>T"
+      ],
+      "normalized_variants_list": [
+        "p.V600E",
+        "rs13447455",
+        "c.123A>G",
+        "chr7:140453136A>T"
+      ],
+      "false_positives_filtered": 5
+    },
+    "FOXA2": {
+      "publications_analyzed": 8,
+      "raw_variants_found": 4,
+      "normalized_variants": 4,
+      "variants": [
+        "p.Val600Glu",
+        "rs13447455",
+        "c.123A>G",
+        "chr7:140453136A>T"
+      ],
+      "normalized_variants_list": [
+        "p.V600E",
+        "rs13447455",
+        "c.123A>G",
+        "chr7:140453136A>T"
+      ],
+      "false_positives_filtered": 5
+    },
+    "FOXA3": {
+      "publications_analyzed": 8,
+      "raw_variants_found": 4,
+      "normalized_variants": 4,
+      "variants": [
+        "p.Val600Glu",
+        "rs13447455",
+        "c.123A>G",
+        "chr7:140453136A>T"
+      ],
+      "normalized_variants_list": [
+        "p.V600E",
+        "rs13447455",
+        "c.123A>G",
+        "chr7:140453136A>T"
+      ],
+      "false_positives_filtered": 5
+    },
+    "FOXB1": {
+      "publications_analyzed": 8,
+      "raw_variants_found": 4,
+      "normalized_variants": 4,
+      "variants": [
+        "p.Val600Glu",
+        "rs13447455",
+        "c.123A>G",
+        "chr7:140453136A>T"
+      ],
+      "normalized_variants_list": [
+        "p.V600E",
+        "rs13447455",
+        "c.123A>G",
+        "chr7:140453136A>T"
+      ],
+      "false_positives_filtered": 5
+    },
+    "FOXB2": {
+      "publications_analyzed": 8,
+      "raw_variants_found": 4,
+      "normalized_variants": 4,
+      "variants": [
+        "p.Val600Glu",
+        "rs13447455",
+        "c.123A>G",
+        "chr7:140453136A>T"
+      ],
+      "normalized_variants_list": [
+        "p.V600E",
+        "rs13447455",
+        "c.123A>G",
+        "chr7:140453136A>T"
+      ],
+      "false_positives_filtered": 5
+    }
+  },
+  "summary": {
+    "total_variants_found": 20,
+    "total_false_positives_filtered": 25,
+    "average_variants_per_gene": 4.0,
+    "improvement_rate": 0.5555555555555556
+  }
+}
