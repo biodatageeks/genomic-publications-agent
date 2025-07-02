@@ -27,7 +27,7 @@ from langchain_openai import ChatOpenAI
 # Add project root to path
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
 
-from src.utils.llm.manager import LlmManager
+from src.utils.llm import LlmManager
 from src.utils.config.config import Config
 
 
@@ -46,8 +46,8 @@ def mock_config():
 
 @pytest.fixture
 def mock_getpass():
-    """Creates a mock for getpass to avoid prompting during tests"""
-    with patch('src.utils.llm.manager.LlmManager.getpass') as mock:
+    """Creates a mock for getpass (not used by current LlmApiProvider but kept for compatibility)"""
+    with patch('getpass.getpass') as mock:
         mock.return_value = "mock_user_input_api_key"
         yield mock
 
@@ -55,7 +55,7 @@ def mock_getpass():
 @pytest.fixture
 def mock_logging():
     """Creates a mock for logger to avoid console output during tests"""
-    with patch('src.utils.llm.manager.LlmManager.logging.getLogger') as mock:
+    with patch('src.utils.llm.provider.logging.getLogger') as mock:
         mock_logger = MagicMock()
         mock.return_value = mock_logger
         yield mock_logger
@@ -64,7 +64,7 @@ def mock_logging():
 @pytest.fixture
 def mock_chat_together():
     """Creates a mock for ChatTogether"""
-    with patch('src.utils.llm.manager.LlmManager.ChatTogether') as mock:
+    with patch('src.utils.llm.provider.Together') as mock:
         mock_instance = MagicMock(spec=ChatTogether)
         mock.return_value = mock_instance
         yield mock
@@ -73,7 +73,7 @@ def mock_chat_together():
 @pytest.fixture
 def mock_chat_openai():
     """Creates a mock for ChatOpenAI"""
-    with patch('src.utils.llm.manager.LlmManager.ChatOpenAI') as mock:
+    with patch('src.utils.llm.provider.ChatOpenAI') as mock:
         mock_instance = MagicMock(spec=ChatOpenAI)
         mock.return_value = mock_instance
         yield mock
@@ -94,68 +94,68 @@ class TestLlmManagerInitialization:
 
     def test_init_with_mocked_together_api(self, mock_config, mock_getpass, mock_logging, mock_chat_together):
         """Test initialization with Together API using mocks"""
-        with patch('src.utils.llm.manager.LlmManager.Config', return_value=mock_config):
-            # Initialize with together endpoint
-            manager = LlmManager('together', 'test-model')
+        with patch('src.utils.llm.provider.Config', return_value=mock_config):
+            # Initialize with together provider
+            manager = LlmManager(provider='together', model_name='test-model')
             
             # Check that the right objects were called
             mock_config.get_together_api_key.assert_called_once()
             mock_chat_together.assert_called_once()
             
             # Check model name was set correctly
-            assert manager.llm_model_name == 'test-model'
+            assert manager.model_name == 'test-model'
             # Check LLM object was created
             assert manager.llm is mock_chat_together.return_value
 
     def test_init_with_mocked_openai_api(self, mock_config, mock_getpass, mock_logging, mock_chat_openai):
         """Test initialization with OpenAI API using mocks"""
-        with patch('src.utils.llm.manager.LlmManager.Config', return_value=mock_config):
-            # Initialize with gpt endpoint
-            manager = LlmManager('gpt', 'test-model')
+        with patch('src.utils.llm.provider.Config', return_value=mock_config):
+            # Initialize with openai provider
+            manager = LlmManager(provider='openai', model_name='test-model')
             
             # Check that the right objects were called
             mock_config.get_openai_api_key.assert_called_once()
             mock_chat_openai.assert_called_once()
             
             # Check model name was set correctly
-            assert manager.llm_model_name == 'test-model'
+            assert manager.model_name == 'test-model'
             # Check LLM object was created
             assert manager.llm is mock_chat_openai.return_value
 
     def test_init_with_default_model_name(self, mock_config, mock_getpass, mock_logging, mock_chat_together):
         """Test initialization with default model name from config"""
-        with patch('src.utils.llm.manager.LlmManager.Config', return_value=mock_config):
+        with patch('src.utils.llm.provider.Config', return_value=mock_config):
             # Initialize without model name
-            manager = LlmManager('together')
+            manager = LlmManager(provider='together')
             
             # Config should be checked for model name
             mock_config.get_llm_model_name.assert_called_once()
             
             # Check model name was set correctly from config
-            assert manager.llm_model_name == mock_config.get_llm_model_name.return_value
+            assert manager.model_name == mock_config.get_llm_model_name.return_value
 
     def test_init_with_invalid_endpoint(self, mock_config, mock_getpass, mock_logging):
         """Test initialization with invalid endpoint"""
-        with patch('src.utils.llm.manager.LlmManager.Config', return_value=mock_config):
+        with patch('src.utils.llm.provider.Config', return_value=mock_config):
             # Initialize with invalid endpoint
             with pytest.raises(ValueError) as exc_info:
-                LlmManager('invalid_endpoint')
+                LlmManager(provider='invalid_endpoint')
             
             # Check error message
-            assert "Invalid LLM endpoint" in str(exc_info.value)
+            assert "Unsupported LLM provider" in str(exc_info.value)
 
     def test_get_llm(self, mock_config, mock_getpass, mock_logging, mock_chat_together):
         """Test get_llm method"""
-        with patch('src.utils.llm.manager.LlmManager.Config', return_value=mock_config):
-            manager = LlmManager('together', 'test-model')
+        with patch('src.utils.llm.provider.Config', return_value=mock_config):
+            manager = LlmManager(provider='together', model_name='test-model')
             llm = manager.get_llm()
             assert llm is mock_chat_together.return_value
 
-    def test_get_llm_model_name(self, mock_config, mock_getpass, mock_logging, mock_chat_together):
-        """Test get_llm_model_name method"""
-        with patch('src.utils.llm.manager.LlmManager.Config', return_value=mock_config):
-            manager = LlmManager('together', 'test-model')
-            model_name = manager.get_llm_model_name()
+    def test_get_model_name(self, mock_config, mock_getpass, mock_logging, mock_chat_together):
+        """Test get_model_name method"""
+        with patch('src.utils.llm.provider.Config', return_value=mock_config):
+            manager = LlmManager(provider='together', model_name='test-model')
+            model_name = manager.get_model_name()
             assert model_name == 'test-model'
 
 
@@ -165,8 +165,8 @@ class TestLlmManagerAPIKeys:
 
     def test_together_api_key_from_config(self, mock_config, mock_getpass, mock_logging, mock_chat_together):
         """Test using Together API key from config"""
-        with patch('src.utils.llm.manager.LlmManager.Config', return_value=mock_config):
-            LlmManager('together', 'test-model')
+        with patch('src.utils.llm.provider.Config', return_value=mock_config):
+            LlmManager(provider='together', model_name='test-model')
             
             # Should use API key from config
             mock_config.get_together_api_key.assert_called_once()
@@ -178,10 +178,10 @@ class TestLlmManagerAPIKeys:
         # Set empty API key in config
         mock_config.get_together_api_key.return_value = ""
         
-        with patch('src.utils.llm.manager.LlmManager.Config', return_value=mock_config), \
+        with patch('src.utils.llm.provider.Config', return_value=mock_config), \
              patch.dict('os.environ', {'TOGETHER_API_KEY': 'env_api_key'}):
             
-            LlmManager('together', 'test-model')
+            LlmManager(provider='together', model_name='test-model')
             
             # Should check config but not prompt user
             mock_config.get_together_api_key.assert_called_once()
@@ -192,10 +192,10 @@ class TestLlmManagerAPIKeys:
         # Set empty API key in config
         mock_config.get_together_api_key.return_value = ""
         
-        with patch('src.utils.llm.manager.LlmManager.Config', return_value=mock_config), \
+        with patch('src.utils.llm.provider.Config', return_value=mock_config), \
              patch.dict('os.environ', {}, clear=True):
             
-            LlmManager('together', 'test-model')
+            LlmManager(provider='together', model_name='test-model')
             
             # Should check config and prompt user
             mock_config.get_together_api_key.assert_called_once()
@@ -203,8 +203,8 @@ class TestLlmManagerAPIKeys:
 
     def test_openai_api_key_from_config(self, mock_config, mock_getpass, mock_logging, mock_chat_openai):
         """Test using OpenAI API key from config"""
-        with patch('src.utils.llm.manager.LlmManager.Config', return_value=mock_config):
-            LlmManager('gpt', 'test-model')
+        with patch('src.utils.llm.provider.Config', return_value=mock_config):
+            LlmManager(provider='openai', model_name='test-model')
             
             # Should use API key from config
             mock_config.get_openai_api_key.assert_called_once()
@@ -216,10 +216,10 @@ class TestLlmManagerAPIKeys:
         # Set empty API key in config
         mock_config.get_openai_api_key.return_value = ""
         
-        with patch('src.utils.llm.manager.LlmManager.Config', return_value=mock_config), \
+        with patch('src.utils.llm.provider.Config', return_value=mock_config), \
              patch.dict('os.environ', {'OPENAI_API_KEY': 'env_api_key'}):
             
-            LlmManager('gpt', 'test-model')
+            LlmManager(provider='openai', model_name='test-model')
             
             # Should check config but not prompt user
             mock_config.get_openai_api_key.assert_called_once()
@@ -230,10 +230,10 @@ class TestLlmManagerAPIKeys:
         # Set empty API key in config
         mock_config.get_openai_api_key.return_value = ""
         
-        with patch('src.utils.llm.manager.LlmManager.Config', return_value=mock_config), \
+        with patch('src.utils.llm.provider.Config', return_value=mock_config), \
              patch.dict('os.environ', {}, clear=True):
             
-            LlmManager('gpt', 'test-model')
+            LlmManager(provider='openai', model_name='test-model')
             
             # Should check config and prompt user
             mock_config.get_openai_api_key.assert_called_once()
@@ -246,9 +246,9 @@ class TestLlmManagerParameters:
 
     def test_together_with_temperature(self, mock_config, mock_getpass, mock_logging, mock_chat_together):
         """Test setting temperature for Together API"""
-        with patch('src.utils.llm.manager.LlmManager.Config', return_value=mock_config):
+        with patch('src.utils.llm.provider.Config', return_value=mock_config):
             # Set custom temperature
-            LlmManager('together', 'test-model', temperature=0.5)
+            LlmManager(provider='together', model_name='test-model', temperature=0.5)
             
             # Check ChatTogether was called with right temperature
             mock_chat_together.assert_called_once()
@@ -257,9 +257,9 @@ class TestLlmManagerParameters:
 
     def test_openai_with_temperature(self, mock_config, mock_getpass, mock_logging, mock_chat_openai):
         """Test setting temperature for OpenAI API"""
-        with patch('src.utils.llm.manager.LlmManager.Config', return_value=mock_config):
+        with patch('src.utils.llm.provider.Config', return_value=mock_config):
             # Set custom temperature
-            LlmManager('gpt', 'test-model', temperature=0.3)
+            LlmManager(provider='openai', model_name='test-model', temperature=0.3)
             
             # Check ChatOpenAI was called with right temperature
             mock_chat_openai.assert_called_once()
@@ -268,9 +268,9 @@ class TestLlmManagerParameters:
 
     def test_default_temperature(self, mock_config, mock_getpass, mock_logging, mock_chat_together):
         """Test default temperature value"""
-        with patch('src.utils.llm.manager.LlmManager.Config', return_value=mock_config):
+        with patch('src.utils.llm.provider.Config', return_value=mock_config):
             # Use default temperature
-            LlmManager('together', 'test-model')
+            LlmManager(provider='together', model_name='test-model')
             
             # Check ChatTogether was called with default temperature
             mock_chat_together.assert_called_once()
@@ -284,12 +284,12 @@ class TestLlmManagerFunctional:
 
     def test_together_model_creation(self, mock_config, mock_getpass, mock_logging):
         """Test that TogetherAI model is created correctly"""
-        with patch('src.utils.llm.manager.LlmManager.Config', return_value=mock_config), \
+        with patch('src.utils.llm.provider.Config', return_value=mock_config), \
              patch('src.utils.llm.manager.LlmManager.ChatTogether') as mock_chat_together:
             
             mock_chat_together.return_value = MagicMock()
             
-            manager = LlmManager('together', 'claude-3-opus')
+            manager = LlmManager(provider='together', model_name='claude-3-opus')
             
             # Check that ChatTogether was called with correct parameters
             mock_chat_together.assert_called_once_with(
@@ -302,12 +302,12 @@ class TestLlmManagerFunctional:
 
     def test_openai_model_creation(self, mock_config, mock_getpass, mock_logging):
         """Test that OpenAI model is created correctly"""
-        with patch('src.utils.llm.manager.LlmManager.Config', return_value=mock_config), \
+        with patch('src.utils.llm.provider.Config', return_value=mock_config), \
              patch('src.utils.llm.manager.LlmManager.ChatOpenAI') as mock_chat_openai:
             
             mock_chat_openai.return_value = MagicMock()
             
-            manager = LlmManager('gpt', 'gpt-4-turbo')
+            manager = LlmManager(provider='openai', model_name='gpt-4-turbo')
             
             # Check that ChatOpenAI was called with correct parameters
             mock_chat_openai.assert_called_once_with(temperature=0.7)
@@ -321,19 +321,19 @@ class TestLlmManagerRealAPI:
     def test_together_real_init(self, real_config):
         """Test initialization with real Together API"""
         api_key = real_config.get_together_api_key()
-        model_name = real_config.get_llm_model_name()
+        model_name = real_config.get_model_name()
         
         # Skip if no API key
         if not api_key:
             pytest.skip("No Together API key configured for real API test")
         
         # Create real LlmManager
-        manager = LlmManager('together', model_name)
+        manager = LlmManager(provider='together', model_name=model_name)
         
         # Check model creation
         assert manager.llm is not None
         assert isinstance(manager.llm, ChatTogether)
-        assert manager.get_llm_model_name() == model_name
+        assert manager.get_model_name() == model_name
 
     @realapi
     def test_openai_real_init(self, real_config):
@@ -345,12 +345,12 @@ class TestLlmManagerRealAPI:
             pytest.skip("No OpenAI API key configured for real API test")
         
         # Create real LlmManager
-        manager = LlmManager('gpt', 'gpt-3.5-turbo')
+        manager = LlmManager(provider='openai', model_name='gpt-3.5-turbo')
         
         # Check model creation
         assert manager.llm is not None
         assert isinstance(manager.llm, ChatOpenAI)
-        assert manager.get_llm_model_name() == 'gpt-3.5-turbo'
+        assert manager.get_model_name() == 'gpt-3.5-turbo'
 
 
 # Edge Case and Error Handling Tests
@@ -362,41 +362,41 @@ class TestLlmManagerEdgeCases:
         # Make config return None for model name
         mock_config.get_llm_model_name.return_value = None
         
-        with patch('src.utils.llm.manager.LlmManager.Config', return_value=mock_config):
+        with patch('src.utils.llm.provider.Config', return_value=mock_config):
             # Should raise assertion error
             with pytest.raises(AssertionError) as exc_info:
-                LlmManager('together', None)
+                LlmManager(provider='together', model_name=None)
             
             assert "Model name must be specified" in str(exc_info.value)
 
     def test_empty_model_name(self, mock_config, mock_getpass, mock_logging, mock_chat_together):
         """Test with empty string model name"""
-        with patch('src.utils.llm.manager.LlmManager.Config', return_value=mock_config):
+        with patch('src.utils.llm.provider.Config', return_value=mock_config):
             # Empty string is not None so should work
-            manager = LlmManager('together', "")
+            manager = LlmManager(provider='together', model_name="")
             
             # Should have empty string as model name
-            assert manager.get_llm_model_name() == ""
+            assert manager.get_model_name() == ""
 
     def test_error_handling_in_together_init(self, mock_config, mock_getpass, mock_logging):
         """Test error handling when ChatTogether raises exception"""
-        with patch('src.utils.llm.manager.LlmManager.Config', return_value=mock_config), \
+        with patch('src.utils.llm.provider.Config', return_value=mock_config), \
              patch('src.utils.llm.manager.LlmManager.ChatTogether', side_effect=ValueError("Model initialization error")):
             
             # Should propagate the error
             with pytest.raises(ValueError) as exc_info:
-                LlmManager('together', 'test-model')
+                LlmManager(provider='together', model_name='test-model')
             
             assert "Model initialization error" in str(exc_info.value)
 
     def test_error_handling_in_openai_init(self, mock_config, mock_getpass, mock_logging):
         """Test error handling when ChatOpenAI raises exception"""
-        with patch('src.utils.llm.manager.LlmManager.Config', return_value=mock_config), \
+        with patch('src.utils.llm.provider.Config', return_value=mock_config), \
              patch('src.utils.llm.manager.LlmManager.ChatOpenAI', side_effect=ValueError("Model initialization error")):
             
             # Should propagate the error
             with pytest.raises(ValueError) as exc_info:
-                LlmManager('gpt', 'test-model')
+                LlmManager(provider='openai', model_name='test-model')
             
             assert "Model initialization error" in str(exc_info.value)
 
@@ -407,8 +407,8 @@ class TestLlmManagerIntegration:
 
     def test_with_coordinates_inference(self, mock_config, mock_getpass, mock_logging, mock_chat_together):
         """Test integration with CoordinatesInference mock"""
-        with patch('src.utils.llm.manager.LlmManager.Config', return_value=mock_config):
-            manager = LlmManager('together', 'test-model')
+        with patch('src.utils.llm.provider.Config', return_value=mock_config):
+            manager = LlmManager(provider='together', model_name='test-model')
             
             # Create mock CoordinatesInference
             mock_coords_inference = MagicMock()
@@ -425,7 +425,7 @@ class TestLlmManagerIntegration:
 
     def test_with_llm_context_analyzer(self, mock_config, mock_getpass, mock_logging, mock_chat_together):
         """Test integration with LlmContextAnalyzer mock"""
-        with patch('src.utils.llm.manager.LlmManager.Config', return_value=mock_config), \
+        with patch('src.utils.llm.provider.Config', return_value=mock_config), \
              patch('src.utils.llm.manager.LlmManager.LlmManager') as mock_llm_manager_class:
             
             # Create mock LlmManager that returns our mock ChatTogether
@@ -440,10 +440,10 @@ class TestLlmManagerIntegration:
             mock_analyzer_class = MagicMock(return_value=mock_analyzer)
             
             # Simulate LlmContextAnalyzer creating LlmManager
-            mock_analyzer_class(llm_model_name='test-model')
+            mock_analyzer_class(model_name='test-model')
             
             # Check LlmManager was created as expected
-            mock_llm_manager_class.assert_called_once_with('together', 'test-model')
+            mock_llm_manager_class.assert_called_once_with(provider='together', model_name='test-model')
 
 
 # Additional Tests
@@ -455,10 +455,10 @@ class TestLlmManagerAdditional:
         # Set empty API key in config
         mock_config.get_together_api_key.return_value = ""
         
-        with patch('src.utils.llm.manager.LlmManager.Config', return_value=mock_config), \
+        with patch('src.utils.llm.provider.Config', return_value=mock_config), \
              patch.dict('os.environ', {'TOGETHER_API_KEY': 'env_api_key'}):
             
-            LlmManager('together', 'test-model')
+            LlmManager(provider='together', model_name='test-model')
             
             # Should not prompt user when env var exists
             mock_getpass.assert_not_called()
@@ -468,11 +468,11 @@ class TestLlmManagerAdditional:
         # Set API key in config
         mock_config.get_together_api_key.return_value = "config_api_key"
         
-        with patch('src.utils.llm.manager.LlmManager.Config', return_value=mock_config), \
+        with patch('src.utils.llm.provider.Config', return_value=mock_config), \
              patch.dict('os.environ', {'TOGETHER_API_KEY': 'env_api_key'}), \
              patch.object(os.environ, 'get') as mock_env_get:
             
-            LlmManager('together', 'test-model')
+            LlmManager(provider='together', model_name='test-model')
             
             # Should not check env when config has key
             mock_env_get.assert_not_called()
@@ -481,21 +481,21 @@ class TestLlmManagerAdditional:
 
     def test_logging_calls(self, mock_config, mock_getpass, mock_logging, mock_chat_together):
         """Test that appropriate logging calls are made"""
-        with patch('src.utils.llm.manager.LlmManager.Config', return_value=mock_config):
-            LlmManager('together', 'test-model')
+        with patch('src.utils.llm.provider.Config', return_value=mock_config):
+            LlmManager(provider='together', model_name='test-model')
             
             # Should log model loading
             mock_logging.info.assert_called_with('Loaded TogetherAI model: test-model')
 
     def test_multiple_instances(self, mock_config, mock_getpass, mock_logging, mock_chat_together, mock_chat_openai):
         """Test creating multiple LlmManager instances"""
-        with patch('src.utils.llm.manager.LlmManager.Config', return_value=mock_config):
-            manager1 = LlmManager('together', 'model1')
-            manager2 = LlmManager('gpt', 'model2')
+        with patch('src.utils.llm.provider.Config', return_value=mock_config):
+            manager1 = LlmManager(provider='together', model_name='model1')
+            manager2 = LlmManager(provider='openai', model_name='model2')
             
             # Each should have correct endpoint and model
             assert manager1.llm is mock_chat_together.return_value
-            assert manager1.llm_model_name == 'model1'
+            assert manager1.model_name == 'model1'
             
             assert manager2.llm is mock_chat_openai.return_value
-            assert manager2.llm_model_name == 'model2' 
+            assert manager2.model_name == 'model2' 

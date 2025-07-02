@@ -22,7 +22,7 @@ from langchain.schema import HumanMessage, SystemMessage
 from src.models.data.clients.pubtator import PubTatorClient
 from src.models.data.clients.exceptions import PubTatorError
 from src.analysis.base.analyzer import BaseAnalyzer
-from src.utils.llm.manager import LlmManager
+from src.utils.llm import LlmManager
 from src.api.cache.cache import CacheManager
 
 
@@ -123,7 +123,7 @@ Response format:
         super().__init__(pubtator_client)
         self.logger = logging.getLogger(__name__)
         self.llm_model_name = llm_model_name
-        self.llm_manager = LlmManager('together', llm_model_name)
+        self.llm_manager = LlmManager(provider=None, model_name=llm_model_name)
         self.llm = self.llm_manager.get_llm()
         self.logger.info(f'Loaded LLM model: {llm_model_name}')
         

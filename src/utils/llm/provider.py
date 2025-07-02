@@ -1,8 +1,8 @@
 """
-Language Model Manager for handling interactions with LLM APIs.
+Language Model API Provider for handling interactions with LLM APIs.
 
 This module provides a consistent interface for working with different
-Language Model providers like OpenAI and TogetherAI.
+Language Model API providers like OpenAI and TogetherAI.
 """
 
 import logging
@@ -16,17 +16,17 @@ from src.utils.config.config import Config
 from src.models.data.clients.exceptions import LLMError
 
 
-class LlmManager:
+class LlmApiProvider:
     """
-    Manager for Language Model (LLM) interactions.
+    API Provider for Language Model (LLM) interactions.
     
     This class provides a unified interface for working with different LLM
-    providers like OpenAI and TogetherAI, handling authentication, model
+    API providers like OpenAI and TogetherAI, handling authentication, model
     selection, and API interactions.
     
     Example usage:
-        llm_manager = LlmManager('openai', 'gpt-4')
-        llm = llm_manager.get_llm()
+        llm_provider = LlmApiProvider('openai', 'gpt-4')
+        llm = llm_provider.get_llm()
         response = llm.invoke([HumanMessage(content="What is genomics?")])
     """
     
@@ -42,20 +42,28 @@ class LlmManager:
     # Model temperature settings
     DEFAULT_TEMPERATURE = 0.0
     
-    def __init__(self, provider: str, model_name: Optional[str] = None, 
+    def __init__(self, provider: Optional[str] = None, model_name: Optional[str] = None, 
                  temperature: float = DEFAULT_TEMPERATURE):
         """
-        Initializes the LLM Manager.
+        Initializes the LLM API Provider.
         
         Args:
-            provider: LLM provider name ("openai" or "together")
-            model_name: Name of the LLM model to use (provider-specific)
+            provider: LLM provider name ("openai" or "together"). If None, uses config default
+            model_name: Name of the LLM model to use (provider-specific). If None, uses config default
             temperature: Sampling temperature for generation (0.0-1.0)
             
         Raises:
             ValueError: If an unsupported provider is specified
         """
         self.logger = logging.getLogger(__name__)
+        
+        # Load configuration first
+        self.config = Config()
+        
+        # Set provider from config if not specified
+        if provider is None:
+            provider = self.config.get_llm_provider() or 'together'
+            self.logger.info(f"Using provider: {provider}")
         
         # Validate provider
         provider = provider.lower()
@@ -65,9 +73,6 @@ class LlmManager:
         
         self.provider = provider
         self.temperature = temperature
-        
-        # Load configuration
-        self.config = Config()
         
         # Set model name based on provider
         if model_name is None:
@@ -82,7 +87,7 @@ class LlmManager:
         # Initialize the LLM based on provider
         self._initialize_llm()
         
-        self.logger.info(f"Initialized LLM Manager with provider: {provider}, model: {model_name}")
+        self.logger.info(f"Initialized LLM API Provider with provider: {provider}, model: {model_name}")
     
     def _initialize_llm(self) -> None:
         """

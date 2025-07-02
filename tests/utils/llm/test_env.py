@@ -4,7 +4,7 @@ Tests for LLM environment configuration.
 import os
 import pytest
 from unittest.mock import patch
-from src.utils.llm.manager import LlmManager
+from src.utils.llm import LlmManager
 
 def test_openai_api_key():
     """Test OpenAI API key configuration."""

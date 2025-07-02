@@ -8,20 +8,10 @@ import os
 import re
 from typing import List, Dict, Any, Optional, Tuple, Union
 
-try:
-    import torch
-    import numpy as np
-    from transformers import AutoTokenizer, AutoModelForTokenClassification, BatchEncoding
-    HAS_TORCH = True
-except ImportError:
-    HAS_TORCH = False
-    torch = None
-    np = None
-    AutoTokenizer = None
-    AutoModelForTokenClassification = None
-    BatchEncoding = None
-
-from src.utils.llm.manager import LlmManager
+from src.utils.models.factory import ModelFactory
+from src.utils.models.base import BaseModelWrapper
+from src.utils.models.huggingface import HuggingFaceModelWrapper
+from src.utils.models.llm import LLMModelWrapper
 
 
 class VariantRecognizer:
@@ -33,42 +23,45 @@ class VariantRecognizer:
     Can also utilize LLM models for more advanced variant recognition.
     """
     
-    def __init__(self, llm_manager: Optional[LlmManager] = None, model_name: str = "gpt-3.5-turbo"):
+    def __init__(self, model_wrapper: Optional[BaseModelWrapper] = None, model_name: Optional[str] = None, 
+                 provider: Optional[str] = None):
         """
         Initializes the variant recognizer.
         
         Args:
-            llm_manager: Optional LlmManager instance for LLM-based variant recognition
-            model_name: Name of the model for variant recognition
+            model_wrapper: Optional model wrapper instance for variant recognition
+            model_name: Name of the model for variant recognition. If None, uses default
+            provider: Provider for LLM models (e.g., 'together', 'openai')
         """
-        self.llm_manager = llm_manager
-        self.model_name = model_name
+        if model_wrapper is not None:
+            if not isinstance(model_wrapper, BaseModelWrapper):
+                raise TypeError("model_wrapper must be an instance of BaseModelWrapper")
+            self.model_wrapper = model_wrapper
+            self.model_name = model_wrapper.model_name
+        elif model_name is not None:
+            # Auto-create appropriate wrapper
+            self.model_wrapper = ModelFactory.create(model_name, provider=provider)
+            self.model_name = model_name
+        else:
+            # Default to a common LLM model
+            self.model_name = "meta-llama/Meta-Llama-3.1-8B-Instruct"
+            self.model_wrapper = ModelFactory.create_llm(self.model_name, provider=provider or 'together')
         
-        # Only initialize HuggingFace models if needed for NER and torch is available
-        if self._is_huggingface_model():
-            if not HAS_TORCH:
-                raise ImportError("torch and transformers are required for HuggingFace models. "
-                                "Install them with: pip install torch transformers")
-            self.tokenizer = AutoTokenizer.from_pretrained(model_name)
-            self.model = AutoModelForTokenClassification.from_pretrained(model_name)
-            self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-            self.model.to(self.device)
-            self.id2label = self.model.config.id2label
-    
-    def _is_huggingface_model(self) -> bool:
-        """Check if the model is a HuggingFace model."""
-        return not self.model_name.startswith("gpt")
+        # For backward compatibility
+        self.device = self.model_wrapper.get_device()
+        self.id2label = self.model_wrapper.get_id2label()
     
     def get_llm(self):
         """
-        Get the LLM instance. Create a new LlmManager if not provided during initialization.
+        Get the LLM instance.
         
         Returns:
             LLM instance for text generation
         """
-        if self.llm_manager is None:
-            self.llm_manager = LlmManager('together', self.model_name)
-        return self.llm_manager.get_llm()
+        if self.model_wrapper.get_model_type() == "llm":
+            return self.model_wrapper.llm
+        else:
+            raise RuntimeError("Current model is not an LLM model")
     
     def tokenize_text(self, text: str):
         """
@@ -80,9 +73,10 @@ class VariantRecognizer:
         Returns:
             BatchEncoding object with tokens and attention masks
         """
-        if not HAS_TORCH:
-            raise ImportError("torch and transformers are required for tokenization")
-        return self.tokenizer(text, return_tensors="pt").to(self.device)
+        if self.model_wrapper.get_model_type() != "huggingface":
+            raise RuntimeError("Tokenization is only available for HuggingFace models")
+        
+        return self.model_wrapper.tokenize_text(text)
     
     def predict(self, text: str) -> List[str]:
         """
@@ -94,26 +88,31 @@ class VariantRecognizer:
         Returns:
             List of recognized variants
         """
-        if not HAS_TORCH:
-            raise ImportError("torch and transformers are required for NER predictions")
+        if self.model_wrapper.get_model_type() != "huggingface":
+            raise RuntimeError("NER prediction is only available for HuggingFace models")
             
-        tokenized_text = self.tokenize_text(text)
+        result = self.model_wrapper.predict(text)
         
-        with torch.no_grad():
-            outputs = self.model(**tokenized_text)
-            predictions = torch.argmax(outputs.logits, dim=2)
-        
-        token_predictions = [self.id2label[prediction.item()] for prediction in predictions[0]]
-        tokens = self.tokenizer.convert_ids_to_tokens(tokenized_text.input_ids[0].tolist())
-        
-        # Extract only tokens with variant labels
+        # Extract variant tokens from the result
         variant_tokens = []
-        for token, prediction in zip(tokens, token_predictions):
-            if prediction in ["B-Sequence_Variant", "I-Sequence_Variant", "variant", "sequence"]:
-                # Remove special characters and filter out empty tokens
-                cleaned_token = token.replace("#", "").replace("▁", "").strip()
-                if cleaned_token:
-                    variant_tokens.append(cleaned_token)
+        if 'predictions' in result and result['predictions']:
+            prediction = result['predictions'][0]
+            if 'entities' in prediction:
+                # Use entities if available
+                for entity in prediction['entities']:
+                    if entity['label'].lower() in ['sequence_variant', 'variant', 'mutation']:
+                        variant_tokens.append(entity['text'])
+            elif 'tokens' in prediction and 'predictions' in prediction:
+                # Fallback to token-level processing
+                tokens = prediction['tokens']
+                token_predictions = prediction['predictions']
+                
+                for token, pred in zip(tokens, token_predictions):
+                    if pred in ["B-Sequence_Variant", "I-Sequence_Variant", "variant", "sequence"]:
+                        # Remove special characters and filter out empty tokens
+                        cleaned_token = token.replace("#", "").replace("▁", "").strip()
+                        if cleaned_token:
+                            variant_tokens.append(cleaned_token)
         
         return variant_tokens
     
@@ -188,16 +187,17 @@ Variants:
         Returns:
             List of recognized variants
         """
-        llm = self.get_llm()
+        if self.model_wrapper.get_model_type() != "llm":
+            raise RuntimeError("LLM variant recognition is only available for LLM models")
+            
         prompt = self.generate_llm_prompt(text)
-        response = llm.invoke(prompt)
+        result = self.model_wrapper.predict(prompt)
         
-        if isinstance(response, str):
+        if 'predictions' in result and result['predictions']:
+            response = result['predictions'][0].get('generated_text', '')
             return self.parse_llm_response(response)
         else:
-            # Handle langchain output if needed
-            response_text = str(response)
-            return self.parse_llm_response(response_text)
+            return []
     
     def recognize_variants_file(self, file_path: str) -> List[str]:
         """
@@ -212,7 +212,12 @@ Variants:
         with open(file_path, "r", encoding="utf-8") as file:
             text = file.read()
         
-        variants = self.recognize_variants_text(text)
+        # Use appropriate method based on model type
+        if self.model_wrapper.get_model_type() == "huggingface":
+            variants = self.predict(text)
+        else:
+            variants = self.recognize_variants_text(text)
+        
         return variants
     
     def recognize_variants_dir(self, dir_path: str, extensions: Optional[List[str]] = None) -> Dict[str, List[str]]:
@@ -240,7 +245,7 @@ Variants:
                     file_path = os.path.join(dir_path, file_name)
                     if os.path.isfile(file_path):
                         try:
-                            variants = self.recognize_variants_text(open(file_path, "r", encoding="utf-8").read())
+                            variants = self.recognize_variants_file(file_path)
                             results[file_name] = variants
                         except Exception as e:
                             print(f"Error processing file {file_path}: {str(e)}")
@@ -323,7 +328,7 @@ Variants:
         Returns:
             Tuple (found, list_of_variants)
         """
-        if self._is_huggingface_model():
+        if self.model_wrapper.get_model_type() == "huggingface":
             predicted_variants = self.predict(text)
         else:
             predicted_variants = self.recognize_variants_text(text)
