@@ -4,7 +4,7 @@ Tests for LLM manager.
 import os
 import pytest
 from unittest.mock import patch, MagicMock
-from src.utils.llm.manager import LlmManager
+from src.utils.llm import LlmManager
 
 @pytest.fixture
 def mock_config():

@@ -89,6 +89,15 @@ class Config:
         """
         return self.get('llm', 'model_name', default='gpt-3.5-turbo')
     
+    def get_llm_provider(self) -> str:
+        """
+        Get the default LLM provider from configuration.
+        
+        Returns:
+            str: The configured LLM provider or default
+        """
+        return self.get('llm', 'provider', default='together')
+    
     def get_openai_api_key(self) -> Optional[str]:
         """
         Get the OpenAI API key from configuration or environment.
@@ -116,6 +125,69 @@ class Config:
             
         # In production, prefer environment variable
         return os.getenv('TOGETHER_API_KEY') or self.get('api_keys', 'together')
+    
+    def get_default_embedding_model(self) -> str:
+        """
+        Get the default embedding model from configuration.
+        
+        Returns:
+            str: The configured default embedding model
+        """
+        return self.get('models', 'embeddings', 'default', default='sentence-transformers/all-MiniLM-L6-v2')
+    
+    def get_alternative_embedding_models(self) -> List[str]:
+        """
+        Get the list of alternative embedding models from configuration.
+        
+        Returns:
+            List[str]: List of alternative embedding models
+        """
+        return self.get('models', 'embeddings', 'alternatives', default=[])
+    
+    def get_default_tokenizer_model(self) -> str:
+        """
+        Get the default tokenizer model from configuration.
+        
+        Returns:
+            str: The configured default tokenizer model
+        """
+        return self.get('models', 'tokenizer', 'default', default='bert-base-uncased')
+    
+    def get_default_classification_model(self) -> str:
+        """
+        Get the default classification model from configuration.
+        
+        Returns:
+            str: The configured default classification model
+        """
+        return self.get('models', 'classification', 'default', default='cardiffnlp/twitter-roberta-base-sentiment-latest')
+    
+    def get_sentiment_classification_model(self) -> str:
+        """
+        Get the sentiment classification model from configuration.
+        
+        Returns:
+            str: The configured sentiment classification model
+        """
+        return self.get('models', 'classification', 'sentiment', default='cardiffnlp/twitter-roberta-base-sentiment-latest')
+    
+    def get_default_chat_model(self) -> str:
+        """
+        Get the default chat model from configuration.
+        
+        Returns:
+            str: The configured default chat model
+        """
+        return self.get('models', 'chat', 'default', default='meta-llama/Meta-Llama-3.1-8B-Instruct')
+    
+    def get_default_chat_provider(self) -> str:
+        """
+        Get the default chat provider from configuration.
+        
+        Returns:
+            str: The configured default chat provider
+        """
+        return self.get('models', 'chat', 'provider', default='together')
     
     def get_contact_email(self) -> str:
         """

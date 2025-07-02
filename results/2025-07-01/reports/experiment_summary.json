@@ -1,0 +1,33 @@
+{
+  "experiment_date": "2025-07-01T16:40:24.235136",
+  "genes_tested": [
+    "FOXA1",
+    "FOXB1",
+    "FOXC1"
+  ],
+  "total_genes": 3,
+  "total_pmids": 1700,
+  "litvar_variants": 962,
+  "predicted_variants": 78,
+  "pubtator_variants": 25,
+  "gene_details": {
+    "FOXA1": {
+      "pmids": 1000,
+      "litvar_variants": 410,
+      "predicted_variants": 23,
+      "pubtator_variants": 6
+    },
+    "FOXB1": {
+      "pmids": 18,
+      "litvar_variants": 100,
+      "predicted_variants": 24,
+      "pubtator_variants": 4
+    },
+    "FOXC1": {
+      "pmids": 682,
+      "litvar_variants": 452,
+      "predicted_variants": 31,
+      "pubtator_variants": 15
+    }
+  }
+}

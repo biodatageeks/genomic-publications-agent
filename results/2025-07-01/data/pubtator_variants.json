@@ -1,0 +1,208 @@
+{
+  "FOXA1": [
+    {
+      "pmid": "30823486",
+      "variant": "rs13447455",
+      "variant_id": "36",
+      "gene": "FOXA1",
+      "source": "pubtator_annotation",
+      "type": "variant"
+    },
+    {
+      "pmid": "30823486",
+      "variant": "rs13447455",
+      "variant_id": "40",
+      "gene": "FOXA1",
+      "source": "pubtator_annotation",
+      "type": "variant"
+    },
+    {
+      "pmid": "35078818",
+      "variant": "Y537S",
+      "variant_id": "47",
+      "gene": "FOXA1",
+      "source": "pubtator_annotation",
+      "type": "variant"
+    },
+    {
+      "pmid": "35078818",
+      "variant": "D538G",
+      "variant_id": "48",
+      "gene": "FOXA1",
+      "source": "pubtator_annotation",
+      "type": "variant"
+    },
+    {
+      "pmid": "35078818",
+      "variant": "D538G",
+      "variant_id": "57",
+      "gene": "FOXA1",
+      "source": "pubtator_annotation",
+      "type": "variant"
+    },
+    {
+      "pmid": "35768267",
+      "variant": "rs12947788",
+      "variant_id": "44",
+      "gene": "FOXA1",
+      "source": "pubtator_annotation",
+      "type": "variant"
+    }
+  ],
+  "FOXB1": [
+    {
+      "pmid": "26635092",
+      "variant": "rs1999071",
+      "variant_id": "28",
+      "gene": "FOXB1",
+      "source": "pubtator_annotation",
+      "type": "variant"
+    },
+    {
+      "pmid": "26635092",
+      "variant": "rs10519031",
+      "variant_id": "31",
+      "gene": "FOXB1",
+      "source": "pubtator_annotation",
+      "type": "variant"
+    },
+    {
+      "pmid": "26635092",
+      "variant": "rs8029377",
+      "variant_id": "32",
+      "gene": "FOXB1",
+      "source": "pubtator_annotation",
+      "type": "variant"
+    },
+    {
+      "pmid": "26635092",
+      "variant": "rs1999071",
+      "variant_id": "33",
+      "gene": "FOXB1",
+      "source": "pubtator_annotation",
+      "type": "variant"
+    }
+  ],
+  "FOXC1": [
+    {
+      "pmid": "17653043",
+      "variant": "Ala85Pro",
+      "variant_id": "47",
+      "gene": "FOXC1",
+      "source": "pubtator_annotation",
+      "type": "variant"
+    },
+    {
+      "pmid": "18498376",
+      "variant": "Q120X",
+      "variant_id": "34",
+      "gene": "FOXC1",
+      "source": "pubtator_annotation",
+      "type": "variant"
+    },
+    {
+      "pmid": "25809640",
+      "variant": "c.*734A>T",
+      "variant_id": "36",
+      "gene": "FOXC1",
+      "source": "pubtator_annotation",
+      "type": "variant"
+    },
+    {
+      "pmid": "25809640",
+      "variant": "p.G447_G448insDG",
+      "variant_id": "40",
+      "gene": "FOXC1",
+      "source": "pubtator_annotation",
+      "type": "variant"
+    },
+    {
+      "pmid": "25809640",
+      "variant": "c.*734A>T",
+      "variant_id": "41",
+      "gene": "FOXC1",
+      "source": "pubtator_annotation",
+      "type": "variant"
+    },
+    {
+      "pmid": "25809640",
+      "variant": "p.I126S",
+      "variant_id": "42",
+      "gene": "FOXC1",
+      "source": "pubtator_annotation",
+      "type": "variant"
+    },
+    {
+      "pmid": "25809640",
+      "variant": "c.*734A>T",
+      "variant_id": "43",
+      "gene": "FOXC1",
+      "source": "pubtator_annotation",
+      "type": "variant"
+    },
+    {
+      "pmid": "25809640",
+      "variant": "c.*734A>T",
+      "variant_id": "44",
+      "gene": "FOXC1",
+      "source": "pubtator_annotation",
+      "type": "variant"
+    },
+    {
+      "pmid": "25809640",
+      "variant": "c.*734A>T",
+      "variant_id": "53",
+      "gene": "FOXC1",
+      "source": "pubtator_annotation",
+      "type": "variant"
+    },
+    {
+      "pmid": "32476818",
+      "variant": "p.Ter494Glu",
+      "variant_id": "45",
+      "gene": "FOXC1",
+      "source": "pubtator_annotation",
+      "type": "variant"
+    },
+    {
+      "pmid": "32476818",
+      "variant": "p.Ter494Glu",
+      "variant_id": "48",
+      "gene": "FOXC1",
+      "source": "pubtator_annotation",
+      "type": "variant"
+    },
+    {
+      "pmid": "40481210",
+      "variant": "c.382C > T",
+      "variant_id": "28",
+      "gene": "FOXC1",
+      "source": "pubtator_annotation",
+      "type": "variant"
+    },
+    {
+      "pmid": "40481210",
+      "variant": "p.H128Y",
+      "variant_id": "29",
+      "gene": "FOXC1",
+      "source": "pubtator_annotation",
+      "type": "variant"
+    },
+    {
+      "pmid": "40481210",
+      "variant": "c.382C > T",
+      "variant_id": "33",
+      "gene": "FOXC1",
+      "source": "pubtator_annotation",
+      "type": "variant"
+    },
+    {
+      "pmid": "40481210",
+      "variant": "p.H128Y",
+      "variant_id": "34",
+      "gene": "FOXC1",
+      "source": "pubtator_annotation",
+      "type": "variant"
+    }
+  ]
+}

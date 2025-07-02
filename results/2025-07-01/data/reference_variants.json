@@ -1,0 +1,5377 @@
+{
+  "FOXA1": [
+    {
+      "_id": "litvar@rs999746832##",
+      "pmids_count": 1,
+      "rsid": "rs999746832",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs995687055##",
+      "pmids_count": 1,
+      "rsid": "rs995687055",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs983365702##",
+      "pmids_count": 1,
+      "rsid": "rs983365702",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs979247753##",
+      "pmids_count": 1,
+      "rsid": "rs979247753",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs962828688##",
+      "pmids_count": 2,
+      "rsid": "rs962828688",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs959387525##",
+      "pmids_count": 1,
+      "rsid": "rs959387525",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs938108984##",
+      "pmids_count": 1,
+      "rsid": "rs938108984",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs926719052##",
+      "pmids_count": 1,
+      "rsid": "rs926719052",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs926601303##",
+      "pmids_count": 1,
+      "rsid": "rs926601303",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs911822##",
+      "pmids_count": 5,
+      "rsid": "rs911822",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs898912091##",
+      "pmids_count": 3,
+      "rsid": "rs898912091",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs879940115##",
+      "pmids_count": 1,
+      "rsid": "rs879940115",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs879499034##",
+      "pmids_count": 15,
+      "rsid": "rs879499034",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs879158704##",
+      "pmids_count": 1,
+      "rsid": "rs879158704",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs867473250##",
+      "pmids_count": 4,
+      "rsid": "rs867473250",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs867072933##",
+      "pmids_count": 1,
+      "rsid": "rs867072933",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs866443101##",
+      "pmids_count": 3,
+      "rsid": "rs866443101",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs80196093##",
+      "pmids_count": 1,
+      "rsid": "rs80196093",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs79519281##",
+      "pmids_count": 10,
+      "rsid": "rs79519281",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs781269308##",
+      "pmids_count": 3,
+      "rsid": "rs781269308",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs781258385##",
+      "pmids_count": 1,
+      "rsid": "rs781258385",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs781104468##",
+      "pmids_count": 1,
+      "rsid": "rs781104468",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs780416288##",
+      "pmids_count": 1,
+      "rsid": "rs780416288",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs778808721##",
+      "pmids_count": 1,
+      "rsid": "rs778808721",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs777922164##",
+      "pmids_count": 1,
+      "rsid": "rs777922164",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs777832140##",
+      "pmids_count": 1,
+      "rsid": "rs777832140",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs777725133##",
+      "pmids_count": 2,
+      "rsid": "rs777725133",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs777242818##",
+      "pmids_count": 1,
+      "rsid": "rs777242818",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs776810070##",
+      "pmids_count": 1,
+      "rsid": "rs776810070",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs775489171##",
+      "pmids_count": 1,
+      "rsid": "rs775489171",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs773971748##",
+      "pmids_count": 1,
+      "rsid": "rs773971748",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs773810596##",
+      "pmids_count": 1,
+      "rsid": "rs773810596",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs773144107##",
+      "pmids_count": 1,
+      "rsid": "rs773144107",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs773103285##",
+      "pmids_count": 1,
+      "rsid": "rs773103285",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs772839489##",
+      "pmids_count": 1,
+      "rsid": "rs772839489",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs772117929##",
+      "pmids_count": 1,
+      "rsid": "rs772117929",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs771991531##",
+      "pmids_count": 1,
+      "rsid": "rs771991531",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs771822125##",
+      "pmids_count": 3,
+      "rsid": "rs771822125",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs771653601##",
+      "pmids_count": 6,
+      "rsid": "rs771653601",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs771360009##",
+      "pmids_count": 1,
+      "rsid": "rs771360009",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs770844920##",
+      "pmids_count": 5,
+      "rsid": "rs770844920",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs770819038##",
+      "pmids_count": 2,
+      "rsid": "rs770819038",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs769350819##",
+      "pmids_count": 1,
+      "rsid": "rs769350819",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs769115867##",
+      "pmids_count": 1,
+      "rsid": "rs769115867",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs768301219##",
+      "pmids_count": 1,
+      "rsid": "rs768301219",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs768062390##",
+      "pmids_count": 1,
+      "rsid": "rs768062390",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs767829889##",
+      "pmids_count": 4,
+      "rsid": "rs767829889",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs764833346##",
+      "pmids_count": 3,
+      "rsid": "rs764833346",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs764636331##",
+      "pmids_count": 2,
+      "rsid": "rs764636331",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs764371648##",
+      "pmids_count": 2,
+      "rsid": "rs764371648",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs764363257##",
+      "pmids_count": 1,
+      "rsid": "rs764363257",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs763380198##",
+      "pmids_count": 3,
+      "rsid": "rs763380198",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs763040361##",
+      "pmids_count": 1,
+      "rsid": "rs763040361",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs762083##",
+      "pmids_count": 2,
+      "rsid": "rs762083",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs761971884##",
+      "pmids_count": 1,
+      "rsid": "rs761971884",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs760564263##",
+      "pmids_count": 1,
+      "rsid": "rs760564263",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs759930701##",
+      "pmids_count": 1,
+      "rsid": "rs759930701",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs759193004##",
+      "pmids_count": 1,
+      "rsid": "rs759193004",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs759140888##",
+      "pmids_count": 1,
+      "rsid": "rs759140888",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs758519012##",
+      "pmids_count": 1,
+      "rsid": "rs758519012",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs758194732##",
+      "pmids_count": 1,
+      "rsid": "rs758194732",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs757951191##",
+      "pmids_count": 2,
+      "rsid": "rs757951191",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs757337935##",
+      "pmids_count": 3,
+      "rsid": "rs757337935",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs757052588##",
+      "pmids_count": 7,
+      "rsid": "rs757052588",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs756977898##",
+      "pmids_count": 1,
+      "rsid": "rs756977898",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs756320300##",
+      "pmids_count": 3,
+      "rsid": "rs756320300",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs755762174##",
+      "pmids_count": 1,
+      "rsid": "rs755762174",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs755443008##",
+      "pmids_count": 1,
+      "rsid": "rs755443008",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs755188289##",
+      "pmids_count": 1,
+      "rsid": "rs755188289",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs754657304##",
+      "pmids_count": 1,
+      "rsid": "rs754657304",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs753453381##",
+      "pmids_count": 1,
+      "rsid": "rs753453381",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs753342877##",
+      "pmids_count": 1,
+      "rsid": "rs753342877",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs753013275##",
+      "pmids_count": 3,
+      "rsid": "rs753013275",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs752702606##",
+      "pmids_count": 4,
+      "rsid": "rs752702606",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs752366899##",
+      "pmids_count": 1,
+      "rsid": "rs752366899",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs752132466##",
+      "pmids_count": 2,
+      "rsid": "rs752132466",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs751849657##",
+      "pmids_count": 1,
+      "rsid": "rs751849657",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs751532891##",
+      "pmids_count": 1,
+      "rsid": "rs751532891",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs751424532##",
+      "pmids_count": 1,
+      "rsid": "rs751424532",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs751299919##",
+      "pmids_count": 1,
+      "rsid": "rs751299919",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs750947894##",
+      "pmids_count": 2,
+      "rsid": "rs750947894",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs750580754##",
+      "pmids_count": 1,
+      "rsid": "rs750580754",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs750117744##",
+      "pmids_count": 2,
+      "rsid": "rs750117744",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs749317547##",
+      "pmids_count": 1,
+      "rsid": "rs749317547",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs749094950##",
+      "pmids_count": 1,
+      "rsid": "rs749094950",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs748451093##",
+      "pmids_count": 2,
+      "rsid": "rs748451093",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs747954935##",
+      "pmids_count": 2,
+      "rsid": "rs747954935",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs747362216##",
+      "pmids_count": 1,
+      "rsid": "rs747362216",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs747106044##",
+      "pmids_count": 1,
+      "rsid": "rs747106044",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs746668446##",
+      "pmids_count": 1,
+      "rsid": "rs746668446",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs746132159##",
+      "pmids_count": 1,
+      "rsid": "rs746132159",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs745876197##",
+      "pmids_count": 3,
+      "rsid": "rs745876197",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs745367241##",
+      "pmids_count": 3,
+      "rsid": "rs745367241",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs7144658##",
+      "pmids_count": 51,
+      "rsid": "rs7144658",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs7141052##",
+      "pmids_count": 2,
+      "rsid": "rs7141052",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs577631417##",
+      "pmids_count": 5,
+      "rsid": "rs577631417",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs571158363##",
+      "pmids_count": 1,
+      "rsid": "rs571158363",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs568751362##",
+      "pmids_count": 1,
+      "rsid": "rs568751362",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs567068679##",
+      "pmids_count": 1,
+      "rsid": "rs567068679",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs564341313##",
+      "pmids_count": 1,
+      "rsid": "rs564341313",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs561930261##",
+      "pmids_count": 1,
+      "rsid": "rs561930261",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs560543143##",
+      "pmids_count": 1,
+      "rsid": "rs560543143",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs56037218##",
+      "pmids_count": 1,
+      "rsid": "rs56037218",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs549659752##",
+      "pmids_count": 1,
+      "rsid": "rs549659752",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs546145599##",
+      "pmids_count": 1,
+      "rsid": "rs546145599",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs545243356##",
+      "pmids_count": 1,
+      "rsid": "rs545243356",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs544987105##",
+      "pmids_count": 1,
+      "rsid": "rs544987105",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs541329446##",
+      "pmids_count": 1,
+      "rsid": "rs541329446",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs537882736##",
+      "pmids_count": 1,
+      "rsid": "rs537882736",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs536300275##",
+      "pmids_count": 1,
+      "rsid": "rs536300275",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs529354784##",
+      "pmids_count": 1,
+      "rsid": "rs529354784",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs4537914##",
+      "pmids_count": 1,
+      "rsid": "rs4537914",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs3832946##",
+      "pmids_count": 1,
+      "rsid": "rs3832946",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs374997841##",
+      "pmids_count": 1,
+      "rsid": "rs374997841",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs374795877##",
+      "pmids_count": 2,
+      "rsid": "rs374795877",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs372790088##",
+      "pmids_count": 8,
+      "rsid": "rs372790088",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs370464225##",
+      "pmids_count": 1,
+      "rsid": "rs370464225",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs370407762##",
+      "pmids_count": 1,
+      "rsid": "rs370407762",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs35502972##",
+      "pmids_count": 5,
+      "rsid": "rs35502972",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs35391958##",
+      "pmids_count": 3,
+      "rsid": "rs35391958",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs35342092##",
+      "pmids_count": 1,
+      "rsid": "rs35342092",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs35237183##",
+      "pmids_count": 2,
+      "rsid": "rs35237183",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs35220193##",
+      "pmids_count": 4,
+      "rsid": "rs35220193",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs34059222##",
+      "pmids_count": 1,
+      "rsid": "rs34059222",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs33984772##",
+      "pmids_count": 22,
+      "rsid": "rs33984772",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs33941285##",
+      "pmids_count": 2,
+      "rsid": "rs33941285",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs28756127##",
+      "pmids_count": 1,
+      "rsid": "rs28756127",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs2699##",
+      "pmids_count": 3,
+      "rsid": "rs2699",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs202218529##",
+      "pmids_count": 1,
+      "rsid": "rs202218529",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs201646206##",
+      "pmids_count": 1,
+      "rsid": "rs201646206",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs201419897##",
+      "pmids_count": 4,
+      "rsid": "rs201419897",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs201324809##",
+      "pmids_count": 1,
+      "rsid": "rs201324809",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs200502828##",
+      "pmids_count": 1,
+      "rsid": "rs200502828",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs200438155##",
+      "pmids_count": 3,
+      "rsid": "rs200438155",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs200364932##",
+      "pmids_count": 3,
+      "rsid": "rs200364932",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs200059313##",
+      "pmids_count": 2,
+      "rsid": "rs200059313",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs1884802##",
+      "pmids_count": 3,
+      "rsid": "rs1884802",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs186148706##",
+      "pmids_count": 1,
+      "rsid": "rs186148706",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs150277709##",
+      "pmids_count": 3,
+      "rsid": "rs150277709",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs1489514341##",
+      "pmids_count": 2,
+      "rsid": "rs1489514341",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs1487545056##",
+      "pmids_count": 1,
+      "rsid": "rs1487545056",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs1484270927##",
+      "pmids_count": 4,
+      "rsid": "rs1484270927",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs1483829706##",
+      "pmids_count": 1,
+      "rsid": "rs1483829706",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs1475472736##",
+      "pmids_count": 1,
+      "rsid": "rs1475472736",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs1474381066##",
+      "pmids_count": 1,
+      "rsid": "rs1474381066",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs1473230450##",
+      "pmids_count": 1,
+      "rsid": "rs1473230450",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs1470226867##",
+      "pmids_count": 1,
+      "rsid": "rs1470226867",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs1464535304##",
+      "pmids_count": 1,
+      "rsid": "rs1464535304",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs1463448958##",
+      "pmids_count": 1,
+      "rsid": "rs1463448958",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs1459665109##",
+      "pmids_count": 1,
+      "rsid": "rs1459665109",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs1459219194##",
+      "pmids_count": 19,
+      "rsid": "rs1459219194",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs1455886966##",
+      "pmids_count": 1,
+      "rsid": "rs1455886966",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs1450467728##",
+      "pmids_count": 1,
+      "rsid": "rs1450467728",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs1449268552##",
+      "pmids_count": 1,
+      "rsid": "rs1449268552",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs1439142440##",
+      "pmids_count": 1,
+      "rsid": "rs1439142440",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs1434753439##",
+      "pmids_count": 1,
+      "rsid": "rs1434753439",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs1432381178##",
+      "pmids_count": 1,
+      "rsid": "rs1432381178",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs1429625502##",
+      "pmids_count": 1,
+      "rsid": "rs1429625502",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs1422982905##",
+      "pmids_count": 11,
+      "rsid": "rs1422982905",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs1421653306##",
+      "pmids_count": 1,
+      "rsid": "rs1421653306",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs1413839641##",
+      "pmids_count": 2,
+      "rsid": "rs1413839641",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs1413644438##",
+      "pmids_count": 1,
+      "rsid": "rs1413644438",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs1410810817##",
+      "pmids_count": 1,
+      "rsid": "rs1410810817",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs1410228642##",
+      "pmids_count": 1,
+      "rsid": "rs1410228642",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs141004703##",
+      "pmids_count": 2,
+      "rsid": "rs141004703",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs1406059545##",
+      "pmids_count": 2,
+      "rsid": "rs1406059545",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs1403681829##",
+      "pmids_count": 1,
+      "rsid": "rs1403681829",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs140306561##",
+      "pmids_count": 1,
+      "rsid": "rs140306561",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs1399400574##",
+      "pmids_count": 1,
+      "rsid": "rs1399400574",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs139801655##",
+      "pmids_count": 7,
+      "rsid": "rs139801655",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs1392892196##",
+      "pmids_count": 3,
+      "rsid": "rs1392892196",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs1391489458##",
+      "pmids_count": 5,
+      "rsid": "rs1391489458",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs1388855660##",
+      "pmids_count": 1,
+      "rsid": "rs1388855660",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs1385705184##",
+      "pmids_count": 1,
+      "rsid": "rs1385705184",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs1375346777##",
+      "pmids_count": 1,
+      "rsid": "rs1375346777",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs1375221568##",
+      "pmids_count": 5,
+      "rsid": "rs1375221568",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs1370139728##",
+      "pmids_count": 2,
+      "rsid": "rs1370139728",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs1369165182##",
+      "pmids_count": 2,
+      "rsid": "rs1369165182",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs1364715002##",
+      "pmids_count": 1,
+      "rsid": "rs1364715002",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs1361975527##",
+      "pmids_count": 1,
+      "rsid": "rs1361975527",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs1360932810##",
+      "pmids_count": 1,
+      "rsid": "rs1360932810",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs1353832949##",
+      "pmids_count": 1,
+      "rsid": "rs1353832949",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs1353187426##",
+      "pmids_count": 1,
+      "rsid": "rs1353187426",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs1349901575##",
+      "pmids_count": 3,
+      "rsid": "rs1349901575",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs1334549853##",
+      "pmids_count": 1,
+      "rsid": "rs1334549853",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs1329067081##",
+      "pmids_count": 12,
+      "rsid": "rs1329067081",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs1326987182##",
+      "pmids_count": 1,
+      "rsid": "rs1326987182",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs1325602525##",
+      "pmids_count": 2,
+      "rsid": "rs1325602525",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs1321734147##",
+      "pmids_count": 2,
+      "rsid": "rs1321734147",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs1317762474##",
+      "pmids_count": 1,
+      "rsid": "rs1317762474",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs1315928016##",
+      "pmids_count": 1,
+      "rsid": "rs1315928016",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs1303594032##",
+      "pmids_count": 1,
+      "rsid": "rs1303594032",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs1303434107##",
+      "pmids_count": 2,
+      "rsid": "rs1303434107",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs1302465847##",
+      "pmids_count": 1,
+      "rsid": "rs1302465847",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs1301834713##",
+      "pmids_count": 1,
+      "rsid": "rs1301834713",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs1293965921##",
+      "pmids_count": 1,
+      "rsid": "rs1293965921",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs1292426539##",
+      "pmids_count": 7,
+      "rsid": "rs1292426539",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs1285104042##",
+      "pmids_count": 1,
+      "rsid": "rs1285104042",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs1277712015##",
+      "pmids_count": 1,
+      "rsid": "rs1277712015",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs1271504221##",
+      "pmids_count": 1,
+      "rsid": "rs1271504221",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs1268433640##",
+      "pmids_count": 1,
+      "rsid": "rs1268433640",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs1267362893##",
+      "pmids_count": 1,
+      "rsid": "rs1267362893",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs1266836502##",
+      "pmids_count": 3,
+      "rsid": "rs1266836502",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs1257793777##",
+      "pmids_count": 2,
+      "rsid": "rs1257793777",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs1256568229##",
+      "pmids_count": 1,
+      "rsid": "rs1256568229",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs1254047977##",
+      "pmids_count": 1,
+      "rsid": "rs1254047977",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs1243400765##",
+      "pmids_count": 1,
+      "rsid": "rs1243400765",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs1242972289##",
+      "pmids_count": 1,
+      "rsid": "rs1242972289",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs1239285072##",
+      "pmids_count": 1,
+      "rsid": "rs1239285072",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs1231025559##",
+      "pmids_count": 2,
+      "rsid": "rs1231025559",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs1230613844##",
+      "pmids_count": 1,
+      "rsid": "rs1230613844",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs1226356116##",
+      "pmids_count": 1,
+      "rsid": "rs1226356116",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs1204900727##",
+      "pmids_count": 22,
+      "rsid": "rs1204900727",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs1202529788##",
+      "pmids_count": 2,
+      "rsid": "rs1202529788",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs1198728189##",
+      "pmids_count": 1,
+      "rsid": "rs1198728189",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs1197445288##",
+      "pmids_count": 1,
+      "rsid": "rs1197445288",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs1188937831##",
+      "pmids_count": 1,
+      "rsid": "rs1188937831",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs1187082682##",
+      "pmids_count": 1,
+      "rsid": "rs1187082682",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs1181775911##",
+      "pmids_count": 1,
+      "rsid": "rs1181775911",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs1173104875##",
+      "pmids_count": 1,
+      "rsid": "rs1173104875",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs1165110401##",
+      "pmids_count": 4,
+      "rsid": "rs1165110401",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs1156831305##",
+      "pmids_count": 1,
+      "rsid": "rs1156831305",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs112819884##",
+      "pmids_count": 11,
+      "rsid": "rs112819884",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs1057536##",
+      "pmids_count": 3,
+      "rsid": "rs1057536",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs10400689##",
+      "pmids_count": 2,
+      "rsid": "rs10400689",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs1030123417##",
+      "pmids_count": 1,
+      "rsid": "rs1030123417",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs1019690230##",
+      "pmids_count": 2,
+      "rsid": "rs1019690230",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs1016447126##",
+      "pmids_count": 1,
+      "rsid": "rs1016447126",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs10145379##",
+      "pmids_count": 2,
+      "rsid": "rs10145379",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@rs1007881450##",
+      "pmids_count": 1,
+      "rsid": "rs1007881450",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@CA7160261#rs751532891##",
+      "pmids_count": 1,
+      "rsid": "rs751532891",
+      "clingen_id": "CA7160261",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@CA7160230#rs771360009##",
+      "pmids_count": 1,
+      "rsid": "rs771360009",
+      "clingen_id": "CA7160230",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@CA7160224#rs372790088##",
+      "pmids_count": 8,
+      "rsid": "rs372790088",
+      "clingen_id": "CA7160224",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@CA7160221#rs757052588##",
+      "pmids_count": 6,
+      "rsid": "rs757052588",
+      "clingen_id": "CA7160221",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@CA7160213#rs752132466##",
+      "pmids_count": 1,
+      "rsid": "rs752132466",
+      "clingen_id": "CA7160213",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@CA7160189#rs7144658##",
+      "pmids_count": 7,
+      "rsid": "rs7144658",
+      "clingen_id": "CA7160189",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@CA7160186#rs770844920##",
+      "pmids_count": 2,
+      "rsid": "rs770844920",
+      "clingen_id": "CA7160186",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@CA7160185#rs35220193##",
+      "pmids_count": 1,
+      "rsid": "rs35220193",
+      "clingen_id": "CA7160185",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@CA7160154#rs764371648##",
+      "pmids_count": 1,
+      "rsid": "rs764371648",
+      "clingen_id": "CA7160154",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@CA7160153#rs756320300##",
+      "pmids_count": 1,
+      "rsid": "rs756320300",
+      "clingen_id": "CA7160153",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@CA7160139#rs112819884##",
+      "pmids_count": 1,
+      "rsid": "rs112819884",
+      "clingen_id": "CA7160139",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@CA7160134#rs781269308##",
+      "pmids_count": 1,
+      "rsid": "rs781269308",
+      "clingen_id": "CA7160134",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@CA7160098#rs769115867##",
+      "pmids_count": 1,
+      "rsid": "rs769115867",
+      "clingen_id": "CA7160098",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@CA7160094#rs745876197##",
+      "pmids_count": 2,
+      "rsid": "rs745876197",
+      "clingen_id": "CA7160094",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@CA7160091#rs752702606##",
+      "pmids_count": 1,
+      "rsid": "rs752702606",
+      "clingen_id": "CA7160091",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@CA7160066#rs750117744##",
+      "pmids_count": 1,
+      "rsid": "rs750117744",
+      "clingen_id": "CA7160066",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@CA7160062#rs764636331##",
+      "pmids_count": 1,
+      "rsid": "rs764636331",
+      "clingen_id": "CA7160062",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@CA7160000#rs33984772##",
+      "pmids_count": 3,
+      "rsid": "rs33984772",
+      "clingen_id": "CA7160000",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@CA259474817#rs544987105##",
+      "pmids_count": 1,
+      "rsid": "rs544987105",
+      "clingen_id": "CA259474817",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@CA259474765#rs747954935##",
+      "pmids_count": 1,
+      "rsid": "rs747954935",
+      "clingen_id": "CA259474765",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@CA259474738#rs879499034##",
+      "pmids_count": 7,
+      "rsid": "rs879499034",
+      "clingen_id": "CA259474738",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@CA259474732#rs867473250##",
+      "pmids_count": 1,
+      "rsid": "rs867473250",
+      "clingen_id": "CA259474732",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@CA259474725#rs753013275##",
+      "pmids_count": 1,
+      "rsid": "rs753013275",
+      "clingen_id": "CA259474725",
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.Y537S",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.Y537N",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.Y537C",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.Y259S",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.Y259H",
+      "pmids_count": 2,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.Y259D",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.Y259C",
+      "pmids_count": 2,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.Y243F",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.Y207X",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.Y175C",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.Y173A",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.X330K",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.V229R",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.V229E",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.T52S",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.T3S",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.S9F",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.S9E",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.S9D",
+      "pmids_count": 2,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.S9C",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.S8A",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.S7A",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.S6G",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.S6E",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.S6D",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.S5M",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.S5L",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.S5H",
+      "pmids_count": 2,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.S5F",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.S5E",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.S4G",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.S4E",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.S453fsX",
+      "pmids_count": 2,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.S443A",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.S441A",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.S355X",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.S2E",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.S249D",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.S2311G",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.S217F",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.S1I",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.S1E",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.S194fsX",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.S177A",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.S10A",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.R262L",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.R262H",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.R219S",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.R186S",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.Q798_799ins",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.P375fsX",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.P35G",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.P358fsX",
+      "pmids_count": 4,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.P248S",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.P205fsX",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.P187L",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.P0702S",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.P0702L",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.N256del",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.M253T",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.M253R",
+      "pmids_count": 2,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.M253K",
+      "pmids_count": 7,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.M252K",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.M235K",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.M125X",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.M10P",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.M0543L",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.M0541L",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.M0202T",
+      "pmids_count": 2,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.M0202S",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.L455M",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.L445M",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.L1del",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.L17E",
+      "pmids_count": 6,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.K756Q",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.K414A",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.K348R",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.K295R",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.K295Q",
+      "pmids_count": 2,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.K295A",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.K240D",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.K240A",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.I363V",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.I254del",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.I176V",
+      "pmids_count": 2,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.I176M",
+      "pmids_count": 3,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.I10X",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.G47del",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.G4112F",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.G275X",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.G257N",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.G227E",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.F566L",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.F400I",
+      "pmids_count": 2,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.F39A",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.F266C",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.F255del",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.F254del",
+      "pmids_count": 3,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.F254V",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.F113S",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.F1041M",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.E70H",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.E2621L",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.E2611L",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.E255del",
+      "pmids_count": 2,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.E255K",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.E24K",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.E209Q",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.E0552S",
+      "pmids_count": 2,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.D538G",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.D350A",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.D1434fsX",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.C924G",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.C321fsX",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.C258Y",
+      "pmids_count": 2,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.C258R",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.A340fsX",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.A339fsX",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.A333fsX",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.A287fsX",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.A232V",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.A232R",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#p.A232E",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#g.8531C>C",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#g.7521G>A",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#g.7518G>A",
+      "pmids_count": 2,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#g.7219G>C",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#g.7193G>T",
+      "pmids_count": 2,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#g.7191G>T",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#g.7175A>C",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#g.7174A>C",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#g.7172A>C",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#g.7170T>G",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#g.7168A>G",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#g.47227430A>G",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#g.43804317C>T",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#g.38064406G>T",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#g.38064406G>A",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#g.37591720G>T",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#c.IVS1-1641A>C",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#c.837_842dup",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#c.763_774delGAGAACGGCTGC",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#c.753_764delCAACATGTTCGA",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#c.752_763del",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#c.4301_4310del",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#c.2T>A",
+      "pmids_count": 2,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#c.2A>C",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#c.265delRFK",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#c.265del",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#c.265-71delR",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#c.258delC",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#c.254del",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#c.19delEGFR",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#c.1064C>A",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#c.009T>C",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#c.-3717G>A",
+      "pmids_count": 1,
+      "gene": "FOXA1"
+    },
+    {
+      "_id": "litvar@#3169#",
+      "pmids_count": 183,
+      "gene": "FOXA1"
+    }
+  ],
+  "FOXB1": [
+    {
+      "_id": "litvar@rs949768656##",
+      "pmids_count": 1,
+      "rsid": "rs949768656",
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@rs924901672##",
+      "pmids_count": 1,
+      "rsid": "rs924901672",
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@rs8040887##",
+      "pmids_count": 2,
+      "rsid": "rs8040887",
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@rs779084059##",
+      "pmids_count": 1,
+      "rsid": "rs779084059",
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@rs777082355##",
+      "pmids_count": 2,
+      "rsid": "rs777082355",
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@rs776778548##",
+      "pmids_count": 1,
+      "rsid": "rs776778548",
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@rs775156922##",
+      "pmids_count": 1,
+      "rsid": "rs775156922",
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@rs773563858##",
+      "pmids_count": 1,
+      "rsid": "rs773563858",
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@rs763548175##",
+      "pmids_count": 1,
+      "rsid": "rs763548175",
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@rs762921750##",
+      "pmids_count": 1,
+      "rsid": "rs762921750",
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@rs757295884##",
+      "pmids_count": 1,
+      "rsid": "rs757295884",
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@rs756569761##",
+      "pmids_count": 1,
+      "rsid": "rs756569761",
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@rs756007114##",
+      "pmids_count": 1,
+      "rsid": "rs756007114",
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@rs75582291##",
+      "pmids_count": 3,
+      "rsid": "rs75582291",
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@rs754229374##",
+      "pmids_count": 1,
+      "rsid": "rs754229374",
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@rs751794733##",
+      "pmids_count": 1,
+      "rsid": "rs751794733",
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@rs745661779##",
+      "pmids_count": 1,
+      "rsid": "rs745661779",
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@rs745550511##",
+      "pmids_count": 1,
+      "rsid": "rs745550511",
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@rs72739946##",
+      "pmids_count": 2,
+      "rsid": "rs72739946",
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@rs72739945##",
+      "pmids_count": 2,
+      "rsid": "rs72739945",
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@rs72739942##",
+      "pmids_count": 2,
+      "rsid": "rs72739942",
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@rs7171231##",
+      "pmids_count": 1,
+      "rsid": "rs7171231",
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@rs62013139##",
+      "pmids_count": 3,
+      "rsid": "rs62013139",
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@rs578235535##",
+      "pmids_count": 1,
+      "rsid": "rs578235535",
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@rs533024396##",
+      "pmids_count": 2,
+      "rsid": "rs533024396",
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@rs375300364##",
+      "pmids_count": 1,
+      "rsid": "rs375300364",
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@rs368818505##",
+      "pmids_count": 1,
+      "rsid": "rs368818505",
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@rs202144037##",
+      "pmids_count": 2,
+      "rsid": "rs202144037",
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@rs201040368##",
+      "pmids_count": 2,
+      "rsid": "rs201040368",
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@rs200474541##",
+      "pmids_count": 1,
+      "rsid": "rs200474541",
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@rs191957460##",
+      "pmids_count": 1,
+      "rsid": "rs191957460",
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@rs185361903##",
+      "pmids_count": 2,
+      "rsid": "rs185361903",
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@rs150380488##",
+      "pmids_count": 1,
+      "rsid": "rs150380488",
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@rs1490898774##",
+      "pmids_count": 2,
+      "rsid": "rs1490898774",
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@rs142147769##",
+      "pmids_count": 1,
+      "rsid": "rs142147769",
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@rs1417554199##",
+      "pmids_count": 1,
+      "rsid": "rs1417554199",
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@rs141578799##",
+      "pmids_count": 2,
+      "rsid": "rs141578799",
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@rs1406860677##",
+      "pmids_count": 1,
+      "rsid": "rs1406860677",
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@rs1404080644##",
+      "pmids_count": 1,
+      "rsid": "rs1404080644",
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@rs1376689175##",
+      "pmids_count": 1,
+      "rsid": "rs1376689175",
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@rs1357887009##",
+      "pmids_count": 1,
+      "rsid": "rs1357887009",
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@rs1283382553##",
+      "pmids_count": 1,
+      "rsid": "rs1283382553",
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@rs1275740755##",
+      "pmids_count": 1,
+      "rsid": "rs1275740755",
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@rs1220872793##",
+      "pmids_count": 1,
+      "rsid": "rs1220872793",
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@rs1215441739##",
+      "pmids_count": 3,
+      "rsid": "rs1215441739",
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@rs1205259193##",
+      "pmids_count": 1,
+      "rsid": "rs1205259193",
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@#27023#p.V192F",
+      "pmids_count": 1,
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@#27023#p.N17E",
+      "pmids_count": 1,
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@#27023#p.H48A",
+      "pmids_count": 1,
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@#27023#p.H47A",
+      "pmids_count": 1,
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@#27023#p.H44C",
+      "pmids_count": 1,
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@#27023#p.H44A",
+      "pmids_count": 1,
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@#27023#p.H43C",
+      "pmids_count": 1,
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@#27023#p.H43A",
+      "pmids_count": 4,
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@#27023#p.H42C",
+      "pmids_count": 2,
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@#27023#p.H42A",
+      "pmids_count": 5,
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@#27023#p.H41A",
+      "pmids_count": 2,
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@#27023#p.H40C",
+      "pmids_count": 2,
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@#27023#p.H40A",
+      "pmids_count": 3,
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@#27023#p.H39A",
+      "pmids_count": 1,
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@#27023#p.H37A",
+      "pmids_count": 1,
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@#27023#p.H36A",
+      "pmids_count": 1,
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@#27023#p.H35A",
+      "pmids_count": 3,
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@#27023#p.H34C",
+      "pmids_count": 1,
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@#27023#p.H34A",
+      "pmids_count": 3,
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@#27023#p.H33C",
+      "pmids_count": 2,
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@#27023#p.H33A",
+      "pmids_count": 3,
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@#27023#p.H32C",
+      "pmids_count": 1,
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@#27023#p.H32A",
+      "pmids_count": 2,
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@#27023#p.H31A",
+      "pmids_count": 1,
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@#27023#p.H28A",
+      "pmids_count": 1,
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@#27023#p.H23C",
+      "pmids_count": 1,
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@#27023#p.H23A",
+      "pmids_count": 1,
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@#27023#p.H22C",
+      "pmids_count": 1,
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@#27023#p.H22A",
+      "pmids_count": 1,
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@#27023#p.H21A",
+      "pmids_count": 1,
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@#27023#p.H20A",
+      "pmids_count": 1,
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@#27023#p.H19D",
+      "pmids_count": 1,
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@#27023#p.H19C",
+      "pmids_count": 1,
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@#27023#p.H19A",
+      "pmids_count": 1,
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@#27023#p.H18A",
+      "pmids_count": 2,
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@#27023#p.H17A",
+      "pmids_count": 1,
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@#27023#p.H16A",
+      "pmids_count": 2,
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@#27023#p.H15A",
+      "pmids_count": 3,
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@#27023#p.H13C",
+      "pmids_count": 1,
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@#27023#p.H13A",
+      "pmids_count": 3,
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@#27023#p.H12C",
+      "pmids_count": 1,
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@#27023#p.H12A",
+      "pmids_count": 3,
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@#27023#p.H11A",
+      "pmids_count": 1,
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@#27023#p.H10C",
+      "pmids_count": 1,
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@#27023#p.H10A",
+      "pmids_count": 2,
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@#27023#p.D812N",
+      "pmids_count": 1,
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@#27023#c.263C>A",
+      "pmids_count": 1,
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@#27023#",
+      "pmids_count": 15,
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@#100303468#p.S8N",
+      "pmids_count": 1,
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@#100303468#p.S8L",
+      "pmids_count": 1,
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@#100303468#p.S8F",
+      "pmids_count": 1,
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@#100303468#p.S8E",
+      "pmids_count": 1,
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@#100303468#p.S8C",
+      "pmids_count": 1,
+      "gene": "FOXB1"
+    },
+    {
+      "_id": "litvar@#100303468#",
+      "pmids_count": 1,
+      "gene": "FOXB1"
+    }
+  ],
+  "FOXC1": [
+    {
+      "_id": "litvar@rs992554214##",
+      "pmids_count": 1,
+      "rsid": "rs992554214",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs984253##",
+      "pmids_count": 12,
+      "rsid": "rs984253",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs976788553##",
+      "pmids_count": 1,
+      "rsid": "rs976788553",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs9502980##",
+      "pmids_count": 2,
+      "rsid": "rs9502980",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs9405496##",
+      "pmids_count": 8,
+      "rsid": "rs9405496",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs927447431##",
+      "pmids_count": 1,
+      "rsid": "rs927447431",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs925449747##",
+      "pmids_count": 1,
+      "rsid": "rs925449747",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs922922417##",
+      "pmids_count": 1,
+      "rsid": "rs922922417",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs922369652##",
+      "pmids_count": 1,
+      "rsid": "rs922369652",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs917382067##",
+      "pmids_count": 4,
+      "rsid": "rs917382067",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs905968043##",
+      "pmids_count": 1,
+      "rsid": "rs905968043",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs901581290##",
+      "pmids_count": 1,
+      "rsid": "rs901581290",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs886044143##",
+      "pmids_count": 1,
+      "rsid": "rs886044143",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs886043447##",
+      "pmids_count": 1,
+      "rsid": "rs886043447",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs886041355##",
+      "pmids_count": 4,
+      "rsid": "rs886041355",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs886039568##",
+      "pmids_count": 7,
+      "rsid": "rs886039568",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs867806300##",
+      "pmids_count": 2,
+      "rsid": "rs867806300",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs867754327##",
+      "pmids_count": 1,
+      "rsid": "rs867754327",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs79691946##",
+      "pmids_count": 16,
+      "rsid": "rs79691946",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs796065323##",
+      "pmids_count": 1,
+      "rsid": "rs796065323",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs780403354##",
+      "pmids_count": 1,
+      "rsid": "rs780403354",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs780169081##",
+      "pmids_count": 2,
+      "rsid": "rs780169081",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs780155404##",
+      "pmids_count": 1,
+      "rsid": "rs780155404",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs779693228##",
+      "pmids_count": 1,
+      "rsid": "rs779693228",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs779316749##",
+      "pmids_count": 1,
+      "rsid": "rs779316749",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs77888940##",
+      "pmids_count": 3,
+      "rsid": "rs77888940",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs778482299##",
+      "pmids_count": 1,
+      "rsid": "rs778482299",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs778382469##",
+      "pmids_count": 1,
+      "rsid": "rs778382469",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs777329712##",
+      "pmids_count": 1,
+      "rsid": "rs777329712",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs777196009##",
+      "pmids_count": 1,
+      "rsid": "rs777196009",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs776663624##",
+      "pmids_count": 1,
+      "rsid": "rs776663624",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs7763581##",
+      "pmids_count": 2,
+      "rsid": "rs7763581",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs774086427##",
+      "pmids_count": 1,
+      "rsid": "rs774086427",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs773600190##",
+      "pmids_count": 1,
+      "rsid": "rs773600190",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs773475860##",
+      "pmids_count": 1,
+      "rsid": "rs773475860",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs772681923##",
+      "pmids_count": 1,
+      "rsid": "rs772681923",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs772515842##",
+      "pmids_count": 1,
+      "rsid": "rs772515842",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs772158545##",
+      "pmids_count": 2,
+      "rsid": "rs772158545",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs772118724##",
+      "pmids_count": 1,
+      "rsid": "rs772118724",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs772018744##",
+      "pmids_count": 1,
+      "rsid": "rs772018744",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs769646390##",
+      "pmids_count": 2,
+      "rsid": "rs769646390",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs769063534##",
+      "pmids_count": 1,
+      "rsid": "rs769063534",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs768741176##",
+      "pmids_count": 1,
+      "rsid": "rs768741176",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs76840944##",
+      "pmids_count": 6,
+      "rsid": "rs76840944",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs767219815##",
+      "pmids_count": 1,
+      "rsid": "rs767219815",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs765987336##",
+      "pmids_count": 1,
+      "rsid": "rs765987336",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs765414694##",
+      "pmids_count": 2,
+      "rsid": "rs765414694",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs763692952##",
+      "pmids_count": 1,
+      "rsid": "rs763692952",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs761930785##",
+      "pmids_count": 1,
+      "rsid": "rs761930785",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs760676014##",
+      "pmids_count": 3,
+      "rsid": "rs760676014",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs760410240##",
+      "pmids_count": 1,
+      "rsid": "rs760410240",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs758013827##",
+      "pmids_count": 1,
+      "rsid": "rs758013827",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs756037576##",
+      "pmids_count": 2,
+      "rsid": "rs756037576",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs754743917##",
+      "pmids_count": 1,
+      "rsid": "rs754743917",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs754033600##",
+      "pmids_count": 1,
+      "rsid": "rs754033600",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs752794025##",
+      "pmids_count": 1,
+      "rsid": "rs752794025",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs751474761##",
+      "pmids_count": 1,
+      "rsid": "rs751474761",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs751286982##",
+      "pmids_count": 1,
+      "rsid": "rs751286982",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs75089353##",
+      "pmids_count": 1,
+      "rsid": "rs75089353",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs750797555##",
+      "pmids_count": 1,
+      "rsid": "rs750797555",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs749708674##",
+      "pmids_count": 1,
+      "rsid": "rs749708674",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs748832697##",
+      "pmids_count": 1,
+      "rsid": "rs748832697",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs747618420##",
+      "pmids_count": 1,
+      "rsid": "rs747618420",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs746626978##",
+      "pmids_count": 1,
+      "rsid": "rs746626978",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs74596504##",
+      "pmids_count": 1,
+      "rsid": "rs74596504",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs745623418##",
+      "pmids_count": 1,
+      "rsid": "rs745623418",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs73406893##",
+      "pmids_count": 2,
+      "rsid": "rs73406893",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs73406891##",
+      "pmids_count": 1,
+      "rsid": "rs73406891",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs730882054##",
+      "pmids_count": 3,
+      "rsid": "rs730882054",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs727503932##",
+      "pmids_count": 2,
+      "rsid": "rs727503932",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs573322518##",
+      "pmids_count": 1,
+      "rsid": "rs573322518",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs570694575##",
+      "pmids_count": 1,
+      "rsid": "rs570694575",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs558074909##",
+      "pmids_count": 1,
+      "rsid": "rs558074909",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs551307028##",
+      "pmids_count": 1,
+      "rsid": "rs551307028",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs543505807##",
+      "pmids_count": 1,
+      "rsid": "rs543505807",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs535065221##",
+      "pmids_count": 1,
+      "rsid": "rs535065221",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs483352810##",
+      "pmids_count": 3,
+      "rsid": "rs483352810",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs398123612##",
+      "pmids_count": 15,
+      "rsid": "rs398123612",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs376405759##",
+      "pmids_count": 4,
+      "rsid": "rs376405759",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs376255999##",
+      "pmids_count": 1,
+      "rsid": "rs376255999",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs372857241##",
+      "pmids_count": 3,
+      "rsid": "rs372857241",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs370514174##",
+      "pmids_count": 1,
+      "rsid": "rs370514174",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs369300819##",
+      "pmids_count": 1,
+      "rsid": "rs369300819",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs368260972##",
+      "pmids_count": 3,
+      "rsid": "rs368260972",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs35974174##",
+      "pmids_count": 1,
+      "rsid": "rs35974174",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs35792702##",
+      "pmids_count": 1,
+      "rsid": "rs35792702",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs35717904##",
+      "pmids_count": 5,
+      "rsid": "rs35717904",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs35194596##",
+      "pmids_count": 1,
+      "rsid": "rs35194596",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs34503337##",
+      "pmids_count": 1,
+      "rsid": "rs34503337",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs34470720##",
+      "pmids_count": 1,
+      "rsid": "rs34470720",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs281865460##",
+      "pmids_count": 1,
+      "rsid": "rs281865460",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs2745599##",
+      "pmids_count": 14,
+      "rsid": "rs2745599",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs2230096##",
+      "pmids_count": 3,
+      "rsid": "rs2230096",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs201687238##",
+      "pmids_count": 3,
+      "rsid": "rs201687238",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs185790394##",
+      "pmids_count": 5,
+      "rsid": "rs185790394",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs181076077##",
+      "pmids_count": 1,
+      "rsid": "rs181076077",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs1489771788##",
+      "pmids_count": 1,
+      "rsid": "rs1489771788",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs1487219222##",
+      "pmids_count": 1,
+      "rsid": "rs1487219222",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs1485010027##",
+      "pmids_count": 1,
+      "rsid": "rs1485010027",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs1481638796##",
+      "pmids_count": 1,
+      "rsid": "rs1481638796",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs1477778731##",
+      "pmids_count": 1,
+      "rsid": "rs1477778731",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs147749489##",
+      "pmids_count": 1,
+      "rsid": "rs147749489",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs1476054590##",
+      "pmids_count": 1,
+      "rsid": "rs1476054590",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs1471366309##",
+      "pmids_count": 1,
+      "rsid": "rs1471366309",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs1471296145##",
+      "pmids_count": 1,
+      "rsid": "rs1471296145",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs1464165330##",
+      "pmids_count": 1,
+      "rsid": "rs1464165330",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs1462914042##",
+      "pmids_count": 1,
+      "rsid": "rs1462914042",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs1454648859##",
+      "pmids_count": 1,
+      "rsid": "rs1454648859",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs1454100173##",
+      "pmids_count": 2,
+      "rsid": "rs1454100173",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs1453535353##",
+      "pmids_count": 1,
+      "rsid": "rs1453535353",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs1450176374##",
+      "pmids_count": 1,
+      "rsid": "rs1450176374",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs1443692034##",
+      "pmids_count": 1,
+      "rsid": "rs1443692034",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs1442933152##",
+      "pmids_count": 1,
+      "rsid": "rs1442933152",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs1439680350##",
+      "pmids_count": 1,
+      "rsid": "rs1439680350",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs1438730123##",
+      "pmids_count": 1,
+      "rsid": "rs1438730123",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs1428492391##",
+      "pmids_count": 1,
+      "rsid": "rs1428492391",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs1422827955##",
+      "pmids_count": 1,
+      "rsid": "rs1422827955",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs1418660478##",
+      "pmids_count": 2,
+      "rsid": "rs1418660478",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs1411477778##",
+      "pmids_count": 1,
+      "rsid": "rs1411477778",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs1408057194##",
+      "pmids_count": 1,
+      "rsid": "rs1408057194",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs1402251277##",
+      "pmids_count": 1,
+      "rsid": "rs1402251277",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs1390061489##",
+      "pmids_count": 1,
+      "rsid": "rs1390061489",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs1384395424##",
+      "pmids_count": 1,
+      "rsid": "rs1384395424",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs1379307944##",
+      "pmids_count": 1,
+      "rsid": "rs1379307944",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs1377536435##",
+      "pmids_count": 1,
+      "rsid": "rs1377536435",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs1358861014##",
+      "pmids_count": 1,
+      "rsid": "rs1358861014",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs1355341165##",
+      "pmids_count": 1,
+      "rsid": "rs1355341165",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs1353668209##",
+      "pmids_count": 1,
+      "rsid": "rs1353668209",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs1335794239##",
+      "pmids_count": 1,
+      "rsid": "rs1335794239",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs1331057949##",
+      "pmids_count": 1,
+      "rsid": "rs1331057949",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs1328455307##",
+      "pmids_count": 1,
+      "rsid": "rs1328455307",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs1327937746##",
+      "pmids_count": 2,
+      "rsid": "rs1327937746",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs1326462152##",
+      "pmids_count": 1,
+      "rsid": "rs1326462152",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs1323929504##",
+      "pmids_count": 2,
+      "rsid": "rs1323929504",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs1303780451##",
+      "pmids_count": 1,
+      "rsid": "rs1303780451",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs1299890534##",
+      "pmids_count": 1,
+      "rsid": "rs1299890534",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs1299761401##",
+      "pmids_count": 1,
+      "rsid": "rs1299761401",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs1274199815##",
+      "pmids_count": 1,
+      "rsid": "rs1274199815",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs1273171402##",
+      "pmids_count": 1,
+      "rsid": "rs1273171402",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs1269894229##",
+      "pmids_count": 1,
+      "rsid": "rs1269894229",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs1259243589##",
+      "pmids_count": 1,
+      "rsid": "rs1259243589",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs1255433970##",
+      "pmids_count": 1,
+      "rsid": "rs1255433970",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs1250404259##",
+      "pmids_count": 1,
+      "rsid": "rs1250404259",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs1241813534##",
+      "pmids_count": 1,
+      "rsid": "rs1241813534",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs1236354436##",
+      "pmids_count": 1,
+      "rsid": "rs1236354436",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs1235193730##",
+      "pmids_count": 1,
+      "rsid": "rs1235193730",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs1226942120##",
+      "pmids_count": 1,
+      "rsid": "rs1226942120",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs121909339##",
+      "pmids_count": 10,
+      "rsid": "rs121909339",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs121909338##",
+      "pmids_count": 9,
+      "rsid": "rs121909338",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs1203559520##",
+      "pmids_count": 1,
+      "rsid": "rs1203559520",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs1200678563##",
+      "pmids_count": 1,
+      "rsid": "rs1200678563",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs1199534755##",
+      "pmids_count": 1,
+      "rsid": "rs1199534755",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs1199147210##",
+      "pmids_count": 1,
+      "rsid": "rs1199147210",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs1194719396##",
+      "pmids_count": 1,
+      "rsid": "rs1194719396",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs1192326707##",
+      "pmids_count": 1,
+      "rsid": "rs1192326707",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs1188314137##",
+      "pmids_count": 1,
+      "rsid": "rs1188314137",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs1183655796##",
+      "pmids_count": 1,
+      "rsid": "rs1183655796",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs1177538115##",
+      "pmids_count": 1,
+      "rsid": "rs1177538115",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs1170913417##",
+      "pmids_count": 1,
+      "rsid": "rs1170913417",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs1170733927##",
+      "pmids_count": 1,
+      "rsid": "rs1170733927",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs116336796##",
+      "pmids_count": 3,
+      "rsid": "rs116336796",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs1085307884##",
+      "pmids_count": 13,
+      "rsid": "rs1085307884",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs1057519482##",
+      "pmids_count": 3,
+      "rsid": "rs1057519482",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs1057519481##",
+      "pmids_count": 2,
+      "rsid": "rs1057519481",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs1057519480##",
+      "pmids_count": 4,
+      "rsid": "rs1057519480",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs1057519479##",
+      "pmids_count": 3,
+      "rsid": "rs1057519479",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs1057519478##",
+      "pmids_count": 4,
+      "rsid": "rs1057519478",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs1057519477##",
+      "pmids_count": 3,
+      "rsid": "rs1057519477",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs1057519476##",
+      "pmids_count": 3,
+      "rsid": "rs1057519476",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs1057519475##",
+      "pmids_count": 5,
+      "rsid": "rs1057519475",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs1057519474##",
+      "pmids_count": 1,
+      "rsid": "rs1057519474",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs1057519473##",
+      "pmids_count": 2,
+      "rsid": "rs1057519473",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs1057519472##",
+      "pmids_count": 1,
+      "rsid": "rs1057519472",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs1057519471##",
+      "pmids_count": 1,
+      "rsid": "rs1057519471",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs1050688240##",
+      "pmids_count": 1,
+      "rsid": "rs1050688240",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs104893958##",
+      "pmids_count": 11,
+      "rsid": "rs104893958",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs104893957##",
+      "pmids_count": 14,
+      "rsid": "rs104893957",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs104893954##",
+      "pmids_count": 5,
+      "rsid": "rs104893954",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs104893953##",
+      "pmids_count": 12,
+      "rsid": "rs104893953",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs104893952##",
+      "pmids_count": 6,
+      "rsid": "rs104893952",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs104893951##",
+      "pmids_count": 17,
+      "rsid": "rs104893951",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs1032706802##",
+      "pmids_count": 1,
+      "rsid": "rs1032706802",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@rs1009903619##",
+      "pmids_count": 2,
+      "rsid": "rs1009903619",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@CA3614924#rs780169081##",
+      "pmids_count": 1,
+      "rsid": "rs780169081",
+      "clingen_id": "CA3614924",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@CA3614860#rs763692952##",
+      "pmids_count": 1,
+      "rsid": "rs763692952",
+      "clingen_id": "CA3614860",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@CA3614839#rs754743917##",
+      "pmids_count": 1,
+      "rsid": "rs754743917",
+      "clingen_id": "CA3614839",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@CA3614816#rs765414694##",
+      "pmids_count": 1,
+      "rsid": "rs765414694",
+      "clingen_id": "CA3614816",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@CA3614813#rs754033600##",
+      "pmids_count": 1,
+      "rsid": "rs754033600",
+      "clingen_id": "CA3614813",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@CA3614754#rs9502980##",
+      "pmids_count": 1,
+      "rsid": "rs9502980",
+      "clingen_id": "CA3614754",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@CA3614749#rs104893958##",
+      "pmids_count": 1,
+      "rsid": "rs104893958",
+      "clingen_id": "CA3614749",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@CA3614743#rs774086427##",
+      "pmids_count": 1,
+      "rsid": "rs774086427",
+      "clingen_id": "CA3614743",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@CA248383#rs483352810##",
+      "pmids_count": 2,
+      "rsid": "rs483352810",
+      "clingen_id": "CA248383",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@CA248381#rs372857241##",
+      "pmids_count": 2,
+      "rsid": "rs372857241",
+      "clingen_id": "CA248381",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@CA235498#rs185790394##",
+      "pmids_count": 3,
+      "rsid": "rs185790394",
+      "clingen_id": "CA235498",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@CA16044271#rs760676014##",
+      "pmids_count": 3,
+      "rsid": "rs760676014",
+      "clingen_id": "CA16044271",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@CA133391214#rs281865460##",
+      "pmids_count": 1,
+      "rsid": "rs281865460",
+      "clingen_id": "CA133391214",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@CA133389931#rs1009903619##",
+      "pmids_count": 2,
+      "rsid": "rs1009903619",
+      "clingen_id": "CA133389931",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@CA133389723#rs917382067##",
+      "pmids_count": 3,
+      "rsid": "rs917382067",
+      "clingen_id": "CA133389723",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@CA128989#rs79691946##",
+      "pmids_count": 9,
+      "rsid": "rs79691946",
+      "clingen_id": "CA128989",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@CA119644#rs121909339##",
+      "pmids_count": 5,
+      "rsid": "rs121909339",
+      "clingen_id": "CA119644",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@CA119643#rs121909338##",
+      "pmids_count": 6,
+      "rsid": "rs121909338",
+      "clingen_id": "CA119643",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@CA119641#rs104893954##",
+      "pmids_count": 4,
+      "rsid": "rs104893954",
+      "clingen_id": "CA119641",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@CA119639#rs104893953##",
+      "pmids_count": 7,
+      "rsid": "rs104893953",
+      "clingen_id": "CA119639",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@CA119637#rs104893952##",
+      "pmids_count": 5,
+      "rsid": "rs104893952",
+      "clingen_id": "CA119637",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@CA119636#rs104893951##",
+      "pmids_count": 12,
+      "rsid": "rs104893951",
+      "clingen_id": "CA119636",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@CA119634#rs104893958##",
+      "pmids_count": 5,
+      "rsid": "rs104893958",
+      "clingen_id": "CA119634",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@CA119632#rs104893957##",
+      "pmids_count": 10,
+      "rsid": "rs104893957",
+      "clingen_id": "CA119632",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@CA10603005#rs886041355##",
+      "pmids_count": 3,
+      "rsid": "rs886041355",
+      "clingen_id": "CA10603005",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@CA10588416#rs886039568##",
+      "pmids_count": 6,
+      "rsid": "rs886039568",
+      "clingen_id": "CA10588416",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@CA10588415#rs376405759##",
+      "pmids_count": 2,
+      "rsid": "rs376405759",
+      "clingen_id": "CA10588415",
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.Y83H",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.Y240_241ins",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.Y159*",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.Y115S",
+      "pmids_count": 3,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.Y105*",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.W152R",
+      "pmids_count": 2,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.W152G",
+      "pmids_count": 5,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.W146G",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.W122X",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.W122G",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.V46RfsX37",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.V407_409del",
+      "pmids_count": 2,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.V363M",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.V137del",
+      "pmids_count": 3,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.T368N",
+      "pmids_count": 2,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.S9fsX89",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.S7K",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.S7G",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.S7E",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.S7D",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.S6H",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.S6E",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.S6C",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.S48X",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.S2C",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.S272A",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.S1H",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.S1E",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.S157*",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.S101P",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.S0033S",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.R412*",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.R179*",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.R170W",
+      "pmids_count": 2,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.R169P",
+      "pmids_count": 2,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.R1362_1364ins",
+      "pmids_count": 2,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.R1359_1361dup",
+      "pmids_count": 2,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.R1337_1338ins",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.R11241125ins",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.Q92fsX)",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.Q92P",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.Q70fsX73",
+      "pmids_count": 2,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.Q70HfsX8",
+      "pmids_count": 2,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.Q70HfsX",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.Q67X",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.Q514RfsX4",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.Q23fsX",
+      "pmids_count": 2,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.Q21X",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.Q123X",
+      "pmids_count": 2,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.Q106RfsX75",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.Q106RfsX7",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.Q106*",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.P79T",
+      "pmids_count": 6,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.P79R",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.P79L",
+      "pmids_count": 2,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.P69RfsX8",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.P202RfsX113",
+      "pmids_count": 2,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.P156RfsX25",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.P146fsX",
+      "pmids_count": 2,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.P136L",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.N503fsX15",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.N133K",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.N0477L",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.M400SfsX129",
+      "pmids_count": 2,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.M161V",
+      "pmids_count": 2,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.M161K",
+      "pmids_count": 6,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.M132R",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.L86AfsX220",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.L24R",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.L246fsX68",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.L101P",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.K144X",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.K138E",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.I91T",
+      "pmids_count": 2,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.I91S",
+      "pmids_count": 4,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.H484Y",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.H446del",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.H128R",
+      "pmids_count": 4,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.G59V",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.G499AfsX20",
+      "pmids_count": 2,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.G452fsX",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.G447ins",
+      "pmids_count": 4,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.G381ins",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.G380ins",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.G380V",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.G379fsX",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.G375ins",
+      "pmids_count": 4,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.G33fsX41",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.G329D",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.G231VfsX73",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.G198PfsX117",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.G165R",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.G149D",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.G1142_1144ins",
+      "pmids_count": 2,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.F504fsX518",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.F136L",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.E55X",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.E327AfsX200",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.E163*",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.D96GfsX210",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.D117TfsX64",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.C233fsX",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.C233AfsX82",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.C135Y",
+      "pmids_count": 5,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.C135X",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.C129Y",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.C0071S",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.A85P",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.A51fsX73",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.A516_518dup",
+      "pmids_count": 2,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.A516_518del",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.A31fsX41",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.A31_33del",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.A291fsX",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.A204RfsX111",
+      "pmids_count": 2,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.A1142_1144ins",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.A1139_1141dup",
+      "pmids_count": 2,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.92dup",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#p.57dup",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#g._393153_[3227543_?]del",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#g.9300T>A",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#g.7917C>A",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#g.7223G>A",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#g.44595695G>A",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#g.1947dup25",
+      "pmids_count": 2,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#g.1611819G>T",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#g.1611059C>T",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#g.1610856G>T",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#g.1610545_1610554del",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#g.1610150del1612452",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#g.1155del9",
+      "pmids_count": 2,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#g.1086delC",
+      "pmids_count": 2,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.CODON79C>A",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.CODON112T>C",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.99_108del10",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.980_981del",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.93_102del10",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.92_100del9",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.92_100del",
+      "pmids_count": 2,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.91_100delCGGCGGCCG",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.853dup25",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.81_89del9",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.81_89del",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.816_817delinsG",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.780dup",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.738delG",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.719delT",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.718_719del",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.709del",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.697delT",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.692_696del5",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.67delC",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.609delC",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.605delC",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.605del",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.599_617del",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.592_593delinsC",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.57_96del",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.513_518del",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.4C>T",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.482T>A",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.481A>G",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.478_482dup",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.477_478delCA",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.477C>G",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.471dupA",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.467del",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.454T>G",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.454T>C",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.454T>A",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.437_453del17",
+      "pmids_count": 4,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.433_435del",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.430A>T",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.409_411del",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.408C>A",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.405C>A",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.3G>C",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.3A>C",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.378A>G",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.364T>G",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.349delG",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.344A>C",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.335del",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.317delA",
+      "pmids_count": 5,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.313_314insA",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.2A>G",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.286insG",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.286ins1",
+      "pmids_count": 2,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.286dupG",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.279del",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.275A>C",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.274C>T",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.272T>C",
+      "pmids_count": 2,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.26_47ins22",
+      "pmids_count": 2,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.26_47ins",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.262_265insC",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.254dupC",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.247T>C",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.246C>A",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.235C>A",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.210delG",
+      "pmids_count": 2,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.210_210delG",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.205delC",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.1T>A",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.176G>T",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.1662+1041C>T",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.1622+396delC",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.1611606_1611620del",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.1610898dup",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.15delC",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.1540delC",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.153_163del11",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.1512delG",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.1511delT",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.1494delG",
+      "pmids_count": 2,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.1399C>T",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.135dup",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.12delC",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.127G>A",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.1193_1196dupGCAA",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.1193_1196dup",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.116_123del8",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.1155del9",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.1141_1142insG",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.1139_1141dup",
+      "pmids_count": 2,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.1139G>T",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.1136_1141dup",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.1135dup",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.1134_144delCGGCGGCGCGG",
+      "pmids_count": 2,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.1134_144del",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.1132_1140del",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.1103C>A",
+      "pmids_count": 2,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.109del1",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.1018C>T",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.100_109del10",
+      "pmids_count": 2,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.1009_1012dup6",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.1009_1012dup",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.071del",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.-59C>C",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.-20_1125del",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#c.*454C>T",
+      "pmids_count": 1,
+      "gene": "FOXC1"
+    },
+    {
+      "_id": "litvar@#2296#",
+      "pmids_count": 141,
+      "gene": "FOXC1"
+    }
+  ]
+}

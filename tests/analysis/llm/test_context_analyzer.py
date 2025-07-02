@@ -16,7 +16,7 @@ from typing import List, Dict, Any
 from src.analysis.llm.context_analyzer import UnifiedLlmContextAnalyzer
 from src.models.data.clients.pubtator import PubTatorClient
 from src.models.data.clients.exceptions import PubTatorError
-from src.utils.llm.manager import LlmManager
+from src.utils.llm import LlmManager
 
 
 @pytest.fixture

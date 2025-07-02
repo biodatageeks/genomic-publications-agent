@@ -1,0 +1,476 @@
+{
+  "FOXA1": [
+    {
+      "pmid": "24288367",
+      "variant": "H3K",
+      "gene": "FOXA1",
+      "source": "simplified_llm_prediction"
+    },
+    {
+      "pmid": "24512546",
+      "variant": "c.123A>G",
+      "gene": "FOXA1",
+      "source": "simplified_llm_prediction"
+    },
+    {
+      "pmid": "24528896",
+      "variant": "c.123A>G",
+      "gene": "FOXA1",
+      "source": "simplified_llm_prediction"
+    },
+    {
+      "pmid": "26014472",
+      "variant": "c.123A>G",
+      "gene": "FOXA1",
+      "source": "simplified_llm_prediction"
+    },
+    {
+      "pmid": "26347321",
+      "variant": "c.123A>G",
+      "gene": "FOXA1",
+      "source": "simplified_llm_prediction"
+    },
+    {
+      "pmid": "28238418",
+      "variant": "c.123A>G",
+      "gene": "FOXA1",
+      "source": "simplified_llm_prediction"
+    },
+    {
+      "pmid": "28700586",
+      "variant": "U5F",
+      "gene": "FOXA1",
+      "source": "simplified_llm_prediction"
+    },
+    {
+      "pmid": "28700586",
+      "variant": "R5B",
+      "gene": "FOXA1",
+      "source": "simplified_llm_prediction"
+    },
+    {
+      "pmid": "29673323",
+      "variant": "U2C",
+      "gene": "FOXA1",
+      "source": "simplified_llm_prediction"
+    },
+    {
+      "pmid": "30823486",
+      "variant": "rs13447455",
+      "gene": "FOXA1",
+      "source": "simplified_llm_prediction"
+    },
+    {
+      "pmid": "31855178",
+      "variant": "E3K",
+      "gene": "FOXA1",
+      "source": "simplified_llm_prediction"
+    },
+    {
+      "pmid": "31858221",
+      "variant": "C5A",
+      "gene": "FOXA1",
+      "source": "simplified_llm_prediction"
+    },
+    {
+      "pmid": "31858221",
+      "variant": "F4a",
+      "gene": "FOXA1",
+      "source": "simplified_llm_prediction"
+    },
+    {
+      "pmid": "33120262",
+      "variant": "h1b",
+      "gene": "FOXA1",
+      "source": "simplified_llm_prediction"
+    },
+    {
+      "pmid": "33120262",
+      "variant": "n9d",
+      "gene": "FOXA1",
+      "source": "simplified_llm_prediction"
+    },
+    {
+      "pmid": "33750801",
+      "variant": "H3K",
+      "gene": "FOXA1",
+      "source": "simplified_llm_prediction"
+    },
+    {
+      "pmid": "34254728",
+      "variant": "H2A",
+      "gene": "FOXA1",
+      "source": "simplified_llm_prediction"
+    },
+    {
+      "pmid": "35078818",
+      "variant": "Y537S",
+      "gene": "FOXA1",
+      "source": "simplified_llm_prediction"
+    },
+    {
+      "pmid": "35078818",
+      "variant": "D538G",
+      "gene": "FOXA1",
+      "source": "simplified_llm_prediction"
+    },
+    {
+      "pmid": "35768267",
+      "variant": "rs12947788",
+      "gene": "FOXA1",
+      "source": "simplified_llm_prediction"
+    },
+    {
+      "pmid": "36056637",
+      "variant": "c.123A>G",
+      "gene": "FOXA1",
+      "source": "simplified_llm_prediction"
+    },
+    {
+      "pmid": "36245246",
+      "variant": "c.123A>G",
+      "gene": "FOXA1",
+      "source": "simplified_llm_prediction"
+    },
+    {
+      "pmid": "39254651",
+      "variant": "c.123A>G",
+      "gene": "FOXA1",
+      "source": "simplified_llm_prediction"
+    }
+  ],
+  "FOXB1": [
+    {
+      "pmid": "14711874",
+      "variant": "b1a",
+      "gene": "FOXB1",
+      "source": "simplified_llm_prediction"
+    },
+    {
+      "pmid": "15492844",
+      "variant": "D4L",
+      "gene": "FOXB1",
+      "source": "simplified_llm_prediction"
+    },
+    {
+      "pmid": "15492844",
+      "variant": "G1B",
+      "gene": "FOXB1",
+      "source": "simplified_llm_prediction"
+    },
+    {
+      "pmid": "15492844",
+      "variant": "O1A",
+      "gene": "FOXB1",
+      "source": "simplified_llm_prediction"
+    },
+    {
+      "pmid": "15492844",
+      "variant": "O3A",
+      "gene": "FOXB1",
+      "source": "simplified_llm_prediction"
+    },
+    {
+      "pmid": "19046377",
+      "variant": "c.123A>G",
+      "gene": "FOXB1",
+      "source": "simplified_llm_prediction"
+    },
+    {
+      "pmid": "21958745",
+      "variant": "c.123A>G",
+      "gene": "FOXB1",
+      "source": "simplified_llm_prediction"
+    },
+    {
+      "pmid": "22945654",
+      "variant": "O3a",
+      "gene": "FOXB1",
+      "source": "simplified_llm_prediction"
+    },
+    {
+      "pmid": "24525055",
+      "variant": "c.123A>G",
+      "gene": "FOXB1",
+      "source": "simplified_llm_prediction"
+    },
+    {
+      "pmid": "26179507",
+      "variant": "c.123A>G",
+      "gene": "FOXB1",
+      "source": "simplified_llm_prediction"
+    },
+    {
+      "pmid": "26578897",
+      "variant": "c.123A>G",
+      "gene": "FOXB1",
+      "source": "simplified_llm_prediction"
+    },
+    {
+      "pmid": "26635092",
+      "variant": "rs1999071",
+      "gene": "FOXB1",
+      "source": "simplified_llm_prediction"
+    },
+    {
+      "pmid": "26635092",
+      "variant": "rs10519031",
+      "gene": "FOXB1",
+      "source": "simplified_llm_prediction"
+    },
+    {
+      "pmid": "26635092",
+      "variant": "rs8029377",
+      "gene": "FOXB1",
+      "source": "simplified_llm_prediction"
+    },
+    {
+      "pmid": "26635092",
+      "variant": "A1L",
+      "gene": "FOXB1",
+      "source": "simplified_llm_prediction"
+    },
+    {
+      "pmid": "26935354",
+      "variant": "c.123A>G",
+      "gene": "FOXB1",
+      "source": "simplified_llm_prediction"
+    },
+    {
+      "pmid": "29435983",
+      "variant": "c.123A>G",
+      "gene": "FOXB1",
+      "source": "simplified_llm_prediction"
+    },
+    {
+      "pmid": "35196094",
+      "variant": "A3C",
+      "gene": "FOXB1",
+      "source": "simplified_llm_prediction"
+    },
+    {
+      "pmid": "39075111",
+      "variant": "s22l",
+      "gene": "FOXB1",
+      "source": "simplified_llm_prediction"
+    },
+    {
+      "pmid": "39075111",
+      "variant": "f1a",
+      "gene": "FOXB1",
+      "source": "simplified_llm_prediction"
+    },
+    {
+      "pmid": "39585426",
+      "variant": "c.123A>G",
+      "gene": "FOXB1",
+      "source": "simplified_llm_prediction"
+    },
+    {
+      "pmid": "39622796",
+      "variant": "c.123A>G",
+      "gene": "FOXB1",
+      "source": "simplified_llm_prediction"
+    },
+    {
+      "pmid": "39725721",
+      "variant": "F2D",
+      "gene": "FOXB1",
+      "source": "simplified_llm_prediction"
+    },
+    {
+      "pmid": "39725721",
+      "variant": "H2F",
+      "gene": "FOXB1",
+      "source": "simplified_llm_prediction"
+    }
+  ],
+  "FOXC1": [
+    {
+      "pmid": "17566825",
+      "variant": "c.123A>G",
+      "gene": "FOXC1",
+      "source": "simplified_llm_prediction"
+    },
+    {
+      "pmid": "17653043",
+      "variant": "a85P",
+      "gene": "FOXC1",
+      "source": "simplified_llm_prediction"
+    },
+    {
+      "pmid": "18498376",
+      "variant": "P1B",
+      "gene": "FOXC1",
+      "source": "simplified_llm_prediction"
+    },
+    {
+      "pmid": "18498376",
+      "variant": "Q120X",
+      "gene": "FOXC1",
+      "source": "simplified_llm_prediction"
+    },
+    {
+      "pmid": "20976766",
+      "variant": "c.123A>G",
+      "gene": "FOXC1",
+      "source": "simplified_llm_prediction"
+    },
+    {
+      "pmid": "21465172",
+      "variant": "H3K",
+      "gene": "FOXC1",
+      "source": "simplified_llm_prediction"
+    },
+    {
+      "pmid": "25250569",
+      "variant": "c.123A>G",
+      "gene": "FOXC1",
+      "source": "simplified_llm_prediction"
+    },
+    {
+      "pmid": "25808752",
+      "variant": "l10a",
+      "gene": "FOXC1",
+      "source": "simplified_llm_prediction"
+    },
+    {
+      "pmid": "25809640",
+      "variant": "p.I126S",
+      "gene": "FOXC1",
+      "source": "simplified_llm_prediction"
+    },
+    {
+      "pmid": "25809640",
+      "variant": "G448i",
+      "gene": "FOXC1",
+      "source": "simplified_llm_prediction"
+    },
+    {
+      "pmid": "25809640",
+      "variant": "I126S",
+      "gene": "FOXC1",
+      "source": "simplified_llm_prediction"
+    },
+    {
+      "pmid": "25809640",
+      "variant": "734A>T",
+      "gene": "FOXC1",
+      "source": "simplified_llm_prediction"
+    },
+    {
+      "pmid": "26227058",
+      "variant": "L1C",
+      "gene": "FOXC1",
+      "source": "simplified_llm_prediction"
+    },
+    {
+      "pmid": "29751260",
+      "variant": "c.123A>G",
+      "gene": "FOXC1",
+      "source": "simplified_llm_prediction"
+    },
+    {
+      "pmid": "30171256",
+      "variant": "c.123A>G",
+      "gene": "FOXC1",
+      "source": "simplified_llm_prediction"
+    },
+    {
+      "pmid": "30606694",
+      "variant": "E2F",
+      "gene": "FOXC1",
+      "source": "simplified_llm_prediction"
+    },
+    {
+      "pmid": "30606694",
+      "variant": "K1N",
+      "gene": "FOXC1",
+      "source": "simplified_llm_prediction"
+    },
+    {
+      "pmid": "30653210",
+      "variant": "P1B",
+      "gene": "FOXC1",
+      "source": "simplified_llm_prediction"
+    },
+    {
+      "pmid": "30736081",
+      "variant": "c.123A>G",
+      "gene": "FOXC1",
+      "source": "simplified_llm_prediction"
+    },
+    {
+      "pmid": "32476818",
+      "variant": "p.Ter494Glu",
+      "gene": "FOXC1",
+      "source": "simplified_llm_prediction"
+    },
+    {
+      "pmid": "32476818",
+      "variant": "N2B",
+      "gene": "FOXC1",
+      "source": "simplified_llm_prediction"
+    },
+    {
+      "pmid": "32476818",
+      "variant": "r494G",
+      "gene": "FOXC1",
+      "source": "simplified_llm_prediction"
+    },
+    {
+      "pmid": "33796576",
+      "variant": "P3R",
+      "gene": "FOXC1",
+      "source": "simplified_llm_prediction"
+    },
+    {
+      "pmid": "33796576",
+      "variant": "q11D",
+      "gene": "FOXC1",
+      "source": "simplified_llm_prediction"
+    },
+    {
+      "pmid": "33796576",
+      "variant": "A3C",
+      "gene": "FOXC1",
+      "source": "simplified_llm_prediction"
+    },
+    {
+      "pmid": "33941187",
+      "variant": "F2C",
+      "gene": "FOXC1",
+      "source": "simplified_llm_prediction"
+    },
+    {
+      "pmid": "33941187",
+      "variant": "G2M",
+      "gene": "FOXC1",
+      "source": "simplified_llm_prediction"
+    },
+    {
+      "pmid": "35091826",
+      "variant": "C4A",
+      "gene": "FOXC1",
+      "source": "simplified_llm_prediction"
+    },
+    {
+      "pmid": "39773485",
+      "variant": "c.123A>G",
+      "gene": "FOXC1",
+      "source": "simplified_llm_prediction"
+    },
+    {
+      "pmid": "40481210",
+      "variant": "p.H128Y",
+      "gene": "FOXC1",
+      "source": "simplified_llm_prediction"
+    },
+    {
+      "pmid": "40481210",
+      "variant": "H128Y",
+      "gene": "FOXC1",
+      "source": "simplified_llm_prediction"
+    }
+  ]
+}

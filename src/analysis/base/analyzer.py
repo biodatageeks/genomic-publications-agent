@@ -37,10 +37,7 @@ class BaseAnalyzer(ABC):
         self.logger = logging.getLogger(self.__class__.__name__)
         
         # Initialize PubTator client if not provided
-        if pubtator_client is None:
-            self.pubtator_client = PubTatorClient()
-        else:
-            self.pubtator_client = pubtator_client
+        self.pubtator_client = pubtator_client or PubTatorClient()
             
         self.logger.info(f"Initialized {self.__class__.__name__}")
     

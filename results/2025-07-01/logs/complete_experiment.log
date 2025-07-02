@@ -1,0 +1,192 @@
+2025-07-01 16:36:56,843 - __main__ - INFO - Initialized complete experiment in results/2025-07-01
+2025-07-01 16:36:56,843 - __main__ - INFO - === STARTING COMPLETE FOX EXPERIMENT at 2025-07-01 16:36:56.843533 ===
+2025-07-01 16:36:56,843 - __main__ - INFO - Running in TEST MODE with 3 genes
+2025-07-01 16:36:56,843 - __main__ - INFO - === STEPS 1-3: Loading genes and getting PMID counts ===
+2025-07-01 16:36:56,843 - services.search.fox_gene_pmid_finder - INFO - Loading genes from results/2025-07-01/data/test_fox_genes.txt
+2025-07-01 16:36:56,844 - services.search.fox_gene_pmid_finder - INFO - Loaded 3 genes
+2025-07-01 16:36:56,844 - __main__ - INFO - Loaded 3 FOX genes
+2025-07-01 16:36:56,844 - __main__ - INFO - Getting PMIDs for gene: FOXA1
+2025-07-01 16:36:56,844 - services.search.fox_gene_pmid_finder - INFO - Searching for publications associated with 1 genes
+2025-07-01 16:36:56,844 - services.search.fox_gene_pmid_finder - INFO - Searching for publications for gene: FOXA1
+2025-07-01 16:36:57,430 - services.search.fox_gene_pmid_finder - INFO - Found 1000 publications for gene FOXA1
+2025-07-01 16:36:57,934 - services.search.fox_gene_pmid_finder - INFO - Found 1000 unique PMIDs
+2025-07-01 16:36:57,935 - __main__ - INFO - Gene FOXA1: 1000 PMIDs
+2025-07-01 16:36:58,436 - __main__ - INFO - Getting PMIDs for gene: FOXB1
+2025-07-01 16:36:58,437 - services.search.fox_gene_pmid_finder - INFO - Searching for publications associated with 1 genes
+2025-07-01 16:36:58,437 - services.search.fox_gene_pmid_finder - INFO - Searching for publications for gene: FOXB1
+2025-07-01 16:36:58,990 - services.search.fox_gene_pmid_finder - INFO - Found 18 publications for gene FOXB1
+2025-07-01 16:36:59,496 - services.search.fox_gene_pmid_finder - INFO - Found 18 unique PMIDs
+2025-07-01 16:36:59,497 - __main__ - INFO - Gene FOXB1: 18 PMIDs
+2025-07-01 16:37:00,002 - __main__ - INFO - Getting PMIDs for gene: FOXC1
+2025-07-01 16:37:00,002 - services.search.fox_gene_pmid_finder - INFO - Searching for publications associated with 1 genes
+2025-07-01 16:37:00,003 - services.search.fox_gene_pmid_finder - INFO - Searching for publications for gene: FOXC1
+2025-07-01 16:37:00,524 - services.search.fox_gene_pmid_finder - INFO - Found 682 publications for gene FOXC1
+2025-07-01 16:37:01,026 - services.search.fox_gene_pmid_finder - INFO - Found 682 unique PMIDs
+2025-07-01 16:37:01,027 - __main__ - INFO - Gene FOXC1: 682 PMIDs
+2025-07-01 16:37:01,533 - __main__ - INFO - Total unique PMIDs: 1689
+2025-07-01 16:37:01,533 - __main__ - INFO - Results saved to results/2025-07-01/data/gene_pmids_counts.csv
+2025-07-01 16:37:01,533 - __main__ - INFO - === STEP 4: Extracting reference variants from LitVar ===
+2025-07-01 16:37:01,533 - __main__ - INFO - Getting variants for gene: FOXA1
+2025-07-01 16:37:02,732 - __main__ - INFO - Gene FOXA1: 410 variants found
+2025-07-01 16:37:03,237 - __main__ - INFO - Getting variants for gene: FOXB1
+2025-07-01 16:37:03,772 - __main__ - INFO - Gene FOXB1: 100 variants found
+2025-07-01 16:37:04,274 - __main__ - INFO - Getting variants for gene: FOXC1
+2025-07-01 16:37:05,905 - __main__ - INFO - Gene FOXC1: 452 variants found
+2025-07-01 16:37:06,420 - __main__ - INFO - Total variants from LitVar: 962
+2025-07-01 16:37:06,420 - __main__ - INFO - === STEP 5: Extracting predicted variants using simplified LLM ===
+2025-07-01 16:37:06,421 - __main__ - INFO - Processing publications for gene: FOXA1
+2025-07-01 16:37:06,421 - services.search.fox_gene_pmid_finder - INFO - Searching for publications associated with 1 genes
+2025-07-01 16:37:06,421 - services.search.fox_gene_pmid_finder - INFO - Searching for publications for gene: FOXA1
+2025-07-01 16:37:07,003 - services.search.fox_gene_pmid_finder - INFO - Found 1000 publications for gene FOXA1
+2025-07-01 16:37:07,508 - services.search.fox_gene_pmid_finder - INFO - Found 1000 unique PMIDs
+2025-07-01 16:37:07,508 - __main__ - INFO - Limited to 20 publications for FOXA1
+2025-07-01 16:37:08,144 - experiment_modules - INFO - Retrieved 0 documents for 20 PMIDs
+2025-07-01 16:37:08,145 - __main__ - INFO - Gene FOXA1: 0 predicted variants
+2025-07-01 16:37:09,146 - __main__ - INFO - Processing publications for gene: FOXB1
+2025-07-01 16:37:09,146 - services.search.fox_gene_pmid_finder - INFO - Searching for publications associated with 1 genes
+2025-07-01 16:37:09,146 - services.search.fox_gene_pmid_finder - INFO - Searching for publications for gene: FOXB1
+2025-07-01 16:37:09,643 - services.search.fox_gene_pmid_finder - INFO - Found 18 publications for gene FOXB1
+2025-07-01 16:37:10,148 - services.search.fox_gene_pmid_finder - INFO - Found 18 unique PMIDs
+2025-07-01 16:37:10,763 - experiment_modules - INFO - Retrieved 0 documents for 18 PMIDs
+2025-07-01 16:37:10,764 - __main__ - INFO - Gene FOXB1: 0 predicted variants
+2025-07-01 16:37:11,769 - __main__ - INFO - Processing publications for gene: FOXC1
+2025-07-01 16:37:11,769 - services.search.fox_gene_pmid_finder - INFO - Searching for publications associated with 1 genes
+2025-07-01 16:37:11,769 - services.search.fox_gene_pmid_finder - INFO - Searching for publications for gene: FOXC1
+2025-07-01 16:37:12,302 - services.search.fox_gene_pmid_finder - INFO - Found 682 publications for gene FOXC1
+2025-07-01 16:37:12,807 - services.search.fox_gene_pmid_finder - INFO - Found 682 unique PMIDs
+2025-07-01 16:37:12,808 - __main__ - INFO - Limited to 20 publications for FOXC1
+2025-07-01 16:37:13,446 - experiment_modules - INFO - Retrieved 0 documents for 20 PMIDs
+2025-07-01 16:37:13,446 - __main__ - INFO - Gene FOXC1: 0 predicted variants
+2025-07-01 16:37:14,453 - __main__ - INFO - Total predicted variants: 0
+2025-07-01 16:37:14,453 - __main__ - INFO - === STEP 6: Extracting reference variants from PubTator ===
+2025-07-01 16:37:14,454 - __main__ - INFO - Getting PubTator variants for gene: FOXA1
+2025-07-01 16:37:14,454 - services.search.fox_gene_pmid_finder - INFO - Searching for publications associated with 1 genes
+2025-07-01 16:37:14,454 - services.search.fox_gene_pmid_finder - INFO - Searching for publications for gene: FOXA1
+2025-07-01 16:37:15,008 - services.search.fox_gene_pmid_finder - INFO - Found 1000 publications for gene FOXA1
+2025-07-01 16:37:15,509 - services.search.fox_gene_pmid_finder - INFO - Found 1000 unique PMIDs
+2025-07-01 16:37:15,510 - __main__ - INFO - Gene FOXA1: 0 reference variants
+2025-07-01 16:37:16,015 - __main__ - INFO - Getting PubTator variants for gene: FOXB1
+2025-07-01 16:37:16,015 - services.search.fox_gene_pmid_finder - INFO - Searching for publications associated with 1 genes
+2025-07-01 16:37:16,016 - services.search.fox_gene_pmid_finder - INFO - Searching for publications for gene: FOXB1
+2025-07-01 16:37:16,508 - services.search.fox_gene_pmid_finder - INFO - Found 18 publications for gene FOXB1
+2025-07-01 16:37:17,014 - services.search.fox_gene_pmid_finder - INFO - Found 18 unique PMIDs
+2025-07-01 16:37:17,015 - __main__ - INFO - Gene FOXB1: 0 reference variants
+2025-07-01 16:37:17,520 - __main__ - INFO - Getting PubTator variants for gene: FOXC1
+2025-07-01 16:37:17,520 - services.search.fox_gene_pmid_finder - INFO - Searching for publications associated with 1 genes
+2025-07-01 16:37:17,520 - services.search.fox_gene_pmid_finder - INFO - Searching for publications for gene: FOXC1
+2025-07-01 16:37:18,048 - services.search.fox_gene_pmid_finder - INFO - Found 682 publications for gene FOXC1
+2025-07-01 16:37:18,554 - services.search.fox_gene_pmid_finder - INFO - Found 682 unique PMIDs
+2025-07-01 16:37:18,554 - __main__ - INFO - Gene FOXC1: 0 reference variants
+2025-07-01 16:37:19,060 - __main__ - INFO - Total reference variants from PubTator: 0
+2025-07-01 16:37:19,060 - __main__ - INFO - === STEP 7: Calculating metrics ===
+2025-07-01 16:37:19,062 - variant_metrics_evaluator - INFO - === STARTING VARIANT METRICS EVALUATION ===
+2025-07-01 16:37:19,062 - variant_metrics_evaluator - INFO - Loading data files...
+2025-07-01 16:37:19,064 - variant_metrics_evaluator - INFO - Evaluating LLM predictions vs PubTator annotations...
+2025-07-01 16:37:19,065 - variant_metrics_evaluator - INFO - Metrics saved to results/2025-07-01/reports/llm_vs_pubtator_metrics.json
+2025-07-01 16:37:19,065 - variant_metrics_evaluator - INFO - Evaluating LLM predictions vs LitVar data...
+2025-07-01 16:37:19,066 - variant_metrics_evaluator - INFO - Metrics saved to results/2025-07-01/reports/llm_vs_litvar_metrics.json
+2025-07-01 16:37:19,067 - variant_metrics_evaluator - INFO - Summary saved to results/2025-07-01/reports/metrics_summary.csv
+2025-07-01 16:37:19,068 - variant_metrics_evaluator - INFO - Summary report saved to results/2025-07-01/reports/experiment_summary.md
+2025-07-01 16:37:19,068 - variant_metrics_evaluator - INFO - === EVALUATION COMPLETED ===
+2025-07-01 16:37:19,068 - variant_metrics_evaluator - INFO - LLM vs PubTator - Precision: 1.000, Recall: 1.000, F1: 1.000
+2025-07-01 16:37:19,068 - variant_metrics_evaluator - INFO - LLM vs LitVar - Precision: 1.000, Recall: 1.000, F1: 1.000
+2025-07-01 16:37:19,069 - __main__ - INFO - Metrics calculation completed
+2025-07-01 16:37:19,070 - __main__ - INFO - Experiment summary saved to results/2025-07-01/reports/experiment_summary.json
+2025-07-01 16:37:19,070 - __main__ - INFO - === COMPLETE EXPERIMENT FINISHED SUCCESSFULLY ===
+2025-07-01 16:37:19,070 - __main__ - INFO - Total experiment duration: 0:00:22.226882
+2025-07-01 16:40:02,231 - __main__ - INFO - Initialized complete experiment in results/2025-07-01
+2025-07-01 16:40:02,231 - __main__ - INFO - === STARTING COMPLETE FOX EXPERIMENT at 2025-07-01 16:40:02.231925 ===
+2025-07-01 16:40:02,231 - __main__ - INFO - Running in TEST MODE with 3 genes
+2025-07-01 16:40:02,232 - __main__ - INFO - === STEPS 1-3: Loading genes and getting PMID counts ===
+2025-07-01 16:40:02,232 - services.search.fox_gene_pmid_finder - INFO - Loading genes from results/2025-07-01/data/test_fox_genes.txt
+2025-07-01 16:40:02,232 - services.search.fox_gene_pmid_finder - INFO - Loaded 3 genes
+2025-07-01 16:40:02,232 - __main__ - INFO - Loaded 3 FOX genes
+2025-07-01 16:40:02,232 - __main__ - INFO - Getting PMIDs for gene: FOXA1
+2025-07-01 16:40:02,232 - services.search.fox_gene_pmid_finder - INFO - Searching for publications associated with 1 genes
+2025-07-01 16:40:02,232 - services.search.fox_gene_pmid_finder - INFO - Searching for publications for gene: FOXA1
+2025-07-01 16:40:02,791 - services.search.fox_gene_pmid_finder - INFO - Found 1000 publications for gene FOXA1
+2025-07-01 16:40:03,295 - services.search.fox_gene_pmid_finder - INFO - Found 1000 unique PMIDs
+2025-07-01 16:40:03,296 - __main__ - INFO - Gene FOXA1: 1000 PMIDs
+2025-07-01 16:40:03,801 - __main__ - INFO - Getting PMIDs for gene: FOXB1
+2025-07-01 16:40:03,801 - services.search.fox_gene_pmid_finder - INFO - Searching for publications associated with 1 genes
+2025-07-01 16:40:03,801 - services.search.fox_gene_pmid_finder - INFO - Searching for publications for gene: FOXB1
+2025-07-01 16:40:04,268 - services.search.fox_gene_pmid_finder - INFO - Found 18 publications for gene FOXB1
+2025-07-01 16:40:04,771 - services.search.fox_gene_pmid_finder - INFO - Found 18 unique PMIDs
+2025-07-01 16:40:04,772 - __main__ - INFO - Gene FOXB1: 18 PMIDs
+2025-07-01 16:40:05,276 - __main__ - INFO - Getting PMIDs for gene: FOXC1
+2025-07-01 16:40:05,277 - services.search.fox_gene_pmid_finder - INFO - Searching for publications associated with 1 genes
+2025-07-01 16:40:05,277 - services.search.fox_gene_pmid_finder - INFO - Searching for publications for gene: FOXC1
+2025-07-01 16:40:05,810 - services.search.fox_gene_pmid_finder - INFO - Found 682 publications for gene FOXC1
+2025-07-01 16:40:06,313 - services.search.fox_gene_pmid_finder - INFO - Found 682 unique PMIDs
+2025-07-01 16:40:06,313 - __main__ - INFO - Gene FOXC1: 682 PMIDs
+2025-07-01 16:40:06,819 - __main__ - INFO - Total unique PMIDs: 1689
+2025-07-01 16:40:06,819 - __main__ - INFO - Results saved to results/2025-07-01/data/gene_pmids_counts.csv
+2025-07-01 16:40:06,819 - __main__ - INFO - === STEP 4: Extracting reference variants from LitVar ===
+2025-07-01 16:40:06,819 - __main__ - INFO - Getting variants for gene: FOXA1
+2025-07-01 16:40:07,848 - __main__ - INFO - Gene FOXA1: 410 variants found
+2025-07-01 16:40:08,353 - __main__ - INFO - Getting variants for gene: FOXB1
+2025-07-01 16:40:08,929 - __main__ - INFO - Gene FOXB1: 100 variants found
+2025-07-01 16:40:09,430 - __main__ - INFO - Getting variants for gene: FOXC1
+2025-07-01 16:40:10,476 - __main__ - INFO - Gene FOXC1: 452 variants found
+2025-07-01 16:40:10,979 - __main__ - INFO - Total variants from LitVar: 962
+2025-07-01 16:40:10,979 - __main__ - INFO - === STEP 5: Extracting predicted variants using simplified LLM ===
+2025-07-01 16:40:10,979 - __main__ - INFO - Processing publications for gene: FOXA1
+2025-07-01 16:40:10,979 - services.search.fox_gene_pmid_finder - INFO - Searching for publications associated with 1 genes
+2025-07-01 16:40:10,980 - services.search.fox_gene_pmid_finder - INFO - Searching for publications for gene: FOXA1
+2025-07-01 16:40:11,554 - services.search.fox_gene_pmid_finder - INFO - Found 1000 publications for gene FOXA1
+2025-07-01 16:40:12,054 - services.search.fox_gene_pmid_finder - INFO - Found 1000 unique PMIDs
+2025-07-01 16:40:12,055 - __main__ - INFO - Limited to 20 publications for FOXA1
+2025-07-01 16:40:12,686 - experiment_modules - INFO - Retrieved 20 documents for 20 PMIDs
+2025-07-01 16:40:12,690 - __main__ - INFO - Gene FOXA1: 23 predicted variants
+2025-07-01 16:40:13,695 - __main__ - INFO - Processing publications for gene: FOXB1
+2025-07-01 16:40:13,695 - services.search.fox_gene_pmid_finder - INFO - Searching for publications associated with 1 genes
+2025-07-01 16:40:13,695 - services.search.fox_gene_pmid_finder - INFO - Searching for publications for gene: FOXB1
+2025-07-01 16:40:14,231 - services.search.fox_gene_pmid_finder - INFO - Found 18 publications for gene FOXB1
+2025-07-01 16:40:14,736 - services.search.fox_gene_pmid_finder - INFO - Found 18 unique PMIDs
+2025-07-01 16:40:15,318 - experiment_modules - INFO - Retrieved 18 documents for 18 PMIDs
+2025-07-01 16:40:15,323 - __main__ - INFO - Gene FOXB1: 24 predicted variants
+2025-07-01 16:40:16,328 - __main__ - INFO - Processing publications for gene: FOXC1
+2025-07-01 16:40:16,329 - services.search.fox_gene_pmid_finder - INFO - Searching for publications associated with 1 genes
+2025-07-01 16:40:16,329 - services.search.fox_gene_pmid_finder - INFO - Searching for publications for gene: FOXC1
+2025-07-01 16:40:16,974 - services.search.fox_gene_pmid_finder - INFO - Found 682 publications for gene FOXC1
+2025-07-01 16:40:17,479 - services.search.fox_gene_pmid_finder - INFO - Found 682 unique PMIDs
+2025-07-01 16:40:17,480 - __main__ - INFO - Limited to 20 publications for FOXC1
+2025-07-01 16:40:18,265 - experiment_modules - INFO - Retrieved 20 documents for 20 PMIDs
+2025-07-01 16:40:18,268 - __main__ - INFO - Gene FOXC1: 31 predicted variants
+2025-07-01 16:40:19,274 - __main__ - INFO - Total predicted variants: 78
+2025-07-01 16:40:19,274 - __main__ - INFO - === STEP 6: Extracting reference variants from PubTator ===
+2025-07-01 16:40:19,274 - __main__ - INFO - Getting PubTator variants for gene: FOXA1
+2025-07-01 16:40:19,274 - services.search.fox_gene_pmid_finder - INFO - Searching for publications associated with 1 genes
+2025-07-01 16:40:19,274 - services.search.fox_gene_pmid_finder - INFO - Searching for publications for gene: FOXA1
+2025-07-01 16:40:19,949 - services.search.fox_gene_pmid_finder - INFO - Found 1000 publications for gene FOXA1
+2025-07-01 16:40:20,453 - services.search.fox_gene_pmid_finder - INFO - Found 1000 unique PMIDs
+2025-07-01 16:40:20,454 - __main__ - INFO - Gene FOXA1: 6 reference variants
+2025-07-01 16:40:20,960 - __main__ - INFO - Getting PubTator variants for gene: FOXB1
+2025-07-01 16:40:20,960 - services.search.fox_gene_pmid_finder - INFO - Searching for publications associated with 1 genes
+2025-07-01 16:40:20,960 - services.search.fox_gene_pmid_finder - INFO - Searching for publications for gene: FOXB1
+2025-07-01 16:40:21,558 - services.search.fox_gene_pmid_finder - INFO - Found 18 publications for gene FOXB1
+2025-07-01 16:40:22,063 - services.search.fox_gene_pmid_finder - INFO - Found 18 unique PMIDs
+2025-07-01 16:40:22,064 - __main__ - INFO - Gene FOXB1: 4 reference variants
+2025-07-01 16:40:22,569 - __main__ - INFO - Getting PubTator variants for gene: FOXC1
+2025-07-01 16:40:22,569 - services.search.fox_gene_pmid_finder - INFO - Searching for publications associated with 1 genes
+2025-07-01 16:40:22,569 - services.search.fox_gene_pmid_finder - INFO - Searching for publications for gene: FOXC1
+2025-07-01 16:40:23,217 - services.search.fox_gene_pmid_finder - INFO - Found 682 publications for gene FOXC1
+2025-07-01 16:40:23,722 - services.search.fox_gene_pmid_finder - INFO - Found 682 unique PMIDs
+2025-07-01 16:40:23,723 - __main__ - INFO - Gene FOXC1: 15 reference variants
+2025-07-01 16:40:24,227 - __main__ - INFO - Total reference variants from PubTator: 25
+2025-07-01 16:40:24,227 - __main__ - INFO - === STEP 7: Calculating metrics ===
+2025-07-01 16:40:24,228 - variant_metrics_evaluator - INFO - === STARTING VARIANT METRICS EVALUATION ===
+2025-07-01 16:40:24,228 - variant_metrics_evaluator - INFO - Loading data files...
+2025-07-01 16:40:24,230 - variant_metrics_evaluator - INFO - Evaluating LLM predictions vs PubTator annotations...
+2025-07-01 16:40:24,232 - variant_metrics_evaluator - INFO - Metrics saved to results/2025-07-01/reports/llm_vs_pubtator_metrics.json
+2025-07-01 16:40:24,232 - variant_metrics_evaluator - INFO - Evaluating LLM predictions vs LitVar data...
+2025-07-01 16:40:24,234 - variant_metrics_evaluator - INFO - Metrics saved to results/2025-07-01/reports/llm_vs_litvar_metrics.json
+2025-07-01 16:40:24,234 - variant_metrics_evaluator - INFO - Summary saved to results/2025-07-01/reports/metrics_summary.csv
+2025-07-01 16:40:24,234 - variant_metrics_evaluator - INFO - Summary report saved to results/2025-07-01/reports/experiment_summary.md
+2025-07-01 16:40:24,234 - variant_metrics_evaluator - INFO - === EVALUATION COMPLETED ===
+2025-07-01 16:40:24,234 - variant_metrics_evaluator - INFO - LLM vs PubTator - Precision: 0.220, Recall: 0.733, F1: 0.338
+2025-07-01 16:40:24,234 - variant_metrics_evaluator - INFO - LLM vs LitVar - Precision: 0.000, Recall: 0.000, F1: 0.000
+2025-07-01 16:40:24,235 - __main__ - INFO - Metrics calculation completed
+2025-07-01 16:40:24,235 - __main__ - INFO - Experiment summary saved to results/2025-07-01/reports/experiment_summary.json
+2025-07-01 16:40:24,235 - __main__ - INFO - === COMPLETE EXPERIMENT FINISHED SUCCESSFULLY ===
+2025-07-01 16:40:24,235 - __main__ - INFO - Total experiment duration: 0:00:22.003600

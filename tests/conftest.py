@@ -8,7 +8,7 @@ import pandas as pd
 from unittest.mock import MagicMock, patch
 import json
 
-from src.utils.llm.manager import LlmManager
+from src.utils.llm import LlmManager
 
 
 @pytest.fixture

@@ -1,4 +1,7 @@
-from src.utils.llm.manager import LlmManager
+from src.utils.llm.provider import LlmApiProvider
 
-__all__ = ['LlmManager']
+# For backward compatibility
+LlmManager = LlmApiProvider
+
+__all__ = ['LlmApiProvider', 'LlmManager']
 

@@ -4,13 +4,13 @@ from typing import Dict, List, Union, Tuple, Optional
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
 from src.analysis.CoordinatesInference import CoordinatesInference
-from src.utils.llm.manager import LlmManager
+from src.utils.llm import LlmManager
 from src.services.flow.PubmedEndpoint import PubmedEndpoint
 
 
 class BenchmarkTestService:
     def __init__(self, endpoint_type: str, model_name: str, max_num_tokens: int):
-        self.llm_manager = LlmManager(endpoint_type, model_name)
+        self.llm_manager = LlmManager(provider=endpoint_type, model_name=model_name)
         self.max_num_tokens = max_num_tokens
         logging.basicConfig(filename='../log/debug.log', level=logging.DEBUG,
                             format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')

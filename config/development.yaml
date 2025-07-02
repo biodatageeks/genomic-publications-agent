@@ -1,6 +1,25 @@
 # Konfiguracja środowiska deweloperskiego
 
-llm_model_name: "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo"
+llm:
+  provider: "openai"
+  model_name: "gpt-4o-mini"
+
+# Default models for different tasks
+models:
+  embeddings:
+    default: "sentence-transformers/all-MiniLM-L6-v2"
+    alternatives:
+      - "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
+      - "NeuML/pubmedbert-base-embeddings"
+  tokenizer:
+    default: "bert-base-uncased"
+  classification:
+    sentiment: "cardiffnlp/twitter-roberta-base-sentiment-latest"
+    default: "cardiffnlp/twitter-roberta-base-sentiment-latest"
+  chat:
+    default: "meta-llama/Meta-Llama-3.1-8B-Instruct"
+    provider: "together"
+
 base_dir: "/Users/wojtek/Documents/bioinf/coordinates-lit/"
 paths:
   coordinates_extraction_examples: "data/coordinates-extraction/example-coordinates.txt"

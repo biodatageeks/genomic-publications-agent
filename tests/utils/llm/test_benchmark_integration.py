@@ -14,7 +14,7 @@ from typing import Dict, List, Union
 # Add project root to path
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
 
-from src.utils.llm.manager import LlmManager
+from src.utils.llm import LlmManager
 from src.analysis.BenchmarkTestService import BenchmarkTestService
 from src.Config import Config
 
