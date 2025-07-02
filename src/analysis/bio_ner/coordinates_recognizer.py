@@ -21,7 +21,7 @@ except ImportError:
     AutoModelForTokenClassification = None
     BatchEncoding = None
 
-from src.utils.llm.manager import LlmManager
+from src.utils.models.generic.chat import GenericChat
 
 
 class CoordinatesRecognizer:
@@ -33,15 +33,15 @@ class CoordinatesRecognizer:
     dbSNP identifiers, and chromosomal aberrations.
     """
     
-    def __init__(self, llm_manager: Optional[LlmManager] = None, model_name: str = "gpt-3.5-turbo"):
+    def __init__(self, llm_chat: Optional[GenericChat] = None, model_name: str = "gpt-3.5-turbo"):
         """
         Initializes the coordinates recognizer.
         
         Args:
-            llm_manager: Optional LlmManager instance for LLM-based coordinate recognition
+            llm_chat: Optional GenericChat instance for LLM-based coordinate recognition
             model_name: Name of the model for coordinate recognition
         """
-        self.llm_manager = llm_manager
+        self.llm_chat = llm_chat
         self.model_name = model_name
         
         # Initialize regex patterns for different coordinate formats
@@ -63,34 +63,34 @@ class CoordinatesRecognizer:
         
         # HGVS DNA patterns
         self.hgvs_dna_c = re.compile(
-            r'[A-Z0-9_-]+:?c\.(?:[*-]?[1-9][0-9]*(?:[+-][1-9][0-9]*)?)'
-            r'(?:[ACGT]>[ACGT]|del[ACGT]*|dup[ACGT]*|ins[ACGT]+|delins[ACGT]+|_[*-]?[1-9][0-9]*(?:[+-][1-9][0-9]*)?(?:del[ACGT]*|dup[ACGT]*|ins[ACGT]+|delins[ACGT]+))',
+            r'[A-Z0-9_.,-]+:?c\.(?:[*-]?[0-9]+(?:[+-][0-9]+)?)'
+            r'(?:[ACGT]>[ACGT]|del[ACGT]*|dup[ACGT]*|ins[ACGT]+|delins[ACGT]+|=|_[*-]?[0-9]+(?:[+-][0-9]+)?(?:del[ACGT]*|dup[ACGT]*|ins[ACGT]+|delins[ACGT]+))',
             re.IGNORECASE
         )
         
         self.hgvs_dna_g = re.compile(
-            r'[A-Z0-9_-]+:?[gmo]\.(?:[1-9][0-9]*)'
-            r'(?:[ACGT]>[ACGT]|del|dup|ins[ACGT]+|delins[ACGT]+|_[1-9][0-9]*(?:del|dup|ins[ACGT]+|delins[ACGT]+))',
+            r'[A-Z0-9_.,-]+:?[gmo]\.(?:[0-9]+)'
+            r'(?:[ACGT]>[ACGT]|del[ACGT]*|dup[ACGT]*|ins[ACGT]+|delins[ACGT]+|=|_[0-9]+(?:del[ACGT]*|dup[ACGT]*|ins[ACGT]+|delins[ACGT]+))',
             re.IGNORECASE
         )
         
         self.hgvs_dna_n = re.compile(
-            r'[A-Z0-9_-]+:?n\.(?:[1-9][0-9]*(?:[+-][1-9][0-9]*)?)'
-            r'(?:[ACGT]>[ACGT]|del|dup|ins[ACGT]+|delins[ACGT]+|_[1-9][0-9]*(?:[+-][1-9][0-9]*)?(?:del|dup|ins[ACGT]+|delins[ACGT]+))',
+            r'[A-Z0-9_.,-]+:?n\.(?:[0-9]+(?:[+-][0-9]+)?)'
+            r'(?:[ACGT]>[ACGT]|del[ACGT]*|dup[ACGT]*|ins[ACGT]+|delins[ACGT]+|=|_[0-9]+(?:[+-][0-9]+)?(?:del[ACGT]*|dup[ACGT]*|ins[ACGT]+|delins[ACGT]+))',
             re.IGNORECASE
         )
         
         # HGVS RNA patterns
         self.hgvs_rna = re.compile(
-            r'[A-Z0-9_-]+:?r\.(?:[1-9][0-9]*(?:[+-][1-9][0-9]*)?)'
-            r'(?:[acgu]>[acgu]|del|dup|ins[acgu]+|delins[acgu]+|_[1-9][0-9]*(?:[+-][1-9][0-9]*)?(?:del|dup|ins[acgu]+|delins[acgu]+))',
+            r'[A-Z0-9_.,-]+:?r\.(?:[0-9]+(?:[+-][0-9]+)?)'
+            r'(?:[acgu]>[acgu]|del[acgu]*|dup[acgu]*|ins[acgu]+|delins[acgu]+|=|_[0-9]+(?:[+-][0-9]+)?(?:del[acgu]*|dup[acgu]*|ins[acgu]+|delins[acgu]+))',
             re.IGNORECASE
         )
         
         # HGVS Protein patterns
         self.hgvs_protein = re.compile(
-            r'[A-Z0-9_-]+:?p\.(?:(?:Ala|Arg|Asn|Asp|Cys|Gln|Glu|Gly|His|Ile|Leu|Lys|Met|Phe|Pro|Ser|Thr|Trp|Tyr|Val|Ter)[1-9][0-9]*)'
-            r'(?:(?:Ala|Arg|Asn|Asp|Cys|Gln|Glu|Gly|His|Ile|Leu|Lys|Met|Phe|Pro|Ser|Thr|Trp|Tyr|Val|Ter)|=|del|dup|ins(?:Ala|Arg|Asn|Asp|Cys|Gln|Glu|Gly|His|Ile|Leu|Lys|Met|Phe|Pro|Ser|Thr|Trp|Tyr|Val|Ter)+|delins(?:Ala|Arg|Asn|Asp|Cys|Gln|Glu|Gly|His|Ile|Leu|Lys|Met|Phe|Pro|Ser|Thr|Trp|Tyr|Val|Ter)+)',
+            r'[A-Z0-9_.,-]+:?p\.(?:(?:Ala|Arg|Asn|Asp|Cys|Gln|Glu|Gly|His|Ile|Leu|Lys|Met|Phe|Pro|Ser|Thr|Trp|Tyr|Val|Ter)[0-9]+)'
+            r'(?:(?:Ala|Arg|Asn|Asp|Cys|Gln|Glu|Gly|His|Ile|Leu|Lys|Met|Phe|Pro|Ser|Thr|Trp|Tyr|Val|Ter)|=|del|dup|ins(?:Ala|Arg|Asn|Asp|Cys|Gln|Glu|Gly|His|Ile|Leu|Lys|Met|Phe|Pro|Ser|Thr|Trp|Tyr|Val|Ter)*|delins(?:Ala|Arg|Asn|Asp|Cys|Gln|Glu|Gly|His|Ile|Leu|Lys|Met|Phe|Pro|Ser|Thr|Trp|Tyr|Val|Ter)*|_(?:Ala|Arg|Asn|Asp|Cys|Gln|Glu|Gly|His|Ile|Leu|Lys|Met|Phe|Pro|Ser|Thr|Trp|Tyr|Val|Ter)[0-9]+(?:del|dup|ins(?:Ala|Arg|Asn|Asp|Cys|Gln|Glu|Gly|His|Ile|Leu|Lys|Met|Phe|Pro|Ser|Thr|Trp|Tyr|Val|Ter)*)?)',
             re.IGNORECASE
         )
         
@@ -110,7 +110,7 @@ class CoordinatesRecognizer:
         
         # Chromosomal aberration patterns
         self.chr_aberration = re.compile(
-            r'(?:del|dup|inv|t)\([0-9]{1,2}(?:;[0-9]{1,2})?\)\([pq][0-9.q]+\)',
+            r'(?:del|dup|inv|t)\([0-9]{1,2}(?:;[0-9]{1,2})?\)\([pq][0-9.q;]+\)',
             re.IGNORECASE
         )
         
@@ -132,14 +132,14 @@ class CoordinatesRecognizer:
     
     def get_llm(self):
         """
-        Get the LLM instance. Create a new LlmManager if not provided during initialization.
+        Get the LLM instance. Create a new GenericChat if not provided during initialization.
         
         Returns:
             LLM instance for text generation
         """
-        if self.llm_manager is None:
-            self.llm_manager = LlmManager('together', self.model_name)
-        return self.llm_manager.get_llm()
+        if self.llm_chat is None:
+            self.llm_chat = GenericChat(self.model_name, provider='together')
+        return self.llm_chat
     
     def extract_coordinates_regex(self, text: str) -> List[Dict[str, str]]:
         """
@@ -299,7 +299,7 @@ class CoordinatesRecognizer:
         """
         llm = self.get_llm()
         prompt = self._generate_llm_prompt(text)
-        response = llm.invoke(prompt)
+        response = llm.generate(prompt)
         
         if isinstance(response, str):
             return self._parse_llm_response(response)
