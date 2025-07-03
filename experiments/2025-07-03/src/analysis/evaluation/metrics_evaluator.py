@@ -17,7 +17,7 @@ import csv
 from src.utils.variant_normalizer import HGVSNormalizer, normalize_variants_for_comparison
 
 
-class ImprovedVariantMetricsEvaluator:
+class VariantMetricsEvaluator:
     """
     Enhanced evaluator for calculating metrics between predicted and reference variants
     with standardized HGVS normalization.
@@ -544,7 +544,7 @@ class ImprovedVariantMetricsEvaluator:
 
 def main():
     """Main function to run the improved evaluation."""
-    evaluator = ImprovedVariantMetricsEvaluator()
+    evaluator = VariantMetricsEvaluator()
     evaluator.run_evaluation()
 
 

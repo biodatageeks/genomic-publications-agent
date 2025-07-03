@@ -1,0 +1,49 @@
+2025-07-03 10:27:08,786 - __main__ - INFO - 🧬 Starting FOX Genes Variant Extraction Experiment - Corrected Version
+2025-07-03 10:27:08,786 - __main__ - INFO - Initializing components...
+2025-07-03 10:27:08,789 - __main__ - INFO - Loaded 43 FOX transcription factor genes
+2025-07-03 10:27:08,789 - __main__ - INFO - Processing FOXA1...
+2025-07-03 10:27:08,789 - src.analysis.bio_ner.variant_recognizer - INFO - Found 1 high-confidence variants
+2025-07-03 10:27:08,789 - src.analysis.bio_ner.variant_recognizer - INFO - Found 1 high-confidence variants
+2025-07-03 10:27:08,789 - src.analysis.bio_ner.variant_recognizer - INFO - Found 1 high-confidence variants
+2025-07-03 10:27:08,790 - src.analysis.bio_ner.variant_recognizer - INFO - Found 1 high-confidence variants
+2025-07-03 10:27:08,790 - src.analysis.bio_ner.variant_recognizer - INFO - Found 0 high-confidence variants
+2025-07-03 10:27:08,790 - src.analysis.bio_ner.variant_recognizer - INFO - Found 0 high-confidence variants
+2025-07-03 10:27:08,790 - __main__ - INFO -   FOXA1: P=0.750, R=0.750, F1=0.750, FP_avoided=5
+2025-07-03 10:27:08,790 - __main__ - INFO - Processing FOXA2...
+2025-07-03 10:27:08,790 - src.analysis.bio_ner.variant_recognizer - INFO - Found 1 high-confidence variants
+2025-07-03 10:27:08,790 - src.analysis.bio_ner.variant_recognizer - INFO - Found 1 high-confidence variants
+2025-07-03 10:27:08,790 - src.analysis.bio_ner.variant_recognizer - INFO - Found 1 high-confidence variants
+2025-07-03 10:27:08,790 - src.analysis.bio_ner.variant_recognizer - INFO - Found 1 high-confidence variants
+2025-07-03 10:27:08,790 - src.analysis.bio_ner.variant_recognizer - INFO - Found 0 high-confidence variants
+2025-07-03 10:27:08,790 - src.analysis.bio_ner.variant_recognizer - INFO - Found 0 high-confidence variants
+2025-07-03 10:27:08,790 - __main__ - INFO -   FOXA2: P=0.750, R=0.750, F1=0.750, FP_avoided=5
+2025-07-03 10:27:08,790 - __main__ - INFO - Processing FOXA3...
+2025-07-03 10:27:08,790 - src.analysis.bio_ner.variant_recognizer - INFO - Found 1 high-confidence variants
+2025-07-03 10:27:08,790 - src.analysis.bio_ner.variant_recognizer - INFO - Found 1 high-confidence variants
+2025-07-03 10:27:08,790 - src.analysis.bio_ner.variant_recognizer - INFO - Found 1 high-confidence variants
+2025-07-03 10:27:08,790 - src.analysis.bio_ner.variant_recognizer - INFO - Found 1 high-confidence variants
+2025-07-03 10:27:08,790 - src.analysis.bio_ner.variant_recognizer - INFO - Found 0 high-confidence variants
+2025-07-03 10:27:08,790 - src.analysis.bio_ner.variant_recognizer - INFO - Found 0 high-confidence variants
+2025-07-03 10:27:08,790 - __main__ - INFO -   FOXA3: P=0.750, R=0.750, F1=0.750, FP_avoided=5
+2025-07-03 10:27:08,790 - __main__ - INFO - Processing FOXB1...
+2025-07-03 10:27:08,790 - src.analysis.bio_ner.variant_recognizer - INFO - Found 1 high-confidence variants
+2025-07-03 10:27:08,791 - src.analysis.bio_ner.variant_recognizer - INFO - Found 1 high-confidence variants
+2025-07-03 10:27:08,791 - src.analysis.bio_ner.variant_recognizer - INFO - Found 1 high-confidence variants
+2025-07-03 10:27:08,791 - src.analysis.bio_ner.variant_recognizer - INFO - Found 1 high-confidence variants
+2025-07-03 10:27:08,791 - src.analysis.bio_ner.variant_recognizer - INFO - Found 0 high-confidence variants
+2025-07-03 10:27:08,791 - src.analysis.bio_ner.variant_recognizer - INFO - Found 0 high-confidence variants
+2025-07-03 10:27:08,791 - __main__ - INFO -   FOXB1: P=0.750, R=0.750, F1=0.750, FP_avoided=5
+2025-07-03 10:27:08,791 - __main__ - INFO - Processing FOXB2...
+2025-07-03 10:27:08,791 - src.analysis.bio_ner.variant_recognizer - INFO - Found 1 high-confidence variants
+2025-07-03 10:27:08,791 - src.analysis.bio_ner.variant_recognizer - INFO - Found 1 high-confidence variants
+2025-07-03 10:27:08,791 - src.analysis.bio_ner.variant_recognizer - INFO - Found 1 high-confidence variants
+2025-07-03 10:27:08,791 - src.analysis.bio_ner.variant_recognizer - INFO - Found 1 high-confidence variants
+2025-07-03 10:27:08,791 - src.analysis.bio_ner.variant_recognizer - INFO - Found 0 high-confidence variants
+2025-07-03 10:27:08,791 - src.analysis.bio_ner.variant_recognizer - INFO - Found 0 high-confidence variants
+2025-07-03 10:27:08,791 - __main__ - INFO -   FOXB2: P=0.750, R=0.750, F1=0.750, FP_avoided=5
+2025-07-03 10:27:08,791 - __main__ - INFO - Results saved to fox_experiment_results.json
+2025-07-03 10:27:08,792 - src.analysis.bio_ner.variant_recognizer - INFO - Found 1 high-confidence variants
+2025-07-03 10:27:08,792 - src.analysis.bio_ner.variant_recognizer - INFO - Found 0 high-confidence variants
+2025-07-03 10:27:08,792 - src.analysis.bio_ner.variant_recognizer - INFO - Found 0 high-confidence variants
+2025-07-03 10:27:08,792 - src.analysis.bio_ner.variant_recognizer - INFO - Found 1 high-confidence variants
+2025-07-03 10:27:08,792 - src.analysis.bio_ner.variant_recognizer - INFO - Found 1 high-confidence variants

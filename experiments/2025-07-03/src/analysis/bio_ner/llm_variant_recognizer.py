@@ -57,9 +57,9 @@ class VariantExtractionResponse:
     confidence: float
 
 
-class RealLLMVariantRecognizer:
+class LLMVariantRecognizer:
     """
-    Real LLM-based variant recognizer with structured prompting.
+    LLM-based variant recognizer with structured prompting.
     
     Features:
     - Chain-of-thought reasoning
@@ -439,7 +439,7 @@ if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)
     
     # Create recognizer (will use mock if LangChain not available)
-    recognizer = RealLLMVariantRecognizer(provider=LLMProvider.MOCK)
+    recognizer = LLMVariantRecognizer(provider=LLMProvider.MOCK)
     
     # Test cases
     test_texts = [

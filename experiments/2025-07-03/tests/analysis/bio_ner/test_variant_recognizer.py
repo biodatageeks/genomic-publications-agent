@@ -1,7 +1,7 @@
 """
-Comprehensive tests for ImprovedVariantRecognizer.
+Comprehensive tests for VariantRecognizer.
 
-This module tests the improved variant recognition system with
+This module tests the variant recognition system with
 comprehensive coverage of edge cases and false positive detection.
 """
 
@@ -9,16 +9,16 @@ import pytest
 from unittest.mock import Mock, patch, MagicMock
 from typing import List, Dict, Any
 
-from src.analysis.bio_ner.improved_variant_recognizer import ImprovedVariantRecognizer, VariantMatch
+from src.analysis.bio_ner.variant_recognizer import VariantRecognizer, VariantMatch
 
 
-class TestImprovedVariantRecognizer:
-    """Test suite for ImprovedVariantRecognizer."""
+class TestVariantRecognizer:
+    """Test suite for VariantRecognizer."""
     
     @pytest.fixture
     def recognizer(self):
         """Create recognizer instance for testing."""
-        return ImprovedVariantRecognizer()
+        return VariantRecognizer()
     
     def test_initialization(self, recognizer):
         """Test proper initialization of the recognizer."""
@@ -283,13 +283,13 @@ class TestVariantMatchDataclass:
         assert match.end_pos == 28
 
 
-class TestImprovedVariantRecognizerIntegration:
-    """Integration tests for ImprovedVariantRecognizer."""
+class TestVariantRecognizerIntegration:
+    """Integration tests for VariantRecognizer."""
     
     @pytest.fixture
     def recognizer(self):
         """Create recognizer instance for integration testing."""
-        return ImprovedVariantRecognizer()
+        return VariantRecognizer()
     
     def test_real_biomedical_abstracts(self, recognizer):
         """Test with real biomedical abstract examples."""
@@ -407,7 +407,7 @@ class TestImprovedVariantRecognizerIntegration:
 ])
 def test_variant_recognition_parametrized(variant_text, expected_type, should_find):
     """Parametrized test for variant recognition."""
-    recognizer = ImprovedVariantRecognizer()
+    recognizer = VariantRecognizer()
     
     # Create realistic context
     if should_find:
