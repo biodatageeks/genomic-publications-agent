@@ -43,6 +43,14 @@ class MutalyzerError(BaseModel):
     details: Optional[Dict[str, Any]] = None
 
 
+class MutalyzerClientError(Exception):
+    """Wyjątek klienta Mutalyzer"""
+    def __init__(self, message: str, error_type: ErrorType = ErrorType.VALIDATION_ERROR):
+        super().__init__(message)
+        self.message = message
+        self.error_type = error_type
+
+
 class TranscriptInfo(BaseModel):
     """Informacje o transkrypcji"""
     transcript_id: str
